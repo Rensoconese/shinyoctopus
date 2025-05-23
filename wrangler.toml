@@ -1,3 +1,4 @@
+# Configuración básica
 name = "shinyoctopus"
 compatibility_date = "2024-05-22"
 compatibility_flags = ["streams_enable_constructors"]
@@ -5,26 +6,6 @@ compatibility_flags = ["streams_enable_constructors"]
 # Directorio de salida para Pages
 pages_build_output_dir = "dist"
 
-[site]
-bucket = "./dist"
-entry-point = ".dist"
-
 # Configuración de variables de entorno (opcional)
 [vars]
 # Ejemplo: VARIABLE = "valor"
-
-# Configuración específica para Astro
-[build]
-command = "npm run build"
-publish = "dist"
-
-# Configuración de rutas (opcional)
-# [[routes]]
-# pattern = "example.com/*"
-# script_name = "worker"
-
-# Configuración de zonas (si tienes un dominio personalizado)
-# [env.production]
-# name = "shinyoctopus-prod"
-# route = "example.com/*"
-# zone_id = "your-zone-id"
