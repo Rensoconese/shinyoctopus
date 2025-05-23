@@ -2,8 +2,13 @@
 import { z } from 'zod';
 import { Resend } from 'resend';
 
-// Inicializar Resend con la API key
+// Inicializar Resend con la API key (solo disponible en el servidor)
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
+
+// Verificar que la API key esté disponible
+if (!import.meta.env.RESEND_API_KEY) {
+  console.error('RESEND_API_KEY no está definida. Asegúrate de configurarla en el archivo .env o en las variables de entorno de Cloudflare Pages.');
+}
 
 // Usar un token único para prevenir envíos múltiples
 const FORM_TOKEN_KEY = 'form_token';

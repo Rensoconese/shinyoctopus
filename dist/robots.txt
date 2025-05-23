@@ -1,0 +1,13 @@
+# robots.txt para Shiny Octopus
+# https://shinyoctopus.com
+
+User-agent: *
+Allow: /
+
+# Excluir rutas específicas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Sitemap
+Sitemap: https://shinyoctopus.com/sitemap-index.xml

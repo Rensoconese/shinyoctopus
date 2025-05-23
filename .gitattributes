@@ -1,0 +1,15 @@
+# Asegurarse de que los archivos binarios se manejen correctamente
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.svg binary
+
+# Archivos de configuración que no deben modificarse en Windows
+*.cmd text eol=lf
+*.sh text eol=lf

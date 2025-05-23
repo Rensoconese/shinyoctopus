@@ -13,7 +13,12 @@ export default defineConfig({
   integrations: [sitemap()],
   
   vite: {
-    // Exponer las variables de entorno de RESEND
-    envPrefix: ['PUBLIC_', 'RESEND_'],
+    // Solo exponer variables con el prefijo PUBLIC_
+    envPrefix: 'PUBLIC_',
+    // Configuración de compilación mínima
+    build: {
+      sourcemap: false,
+      minify: 'esbuild'
+    }
   },
 });

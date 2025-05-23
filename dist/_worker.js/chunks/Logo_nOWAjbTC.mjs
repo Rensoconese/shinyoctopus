@@ -1,0 +1,18 @@
+globalThis.process ??= {}; globalThis.process.env ??= {};
+import { b as createAstro, c as createComponent, m as maybeRenderHead, e as addAttribute, a as renderTemplate } from './astro/server_DpHnwooJ.mjs';
+/* empty css                         */
+/* empty css                           */
+
+const $$Astro = createAstro("https://shinyoctopus.studio");
+const $$Button = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
+  Astro2.self = $$Button;
+  const { text, href } = Astro2.props;
+  return renderTemplate`${href ? renderTemplate`${maybeRenderHead()}<a${addAttribute(href, "href")} class="custom-button" data-astro-cid-vnzlvqnm>${text}</a>` : renderTemplate`<button class="custom-button" data-astro-cid-vnzlvqnm>${text}</button>`}`;
+}, "/Users/rensoconese/Documents/shinyoctopus/src/components/Button.astro", void 0);
+
+const $$Logo = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${maybeRenderHead()}<div class="logo" data-astro-cid-tvrurpns> <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-tvrurpns> <path d="M10.2555 21.429C9.5817 21.429 8.92342 21.2925 8.2987 21.0222L7.91406 20.8579L12.7543 9.76286C13.534 7.97895 15.3023 6.82422 17.259 6.82422C17.9328 6.82422 18.5911 6.96066 19.2158 7.23103L19.5979 7.39527L14.7576 18.4903C13.978 20.2742 12.2097 21.429 10.2503 21.429H10.2555Z" fill="white" data-astro-cid-tvrurpns></path> <path d="M19.1922 1.42857C17.4633 0.648479 15.637 0.251953 13.7645 0.251953C8.39844 0.251953 3.54023 3.51228 1.38559 8.55567C-1.60269 15.5558 1.51128 23.7532 8.32662 26.8269C10.0555 27.6044 11.8818 28.001 13.7517 28.001C19.1203 28.001 23.9811 24.7407 26.1332 19.6947C29.1215 12.6946 26.0075 4.49711 19.1922 1.42857ZM23.8323 18.6761C22.0753 22.7865 18.12 25.4456 13.7517 25.4456C12.2332 25.4456 10.748 25.1242 9.34238 24.4919C3.78391 21.9831 1.24451 15.2914 3.68644 9.57679C5.4435 5.4664 9.39881 2.80734 13.7645 2.80734C15.2856 2.80734 16.7708 3.12871 18.1764 3.76367C23.7374 6.26981 26.2743 12.9589 23.8323 18.6761Z" fill="white" data-astro-cid-tvrurpns></path> </svg> <p data-astro-cid-tvrurpns>Shiny Octopus</p> <p data-astro-cid-tvrurpns>Design & Development Studio</p> </div> `;
+}, "/Users/rensoconese/Documents/shinyoctopus/src/components/Logo.astro", void 0);
+
+export { $$Logo as $, $$Button as a };
