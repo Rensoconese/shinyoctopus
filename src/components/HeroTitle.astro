@@ -1,14 +1,51 @@
 ---
+// Definir estilos inline para optimizar el LCP
+const titleStyles = {
+  h1: `
+    text-align: center;
+    font-weight: 400;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin: 0 auto;
+    font-family: var(--font-titles);
+    contain: content;
+    will-change: transform;
+    display: block;
+  `,
+  span: `
+    display: block;
+    font-size: clamp(3rem, 10vw, 7.125rem);
+    text-rendering: optimizeSpeed;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  `,
+  shine: `
+    text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
+    will-change: opacity;
+  `
+};
 ---
 
-<h1>
-  <span>we make</span>
-  <span>your website</span>
-  <span>shine</span>
-</h1>
+<div class="hero-title">
+  <h1 style={titleStyles.h1}>
+    <span class="hero-text" style={titleStyles.span}>we make</span>
+    <span class="hero-text" style={titleStyles.span}>your website</span>
+    <span class="hero-text" style={`${titleStyles.span} ${titleStyles.shine}`}>shine</span>
+  </h1>
+</div>
 
 <style>
-  h1, h2, h3, h4, h5, h6 {
+  /* Mantener algunos estilos en el CSS para dispositivos que no soportan estilos inline */
+  .hero-title {
+    display: block;
+    width: 100%;
+    contain: layout;
+    content-visibility: auto;
+  }
+  
+  /* Fallback styles (solo se aplicarán si los estilos inline fallan) */
+  h1 {
     text-align: center;
     font-weight: 400;
     line-height: 0.9;
@@ -17,17 +54,14 @@
     font-family: var(--font-titles);
   }
 
-  span {
+  .hero-text {
     display: block;
     font-size: clamp(3rem, 10vw, 7.125rem);
+    text-rendering: optimizeSpeed;
+    transform: translateZ(0);
   }
 
-  span:nth-child(3) {
-    /* Reducir significativamente la cantidad de capas de sombra */
-    text-shadow: 0 0 10px #fff,
-                 0 0 20px #88d8ff,
-                 0 0 40px #1e90ff;
-    /* Alternativa: usar un filtro de brillo que es más eficiente */
-    /* filter: brightness(1.2); */
+  .shine {
+    text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
   }
 </style>

@@ -114,7 +114,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
   } = Astro2.props;
   const siteUrl = "https://shinyoctopus.studio";
   const ogImage = image.startsWith("http") ? image : `${siteUrl}${image}`;
-  return renderTemplate`<html lang="en" prefix="og: https://ogp.me/ns#"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}>${renderComponent($$result, "SEO", $$SEO, { "title": title, "description": description, "canonical": canonical, "openGraph": {
+  return renderTemplate`<html lang="en" prefix="og: https://ogp.me/ns#"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><meta name="generator"${addAttribute(Astro2.generator, "content")}><!-- Precargar fuentes críticas para mejorar el rendimiento --><link rel="preload" href="/fonts/PPNeueMontreal-Medium.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/PPNeueMontreal-Bold.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/PPHatton-Ultralight.woff2" as="font" type="font/woff2" crossorigin>${renderComponent($$result, "SEO", $$SEO, { "title": title, "description": description, "canonical": canonical, "openGraph": {
     basic: {
       title,
       type,

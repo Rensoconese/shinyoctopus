@@ -1,96 +1,85 @@
 ---
 import HeroTitle from "./HeroTitle.astro";
 import Button from "./Button.astro";
+import SplineViewer from "./SplineViewer.astro";
 
 // Configuración para el visor de Spline
 const splineUrl = "https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode";
-const splineVersion = "1.9.96";
-const loadDelay = 2000; // 2 segundos de retraso para la carga
+const loadDelay = 500; // Reducido a 500ms para mejorar el rendimiento
+
+// Estilos inline para optimizar el renderizado
+const heroStyles = {
+  container: `
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    gap: 3rem;
+    transform: translateY(-12dvh);
+    contain: layout;
+  `,
+  bgSpline: `
+    display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    top: 0;
+    height: inherit;
+    width: 100%;
+  `
+};
+
+// Media query para dispositivos de escritorio
+const mediaQuery = "(min-width: 64rem)";
 ---
 
-<div class="hero">
-     <HeroTitle />
+<div class="hero" style={heroStyles.container}>
+    <HeroTitle />
     <Button text="Contact us" href="/contact" />
-    <div id="spline-container" class="bg-spline">
-        <!-- Cargamos el script de Spline con la estrategia defer para no bloquear el renderizado -->
-        <script type="module" src={`https://unpkg.com/@splinetool/viewer@${splineVersion}/build/spline-viewer.js`} defer></script>
+    <div class="bg-spline" style={heroStyles.bgSpline}>
+        <SplineViewer 
+            sceneUrl={splineUrl} 
+            loadDelay={loadDelay} 
+            height="100%" 
+            width="100%" 
+        />
     </div>
-    
-    <script is:inline define:vars={{ splineUrl, loadDelay }}>
-        // Función para detectar si el elemento está en el viewport
-        function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.bottom >= 0
-            );
-        }
-
-        // Función para cargar Spline
-        function loadSpline() {
-            const splineContainer = document.getElementById('spline-container');
-            if (!splineContainer || splineContainer.querySelector('spline-viewer')) return;
-            
-            // Verificamos si estamos en un dispositivo que debería mostrar el modelo
-            const shouldLoadSpline = window.innerWidth >= 1024; // 64rem
-            
-            if (shouldLoadSpline && isInViewport(splineContainer)) {
-                // Creamos y añadimos el elemento spline-viewer
-                const splineViewer = document.createElement('spline-viewer');
-                splineViewer.setAttribute('url', splineUrl);
-                splineViewer.setAttribute('loading', 'lazy');
-                splineContainer.appendChild(splineViewer);
-                
-                // Registramos métricas de rendimiento
-                if (window.performance) {
-                    console.log('⚡ Spline cargado después de:', performance.now(), 'ms');
-                }
-                
-                // Eliminamos los event listeners una vez cargado
-                document.removeEventListener('scroll', checkAndLoadSpline);
-                window.removeEventListener('resize', checkAndLoadSpline);
-                document.removeEventListener('DOMContentLoaded', initSplineLoader);
-            }
-        }
-        
-        // Función para verificar y cargar Spline con throttling
-        let throttleTimer;
-        function checkAndLoadSpline() {
-            if (throttleTimer) return;
-            
-            throttleTimer = setTimeout(() => {
-                loadSpline();
-                throttleTimer = null;
-            }, 200);
-        }
-        
-        // Inicialización
-        function initSplineLoader() {
-            // Retraso inicial para mejorar el rendimiento de carga de la página
-            setTimeout(() => {
-                loadSpline();
-                
-                // Añadimos listeners para cargar cuando el elemento entre en viewport
-                document.addEventListener('scroll', checkAndLoadSpline, { passive: true });
-                window.addEventListener('resize', checkAndLoadSpline, { passive: true });
-            }, loadDelay);
-        }
-        
-        // Iniciar cuando el DOM esté listo
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initSplineLoader);
-        } else {
-            initSplineLoader();
-        }
-    </script>
 </div>
 
+<script>
+  // Script para cargar el SplineViewer de manera más eficiente
+  document.addEventListener('DOMContentLoaded', () => {
+    const mediaQueryList = window.matchMedia('(min-width: 64rem)');
+    const bgSpline = document.querySelector('.bg-spline');
+    
+    // Función para mostrar/ocultar el SplineViewer según el tamaño de la pantalla
+    const handleMediaQueryChange = (mql: MediaQueryListEvent | MediaQueryList) => {
+      if (mql.matches && bgSpline) {
+        (bgSpline as HTMLElement).style.display = 'block';
+      } else if (bgSpline) {
+        (bgSpline as HTMLElement).style.display = 'none';
+      }
+    };
+    
+    // Aplicar inmediatamente
+    handleMediaQueryChange(mediaQueryList);
+    
+    // Escuchar cambios en el tamaño de la pantalla
+    mediaQueryList.addEventListener('change', handleMediaQueryChange);
+  });
+</script>
+
 <style>
+    /* Estilos de respaldo (fallback) en caso de que los estilos inline no funcionen */
     .hero {
-        
         position: relative;
         display: flex;
-        flex-direction: column; /* Added this line */
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100vh;
@@ -98,24 +87,31 @@ const loadDelay = 2000; // 2 segundos de retraso para la carga
         width: 100%;
         gap: 3rem;
         transform: translateY(-12dvh);
+        contain: layout;
+        content-visibility: auto;
     }
-    .bg-spline{
+    
+    .bg-spline {
         display: none; /* Ocultar por defecto */
         position: absolute;
         margin: 0;
         padding: 0;
         z-index: -1;
-        top:0;
+        top: 0;
         height: inherit;
         width: 100%;
-        
     }
-
-
 
     @media (min-width: 64rem) {
         .bg-spline {
-            display: block; /* Mostrar en pantallas mayores a 75rem (1200px) */
+            display: block; /* Mostrar en pantallas mayores a 64rem */
+        }
+    }
+    
+    /* Optimizaciones adicionales para mejorar el rendimiento */
+    @media (prefers-reduced-motion: no-preference) {
+        .hero {
+            transition: opacity 0.3s ease-in;
         }
     }
 </style>

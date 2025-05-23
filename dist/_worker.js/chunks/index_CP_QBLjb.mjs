@@ -1,21 +1,82 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import { c as createComponent, m as maybeRenderHead, a as renderTemplate, r as renderComponent, b as createAstro, A as AstroError, ae as ExpectedImage, af as LocalImageUsedWrongly, ag as MissingImageDimension, ah as UnsupportedImageFormat, ai as IncompatibleDescriptorOptions, aj as UnsupportedImageConversion, ak as toStyleString, al as NoImageMetadata, am as FailedToFetchRemoteImageDimensions, an as ExpectedImageOptions, ao as ExpectedNotESMImage, ap as InvalidImageService, aq as ImageMissingAlt, e as addAttribute, s as spreadAttributes, ar as ExperimentalFontsNotEnabled, as as FontFamilyNotFound, u as unescapeHTML } from './astro/server_DpHnwooJ.mjs';
-import { $ as $$Layout } from './Layout_DVi9mVZG.mjs';
+import { c as createComponent, m as maybeRenderHead, e as addAttribute, a as renderTemplate, b as createAstro, d as renderScript, r as renderComponent, A as AstroError, ae as ExpectedImage, af as LocalImageUsedWrongly, ag as MissingImageDimension, ah as UnsupportedImageFormat, ai as IncompatibleDescriptorOptions, aj as UnsupportedImageConversion, ak as toStyleString, al as NoImageMetadata, am as FailedToFetchRemoteImageDimensions, an as ExpectedImageOptions, ao as ExpectedNotESMImage, ap as InvalidImageService, aq as ImageMissingAlt, s as spreadAttributes, ar as ExperimentalFontsNotEnabled, as as FontFamilyNotFound, u as unescapeHTML } from './astro/server_DpHnwooJ.mjs';
+import { $ as $$Layout } from './Layout_CUWwo_9C.mjs';
 import { a as $$Button, $ as $$Logo } from './Logo_nOWAjbTC.mjs';
 /* empty css                         */
 import { j as joinPaths, i as isRemotePath } from './path_h5kZAkfu.mjs';
 import '../renderers.mjs';
 
 const $$HeroTitle = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${maybeRenderHead()}<h1 data-astro-cid-aurn6btp> <span data-astro-cid-aurn6btp>we make</span> <span data-astro-cid-aurn6btp>your website</span> <span data-astro-cid-aurn6btp>shine</span> </h1> `;
+  const titleStyles = {
+    h1: `
+    text-align: center;
+    font-weight: 400;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin: 0 auto;
+    font-family: var(--font-titles);
+    contain: content;
+    will-change: transform;
+    display: block;
+  `,
+    span: `
+    display: block;
+    font-size: clamp(3rem, 10vw, 7.125rem);
+    text-rendering: optimizeSpeed;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+  `,
+    shine: `
+    text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
+    will-change: opacity;
+  `
+  };
+  return renderTemplate`${maybeRenderHead()}<div class="hero-title" data-astro-cid-aurn6btp> <h1${addAttribute(titleStyles.h1, "style")} data-astro-cid-aurn6btp> <span class="hero-text"${addAttribute(titleStyles.span, "style")} data-astro-cid-aurn6btp>we make</span> <span class="hero-text"${addAttribute(titleStyles.span, "style")} data-astro-cid-aurn6btp>your website</span> <span class="hero-text"${addAttribute(`${titleStyles.span} ${titleStyles.shine}`, "style")} data-astro-cid-aurn6btp>shine</span> </h1> </div> `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/HeroTitle.astro", void 0);
 
-var __freeze = Object.freeze;
-var __defProp = Object.defineProperty;
-var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
-var _a;
+const $$Astro$9 = createAstro("https://shinyoctopus.studio");
+const $$SplineViewer = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
+  Astro2.self = $$SplineViewer;
+  const {
+    sceneUrl,
+    width = "100%",
+    height = "100%",
+    loadDelay = 1e3
+  } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div class="spline-container"${addAttribute(sceneUrl, "data-scene-url")}${addAttribute(loadDelay, "data-load-delay")}${addAttribute(`width: ${width}; height: ${height};`, "style")} data-astro-cid-nkb2s5hl> <!-- El contenedor para Spline --> </div>  ${renderScript($$result, "/Users/rensoconese/Documents/shinyoctopus/src/components/SplineViewer.astro?astro&type=script&index=0&lang.ts")}`;
+}, "/Users/rensoconese/Documents/shinyoctopus/src/components/SplineViewer.astro", void 0);
+
 const $$Hero = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate(_a || (_a = __template(["", '<div class="hero" data-astro-cid-bbe6dxrz> ', " ", ' <div class="bg-spline" data-astro-cid-bbe6dxrz> <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"><\/script> ', " </div> </div> "])), maybeRenderHead(), renderComponent($$result, "HeroTitle", $$HeroTitle, { "data-astro-cid-bbe6dxrz": true }), renderComponent($$result, "Button", $$Button, { "text": "Contact us", "href": "/contact", "data-astro-cid-bbe6dxrz": true }), renderComponent($$result, "spline-viewer", "spline-viewer", { "url": "https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode", "data-astro-cid-bbe6dxrz": true }));
+  const splineUrl = "https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode";
+  const loadDelay = 500;
+  const heroStyles = {
+    container: `
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+    width: 100%;
+    gap: 3rem;
+    transform: translateY(-12dvh);
+    contain: layout;
+  `,
+    bgSpline: `
+    display: none;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    z-index: -1;
+    top: 0;
+    height: inherit;
+    width: 100%;
+  `
+  };
+  return renderTemplate`${maybeRenderHead()}<div class="hero"${addAttribute(heroStyles.container, "style")} data-astro-cid-bbe6dxrz> ${renderComponent($$result, "HeroTitle", $$HeroTitle, { "data-astro-cid-bbe6dxrz": true })} ${renderComponent($$result, "Button", $$Button, { "text": "Contact us", "href": "/contact", "data-astro-cid-bbe6dxrz": true })} <div class="bg-spline"${addAttribute(heroStyles.bgSpline, "style")} data-astro-cid-bbe6dxrz> ${renderComponent($$result, "SplineViewer", $$SplineViewer, { "sceneUrl": splineUrl, "loadDelay": loadDelay, "height": "100%", "width": "100%", "data-astro-cid-bbe6dxrz": true })} </div> </div> ${renderScript($$result, "/Users/rensoconese/Documents/shinyoctopus/src/components/Hero.astro?astro&type=script&index=0&lang.ts")} `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/Hero.astro", void 0);
 
 const $$Astro$8 = createAstro("https://shinyoctopus.studio");
@@ -1289,7 +1350,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_C46tBjob.mjs'
+      './sharp_B_uOIB-m.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -2012,15 +2073,15 @@ const $$ProyectShowcase = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$ProyectShowcase;
   const { title, images, backgroundImage, testimonial, websiteUrl } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<section class="project-showcase"${addAttribute(`--bg-image: url(${backgroundImage})`, "style")} data-astro-cid-7xviqrdt> <div class="showcase-container" data-astro-cid-7xviqrdt> <!-- Primera columna: año, título y imágenes --> <div class="column column-left" data-astro-cid-7xviqrdt> <div class="project-info" data-astro-cid-7xviqrdt> <h3 class="title" data-astro-cid-7xviqrdt>${title}</h3> </div> <div class="project-container-link" data-astro-cid-7xviqrdt> <div class="project-images" data-astro-cid-7xviqrdt> ${images.map((image, index) => renderTemplate`<div class="image-container" data-astro-cid-7xviqrdt> ${renderComponent($$result, "Image", $$Image, { "src": image, "alt": `${title} project screenshot ${index + 1}`, "width": 296, "height": 156, "data-astro-cid-7xviqrdt": true })} </div>`)} </div> ${websiteUrl && renderTemplate`<div class="website-link" data-astro-cid-7xviqrdt> <a${addAttribute(websiteUrl, "href")} target="_blank" rel="noopener noreferrer" data-astro-cid-7xviqrdt>Visit website</a> </div>`} </div> </div> <!-- Segunda columna: testimonio --> <div class="column column-middle" data-astro-cid-7xviqrdt> <div class="testimonial" data-astro-cid-7xviqrdt> <p data-astro-cid-7xviqrdt>"${testimonial.text}"</p> <div class="testimonial-author" data-astro-cid-7xviqrdt> <span class="name" data-astro-cid-7xviqrdt>${testimonial.name}</span> <span class="position" data-astro-cid-7xviqrdt>${testimonial.position}</span> </div> </div> </div> </div> </section> `;
+  return renderTemplate`${maybeRenderHead()}<section class="project-showcase" data-astro-cid-7xviqrdt> <div class="background-container" data-astro-cid-7xviqrdt> ${typeof backgroundImage === "string" ? renderTemplate`<img${addAttribute(backgroundImage, "src")}${addAttribute(`${title} background`, "alt")} class="background-image" data-astro-cid-7xviqrdt>` : renderTemplate`${renderComponent($$result, "Image", $$Image, { "src": backgroundImage, "alt": `${title} background`, "width": 1920, "height": 1080, "quality": 80, "class": "background-image", "data-astro-cid-7xviqrdt": true })}`} </div> <div class="showcase-container" data-astro-cid-7xviqrdt> <!-- Primera columna: año, título y imágenes --> <div class="column column-left" data-astro-cid-7xviqrdt> <div class="project-info" data-astro-cid-7xviqrdt> <h3 class="title" data-astro-cid-7xviqrdt>${title}</h3> </div> <div class="project-container-link" data-astro-cid-7xviqrdt> <div class="project-images" data-astro-cid-7xviqrdt> ${images.map((img, index) => renderTemplate`<div class="image-container" data-astro-cid-7xviqrdt> ${typeof img === "string" ? renderTemplate`<img${addAttribute(img, "src")}${addAttribute(`${title} project screenshot ${index + 1}`, "alt")} width="296" height="156" data-astro-cid-7xviqrdt>` : renderTemplate`${renderComponent($$result, "Image", $$Image, { "src": img, "alt": `${title} project screenshot ${index + 1}`, "width": 296, "height": 156, "quality": 80, "data-astro-cid-7xviqrdt": true })}`} </div>`)} </div> ${websiteUrl && renderTemplate`<div class="website-link" data-astro-cid-7xviqrdt> <a${addAttribute(websiteUrl, "href")} target="_blank" rel="noopener noreferrer" data-astro-cid-7xviqrdt>Visit website</a> </div>`} </div> </div> <!-- Segunda columna: testimonio --> <div class="column column-middle" data-astro-cid-7xviqrdt> <div class="testimonial" data-astro-cid-7xviqrdt> <p data-astro-cid-7xviqrdt>"${testimonial.text}"</p> <div class="testimonial-author" data-astro-cid-7xviqrdt> <span class="name" data-astro-cid-7xviqrdt>${testimonial.name}</span> <span class="position" data-astro-cid-7xviqrdt>${testimonial.position}</span> </div> </div> </div> </div> </section> `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/ProyectShowcase.astro", void 0);
 
 const $$Astro$2 = createAstro("https://shinyoctopus.studio");
 const $$TitleCenter = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$TitleCenter;
-  const { lines } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<div class="title-path" data-astro-cid-pfa4xuj2> <h2 data-astro-cid-pfa4xuj2> ${lines.map((line) => renderTemplate`<span data-astro-cid-pfa4xuj2>${line}</span>`)} </h2> </div> `;
+  const { lines, enableShineEffect = false } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<div class="title-path" data-astro-cid-pfa4xuj2> <h2${addAttribute(enableShineEffect ? "shine-enabled" : "", "class")} data-astro-cid-pfa4xuj2> ${lines.map((line) => renderTemplate`<span data-astro-cid-pfa4xuj2>${line}</span>`)} </h2> </div> `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/TitleCenter.astro", void 0);
 
 const $$Astro$1 = createAstro("https://shinyoctopus.studio");
@@ -2036,11 +2097,116 @@ const $$CardWeb = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$CardWeb;
   const { url, text, backgroundImage, class: className } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<a${addAttribute(url, "href")} target="_blank" rel="noopener noreferrer"${addAttribute(`card-web ${className || ""}`, "class")}${addAttribute({ backgroundImage: `url(${backgroundImage})` }, "style")} data-astro-cid-ud4gzaph> <div class="card-content" data-astro-cid-ud4gzaph> <p data-astro-cid-ud4gzaph>${text}</p> </div> </a> `;
+  const isStringImage = typeof backgroundImage === "string";
+  return renderTemplate`${maybeRenderHead()}<a${addAttribute(url, "href")} target="_blank" rel="noopener noreferrer"${addAttribute(`card-web ${className || ""}`, "class")} data-astro-cid-ud4gzaph> <div class="card-image" data-astro-cid-ud4gzaph> ${isStringImage ? renderTemplate`<img${addAttribute(backgroundImage, "src")}${addAttribute(text, "alt")} loading="lazy" decoding="async" data-astro-cid-ud4gzaph>` : renderTemplate`${renderComponent($$result, "Image", $$Image, { "src": backgroundImage, "alt": text, "width": 400, "height": 600, "quality": 80, "loading": "lazy", "data-astro-cid-ud4gzaph": true })}`} </div> <div class="card-content" data-astro-cid-ud4gzaph> <p data-astro-cid-ud4gzaph>${text}</p> </div> </a> `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/CardWeb.astro", void 0);
 
+const coverMethodo = new Proxy({"src":"/_astro/cover-methodo.CMKnyAVk.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-methodo.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverLivian = new Proxy({"src":"/_astro/cover-livian.CREKhu6G.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-livian.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverBarras = new Proxy({"src":"/_astro/cover-barras.rvK-YyOr.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-barras.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverFacon = new Proxy({"src":"/_astro/cover-facon.C7OWUnAd.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-facon.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverNorthbaires = new Proxy({"src":"/_astro/cover-northbaires.Cq3Exeah.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-northbaires.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverCicare = new Proxy({"src":"/_astro/cover-cicare.COo1ZLj6.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-cicare.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverVillage = new Proxy({"src":"/_astro/cover-village.DLTEiF4S.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-village.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const coverBelife = new Proxy({"src":"/_astro/cover-belife.RGOEg8CN.png","width":640,"height":852,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/cover-belife.png";
+							}
+							
+							return target[name];
+						}
+					});
+
 const $$Path = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${maybeRenderHead()}<section class="path-container" data-astro-cid-zyypnjsw> <div class="sticky-container" data-astro-cid-zyypnjsw> <div class="acg-container" data-astro-cid-zyypnjsw> ${renderComponent($$result, "TitleCenter", $$TitleCenter, { "lines": ["Attract,", "convert &", "grow"], "data-astro-cid-zyypnjsw": true })} </div> <div class="card-web-container" data-astro-cid-zyypnjsw> ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://methodo.ar/", "text": "Methodo", "backgroundImage": "/images/cover-methodo.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.livian.com.ar/", "text": "Livian", "backgroundImage": "/images/cover-livian.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.barras1947.com/", "text": "Barras 1947", "backgroundImage": "/images/cover-barras.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://facon.com.ar/", "text": "Facon", "backgroundImage": "/images/cover-facon.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://northbaires.com.ar/", "text": "NorthBaires", "backgroundImage": "/images/cover-northbaires.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.cicare.com.ar/", "text": "CICAR\xC9", "backgroundImage": "/images/cover-cicare.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.villageglobal.vc/", "text": "Village Global", "backgroundImage": "/images/cover-village.png", "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://belife.com.ar/", "text": "[Be]life.", "backgroundImage": "/images/cover-belife.png", "data-astro-cid-zyypnjsw": true })} </div> </div> ${renderComponent($$result, "PathList", $$PathList, { "items": [
+  return renderTemplate`${maybeRenderHead()}<section class="path-container" data-astro-cid-zyypnjsw> <div class="sticky-container" data-astro-cid-zyypnjsw> <div class="acg-container" data-astro-cid-zyypnjsw> ${renderComponent($$result, "TitleCenter", $$TitleCenter, { "lines": ["Attract,", "convert &", "grow"], "enableShineEffect": false, "data-astro-cid-zyypnjsw": true })} </div> <div class="card-web-container" data-astro-cid-zyypnjsw> ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://methodo.ar/", "text": "Methodo", "backgroundImage": coverMethodo, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.livian.com.ar/", "text": "Livian", "backgroundImage": coverLivian, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.barras1947.com/", "text": "Barras 1947", "backgroundImage": coverBarras, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://facon.com.ar/", "text": "Facon", "backgroundImage": coverFacon, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://northbaires.com.ar/", "text": "NorthBaires", "backgroundImage": coverNorthbaires, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.cicare.com.ar/", "text": "CICAR\xC9", "backgroundImage": coverCicare, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://www.villageglobal.vc/", "text": "Village Global", "backgroundImage": coverVillage, "data-astro-cid-zyypnjsw": true })} ${renderComponent($$result, "CardWeb", $$CardWeb, { "url": "https://belife.com.ar/", "text": "[Be]life.", "backgroundImage": coverBelife, "data-astro-cid-zyypnjsw": true })} </div> </div> ${renderComponent($$result, "PathList", $$PathList, { "items": [
     {
       number: "01",
       title: "Understand",
@@ -2078,16 +2244,215 @@ const $$End = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${maybeRenderHead()}<div class="end-section" data-astro-cid-djzae3e7> ${renderComponent($$result, "TitleCenter", $$TitleCenter, { "lines": ["Are you", "ready to", "shine?"], "data-astro-cid-djzae3e7": true })} ${renderComponent($$result, "Button", $$Button, { "text": "Contact us", "href": "/contact", "data-astro-cid-djzae3e7": true })} </div> `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/End.astro", void 0);
 
+const primosBg = new Proxy({"src":"/_astro/primos_bg.CAGW581y.png","width":1010,"height":717,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/primos_bg.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const primos1 = new Proxy({"src":"/_astro/primos_1.Bn5oPavb.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/primos_1.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const primos2 = new Proxy({"src":"/_astro/primos_2.B4Qu-tkr.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/primos_2.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const primos3 = new Proxy({"src":"/_astro/primos_3.CaMcrbU9.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/primos_3.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const evosBg = new Proxy({"src":"/_astro/evos_bg.Dh3rZE50.png","width":904,"height":575,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/evos_bg.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const evos1 = new Proxy({"src":"/_astro/evos_1.BEn0zAUL.png","width":594,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/evos_1.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const evos2 = new Proxy({"src":"/_astro/evos_2.C6iFUgFO.png","width":594,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/evos_2.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const evos3 = new Proxy({"src":"/_astro/evos_3.9bVeOw86.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/evos_3.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const victoriaVenusBg = new Proxy({"src":"/_astro/la_victoria_de_venus_bg.U87_dO0N.png","width":1200,"height":733,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/la_victoria_de_venus_bg.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const victoriaVenus1 = new Proxy({"src":"/_astro/la_victoria_de_venus_1.DJs4OQnc.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/la_victoria_de_venus_1.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const victoriaVenus2 = new Proxy({"src":"/_astro/la_victoria_de_venus_2.CaIK9PFJ.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/la_victoria_de_venus_2.png";
+							}
+							
+							return target[name];
+						}
+					});
+
+const victoriaVenus3 = new Proxy({"src":"/_astro/la_victoria_de_venus_3.DtK-c_-0.png","width":592,"height":312,"format":"png"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "/Users/rensoconese/Documents/shinyoctopus/src/images/la_victoria_de_venus_3.png";
+							}
+							
+							return target[name];
+						}
+					});
+
 const $$Index = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Logo", $$Logo, {})} ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "SectionWhat", $$SectionWhat, {})} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "Primos games", "backgroundImage": "/images/primos_bg.png", "images": ["/images/primos_1.png", "/images/primos_2.png", "/images/primos_3.png"], "websiteUrl": "https://primos.games", "testimonial": {
+  const fontPreload = [
+    { href: "/fonts/PPHatton-Ultralight.woff2", type: "font/woff2", crossorigin: true }
+  ];
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate`${fontPreload.map((font) => renderTemplate`<link rel="preload"${addAttribute(font.href, "href")} as="font"${addAttribute(font.type, "type")}${addAttribute(font.crossorigin ? "anonymous" : null, "crossorigin")}>`)}<style>
+        /* Estilos críticos para el hero y título */
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            height: 100svh;
+            width: 100%;
+            gap: 3rem;
+            transform: translateY(-12dvh);
+            contain: layout;
+        }
+        
+        .hero-title h1 {
+            text-align: center;
+            font-weight: 400;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin: 0 auto;
+            font-family: var(--font-titles);
+            contain: content;
+            will-change: transform;
+        }
+        
+        .hero-text {
+            display: block;
+            font-size: clamp(3rem, 10vw, 7.125rem);
+            text-rendering: optimizeSpeed;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .shine {
+            text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
+            will-change: opacity;
+        }
+    </style> ${renderComponent($$result2, "Logo", $$Logo, {})} ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "SectionWhat", $$SectionWhat, {})} ${renderComponent($$result2, "ProyectShowcase", $$ProyectShowcase, { "title": "Primos games", "backgroundImage": primosBg, "images": [primos1, primos2, primos3], "websiteUrl": "https://primos.games", "testimonial": {
     text: "Working with Shiny has been an incredible experience. From the very beginning, they perfectly understood what I wanted and managed to bring it to life in a professional, modern website that completely aligned with my expectations. The team is attentive, communicative, and highly efficient, always willing to help and ensure that everything works flawlessly. Not only did they deliver an impeccable result, but they also made the entire process easy and seamless. Without a doubt, I would recommend them to anyone looking for quality and professionalism.",
     name: "Sergi Monsalve",
     position: "Founder"
-  } })} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "Evos", "backgroundImage": "/images/evos_bg.png", "images": ["/images/evos_1.png", "/images/evos_2.png", "/images/evos_3.png"], "websiteUrl": "https://evos.com.ar", "testimonial": {
+  } })} ${renderComponent($$result2, "ProyectShowcase", $$ProyectShowcase, { "title": "Evos", "backgroundImage": evosBg, "images": [evos1, evos2, evos3], "websiteUrl": "https://evos.com.ar", "testimonial": {
     text: "We worked alongside the Shiny team (I include myself because they made me part of the process from the very beginning at every stage) on a website for my brand, where the concepts of innovation and accessibility would be reflected from a playful perspective. I was very satisfied with the result, which clearly shows great professionalism and passion put towards achieving the proposed goal.",
     name: "Maximiliano Carrizo",
     position: "Owner"
-  } })} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "La Victoria de Venus", "backgroundImage": "/images/la_victoria_de_venus_bg.png", "images": ["/images/la_victoria_de_venus_1.png", "/images/la_victoria_de_venus_2.png", "/images/la_victoria_de_venus_3.png"], "websiteUrl": "https://lavictoriadevenus.com", "testimonial": {
+  } })} ${renderComponent($$result2, "ProyectShowcase", $$ProyectShowcase, { "title": "La Victoria de Venus", "backgroundImage": victoriaVenusBg, "images": [victoriaVenus1, victoriaVenus2, victoriaVenus3], "websiteUrl": "https://lavictoriadevenus.com", "testimonial": {
     text: "Working with the Shiny team was an incredible experience. From the first moment, I felt accompanied and guided throughout the entire process. They perfectly understood what I needed for my project, and made it a reality in a way that exceeded my expectations. The website is not only beautiful, but also functional, easy to use, and fulfills everything my business needed. I love how it looks and works, and I am very grateful for their professionalism and dedication. I highly recommend them!",
     name: "Victoria Garc\xEDa Garzilazo",
     position: "Owner"

@@ -1,6 +1,6 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_DpHnwooJ.mjs';
-import { $ as $$Layout } from '../chunks/Layout_DVi9mVZG.mjs';
+import { $ as $$Layout } from '../chunks/Layout_CUWwo_9C.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$404 = createComponent(($$result, $$props, $$slots) => {

@@ -25,9 +25,68 @@ import victoriaVenusBg from "../images/la_victoria_de_venus_bg.png";
 import victoriaVenus1 from "../images/la_victoria_de_venus_1.png";
 import victoriaVenus2 from "../images/la_victoria_de_venus_2.png";
 import victoriaVenus3 from "../images/la_victoria_de_venus_3.png";
+
+// Configuración para precargar fuentes críticas
+const fontPreload = [
+  { href: "/fonts/PPHatton-Ultralight.woff2", type: "font/woff2", crossorigin: true }
+];
 ---
 
 <Layout>
+    {/* Precargar fuentes críticas */}
+    {fontPreload.map(font => (
+        <link 
+            rel="preload" 
+            href={font.href} 
+            as="font" 
+            type={font.type} 
+            crossorigin={font.crossorigin ? "anonymous" : null} 
+        />
+    ))}
+    
+    {/* Estilos críticos inline para optimizar LCP */}
+    <style is:inline>
+        /* Estilos críticos para el hero y título */
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            height: 100svh;
+            width: 100%;
+            gap: 3rem;
+            transform: translateY(-12dvh);
+            contain: layout;
+        }
+        
+        .hero-title h1 {
+            text-align: center;
+            font-weight: 400;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin: 0 auto;
+            font-family: var(--font-titles);
+            contain: content;
+            will-change: transform;
+        }
+        
+        .hero-text {
+            display: block;
+            font-size: clamp(3rem, 10vw, 7.125rem);
+            text-rendering: optimizeSpeed;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .shine {
+            text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
+            will-change: opacity;
+        }
+    </style>
+    
     <Logo />
     <Hero />
     <SectionWhat />
