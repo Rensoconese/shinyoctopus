@@ -5,7 +5,6 @@ import SplineViewer from "./SplineViewer.astro";
 
 // Configuración para el visor de Spline
 const splineUrl = "https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode";
-const loadDelay = 500; // Reducido a 500ms para mejorar el rendimiento
 
 // Estilos inline para optimizar el renderizado
 const heroStyles = {
@@ -44,7 +43,6 @@ const mediaQuery = "(min-width: 64rem)";
     <div class="bg-spline" style={heroStyles.bgSpline}>
         <SplineViewer 
             sceneUrl={splineUrl} 
-            loadDelay={loadDelay} 
             height="100%" 
             width="100%" 
         />

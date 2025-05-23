@@ -3,21 +3,18 @@ export interface Props {
   sceneUrl: string;
   width?: string;
   height?: string;
-  loadDelay?: number;
 }
 
 const { 
   sceneUrl, 
   width = "100%", 
-  height = "100%",
-  loadDelay = 1000
+  height = "100%"
 } = Astro.props;
 ---
 
 <div 
   class="spline-container" 
   data-scene-url={sceneUrl}
-  data-load-delay={loadDelay}
   style={`width: ${width}; height: ${height};`}
 >
   <!-- El contenedor para Spline -->
@@ -38,57 +35,53 @@ const {
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Obtener todos los contenedores de Spline
-    const containers = document.querySelectorAll('.spline-container');
-    
-    containers.forEach(function(container) {
-      const sceneUrl = container.getAttribute('data-scene-url') || '';
-      const loadDelay = parseInt(container.getAttribute('data-load-delay') || '1000');
+  // Script para cargar Spline de manera no bloqueante
+  window.addEventListener('load', function() {
+    // Esperar a que todo el contenido principal esté cargado
+    setTimeout(() => {
+      const containers = document.querySelectorAll('.spline-container');
       
-      // Función para cargar Spline
-      function loadSpline() {
+      containers.forEach(function(container) {
+        const sceneUrl = container.getAttribute('data-scene-url') || '';
+        
         // Verificar si estamos en un dispositivo que debería mostrar el modelo
         if (window.innerWidth < 1200) {
           return; // No cargar en dispositivos pequeños
         }
         
-        // Crear el elemento spline-viewer
-        const splineViewer = document.createElement('spline-viewer');
-        splineViewer.setAttribute('url', sceneUrl);
-        splineViewer.setAttribute('loading', 'lazy');
+        // Función para cargar el script de Spline con defer para no bloquear
+        const loadScript = () => {
+          // Si ya existe el script, no hacer nada
+          if (document.querySelector('script[src*="spline-viewer.js"]')) {
+            createViewer();
+            return;
+          }
+          
+          const script = document.createElement('script');
+          script.type = 'module';
+          script.src = 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js';
+          script.defer = true;
+          script.onload = createViewer;
+          document.head.appendChild(script);
+        };
         
-        // Limpiar el contenedor y añadir el visor
-        container.innerHTML = '';
-        container.appendChild(splineViewer);
+        // Función para crear el visor de Spline
+        const createViewer = () => {
+          const splineViewer = document.createElement('spline-viewer');
+          splineViewer.setAttribute('url', sceneUrl);
+          splineViewer.setAttribute('loading', 'lazy');
+          
+          container.innerHTML = '';
+          container.appendChild(splineViewer);
+          
+          console.log('⚡ Spline cargado después de:', performance.now(), 'ms');
+        };
         
-        console.log('⚡ Spline cargado después de:', performance.now(), 'ms');
-      }
-      
-      // Función para cargar el script de Spline si no está cargado
-      function loadSplineScript(callback: () => void) {
-        if (document.querySelector('script[src*="spline-viewer.js"]')) {
-          callback();
-          return;
-        }
-        
-        const script = document.createElement('script');
-        script.type = 'module';
-        script.src = 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js';
-        script.onload = callback;
-        document.head.appendChild(script);
-      }
-      
-      // Configurar el observador de intersección para cargar cuando sea visible
-      function setupIntersectionObserver() {
+        // Usar IntersectionObserver para cargar solo cuando sea visible
         const observer = new IntersectionObserver((entries) => {
           const [entry] = entries;
           if (entry.isIntersecting) {
-            // Cuando el elemento es visible, cargar el script y luego el modelo
-            loadSplineScript(() => {
-              // Esperar un momento para que el script se inicialice completamente
-              setTimeout(loadSpline, 100);
-            });
+            loadScript();
             observer.disconnect();
           }
         }, {
@@ -97,16 +90,7 @@ const {
         });
         
         observer.observe(container);
-      }
-      
-      // Esperar a que la página esté cargada y luego esperar el tiempo de delay
-      if (document.readyState === 'complete') {
-        setTimeout(setupIntersectionObserver, loadDelay);
-      } else {
-        window.addEventListener('load', () => {
-          setTimeout(setupIntersectionObserver, loadDelay);
-        });
-      }
-    });
+      });
+    }, 2000); // Esperar 2 segundos después de que la página esté cargada
   });
 </script>
