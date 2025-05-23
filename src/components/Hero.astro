@@ -1,15 +1,88 @@
 ---
 import HeroTitle from "./HeroTitle.astro";
 import Button from "./Button.astro";
+
+// Configuración para el visor de Spline
+const splineUrl = "https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode";
+const splineVersion = "1.9.96";
+const loadDelay = 2000; // 2 segundos de retraso para la carga
 ---
 
 <div class="hero">
      <HeroTitle />
     <Button text="Contact us" href="/contact" />
-    <div class="bg-spline">
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode"></spline-viewer>
+    <div id="spline-container" class="bg-spline">
+        <!-- Cargamos el script de Spline con la estrategia defer para no bloquear el renderizado -->
+        <script type="module" src={`https://unpkg.com/@splinetool/viewer@${splineVersion}/build/spline-viewer.js`} defer></script>
     </div>
+    
+    <script is:inline define:vars={{ splineUrl, loadDelay }}>
+        // Función para detectar si el elemento está en el viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        }
+
+        // Función para cargar Spline
+        function loadSpline() {
+            const splineContainer = document.getElementById('spline-container');
+            if (!splineContainer || splineContainer.querySelector('spline-viewer')) return;
+            
+            // Verificamos si estamos en un dispositivo que debería mostrar el modelo
+            const shouldLoadSpline = window.innerWidth >= 1024; // 64rem
+            
+            if (shouldLoadSpline && isInViewport(splineContainer)) {
+                // Creamos y añadimos el elemento spline-viewer
+                const splineViewer = document.createElement('spline-viewer');
+                splineViewer.setAttribute('url', splineUrl);
+                splineViewer.setAttribute('loading', 'lazy');
+                splineContainer.appendChild(splineViewer);
+                
+                // Registramos métricas de rendimiento
+                if (window.performance) {
+                    console.log('⚡ Spline cargado después de:', performance.now(), 'ms');
+                }
+                
+                // Eliminamos los event listeners una vez cargado
+                document.removeEventListener('scroll', checkAndLoadSpline);
+                window.removeEventListener('resize', checkAndLoadSpline);
+                document.removeEventListener('DOMContentLoaded', initSplineLoader);
+            }
+        }
+        
+        // Función para verificar y cargar Spline con throttling
+        let throttleTimer;
+        function checkAndLoadSpline() {
+            if (throttleTimer) return;
+            
+            throttleTimer = setTimeout(() => {
+                loadSpline();
+                throttleTimer = null;
+            }, 200);
+        }
+        
+        // Inicialización
+        function initSplineLoader() {
+            // Retraso inicial para mejorar el rendimiento de carga de la página
+            setTimeout(() => {
+                loadSpline();
+                
+                // Añadimos listeners para cargar cuando el elemento entre en viewport
+                document.addEventListener('scroll', checkAndLoadSpline, { passive: true });
+                window.addEventListener('resize', checkAndLoadSpline, { passive: true });
+            }, loadDelay);
+        }
+        
+        // Iniciar cuando el DOM esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSplineLoader);
+        } else {
+            initSplineLoader();
+        }
+    </script>
 </div>
 
 <style>

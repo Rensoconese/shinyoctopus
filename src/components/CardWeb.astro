@@ -1,15 +1,42 @@
 ---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+type ImageSource = string | ImageMetadata;
+
 interface Props {
   url: string;
   text: string;
-  backgroundImage: string;
+  backgroundImage: ImageSource;
   class?: string;
 }
 
 const { url, text, backgroundImage, class: className } = Astro.props;
+
+// Determinar si backgroundImage es una string o un objeto ImageMetadata
+const isStringImage = typeof backgroundImage === 'string';
 ---
 
-<a href={url} target="_blank" rel="noopener noreferrer" class={`card-web ${className || ''}`} style={{backgroundImage: `url(${backgroundImage})`}}>
+<a href={url} target="_blank" rel="noopener noreferrer" class={`card-web ${className || ''}`}>
+  <div class="card-image">
+    {isStringImage ? (
+      <img 
+        src={backgroundImage as string} 
+        alt={text} 
+        loading="lazy"
+        decoding="async"
+      />
+    ) : (
+      <Image 
+        src={backgroundImage as ImageMetadata} 
+        alt={text}
+        width={400}
+        height={600}
+        quality={80}
+        loading="lazy"
+      />
+    )}
+  </div>
   <div class="card-content">
     <p>{text}</p>
   </div>
@@ -28,17 +55,29 @@ const { url, text, backgroundImage, class: className } = Astro.props;
     overflow: hidden;
     text-decoration: none;
     color: white;
-    background-size: cover;
-    background-position: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border:1px solid #202020;
-    
-
   }
 
   .card-web:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .card-content {
@@ -53,7 +92,7 @@ const { url, text, backgroundImage, class: className } = Astro.props;
     padding: 20px;
     background: rgba(0, 0, 0, 0.5);
     transition: background 0.3s ease;
-
+    z-index: 1;
   }
 
   .card-web:hover .card-content {

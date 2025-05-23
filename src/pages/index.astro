@@ -3,19 +3,38 @@ import Layout from "../layouts/Layout.astro";
 import Logo from "../components/Logo.astro";
 import Hero from "../components/Hero.astro";
 import SectionWhat from "../components/SectionWhat.astro";
-import ProjectShowcase from "../components/ProyectShowcase.astro";
+import ProyectShowcase from "../components/ProyectShowcase.astro";
 import Path from "../components/Path.astro";
 import End from "../components/End.astro";
+
+// Importar imágenes para optimización
+// Primos Games
+import primosBg from "../images/primos_bg.png";
+import primos1 from "../images/primos_1.png";
+import primos2 from "../images/primos_2.png";
+import primos3 from "../images/primos_3.png";
+
+// Evos
+import evosBg from "../images/evos_bg.png";
+import evos1 from "../images/evos_1.png";
+import evos2 from "../images/evos_2.png";
+import evos3 from "../images/evos_3.png";
+
+// La Victoria de Venus
+import victoriaVenusBg from "../images/la_victoria_de_venus_bg.png";
+import victoriaVenus1 from "../images/la_victoria_de_venus_1.png";
+import victoriaVenus2 from "../images/la_victoria_de_venus_2.png";
+import victoriaVenus3 from "../images/la_victoria_de_venus_3.png";
 ---
 
 <Layout>
     <Logo />
     <Hero />
     <SectionWhat />
-    <ProjectShowcase 
+    <ProyectShowcase 
         title="Primos games"
-        backgroundImage="/images/primos_bg.png"
-        images={["/images/primos_1.png", "/images/primos_2.png", "/images/primos_3.png"]}
+        backgroundImage={primosBg}
+        images={[primos1, primos2, primos3]}
         websiteUrl="https://primos.games"
         testimonial={{
             text: "Working with Shiny has been an incredible experience. From the very beginning, they perfectly understood what I wanted and managed to bring it to life in a professional, modern website that completely aligned with my expectations. The team is attentive, communicative, and highly efficient, always willing to help and ensure that everything works flawlessly. Not only did they deliver an impeccable result, but they also made the entire process easy and seamless. Without a doubt, I would recommend them to anyone looking for quality and professionalism.",
@@ -23,10 +42,10 @@ import End from "../components/End.astro";
             position: "Founder"
         }}
     />
-    <ProjectShowcase 
+    <ProyectShowcase 
         title="Evos"
-        backgroundImage="/images/evos_bg.png"
-        images={["/images/evos_1.png", "/images/evos_2.png", "/images/evos_3.png"]}
+        backgroundImage={evosBg}
+        images={[evos1, evos2, evos3]}
         websiteUrl="https://evos.com.ar"
         testimonial={{
             text: "We worked alongside the Shiny team (I include myself because they made me part of the process from the very beginning at every stage) on a website for my brand, where the concepts of innovation and accessibility would be reflected from a playful perspective. I was very satisfied with the result, which clearly shows great professionalism and passion put towards achieving the proposed goal.",
@@ -34,10 +53,10 @@ import End from "../components/End.astro";
             position: "Owner"
         }}
     />
-    <ProjectShowcase 
+    <ProyectShowcase 
         title="La Victoria de Venus"
-        backgroundImage="/images/la_victoria_de_venus_bg.png"
-        images={["/images/la_victoria_de_venus_1.png", "/images/la_victoria_de_venus_2.png", "/images/la_victoria_de_venus_3.png"]}
+        backgroundImage={victoriaVenusBg}
+        images={[victoriaVenus1, victoriaVenus2, victoriaVenus3]}
         websiteUrl="https://lavictoriadevenus.com"
         testimonial={{
             text: "Working with the Shiny team was an incredible experience. From the first moment, I felt accompanied and guided throughout the entire process. They perfectly understood what I needed for my project, and made it a reality in a way that exceeded my expectations. The website is not only beautiful, but also functional, easy to use, and fulfills everything my business needed. I love how it looks and works, and I am very grateful for their professionalism and dedication. I highly recommend them!",

@@ -1,11 +1,14 @@
 ---
+// Importar el componente Image de Astro para optimización de imágenes
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
+// Definir la interfaz para las propiedades del componente
 interface Props {
     title: string;
-    images: string[]; // Para optimización con <Image />, images debe ser un array de imports, no de strings.
-    websiteUrl?: string; // URL opcional para el enlace "visit website"
-    backgroundImage: string;
+    images: (ImageMetadata | string)[];
+    websiteUrl?: string;
+    backgroundImage: ImageMetadata | string;
     testimonial: {
         text: string;
         name: string;
@@ -13,10 +16,29 @@ interface Props {
     };
 }
 
+// Extraer propiedades del objeto Astro.props
 const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 ---
 
-<section class="project-showcase" style={`--bg-image: url(${backgroundImage})`}>
+<section class="project-showcase">
+    <div class="background-container">
+        {typeof backgroundImage === 'string' ? (
+            <img 
+                src={backgroundImage} 
+                alt={`${title} background`} 
+                class="background-image" 
+            />
+        ) : (
+            <Image 
+                src={backgroundImage} 
+                alt={`${title} background`}
+                width={1920}
+                height={1080}
+                quality={80}
+                class="background-image"
+            />
+        )}
+    </div>
     <div class="showcase-container">
         <!-- Primera columna: año, título y imágenes -->
         <div class="column column-left">
@@ -27,14 +49,24 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
                 
                 <div class="project-images">
                     {
-                        images.map((image, index) => (
+                        images.map((img, index) => (
                             <div class="image-container">
-                                <Image
-                                    src={image}
-                                    alt={`${title} project screenshot ${index + 1}`}
-                                    width={296}
-                                    height={156}
-                                />
+                                {typeof img === 'string' ? (
+                                    <img 
+                                        src={img} 
+                                        alt={`${title} project screenshot ${index + 1}`} 
+                                        width="296" 
+                                        height="156" 
+                                    />
+                                ) : (
+                                    <Image
+                                        src={img}
+                                        alt={`${title} project screenshot ${index + 1}`}
+                                        width={296}
+                                        height={156}
+                                        quality={80}
+                                    />
+                                )}
                             </div>
                         ))
                     }
@@ -61,23 +93,41 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 </section>
 
 <style>
-    .project-showcase {
+   
+   .project-showcase {
         position: relative;
         color: #fff;
-        background-color: #000;
-        background-image: var(--bg-image);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center top;
+        height: 100%;
+        border-bottom: 1px solid #202020;
+        border-top: 1px solid #202020;
+    }
+    .background-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .background-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center top;
+        display: block;
     }
 
     .showcase-container {
         display: grid;
         grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 38rem;
+        position: relative;
        
-        border-bottom: 1px solid #202020;;
     }
+
+    
+
+
 
     /* Primera columna */
     .column-left {
@@ -85,7 +135,7 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         flex-direction: column;
         justify-content: space-between;
         grid-column: 1 / 5;
-        padding:2.5rem;
+        padding: 2.5rem;
     }
 
     .title {
@@ -124,9 +174,10 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         object-fit: cover;
         display: block;
     }
+    
     .project-container-link {
         display: grid;
-        gap:1rem;
+        gap: 1rem;
     }
 
     /* Segunda columna */
@@ -134,9 +185,8 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-       
         grid-column: 5 / 7;
-        padding:2.5rem;
+        padding: 2.5rem;
     }
 
     .testimonial {
@@ -145,9 +195,9 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 
     .testimonial p {
         font-family: "PP Neue Montreal", sans-serif;
-    font-weight: 400;
-    line-height: 1.2lh;
-    max-width: 30rem;
+        font-weight: 400;
+        line-height: 1.2lh;
+        max-width: 30rem;
         margin-bottom: 1.5rem;
     }
 
@@ -164,8 +214,6 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.8);
     }
-    
-   
     
     .website-link a {
         font-size: 0.8rem;
@@ -187,11 +235,11 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
             min-height: auto;
         }
 
-
         .column-left {
             grid-column: 1 / 7;
-            padding:2rem;
+            padding: 2rem;
         }
+        
         .column-middle {
             max-width: 100%;
             padding: 2rem;

@@ -2,12 +2,22 @@
 import TitleCenter from "./TitleCenter.astro";
 import PathList from "./PathList.astro";
 import CardWeb from "./CardWeb.astro";
+
+// Importar imágenes para optimización
+import coverMethodo from "../images/cover-methodo.png";
+import coverLivian from "../images/cover-livian.png";
+import coverBarras from "../images/cover-barras.png";
+import coverFacon from "../images/cover-facon.png";
+import coverNorthbaires from "../images/cover-northbaires.png";
+import coverCicare from "../images/cover-cicare.png";
+import coverVillage from "../images/cover-village.png";
+import coverBelife from "../images/cover-belife.png";
 ---
 
 <section class="path-container">
     <div class="sticky-container">
         <div class="acg-container">
-            <TitleCenter lines={["Attract,", "convert &", "grow"]} />
+            <TitleCenter lines={["Attract,", "convert &", "grow"]} enableShineEffect={false} />
         </div>
    
     
@@ -16,43 +26,43 @@ import CardWeb from "./CardWeb.astro";
             <CardWeb 
             url="https://methodo.ar/" 
             text="Methodo" 
-            backgroundImage="/images/cover-methodo.png" 
+            backgroundImage={coverMethodo} 
             />
         
         <CardWeb 
         url="https://www.livian.com.ar/" 
         text="Livian" 
-        backgroundImage="/images/cover-livian.png" 
+        backgroundImage={coverLivian} 
         />
         <CardWeb 
         url="https://www.barras1947.com/" 
         text="Barras 1947" 
-        backgroundImage="/images/cover-barras.png" 
+        backgroundImage={coverBarras} 
         />
         <CardWeb 
         url="https://facon.com.ar/" 
         text="Facon" 
-        backgroundImage="/images/cover-facon.png" 
+        backgroundImage={coverFacon} 
         />
         <CardWeb 
         url="https://northbaires.com.ar/" 
         text="NorthBaires" 
-        backgroundImage="/images/cover-northbaires.png" 
+        backgroundImage={coverNorthbaires} 
         />
         <CardWeb 
         url="https://www.cicare.com.ar/" 
         text="CICARÉ" 
-        backgroundImage="/images/cover-cicare.png" 
+        backgroundImage={coverCicare} 
         />
         <CardWeb 
         url="https://www.villageglobal.vc/" 
         text="Village Global" 
-        backgroundImage="/images/cover-village.png" 
+        backgroundImage={coverVillage} 
         />
         <CardWeb 
         url="https://belife.com.ar/" 
         text="[Be]life." 
-        backgroundImage="/images/cover-belife.png" 
+        backgroundImage={coverBelife} 
         />
     </div>
 

@@ -23,13 +23,11 @@
   }
 
   span:nth-child(3) {
+    /* Reducir significativamente la cantidad de capas de sombra */
     text-shadow: 0 0 10px #fff,
                  0 0 20px #88d8ff,
-                 0 0 30px #88d8ff,
-                 0 0 40px #1e90ff,
-                 0 0 70px #1e90ff,
-                 0 0 80px #0066cc,
-                 0 0 100px #003399,
-                 0 0 150px #000066;
+                 0 0 40px #1e90ff;
+    /* Alternativa: usar un filtro de brillo que es más eficiente */
+    /* filter: brightness(1.2); */
   }
 </style>

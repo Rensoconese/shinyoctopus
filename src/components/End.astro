@@ -21,26 +21,5 @@ import Button from "./Button.astro";
         gap: 3rem;
     }
 
-    :global(.end-section .title-path h2) {
-        position: relative;
-        overflow: visible;
-    }
-    
-    :global(.end-section .title-path h2:hover) {
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-        background-image: linear-gradient(135deg, #FFFFFF, #FFFFFF, #A7D6FF, #64B5FF, #A7D6FF, #FFFFFF, #A7D6FF, #64B5FF, #ffffff);
-        background-size: 400% 400%;
-        animation: textShine 10s linear infinite;
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    }
-
-    @keyframes textShine {
-        0% { background-position: 0% 0%; }
-        50% { background-position: 100% 100%; }
-        100% { background-position: 0% 0%; }
-    }
-
-        
+    /* Efecto de brillo eliminado */  
 </style>
