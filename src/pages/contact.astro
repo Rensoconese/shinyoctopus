@@ -55,10 +55,17 @@ if (Astro.request.method === 'POST') {
 }
 
 // Page metadata
-const pageTitle = 'Contact';
+const pageTitle = 'Contact Us - Shiny Octopus';
+const pageDescription = "Have a project in mind? Let's talk! We're ready to bring your ideas to life. Contact our team today.";
+const ogImage = "/images/contact-og.jpg";
 ---
 
-<Layout title={pageTitle}>
+<Layout 
+  title={pageTitle}
+  description={pageDescription}
+  image={ogImage}
+  type="website"
+>
   <main class="contact-container">
     <div class="contact-content">
       <a href="/" class="logo-link">

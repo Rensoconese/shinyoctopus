@@ -1,19 +1,78 @@
 ---
+import { SEO } from "astro-seo";
+
 interface Props {
   title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  canonical?: string;
 }
 
-const { title = "Shiny Octopus" } = Astro.props;
+const { 
+  title = "Shiny Octopus", 
+  description = "Digital creative studio specialized in web development, UI/UX design, and digital strategies that make your online presence shine.",
+  image = "/images/og-image.jpg", // Make sure to create this image
+  type = "website",
+  canonical = Astro.url.href
+} = Astro.props;
+
+// Base URL for absolute paths
+const siteUrl = "https://shinyoctopus.studio";
+
+// Build absolute image URL if not already a complete URL
+const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={{
+        basic: {
+          title: title,
+          type: type,
+          image: ogImage,
+          url: canonical,
+        },
+        optional: {
+          description: description,
+          locale: "en_US",
+          siteName: "Shiny Octopus",
+        },
+        image: {
+          alt: `${title} - Shiny Octopus`,
+        },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@shinyoctopus",
+        creator: "@shinyoctopus",
+        title: title,
+        description: description,
+        image: ogImage,
+        imageAlt: `${title} - Shiny Octopus`,
+      }}
+      extend={{
+        meta: [
+          { name: "theme-color", content: "#000000" },
+          { name: "apple-mobile-web-app-capable", content: "yes" },
+          { name: "apple-mobile-web-app-status-bar-style", content: "black" },
+        ],
+        link: [
+          { rel: "manifest", href: "/manifest.json" },
+          { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+        ],
+      }}
+    />
   </head>
   <body>
     <slot />

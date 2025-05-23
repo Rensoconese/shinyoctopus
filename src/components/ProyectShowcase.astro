@@ -33,11 +33,15 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
                                 <Image
                                     src={image}
                                     alt={`${title} project screenshot ${index + 1}`}
+                                    width={296}
+                                    height={156}
                                 />
                             ) : (
                                 <img
                                     src={image}
                                     alt={`${title} project screenshot ${index + 1}`}
+                                    width="296"
+                                    height="156"
                                     loading="lazy"
                                     decoding="async"
                                 />
@@ -74,9 +78,9 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
 
     .showcase-container {
         display: grid;
-        grid-template-columns: 2fr minmax(37.5rem, auto);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: 38rem;
-        width: 100%;
+       
         border-bottom: 1px solid #202020;;
     }
 
@@ -85,17 +89,8 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding: 5rem 2.5rem 2.5rem;
-    }
-
-    .project-info {
-        padding-top: 1rem;
-    }
-
-    .year {
-        font-family: "PP Hatton", serif;
-        display: block;
-        line-height: 1.2lh;
+        grid-column: 1 / 5;
+        padding:2.5rem;
     }
 
     .title {
@@ -122,7 +117,8 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
         position: relative;
         overflow: hidden;
         border-radius: 0;
-        aspect-ratio: 16/9;
+        width: 18.5rem; /* 296px en rems (296/16 = 18.5) */
+        height: 9.75rem; /* 156px en rems (156/16 = 9.75) */
         background-color: #202020;
         padding: 0.5rem;
     }
@@ -136,15 +132,12 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
 
     /* Segunda columna */
     .column-middle {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 5rem 7.5rem 0 5rem;
-        max-width: 37.5rem;
-
         background-color: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
+       
+        grid-column: 5 / 7;
+        padding:2.5rem;
     }
 
     .testimonial {
@@ -153,9 +146,9 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
 
     .testimonial p {
         font-family: "PP Neue Montreal", sans-serif;
-        font-weight: 400;
-        font-size: 1rem;
-        line-height: 1.2lh;
+    font-weight: 400;
+    line-height: 1.2lh;
+    max-width: 30rem;
         margin-bottom: 1.5rem;
     }
 
@@ -180,18 +173,30 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
             height: auto;
             min-height: auto;
         }
+
+
+        .column-left {
+            grid-column: 1 / 7;
+            padding:2rem;
+        }
         .column-middle {
             max-width: 100%;
             padding: 2rem;
             margin: 0;
+            grid-column: 1/7;
         }
 
         .testimonial {
             max-width: 30rem;
         }
+
+        .image-container {
+            width: 100%;
+            height: auto;
+        }
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 30rem) {
         .project-showcase {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -212,6 +217,7 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
         
         .image-container {
             width: 100%;
+            height: auto;
         }
     }
 </style>
