@@ -1,6 +1,6 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { c as createComponent, m as maybeRenderHead, a as renderTemplate, r as renderComponent, b as createAstro, A as AstroError, ae as ExpectedImage, af as LocalImageUsedWrongly, ag as MissingImageDimension, ah as UnsupportedImageFormat, ai as IncompatibleDescriptorOptions, aj as UnsupportedImageConversion, ak as toStyleString, al as NoImageMetadata, am as FailedToFetchRemoteImageDimensions, an as ExpectedImageOptions, ao as ExpectedNotESMImage, ap as InvalidImageService, aq as ImageMissingAlt, e as addAttribute, s as spreadAttributes, ar as ExperimentalFontsNotEnabled, as as FontFamilyNotFound, u as unescapeHTML } from './astro/server_DpHnwooJ.mjs';
-import { $ as $$Layout } from './Layout_By5AihoS.mjs';
+import { $ as $$Layout } from './Layout_DVi9mVZG.mjs';
 import { a as $$Button, $ as $$Logo } from './Logo_nOWAjbTC.mjs';
 /* empty css                         */
 import { j as joinPaths, i as isRemotePath } from './path_h5kZAkfu.mjs';
@@ -1289,7 +1289,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_DSVD6xSC.mjs'
+      './sharp_C46tBjob.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -2011,8 +2011,8 @@ const $$Astro$3 = createAstro("https://shinyoctopus.studio");
 const $$ProyectShowcase = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$ProyectShowcase;
-  const { title, images, backgroundImage, testimonial } = Astro2.props;
-  return renderTemplate`${maybeRenderHead()}<section class="project-showcase"${addAttribute(`--bg-image: url(${backgroundImage})`, "style")} data-astro-cid-7xviqrdt> <div class="showcase-container" data-astro-cid-7xviqrdt> <!-- Primera columna: año, título y imágenes --> <div class="column column-left" data-astro-cid-7xviqrdt> <div class="project-info" data-astro-cid-7xviqrdt> <h3 class="title" data-astro-cid-7xviqrdt>${title}</h3> </div> <div class="project-images" data-astro-cid-7xviqrdt> ${images.map((image, index) => renderTemplate`<div class="image-container" data-astro-cid-7xviqrdt>  ${typeof image === "object" ? renderTemplate`${renderComponent($$result, "Image", $$Image, { "src": image, "alt": `${title} project screenshot ${index + 1}`, "width": 296, "height": 156, "data-astro-cid-7xviqrdt": true })}` : renderTemplate`<img${addAttribute(image, "src")}${addAttribute(`${title} project screenshot ${index + 1}`, "alt")} width="296" height="156" loading="lazy" decoding="async" data-astro-cid-7xviqrdt>`} </div>`)} </div> </div> <!-- Segunda columna: testimonio --> <div class="column column-middle" data-astro-cid-7xviqrdt> <div class="testimonial" data-astro-cid-7xviqrdt> <p data-astro-cid-7xviqrdt>"${testimonial.text}"</p> <div class="testimonial-author" data-astro-cid-7xviqrdt> <span class="name" data-astro-cid-7xviqrdt>${testimonial.name}</span> <span class="position" data-astro-cid-7xviqrdt>${testimonial.position}</span> </div> </div> </div> </div> </section> `;
+  const { title, images, backgroundImage, testimonial, websiteUrl } = Astro2.props;
+  return renderTemplate`${maybeRenderHead()}<section class="project-showcase"${addAttribute(`--bg-image: url(${backgroundImage})`, "style")} data-astro-cid-7xviqrdt> <div class="showcase-container" data-astro-cid-7xviqrdt> <!-- Primera columna: año, título y imágenes --> <div class="column column-left" data-astro-cid-7xviqrdt> <div class="project-info" data-astro-cid-7xviqrdt> <h3 class="title" data-astro-cid-7xviqrdt>${title}</h3> </div> <div class="project-container-link" data-astro-cid-7xviqrdt> <div class="project-images" data-astro-cid-7xviqrdt> ${images.map((image, index) => renderTemplate`<div class="image-container" data-astro-cid-7xviqrdt> ${renderComponent($$result, "Image", $$Image, { "src": image, "alt": `${title} project screenshot ${index + 1}`, "width": 296, "height": 156, "data-astro-cid-7xviqrdt": true })} </div>`)} </div> ${websiteUrl && renderTemplate`<div class="website-link" data-astro-cid-7xviqrdt> <a${addAttribute(websiteUrl, "href")} target="_blank" rel="noopener noreferrer" data-astro-cid-7xviqrdt>Visit website</a> </div>`} </div> </div> <!-- Segunda columna: testimonio --> <div class="column column-middle" data-astro-cid-7xviqrdt> <div class="testimonial" data-astro-cid-7xviqrdt> <p data-astro-cid-7xviqrdt>"${testimonial.text}"</p> <div class="testimonial-author" data-astro-cid-7xviqrdt> <span class="name" data-astro-cid-7xviqrdt>${testimonial.name}</span> <span class="position" data-astro-cid-7xviqrdt>${testimonial.position}</span> </div> </div> </div> </div> </section> `;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/ProyectShowcase.astro", void 0);
 
 const $$Astro$2 = createAstro("https://shinyoctopus.studio");
@@ -2079,15 +2079,15 @@ const $$End = createComponent(($$result, $$props, $$slots) => {
 }, "/Users/rensoconese/Documents/shinyoctopus/src/components/End.astro", void 0);
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Logo", $$Logo, {})} ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "SectionWhat", $$SectionWhat, {})} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "Primos games", "backgroundImage": "/images/primos_bg.png", "images": ["/images/primos_1.png", "/images/primos_2.png", "/images/primos_3.png"], "testimonial": {
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, {}, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Logo", $$Logo, {})} ${renderComponent($$result2, "Hero", $$Hero, {})} ${renderComponent($$result2, "SectionWhat", $$SectionWhat, {})} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "Primos games", "backgroundImage": "/images/primos_bg.png", "images": ["/images/primos_1.png", "/images/primos_2.png", "/images/primos_3.png"], "websiteUrl": "https://primos.games", "testimonial": {
     text: "Working with Shiny has been an incredible experience. From the very beginning, they perfectly understood what I wanted and managed to bring it to life in a professional, modern website that completely aligned with my expectations. The team is attentive, communicative, and highly efficient, always willing to help and ensure that everything works flawlessly. Not only did they deliver an impeccable result, but they also made the entire process easy and seamless. Without a doubt, I would recommend them to anyone looking for quality and professionalism.",
     name: "Sergi Monsalve",
     position: "Founder"
-  } })} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "Evos", "backgroundImage": "/images/evos_bg.png", "images": ["/images/evos_1.png", "/images/evos_2.png", "/images/evos_3.png"], "testimonial": {
+  } })} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "Evos", "backgroundImage": "/images/evos_bg.png", "images": ["/images/evos_1.png", "/images/evos_2.png", "/images/evos_3.png"], "websiteUrl": "https://evos.com.ar", "testimonial": {
     text: "We worked alongside the Shiny team (I include myself because they made me part of the process from the very beginning at every stage) on a website for my brand, where the concepts of innovation and accessibility would be reflected from a playful perspective. I was very satisfied with the result, which clearly shows great professionalism and passion put towards achieving the proposed goal.",
     name: "Maximiliano Carrizo",
     position: "Owner"
-  } })} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "La Victoria de Venus", "backgroundImage": "/images/la_victoria_de_venus_bg.png", "images": ["/images/la_victoria_de_venus_1.png", "/images/la_victoria_de_venus_2.png", "/images/la_victoria_de_venus_3.png"], "testimonial": {
+  } })} ${renderComponent($$result2, "ProjectShowcase", $$ProyectShowcase, { "title": "La Victoria de Venus", "backgroundImage": "/images/la_victoria_de_venus_bg.png", "images": ["/images/la_victoria_de_venus_1.png", "/images/la_victoria_de_venus_2.png", "/images/la_victoria_de_venus_3.png"], "websiteUrl": "https://lavictoriadevenus.com", "testimonial": {
     text: "Working with the Shiny team was an incredible experience. From the first moment, I felt accompanied and guided throughout the entire process. They perfectly understood what I needed for my project, and made it a reality in a way that exceeded my expectations. The website is not only beautiful, but also functional, easy to use, and fulfills everything my business needed. I love how it looks and works, and I am very grateful for their professionalism and dedication. I highly recommend them!",
     name: "Victoria Garc\xEDa Garzilazo",
     position: "Owner"

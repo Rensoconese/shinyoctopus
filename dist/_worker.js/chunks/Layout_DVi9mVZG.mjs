@@ -141,6 +141,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
     meta: [
       { name: "theme-color", content: "#000000" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black" }
     ],
     link: [

@@ -1,6 +1,6 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { b as createAstro, c as createComponent, r as renderComponent, d as renderScript, a as renderTemplate, m as maybeRenderHead, e as addAttribute } from '../chunks/astro/server_DpHnwooJ.mjs';
-import { $ as $$Layout } from '../chunks/Layout_By5AihoS.mjs';
+import { $ as $$Layout } from '../chunks/Layout_DVi9mVZG.mjs';
 import { $ as $$Logo, a as $$Button } from '../chunks/Logo_nOWAjbTC.mjs';
 import { g as generateFormToken, s as server } from '../chunks/_astro-internal_actions_D35V62gO.mjs';
 /* empty css                                   */

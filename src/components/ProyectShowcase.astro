@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 interface Props {
     title: string;
     images: string[]; // Para optimización con <Image />, images debe ser un array de imports, no de strings.
-
+    websiteUrl?: string; // URL opcional para el enlace "visit website"
     backgroundImage: string;
     testimonial: {
         text: string;
@@ -13,7 +13,7 @@ interface Props {
     };
 }
 
-const { title, images, backgroundImage, testimonial } = Astro.props;
+const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 ---
 
 <section class="project-showcase" style={`--bg-image: url(${backgroundImage})`}>
@@ -23,33 +23,28 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
             <div class="project-info">
                 <h3 class="title">{title}</h3>
             </div>
-
-            <div class="project-images">
-                {
-                    images.map((image, index) => (
-                        <div class="image-container">
-                            {/* Si 'image' es un import de assets, usa <Image /> para optimización. Si es string/ruta, se recomienda migrar a imports. */}
-                            {typeof image === "object" ? (
+            <div class="project-container-link">
+                
+                <div class="project-images">
+                    {
+                        images.map((image, index) => (
+                            <div class="image-container">
                                 <Image
                                     src={image}
                                     alt={`${title} project screenshot ${index + 1}`}
                                     width={296}
                                     height={156}
                                 />
-                            ) : (
-                                <img
-                                    src={image}
-                                    alt={`${title} project screenshot ${index + 1}`}
-                                    width="296"
-                                    height="156"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            )}
-                        </div>
-                    ))
-                }
-            </div>
+                            </div>
+                        ))
+                    }
+                </div>
+                {websiteUrl && (
+                    <div class="website-link">
+                        <a href={websiteUrl} target="_blank" rel="noopener noreferrer">Visit website</a>
+                    </div>
+                )}
+            </div>  
         </div>
 
         <!-- Segunda columna: testimonio -->
@@ -129,6 +124,10 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
         object-fit: cover;
         display: block;
     }
+    .project-container-link {
+        display: grid;
+        gap:1rem;
+    }
 
     /* Segunda columna */
     .column-middle {
@@ -164,6 +163,20 @@ const { title, images, backgroundImage, testimonial } = Astro.props;
     .position {
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.8);
+    }
+    
+   
+    
+    .website-link a {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    
+    .website-link a:hover {
+        color: #fff;
+        text-decoration: underline;
     }
 
     @media (max-width: 75rem) {
