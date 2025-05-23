@@ -1,0 +1,23 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<h2>{text}</h2>
+
+<style>
+  h2 {
+    text-align: left;
+    line-height: 0.9;
+    text-transform: uppercase;
+    font-family: var(--font-titles);
+    max-width: 34rem;
+    display: block;
+    padding: 0 0 0 2rem;
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 100;
+  }
+</style>

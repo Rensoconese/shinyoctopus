@@ -1,0 +1,48 @@
+---
+import HeroTitle from "./HeroTitle.astro";
+import Button from "./Button.astro";
+---
+
+<div class="hero">
+     <HeroTitle />
+    <Button text="Contact us" href="/contact" />
+    <div class="bg-spline">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.96/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode"></spline-viewer>
+    </div>
+</div>
+
+<style>
+    .hero {
+        
+        position: relative;
+        display: flex;
+        flex-direction: column; /* Added this line */
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        height: 100svh;
+        width: 100%;
+        gap: 3rem;
+        transform: translateY(-12dvh);
+    }
+    .bg-spline{
+        display: none; /* Ocultar por defecto */
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        z-index: -1;
+        top:0;
+        height: inherit;
+        width: 100%;
+        
+    }
+
+
+
+    @media (min-width: 64rem) {
+        .bg-spline {
+            display: block; /* Mostrar en pantallas mayores a 75rem (1200px) */
+        }
+    }
+</style>

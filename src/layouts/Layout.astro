@@ -1,0 +1,82 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "Shiny Octopus" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: 'PP Hatton';
+    src: url('/fonts/PPHatton-Ultralight.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    --font-primary: 'PP Neue Montreal', sans-serif;
+    --font-titles: 'PP Hatton', sans-serif;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    display: grid;
+    background-color: #000;
+    color: #fff;
+    font-family: var(--font-primary);
+    margin: 0 auto;
+  }
+  
+  .grid {
+    display: grid;
+  }
+  
+  .text-white {
+    color: #fff;
+  }
+  
+  h2 {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 100;
+  }
+</style>

@@ -1,0 +1,128 @@
+---
+interface PathItem {
+    number: string;
+    title: string;
+    shortText: string;
+    longText: string;
+}
+
+interface Props {
+    items: PathItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="path-list">
+    <div class="path-list__wrapper">
+        {
+            items.map((item) => (
+                <article class="path-list__row">
+                    <div class="path-list__first-col">
+                        <p class="path-list__number">{item.number}</p>
+                        <h3 class="path-list__title">{item.title}</h3>
+                    </div>
+                    <p class="path-list__short">{item.shortText}</p>
+                    <p class="path-list__long">{item.longText}</p>
+                </article>
+            ))
+        }
+    </div>
+</section>
+
+<style>
+    .path-list {
+        width: 100%;
+    }
+
+    .path-list__wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 16.88rem);
+        align-items: center;
+    }
+
+    .path-list__row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #202020;;
+
+        padding: 2rem;
+        opacity: 0.8;
+        transition:
+            background-color,
+            opacity 0.5s ease;
+    }
+
+ .path-list__row:first-child {
+        
+        border-top: 1px solid rgb(62 62 62);
+
+    }
+
+    .path-list__row:hover {
+        background-color: #171717;
+        opacity: 1;
+    }
+
+    .path-list__first-col {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+
+        gap: 1rem;
+    }
+
+    .path-list__number {
+        font-family: "PP Hatton", serif;
+        font-weight: 500;
+    }
+
+    .path-list__title {
+        font-family: "PP Hatton", sans-serif;
+        font-weight: 100;
+        font-size: 3rem;
+        line-height: 0.9;
+        text-transform: uppercase;
+    }
+
+    .path-list__short {
+        font-family: "PP Neue Montreal", sans-serif;
+        font-weight: 300;
+        line-height: 1.2lh;
+        max-width: 15rem;
+    }
+
+    .path-list__long {
+        font-family: "PP Neue Montreal", sans-serif;
+        font-weight: 400;
+        line-height: 1.2lh;
+        max-width: 30rem;
+    }
+
+    @media (max-width: 1024px) {
+        .path-list__wrapper {
+            grid-template-rows: 1fr;
+        }
+        .path-list__row {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .path-list__wrapper {
+            gap: 1rem;
+        }
+
+        .path-list__row {
+            padding-bottom: 2rem;
+        }
+
+        .path-list__first-col {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+    }
+</style>

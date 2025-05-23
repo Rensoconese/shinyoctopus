@@ -1,0 +1,208 @@
+---
+import TitleCenter from "./TitleCenter.astro";
+import PathList from "./PathList.astro";
+import CardWeb from "./CardWeb.astro";
+---
+
+<section class="path-container">
+    <div class="sticky-container">
+        <div class="acg-container">
+            <TitleCenter lines={["Attract,", "convert &", "grow"]} />
+        </div>
+   
+    
+    <div class="card-web-container">
+       
+            <CardWeb 
+            url="https://methodo.ar/" 
+            text="Methodo" 
+            backgroundImage="/images/cover-methodo.png" 
+            />
+        
+        <CardWeb 
+        url="https://www.livian.com.ar/" 
+        text="Livian" 
+        backgroundImage="/images/cover-livian.png" 
+        />
+        <CardWeb 
+        url="https://www.barras1947.com/" 
+        text="Barras 1947" 
+        backgroundImage="/images/cover-barras.png" 
+        />
+        <CardWeb 
+        url="https://facon.com.ar/" 
+        text="Facon" 
+        backgroundImage="/images/cover-facon.png" 
+        />
+        <CardWeb 
+        url="https://northbaires.com.ar/" 
+        text="NorthBaires" 
+        backgroundImage="/images/cover-northbaires.png" 
+        />
+        <CardWeb 
+        url="https://www.cicare.com.ar/" 
+        text="CICARÉ" 
+        backgroundImage="/images/cover-cicare.png" 
+        />
+        <CardWeb 
+        url="https://www.villageglobal.vc/" 
+        text="Village Global" 
+        backgroundImage="/images/cover-village.png" 
+        />
+        <CardWeb 
+        url="https://belife.com.ar/" 
+        text="[Be]life." 
+        backgroundImage="/images/cover-belife.png" 
+        />
+    </div>
+
+</div>
+    <PathList
+        items={[
+            {
+                number: "01",
+                title: "Understand",
+                shortText: "We get to know your business and goals in depth",
+                longText:
+                    "We identify if you're starting from scratch or have a website that's not working as expected. We listen to the specific problems you want to solve and what results you're looking to achieve. We explore your ideal vision and the objectives for this project. During this stage, we also explain everything involved in creating an effective website.",
+            },
+            {
+                number: "02",
+                title: "Define",
+                shortText: "We create the strategic roadmap for your success",
+                longText:
+                    "We plan how to turn your vision into reality and what technologies we'll use. We define timelines, budget considerations, and establish priorities for the design and development phases. This roadmap guides our work and ensures we're aligned on what matters most for your project.",
+            },
+            {
+                number: "03",
+                title: "Design",
+                shortText: "We craft every element to captivate your audience",
+                longText:
+                    "We design visual elements that reflect your brand identity and connect with your visitors. We create intuitive user interfaces that guide people naturally toward taking action. Our designs balance aesthetic appeal with usability, ensuring visitors can easily find what they need and accomplish what they came to do",
+            },
+            {
+                number: "04",
+                title: "Development",
+                shortText: "We build your website with precision and care",
+                longText:
+                    "We transform designs into fully functional websites using the right technologies for your project. Our development process includes thorough testing across different devices and browsers. We optimize for speed, ensure security, and make your site easy to update. Everything is built to industry standards, creating a solid foundation for your digital presence.",
+            },
+            {
+                number: "05",
+                title: "Support",
+                shortText: "We're here to keep your website shining",
+                longText:
+                    "After launch, we stay in touch for any questions you might have about your website or anything it needs. We're available to implement updates and new features as your project evolves.",
+            },
+        ]}
+    />
+</section>
+
+<style>
+    .path-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: auto;
+        width: 100%;
+        padding: 0;
+    }
+
+    .sticky-container {
+        width: 100%;
+        position:relative;
+        min-height: calc(100vh * 1);
+        min-height: calc(100svh * 1); 
+        margin:0 auto;
+    }
+    
+    .acg-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position:sticky;
+        top: 0;
+        padding: 2rem;
+        min-height: calc(100vh * 1);
+        min-height: calc(100svh * 1);
+    }
+    
+    .card-web-container {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-auto-columns: 1fr;
+        grid-auto-rows: 1fr;
+        width: 100%;
+        justify-items: center;
+        margin: 0 auto;
+        padding: 2rem;
+        column-gap:1rem;
+        row-gap: calc(2rem + (100vw - 32rem) / 12);
+        padding-bottom: calc(100vh * 1);
+        padding-bottom: calc(100svh * 1);
+    }
+
+    :global(.card-web-container > *:nth-child(1)) {
+        grid-area: 1/2;
+        align-self: center;
+    }
+    
+    :global(.card-web-container > *:nth-child(2)) {
+        grid-area: 1/4;
+    }
+    
+    :global(.card-web-container > *:nth-child(3)) {
+        grid-area: 2/3;
+    }
+    
+    :global(.card-web-container > *:nth-child(4)) {
+        grid-area: 2/5;
+    }
+    
+    :global(.card-web-container > *:nth-child(5)) {
+        grid-area: 3/2;
+    }
+    
+    :global(.card-web-container > *:nth-child(6)) {
+        grid-area: 3/4
+    }
+    
+    :global(.card-web-container > *:nth-child(7)) {
+        grid-area: 4/3;    
+    }
+    
+    :global(.card-web-container > *:nth-child(8)) {
+        grid-area: 4/5;
+    }
+    
+    @media (max-width: 64rem) {
+        .sticky-container {
+            position: static;
+            min-height: auto;
+        }
+        
+        .acg-container {
+            position: static;
+            min-height: auto;
+            padding: 4rem 2rem;
+        }
+        
+        .card-web-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto;
+            padding: 2rem;
+            gap: 1.5rem;
+            padding-bottom: 4rem;
+        }
+        
+        :global(.card-web-container > *) {
+            grid-area: auto !important;
+            width: 100%;
+        }
+    }
+</style>

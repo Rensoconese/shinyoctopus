@@ -1,0 +1,217 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    title: string;
+    images: string[]; // Para optimización con <Image />, images debe ser un array de imports, no de strings.
+
+    backgroundImage: string;
+    testimonial: {
+        text: string;
+        name: string;
+        position: string;
+    };
+}
+
+const { title, images, backgroundImage, testimonial } = Astro.props;
+---
+
+<section class="project-showcase" style={`--bg-image: url(${backgroundImage})`}>
+    <div class="showcase-container">
+        <!-- Primera columna: año, título y imágenes -->
+        <div class="column column-left">
+            <div class="project-info">
+                <h3 class="title">{title}</h3>
+            </div>
+
+            <div class="project-images">
+                {
+                    images.map((image, index) => (
+                        <div class="image-container">
+                            {/* Si 'image' es un import de assets, usa <Image /> para optimización. Si es string/ruta, se recomienda migrar a imports. */}
+                            {typeof image === "object" ? (
+                                <Image
+                                    src={image}
+                                    alt={`${title} project screenshot ${index + 1}`}
+                                />
+                            ) : (
+                                <img
+                                    src={image}
+                                    alt={`${title} project screenshot ${index + 1}`}
+                                    loading="lazy"
+                                    decoding="async"
+                                />
+                            )}
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Segunda columna: testimonio -->
+        <div class="column column-middle">
+            <div class="testimonial">
+                <p>"{testimonial.text}"</p>
+                <div class="testimonial-author">
+                    <span class="name">{testimonial.name}</span>
+                    <span class="position">{testimonial.position}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .project-showcase {
+        position: relative;
+        color: #fff;
+        background-color: #000;
+        background-image: var(--bg-image);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center top;
+    }
+
+    .showcase-container {
+        display: grid;
+        grid-template-columns: 2fr minmax(37.5rem, auto);
+        grid-template-rows: 38rem;
+        width: 100%;
+        border-bottom: 1px solid #202020;;
+    }
+
+    /* Primera columna */
+    .column-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 5rem 2.5rem 2.5rem;
+    }
+
+    .project-info {
+        padding-top: 1rem;
+    }
+
+    .year {
+        font-family: "PP Hatton", serif;
+        display: block;
+        line-height: 1.2lh;
+    }
+
+    .title {
+        font-family: "PP Hatton", serif;
+        font-weight: 100;
+        font-size: clamp(3rem, 6vw, 5rem);
+        text-transform: uppercase;
+        line-height: 0.9;
+        margin: 0;
+        letter-spacing: -0.02em;
+        max-width: 32rem;
+    }
+
+    .project-images {
+        display: flex;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        width: 100%;
+        height: auto;
+    }
+
+    .image-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0;
+        aspect-ratio: 16/9;
+        background-color: #202020;
+        padding: 0.5rem;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Segunda columna */
+    .column-middle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 5rem 7.5rem 0 5rem;
+        max-width: 37.5rem;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    .testimonial {
+        height: 100%;
+    }
+
+    .testimonial p {
+        font-family: "PP Neue Montreal", sans-serif;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.2lh;
+        margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+        display: grid;
+        gap: 0.25rem;
+    }
+
+    .name {
+        font-weight: 700;
+    }
+
+    .position {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 75rem) {
+        .showcase-container {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+            height: auto;
+            min-height: auto;
+        }
+        .column-middle {
+            max-width: 100%;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        .testimonial {
+            max-width: 30rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .project-showcase {
+            margin-top: 2rem;
+            padding-top: 2rem;
+        }
+        
+        .showcase-container {
+            grid-template-rows: auto;
+        }
+        
+        .column-left {
+            padding: 2rem 2rem 1rem;
+        }
+        
+        .project-images {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .image-container {
+            width: 100%;
+        }
+    }
+</style>

@@ -1,0 +1,72 @@
+---
+interface Props {
+  url: string;
+  text: string;
+  backgroundImage: string;
+  class?: string;
+}
+
+const { url, text, backgroundImage, class: className } = Astro.props;
+---
+
+<a href={url} target="_blank" rel="noopener noreferrer" class={`card-web ${className || ''}`} style={{backgroundImage: `url(${backgroundImage})`}}>
+  <div class="card-content">
+    <p>{text}</p>
+  </div>
+</a>
+
+<style>
+  .card-web {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    font-family: "PP Hatton", serif;
+    text-transform: uppercase;
+    aspect-ratio: 3/4;
+    border-radius: 2rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border:1px solid #202020;
+    
+
+  }
+
+  .card-web:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease;
+
+  }
+
+  .card-web:hover .card-content {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+  }
+
+</style>
+
+

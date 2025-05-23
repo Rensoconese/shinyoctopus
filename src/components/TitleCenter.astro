@@ -1,0 +1,57 @@
+---
+interface Props {
+  lines: string[];
+}
+
+const { lines } = Astro.props;
+---
+
+<div class="title-path">
+  <h2>
+    {lines.map((line) => <span>{line}</span>)}
+  </h2>
+</div>
+
+<style>
+  .title-path {
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+  }
+
+  .title-path h2 {
+    font-family: var(--font-titles);
+    font-size: clamp(3rem, 10vw, 7.125rem);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 0.9;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .title-path h2 span {
+    display: block;
+  }
+
+
+.title-path h2 {
+        position: relative;
+        overflow: visible;
+    }
+    
+  .title-path h2:hover {
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-image: linear-gradient(135deg, #FFFFFF, #FFFFFF, #A7D6FF, #64B5FF, #A7D6FF, #FFFFFF, #A7D6FF, #64B5FF, #ffffff);
+        background-size: 400% 400%;
+        animation: textShine 10s linear infinite;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    @keyframes textShine {
+        0% { background-position: 0% 0%; }
+        50% { background-position: 100% 100%; }
+        100% { background-position: 0% 0%; }
+    }
+</style>

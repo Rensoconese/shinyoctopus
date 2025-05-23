@@ -1,0 +1,472 @@
+---
+// src/pages/contact.astro
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import Logo from '../components/Logo.astro';
+import { server, type ContactFormErrors, generateFormToken } from '../actions/index';
+
+// Initialize variables for form and state
+let errors: ContactFormErrors = {};
+let successMessage = '';
+let formData = {
+  name: '',
+  email: '',
+  message: '',
+  source: '',
+  otherSource: ''
+};
+let showOtherField = false;
+
+// Generar un token único para este formulario
+const formToken = generateFormToken();
+
+// Handle form submission
+if (Astro.request.method === 'POST') {
+  try {
+    const form = await Astro.request.formData();
+    const response = await server.send(form);
+    
+    // If successful, show message
+    if (response.success) {
+      successMessage = response.message || 'Message sent successfully';
+      // Clear form on success
+      formData = {
+        name: '',
+        email: '',
+        message: '',
+        source: '',
+        otherSource: ''
+      };
+    }
+    // If there are errors, save them
+    else if (response.errors) {
+      errors = response.errors;
+    }
+    
+    // Keep entered data
+    if (response.data) {
+      formData = response.data;
+      // Check if we should show the "Other" field
+      showOtherField = formData.source === 'Other';
+    }
+  } catch (error) {
+    errors.form = 'An error occurred while processing the form.';
+  }
+}
+
+// Page metadata
+const pageTitle = 'Contact';
+---
+
+<Layout title={pageTitle}>
+  <main class="contact-container">
+    <div class="contact-content">
+      <a href="/" class="logo-link">
+        <Logo />
+      </a>
+      <div class="contact-header">
+        <h1>your new website starts here</h1>
+        <p>The path to a shiny web presence begins with this simple step:</p>
+      </div>
+      
+      <!-- Contact form -->
+    <form 
+      method="POST" 
+      class="contact-form"
+      novalidate
+    >
+      <!-- Token oculto para prevenir envíos múltiples -->
+      <input type="hidden" name="form_token" value={formToken} />
+      <!-- Success message -->
+      {successMessage && (
+        <div class="success-message" role="alert">
+          <div class="success-message-content">
+            <svg xmlns="http://www.w3.org/2000/svg" class="success-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p class="font-medium">{successMessage}</p>
+          </div>
+        </div>
+      )}
+      
+      <!-- General error message -->
+      {errors.form && (
+        <div class="error-message" role="alert">
+          <p>{errors.form}</p>
+        </div>
+      )}
+      
+      <!-- Field: Name -->
+      <div class="form-field">
+        <label for="name" class="form-label">
+          Name<span class="required">*</span>
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          required
+          autocomplete="name"
+          class:list={[
+            "form-input",
+            errors.name ? "input-error" : ""
+          ]}
+          aria-describedby={errors.name ? "name-error" : undefined}
+        />
+        {errors.name && (
+          <p id="name-error" class="error-text">{errors.name}</p>
+        )}
+      </div>
+      
+      <!-- Field: Email -->
+      <div class="form-field">
+        <label for="email" class="form-label">
+          Email<span class="required">*</span>
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          required
+          autocomplete="email"
+          class:list={[
+            "form-input",
+            errors.email ? "input-error" : ""
+          ]}
+          aria-describedby={errors.email ? "email-error" : undefined}
+        />
+        {errors.email && (
+          <p id="email-error" class="error-text">{errors.email}</p>
+        )}
+      </div>
+      
+      <!-- Field: Message -->
+      <div class="form-field">
+        <label for="message" class="form-label">
+          Tell us briefly about your project<span class="required">*</span>
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class:list={[
+            "form-input",
+            errors.message ? "input-error" : ""
+          ]}
+          aria-describedby={errors.message ? "message-error" : undefined}
+        >{formData.message}</textarea>
+        {errors.message && (
+          <p id="message-error" class="error-text">{errors.message}</p>
+        )}
+      </div>
+      
+      <!-- Field: How did you find us -->
+      <div class="form-field">
+        <label for="source" class="form-label">
+          How did you find us?
+        </label>
+        <select
+          id="source"
+          name="source"
+          class:list={[
+            "form-input",
+            errors.source ? "input-error" : ""
+          ]}
+          aria-describedby={errors.source ? "source-error" : undefined}
+        >
+          <option value="" disabled selected={!formData.source}>Select an option</option>
+          <option value="Web Search" selected={formData.source === 'Web Search'}>Web Search</option>
+          <option value="Social Media" selected={formData.source === 'Social Media'}>Social Media</option>
+          <option value="Referral" selected={formData.source === 'Referral'}>Referral</option>
+          <option value="Other" selected={formData.source === 'Other'}>Other</option>
+        </select>
+        {errors.source && (
+          <p id="source-error" class="error-text">{errors.source}</p>
+        )}
+      </div>
+      
+      <!-- Field: Other (conditional) -->
+      <div id="otherSourceContainer" class="form-field" style={showOtherField ? "" : "display: none;"}>
+        <label for="otherSource" class="form-label">
+          Please specify how you found us
+        </label>
+        <input
+          type="text"
+          id="otherSource"
+          name="otherSource"
+          value={formData.otherSource}
+          class:list={[
+            "form-input",
+            errors.otherSource ? "input-error" : ""
+          ]}
+          aria-describedby={errors.otherSource ? "otherSource-error" : undefined}
+        />
+        {errors.otherSource && (
+          <p id="otherSource-error" class="error-text">{errors.otherSource}</p>
+        )}
+      </div>
+      
+      <!-- Submit button -->
+      <div class="form-submit">
+        <Button text="Send message" />
+        <button type="submit" id="submitButton" style="display: none;"></button>
+        <script>
+          const submitFormButton = document.querySelector('.form-submit Button');
+          const submitButtonElement = document.getElementById('submitButton');
+          let isSubmitting = false;
+          
+          if (submitFormButton && submitButtonElement) {
+            // Prevenir múltiples clics en el botón de envío
+            submitFormButton.addEventListener('click', function(e) {
+              if (isSubmitting) {
+                e.preventDefault();
+                return false;
+              }
+              
+              // Desactivar el botón inmediatamente para prevenir múltiples envíos
+              isSubmitting = true;
+              submitFormButton.setAttribute('disabled', 'disabled');
+              (submitFormButton as HTMLElement).style.opacity = '0.7';
+              
+              // Enviar el formulario
+              submitButtonElement.click();
+            });
+          }
+          
+          // Reset form submission state when the page loads (in case of refresh)
+          document.addEventListener('DOMContentLoaded', () => {
+            isSubmitting = false;
+            if (submitFormButton) {
+              submitFormButton.removeAttribute('disabled');
+              (submitFormButton as HTMLElement).style.opacity = '1';
+            }
+          });
+        </script>
+      </div>
+    </form>
+    
+    <div class="back-link-container">
+      <a href="/" class="back-link">
+        <span class="arrow">←</span> Back to homepage
+      </a>
+    </div>
+    
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      min-height: auto;
+      padding: 3rem 1rem;
+      justify-content: flex-start;
+    }
+    
+    h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-header {
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-form {
+      padding: 1.25rem;
+    }
+    
+    .form-field {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .contact-content {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .contact-header {
+    text-align: center;
+  }
+  
+  .logo-link {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: white;
+  }
+
+  .logo-link:visited {
+    color: white;
+  }
+
+  .logo-link svg path {
+    fill: white;
+  }
+
+  h1 {
+    font-family: var(--font-titles, "PP Hatton"), serif;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    font-weight: 100;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-form {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 0.8rem;
+    padding: 2rem;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .form-field {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.4rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  }
+
+  .input-error {
+    border-color: #ff5757;
+  }
+
+  .error-text {
+    color: #ff5757;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  .required {
+    color: #ff5757;
+    margin-left: 0.25rem;
+  }
+
+  .form-submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .success-message {
+    background-color: rgba(0, 128, 0, 0.1);
+    border: 1px solid rgba(0, 128, 0, 0.3);
+    color: #00c853;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .success-message-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .success-icon {
+    height: 1.25rem;
+    width: 1.25rem;
+    margin-right: 0.5rem;
+  }
+
+  .error-message {
+    background-color: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff5757;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+  }
+  .back-link-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 1.5rem;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .back-link:hover {
+    opacity: 0.8;
+  }
+
+  .arrow {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+</style>
+
+<script>
+  // Script to show/hide the "Other" field dynamically
+  document.addEventListener('DOMContentLoaded', () => {
+    const sourceSelect = document.getElementById('source') as HTMLSelectElement;
+    const otherSourceContainer = document.getElementById('otherSourceContainer') as HTMLDivElement;
+
+    // Function to show/hide the "Other" field
+    function toggleOtherField() {
+      if (sourceSelect && sourceSelect.value === 'Other') {
+        if (otherSourceContainer) {
+          otherSourceContainer.style.display = 'block';
+        }
+      } else {
+        if (otherSourceContainer) {
+          otherSourceContainer.style.display = 'none';
+        }
+      }
+    }
+
+    // Listen for changes in the select
+    if (sourceSelect) {
+      sourceSelect.addEventListener('change', toggleOtherField);
+    }
+  });
+</script>

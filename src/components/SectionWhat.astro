@@ -1,0 +1,63 @@
+---
+import H2Title from "./H2Title.astro";
+import FeatureItem from "./FeatureItem.astro";
+---
+
+<section>
+    <div class="what-container">
+        <H2Title text="What makes it shine?" />
+
+        <div class="features-grid">
+            <FeatureItem
+                title="storytelling in mind"
+                description="Captivate hearts, convert minds, build loyalty"
+            />
+            <FeatureItem
+                title="craft design"
+                description="Beautiful experiences that guide and convert"
+            />
+            <FeatureItem
+                title="well-coded"
+                description="Built to be found and perform flawlessly"
+            />
+            <FeatureItem
+                title="accessible"
+                description="Reach every customer, grow your market"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .what-container {
+        display: grid;
+        gap: 4rem;
+        height: 50vh;
+    }
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 4rem;
+        padding: 2rem;
+    }
+
+    @media (max-width: 1200px) {
+        .features-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .what-container {
+            height: auto;
+            min-height: auto;
+            padding-bottom: 2rem;
+            gap:1rem;
+        }
+        
+        .features-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+</style>

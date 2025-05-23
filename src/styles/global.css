@@ -1,0 +1,67 @@
+/* Definición de fuentes PP Neue Montreal */
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("../fonts/PPNeueMontreal-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("../fonts/PPNeueMontreal-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PP Hatton";
+    src: url("../fonts/PPHatton-Ultralight.woff2") format("woff2");
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Variables globales */
+:root {
+    --font-primary: "PP Neue Montreal", sans-serif;
+    --font-titles: "PP Hatton", sans-serif;
+}
+
+/* Estilos base */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    background-color: #000;
+    color: #fff;
+    font-family: var(--font-primary);
+   
+    margin: 0 auto;
+}
+
+/* Utilidades */
+.grid {
+    display: grid;
+}
+
+.text-white {
+    color: #fff;
+}
+
+h2 {
+    font-size: clamp(2rem, 8vw, 5rem);
+    font-weight: 100;
+}
