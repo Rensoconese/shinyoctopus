@@ -36,32 +36,43 @@ const titleStyles = {
 </div>
 
 <style>
-  /* Mantener algunos estilos en el CSS para dispositivos que no soportan estilos inline */
+  /* Estilos optimizados para LightningCSS - Reducción de especificidad */
   .hero-title {
     display: block;
     width: 100%;
     contain: layout;
     content-visibility: auto;
+    /* Punto 5: Reducir especificidad usando clases en lugar de elementos */
+    & h1 {
+      text-align: center;
+      font-weight: 400;
+      line-height: 0.9;
+      text-transform: uppercase;
+      margin: 0 auto;
+      font-family: var(--font-titles);
+    }
   }
   
-  /* Fallback styles (solo se aplicarán si los estilos inline fallan) */
-  h1 {
-    text-align: center;
-    font-weight: 400;
-    line-height: 0.9;
-    text-transform: uppercase;
-    margin: 0 auto;
-    font-family: var(--font-titles);
-  }
-
+  /* Usar anidación CSS moderna que LightningCSS transformará automáticamente */
   .hero-text {
     display: block;
     font-size: clamp(3rem, 10vw, 7.125rem);
     text-rendering: optimizeSpeed;
     transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    
+    /* Punto 5: Reducir especificidad usando anidación */
+    &.shine {
+      text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
+      will-change: opacity;
+    }
   }
-
-  .shine {
-    text-shadow: 0 0 10px #fff, 0 0 20px #88d8ff;
+  
+  /* Optimizaciones para dispositivos de alto rendimiento */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-text {
+      transition: opacity 0.2s ease-out;
+    }
   }
 </style>
