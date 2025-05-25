@@ -1,13 +1,14 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://shinyoctopus.studio', // Your actual site URL
-  output: 'server', // Necesario para Astro Server Actions
+  output: 'static', // En Astro v5, el modo 'static' funciona como el antiguo modo 'hybrid'
   
   // Configurar para Cloudflare Pages
-  adapter: await import('@astrojs/cloudflare').then(m => m.default()),
+  adapter: cloudflare(),
   
   // Integración de sitemap
   integrations: [sitemap()],
