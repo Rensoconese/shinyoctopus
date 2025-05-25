@@ -1,3 +1,1 @@
-globalThis.process ??= {}; globalThis.process.env ??= {};
-export { a as page } from '../chunks/index_CP_QBLjb.mjs';
-export { renderers } from '../renderers.mjs';
+// Contents removed by Astro as it's used for prerendering only

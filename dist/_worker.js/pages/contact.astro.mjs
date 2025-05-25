@@ -1,12 +1,13 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { b as createAstro, c as createComponent, r as renderComponent, d as renderScript, a as renderTemplate, m as maybeRenderHead, e as addAttribute } from '../chunks/astro/server_DpHnwooJ.mjs';
-import { $ as $$Layout } from '../chunks/Layout_CUWwo_9C.mjs';
-import { $ as $$Logo, a as $$Button } from '../chunks/Logo_nOWAjbTC.mjs';
+import { $ as $$Layout } from '../chunks/Layout_B4zJmLPZ.mjs';
+import { $ as $$Logo, a as $$Button } from '../chunks/Logo_ClbFqYVM.mjs';
 import { g as generateFormToken, s as server } from '../chunks/_astro-internal_actions_D35V62gO.mjs';
 /* empty css                                   */
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro("https://shinyoctopus.studio");
+const prerender = false;
 const $$Contact = createComponent(async ($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Contact;
@@ -81,6 +82,7 @@ const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: $$Contact,
   file: $$file,
+  prerender,
   url: $$url
 }, Symbol.toStringTag, { value: 'Module' }));
 
