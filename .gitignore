@@ -10,7 +10,7 @@ node_modules/
 
 # Directorios de construcción
 .astro/
-.dist/
+# dist/ (comentado para incluir la carpeta dist en el repositorio)
 build/
 out/
 
