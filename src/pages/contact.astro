@@ -22,6 +22,9 @@ let showOtherField = false;
 // Generar un token único para este formulario
 const formToken = generateFormToken();
 
+// Turnstile site key
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
+
 // Handle form submission
 if (Astro.request.method === 'POST') {
   try {
@@ -62,12 +65,14 @@ const pageDescription = "Have a project in mind? Let's talk! We're ready to brin
 const ogImage = "/images/contact-og.jpg";
 ---
 
-<Layout 
+<Layout
   title={pageTitle}
   description={pageDescription}
   image={ogImage}
   type="website"
 >
+  <!-- Cloudflare Turnstile Script -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
   <main class="contact-container">
     <div class="contact-content">
       <a href="/" class="logo-link">
@@ -86,6 +91,12 @@ const ogImage = "/images/contact-og.jpg";
     >
       <!-- Token oculto para prevenir envíos múltiples -->
       <input type="hidden" name="form_token" value={formToken} />
+
+      <!-- Honeypot: campo oculto que los bots llenan pero humanos no ven -->
+      <div class="hp-field" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
       <!-- Success message -->
       {successMessage && (
         <div class="success-message" role="alert">
@@ -218,6 +229,9 @@ const ogImage = "/images/contact-og.jpg";
         )}
       </div>
       
+      <!-- Cloudflare Turnstile -->
+      <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark"></div>
+
       <!-- Submit button -->
       <div class="form-submit">
         <Button text="Send message" />
@@ -268,6 +282,18 @@ const ogImage = "/images/contact-og.jpg";
 </Layout>
 
 <style>
+  /* Honeypot field - oculto para humanos, visible para bots */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+
   .contact-container {
     display: flex;
     flex-direction: column;

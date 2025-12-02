@@ -10,6 +10,36 @@ if (!import.meta.env.RESEND_API_KEY) {
   console.error('RESEND_API_KEY no está definida. Asegúrate de configurarla en el archivo .env o en las variables de entorno de Cloudflare Pages.');
 }
 
+// Turnstile secret key para validación del lado del servidor
+const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SECRET_KEY;
+
+// Función para verificar el token de Turnstile
+async function verifyTurnstileToken(token: string): Promise<boolean> {
+  if (!TURNSTILE_SECRET_KEY) {
+    console.error('TURNSTILE_SECRET_KEY no está definida');
+    return false;
+  }
+
+  try {
+    const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        secret: TURNSTILE_SECRET_KEY,
+        response: token,
+      }),
+    });
+
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error('Error verificando Turnstile:', error);
+    return false;
+  }
+}
+
 // Usar un token único para prevenir envíos múltiples
 const FORM_TOKEN_KEY = 'form_token';
 const PROCESSED_TOKENS = new Set<string>();
@@ -81,6 +111,8 @@ export const server = {
     const source = formData.get('source')?.toString() || '';
     const otherSource = formData.get('otherSource')?.toString() || '';
     const formToken = formData.get(FORM_TOKEN_KEY)?.toString();
+    const honeypot = formData.get('website')?.toString() || '';
+    const turnstileToken = formData.get('cf-turnstile-response')?.toString() || '';
 
     // Objeto con los datos del formulario
     const data = {
@@ -91,7 +123,41 @@ export const server = {
       otherSource,
     };
     
-    // Verificar token para prevenir envíos duplicados
+    // 1. Verificar honeypot (si está lleno, es un bot)
+    if (honeypot) {
+      console.log('Bot detected via honeypot');
+      // Devolver éxito falso para no alertar al bot
+      return {
+        success: true,
+        message: 'Your message has been sent successfully. We will contact you soon.'
+      };
+    }
+
+    // 2. Verificar Turnstile
+    if (!turnstileToken) {
+      console.log('Error: Missing Turnstile token');
+      return {
+        success: false,
+        errors: {
+          form: 'Please complete the security verification.'
+        },
+        data
+      };
+    }
+
+    const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
+    if (!isTurnstileValid) {
+      console.log('Error: Invalid Turnstile token');
+      return {
+        success: false,
+        errors: {
+          form: 'Security verification failed. Please try again.'
+        },
+        data
+      };
+    }
+
+    // 3. Verificar token para prevenir envíos duplicados
     if (!formToken) {
       console.log('Error: Missing form token');
       return {
