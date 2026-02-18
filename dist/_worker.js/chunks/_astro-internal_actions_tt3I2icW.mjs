@@ -3934,7 +3934,7 @@ var Batch = class {
         if (email.react) {
           if (!this.renderAsync) {
             try {
-              const { renderAsync } = yield import('./index_nIbLT20n.mjs').then(n => n.i);
+              const { renderAsync } = yield import('./index_DXj6GJVL.mjs').then(n => n.i);
               this.renderAsync = renderAsync;
             } catch (error) {
               throw new Error(
@@ -3965,7 +3965,7 @@ var Broadcasts = class {
       if (payload.react) {
         if (!this.renderAsync) {
           try {
-            const { renderAsync } = yield import('./index_nIbLT20n.mjs').then(n => n.i);
+            const { renderAsync } = yield import('./index_DXj6GJVL.mjs').then(n => n.i);
             this.renderAsync = renderAsync;
           } catch (error) {
             throw new Error(
@@ -4207,7 +4207,7 @@ var Emails = class {
       if (payload.react) {
         if (!this.renderAsync) {
           try {
-            const { renderAsync } = yield import('./index_nIbLT20n.mjs').then(n => n.i);
+            const { renderAsync } = yield import('./index_DXj6GJVL.mjs').then(n => n.i);
             this.renderAsync = renderAsync;
           } catch (error) {
             throw new Error(
@@ -4382,6 +4382,26 @@ var Resend = class {
 };
 
 const resend = new Resend("re_AsRC94jX_E1K9Z2hY738vWdmuVijWCvNb");
+const TURNSTILE_SECRET_KEY = "0x4AAAAAACEZDhEYfDAyyueBVpaM5bJA8aU";
+async function verifyTurnstileToken(token) {
+  try {
+    const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: new URLSearchParams({
+        secret: TURNSTILE_SECRET_KEY,
+        response: token
+      })
+    });
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error("Error verificando Turnstile:", error);
+    return false;
+  }
+}
 const FORM_TOKEN_KEY = "form_token";
 const PROCESSED_TOKENS = /* @__PURE__ */ new Set();
 const contactFormSchema = objectType({
@@ -4417,6 +4437,8 @@ const server = {
     const source = formData.get("source")?.toString() || "";
     const otherSource = formData.get("otherSource")?.toString() || "";
     const formToken = formData.get(FORM_TOKEN_KEY)?.toString();
+    const honeypot = formData.get("website")?.toString() || "";
+    const turnstileToken = formData.get("cf-turnstile-response")?.toString() || "";
     const data = {
       name,
       email,
@@ -4424,6 +4446,34 @@ const server = {
       source,
       otherSource
     };
+    if (honeypot) {
+      console.log("Bot detected via honeypot");
+      return {
+        success: true,
+        message: "Your message has been sent successfully. We will contact you soon."
+      };
+    }
+    if (!turnstileToken) {
+      console.log("Error: Missing Turnstile token");
+      return {
+        success: false,
+        errors: {
+          form: "Please complete the security verification."
+        },
+        data
+      };
+    }
+    const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
+    if (!isTurnstileValid) {
+      console.log("Error: Invalid Turnstile token");
+      return {
+        success: false,
+        errors: {
+          form: "Security verification failed. Please try again."
+        },
+        data
+      };
+    }
     if (!formToken) {
       console.log("Error: Missing form token");
       return {

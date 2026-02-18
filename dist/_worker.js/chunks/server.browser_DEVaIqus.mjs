@@ -1,6 +1,6 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import { i as getDefaultExportFromCjs } from './astro/server_DpHnwooJ.mjs';
-import { r as requireReact } from './index_nIbLT20n.mjs';
+import { i as getDefaultExportFromCjs } from './astro/server_DSLlg3OJ.mjs';
+import { r as requireReact } from './index_DXj6GJVL.mjs';
 
 function _mergeNamespaces(n, m) {
   for (var i = 0; i < m.length; i++) {

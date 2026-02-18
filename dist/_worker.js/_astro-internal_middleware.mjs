@@ -1,7 +1,7 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import './chunks/astro-designed-error-pages_BDNslKaM.mjs';
-import './chunks/astro/server_DpHnwooJ.mjs';
-import { s as sequence } from './chunks/index_DvOx6pXo.mjs';
+import './chunks/astro-designed-error-pages_5mYLDON5.mjs';
+import './chunks/astro/server_DSLlg3OJ.mjs';
+import { s as sequence } from './chunks/index_BWVoepeD.mjs';
 
 // Función para generar un nonce aleatorio base64
 function generateNonce() {

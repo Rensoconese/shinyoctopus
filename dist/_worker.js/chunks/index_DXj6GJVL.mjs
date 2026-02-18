@@ -1,5 +1,5 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import { i as getDefaultExportFromCjs } from './astro/server_DpHnwooJ.mjs';
+import { i as getDefaultExportFromCjs } from './astro/server_DSLlg3OJ.mjs';
 
 /** Types of elements found in htmlparser2's DOM */
 var ElementType;
@@ -6877,7 +6877,7 @@ var readStream = (stream) => __async(void 0, null, function* () {
 });
 var render = (element, options) => __async(void 0, null, function* () {
   const suspendedElement = /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { children: element });
-  const reactDOMServer = yield import('./server.browser_BPuloFI4.mjs').then(n => n.s);
+  const reactDOMServer = yield import('./server.browser_DEVaIqus.mjs').then(n => n.s);
   let html2;
   if (Object.hasOwn(reactDOMServer, "renderToReadableStream")) {
     html2 = yield readStream(

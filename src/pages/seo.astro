@@ -1,0 +1,355 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+
+const pageTitle = "SEO that grows your business | Shiny Octopus";
+const pageDescription =
+  "We build SEO around business outcomes: a website that is easier to find, easier to trust, and easier to convert.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="content-page">
+    <header class="page-header">
+      <p class="kicker">SEO</p>
+      <h1>Be found by the people already looking for what you offer</h1>
+      <p>
+        Good SEO is not about chasing numbers. It is about building a website people can find, understand, and trust
+        from the first click.
+      </p>
+    </header>
+
+    <section>
+      <h2>What you gain</h2>
+      <ul>
+        <li>More qualified traffic from people with clear intent.</li>
+        <li>Stronger visibility for the services and products that matter most.</li>
+        <li>A website that supports sales with better structure and clearer messaging.</li>
+        <li>A long-term acquisition channel that keeps compounding over time.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How we approach SEO</h2>
+      <p>
+        We start with your business goals, not a generic checklist. Then we shape your pages, messaging, and structure
+        so your website is clear for both users and search engines.
+      </p>
+      <p>
+        The result is simple: your website is easier to discover, easier to trust, and easier to convert.
+      </p>
+    </section>
+
+    <section>
+      <h2>What this includes</h2>
+      <ul>
+        <li>Website structure review focused on clarity and discoverability.</li>
+        <li>Page messaging review to improve relevance and trust.</li>
+        <li>Visibility blockers review across key pages and templates.</li>
+        <li>Priority actions so your team knows what to fix first.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>SEO audit plans</h2>
+      <p class="section-lead">Pick the level you need now. Scale later when you want to move faster.</p>
+      <div class="plans-grid">
+        <article class="plan-card">
+          <p class="plan-tier">Shiny Start</p>
+          <h3>Basic SEO Audit</h3>
+          <p class="plan-price">USD 490</p>
+          <ul>
+            <li>Homepage and key service-page audit.</li>
+            <li>Core discoverability and trust check.</li>
+            <li>Visibility blocker list for quick fixes.</li>
+            <li>1-page priority action summary.</li>
+          </ul>
+        </article>
+
+        <article class="plan-card featured">
+          <p class="plan-tier">Shiny Pro</p>
+          <h3>Robust SEO Audit</h3>
+          <p class="plan-price">USD 1,290</p>
+          <ul>
+            <li>Full site structure and content audit.</li>
+            <li>Page title and description consistency review.</li>
+            <li>Internal linking and page-priority review.</li>
+            <li>Action roadmap ordered by business impact.</li>
+          </ul>
+        </article>
+
+        <article class="plan-card">
+          <p class="plan-tier">Shiny Premium</p>
+          <h3>Super Premium Audit</h3>
+          <p class="plan-price">USD 2,590</p>
+          <ul>
+            <li>Everything in Start and Pro.</li>
+            <li>Template-level review across the full website.</li>
+            <li>Conversion and trust friction audit.</li>
+            <li>Executive implementation plan for your team.</li>
+            <li>Handoff workshop with next-step alignment.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>SEO pricing comparison</h2>
+      <p class="section-lead">Compare Shiny SEO audit plans side by side to choose the right scope for your team.</p>
+      <div class="table-wrap">
+        <table class="pricing-table">
+          <caption class="sr-only">Shiny SEO audit plan comparison by price and coverage.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Plan</th>
+              <th scope="col">Price</th>
+              <th scope="col">Best for</th>
+              <th scope="col">What you get</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Shiny Start</th>
+              <td>USD 490</td>
+              <td>Teams that need a fast visibility baseline and focused quick wins.</td>
+              <td>Key page audit, discoverability trust check, blocker list, and priority action summary.</td>
+            </tr>
+            <tr>
+              <th scope="row">Shiny Pro</th>
+              <td>USD 1,290</td>
+              <td>Teams improving structure, messaging, and ranking performance together.</td>
+              <td>Full content and structure audit, metadata consistency review, internal linking review, and roadmap.</td>
+            </tr>
+            <tr>
+              <th scope="row">Shiny Premium</th>
+              <td>USD 2,590</td>
+              <td>Organizations that need full template coverage and executive implementation direction.</td>
+              <td>Deep template review, conversion friction audit, executive plan, and handoff workshop.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>Your next growth jump is probably hidden in your current website</h2>
+      <p>
+        Book an audit and get a clear, business-first action map in days.
+      </p>
+      <Button text="Book shiny SEO audit" href="/contact" />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .content-page {
+    width: min(100%, 70rem);
+    min-width: 0;
+    margin: 0 auto;
+    padding: 6.5rem 1rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-titles);
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    max-width: 50rem;
+  }
+
+  .page-header > p:last-child {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 40rem;
+  }
+
+  section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  section:first-of-type {
+    border-top: none;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 0.45rem;
+  }
+
+  p,
+  li {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .section-lead {
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .plan-card {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 0.75rem;
+    padding: 1.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-card ul {
+    margin-top: 0.55rem;
+  }
+
+  .plan-tier {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.35rem;
+  }
+
+  .plan-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+
+  .plan-card.featured {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .pricing-table {
+    width: 100%;
+    min-width: 46rem;
+    border-collapse: collapse;
+  }
+
+  .pricing-table caption {
+    text-align: left;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .pricing-table th,
+  .pricing-table td {
+    text-align: left;
+    vertical-align: top;
+    padding: 1rem 1rem 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .pricing-table thead th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.45);
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .pricing-table tbody th {
+    width: 10rem;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .closing {
+    border-bottom: 0;
+    text-align: center;
+    padding: 5rem 0 4rem;
+  }
+
+  .closing h2 {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closing p {
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  @media (max-width: 48rem) {
+    .content-page {
+      padding-top: 5.5rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+
+    .plans-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

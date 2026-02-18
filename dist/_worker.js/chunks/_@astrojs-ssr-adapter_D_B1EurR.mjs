@@ -1,10 +1,10 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import 'cloudflare:workers';
 import { f as fileExtension, j as joinPaths, s as slash, p as prependForwardSlash, r as removeTrailingForwardSlash, a as appendForwardSlash, c as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './path_h5kZAkfu.mjs';
-import { r as requestIs404Or500, i as isRequestServerIsland, n as notFound, a as redirectToFallback, b as redirectToDefaultLocale, c as requestHasLocale, d as normalizeTheLocale, e as defineMiddleware, S as SERVER_ISLAND_COMPONENT, f as SERVER_ISLAND_ROUTE, h as createEndpoint, R as RouteCache, s as sequence, j as findRouteToRewrite, m as matchRoute, k as RenderContext, P as PERSIST_SYMBOL, l as getSetCookiesFromResponse } from './index_DvOx6pXo.mjs';
-import { l as ROUTE_TYPE_HEADER, n as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, A as AstroError, o as ActionNotFoundError, p as bold, q as red, y as yellow, t as dim, v as blue, w as clientAddressSymbol, L as LocalsNotAnObject, x as REROUTABLE_STATUS_CODES, z as responseSentSymbol } from './astro/server_DpHnwooJ.mjs';
-import { D as DEFAULT_404_ROUTE, d as default404Instance, e as ensure404Route } from './astro-designed-error-pages_BDNslKaM.mjs';
-import { N as NOOP_MIDDLEWARE_FN } from './noop-middleware_CMToCi_D.mjs';
+import { r as requestIs404Or500, i as isRequestServerIsland, n as notFound, a as redirectToFallback, b as redirectToDefaultLocale, c as requestHasLocale, d as normalizeTheLocale, e as defineMiddleware, S as SERVER_ISLAND_COMPONENT, f as SERVER_ISLAND_ROUTE, h as createEndpoint, R as RouteCache, s as sequence, j as findRouteToRewrite, m as matchRoute, k as RenderContext, P as PERSIST_SYMBOL, l as getSetCookiesFromResponse } from './index_BWVoepeD.mjs';
+import { l as ROUTE_TYPE_HEADER, n as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, A as AstroError, o as ActionNotFoundError, p as bold, q as red, y as yellow, t as dim, v as blue, w as clientAddressSymbol, L as LocalsNotAnObject, x as REROUTABLE_STATUS_CODES, z as responseSentSymbol } from './astro/server_DSLlg3OJ.mjs';
+import { D as DEFAULT_404_ROUTE, d as default404Instance, e as ensure404Route } from './astro-designed-error-pages_5mYLDON5.mjs';
+import { N as NOOP_MIDDLEWARE_FN } from './noop-middleware_Dxh1UHtt.mjs';
 
 function createI18nMiddleware(i18n, base, trailingSlash, format) {
   if (!i18n) return (_, next) => next();

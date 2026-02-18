@@ -1,5 +1,5 @@
 # robots.txt para Shiny Octopus
-# https://shinyoctopus.com
+# https://shinyoctopus.studio
 
 User-agent: *
 Allow: /
@@ -10,4 +10,4 @@ Disallow: /api/
 Disallow: /private/
 
 # Sitemap
-Sitemap: https://shinyoctopus.com/sitemap-index.xml
+Sitemap: https://shinyoctopus.studio/sitemap-index.xml

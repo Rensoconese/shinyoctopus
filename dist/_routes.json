@@ -14,6 +14,9 @@
     "/robots.txt",
     "/fonts/*",
     "/images/*",
-    "/404"
+    "/404",
+    "/accesibilidad",
+    "/seo",
+    "/servidores"
   ]
 }

@@ -1,67 +1,67 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import { b as createAstro, c as createComponent, e as addAttribute, a as renderTemplate, s as spreadAttributes, u as unescapeHTML, r as renderComponent, g as renderHead, h as renderSlot } from './astro/server_DpHnwooJ.mjs';
-/* empty css                           */
+import { a as createAstro, c as createComponent, b as addAttribute, r as renderTemplate, s as spreadAttributes, u as unescapeHTML, d as renderComponent, m as maybeRenderHead, g as renderHead, h as renderSlot } from './astro/server_DSLlg3OJ.mjs';
+/* empty css                                 */
 
-const $$Astro$8 = createAstro("https://shinyoctopus.studio");
+const $$Astro$9 = createAstro("https://shinyoctopus.studio");
 const $$OpenGraphArticleTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$9, $$props, $$slots);
   Astro2.self = $$OpenGraphArticleTags;
   const { publishedTime, modifiedTime, expirationTime, authors, section, tags } = Astro2.props.openGraph.article;
   return renderTemplate`${publishedTime ? renderTemplate`<meta property="article:published_time"${addAttribute(publishedTime, "content")}>` : null}${modifiedTime ? renderTemplate`<meta property="article:modified_time"${addAttribute(modifiedTime, "content")}>` : null}${expirationTime ? renderTemplate`<meta property="article:expiration_time"${addAttribute(expirationTime, "content")}>` : null}${authors ? authors.map((author) => renderTemplate`<meta property="article:author"${addAttribute(author, "content")}>`) : null}${section ? renderTemplate`<meta property="article:section"${addAttribute(section, "content")}>` : null}${tags ? tags.map((tag) => renderTemplate`<meta property="article:tag"${addAttribute(tag, "content")}>`) : null}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/OpenGraphArticleTags.astro", void 0);
 
-const $$Astro$7 = createAstro("https://shinyoctopus.studio");
+const $$Astro$8 = createAstro("https://shinyoctopus.studio");
 const $$OpenGraphBasicTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$8, $$props, $$slots);
   Astro2.self = $$OpenGraphBasicTags;
   const { openGraph } = Astro2.props;
   return renderTemplate`<meta property="og:title"${addAttribute(openGraph.basic.title, "content")}><meta property="og:type"${addAttribute(openGraph.basic.type, "content")}><meta property="og:image"${addAttribute(openGraph.basic.image, "content")}><meta property="og:url"${addAttribute(openGraph.basic.url || Astro2.url.href, "content")}>`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/OpenGraphBasicTags.astro", void 0);
 
-const $$Astro$6 = createAstro("https://shinyoctopus.studio");
+const $$Astro$7 = createAstro("https://shinyoctopus.studio");
 const $$OpenGraphImageTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$7, $$props, $$slots);
   Astro2.self = $$OpenGraphImageTags;
   const { image } = Astro2.props.openGraph.basic;
   const { secureUrl, type, width, height, alt } = Astro2.props.openGraph.image;
   return renderTemplate`<meta property="og:image:url"${addAttribute(image, "content")}>${secureUrl ? renderTemplate`<meta property="og:image:secure_url"${addAttribute(secureUrl, "content")}>` : null}${type ? renderTemplate`<meta property="og:image:type"${addAttribute(type, "content")}>` : null}${width ? renderTemplate`<meta property="og:image:width"${addAttribute(width, "content")}>` : null}${height ? renderTemplate`<meta property="og:image:height"${addAttribute(height, "content")}>` : null}${alt ? renderTemplate`<meta property="og:image:alt"${addAttribute(alt, "content")}>` : null}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/OpenGraphImageTags.astro", void 0);
 
-const $$Astro$5 = createAstro("https://shinyoctopus.studio");
+const $$Astro$6 = createAstro("https://shinyoctopus.studio");
 const $$OpenGraphOptionalTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$6, $$props, $$slots);
   Astro2.self = $$OpenGraphOptionalTags;
   const { optional } = Astro2.props.openGraph;
   return renderTemplate`${optional.audio ? renderTemplate`<meta property="og:audio"${addAttribute(optional.audio, "content")}>` : null}${optional.description ? renderTemplate`<meta property="og:description"${addAttribute(optional.description, "content")}>` : null}${optional.determiner ? renderTemplate`<meta property="og:determiner"${addAttribute(optional.determiner, "content")}>` : null}${optional.locale ? renderTemplate`<meta property="og:locale"${addAttribute(optional.locale, "content")}>` : null}${optional.localeAlternate?.map((locale) => renderTemplate`<meta property="og:locale:alternate"${addAttribute(locale, "content")}>`)}${optional.siteName ? renderTemplate`<meta property="og:site_name"${addAttribute(optional.siteName, "content")}>` : null}${optional.video ? renderTemplate`<meta property="og:video"${addAttribute(optional.video, "content")}>` : null}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/OpenGraphOptionalTags.astro", void 0);
 
-const $$Astro$4 = createAstro("https://shinyoctopus.studio");
+const $$Astro$5 = createAstro("https://shinyoctopus.studio");
 const $$ExtendedTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$5, $$props, $$slots);
   Astro2.self = $$ExtendedTags;
   const { props } = Astro2;
   return renderTemplate`${props.extend.link?.map((attributes) => renderTemplate`<link${spreadAttributes(attributes)}>`)}${props.extend.meta?.map(({ content, httpEquiv, media, name, property }) => renderTemplate`<meta${addAttribute(name, "name")}${addAttribute(property, "property")}${addAttribute(content, "content")}${addAttribute(httpEquiv, "http-equiv")}${addAttribute(media, "media")}>`)}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/ExtendedTags.astro", void 0);
 
-const $$Astro$3 = createAstro("https://shinyoctopus.studio");
+const $$Astro$4 = createAstro("https://shinyoctopus.studio");
 const $$TwitterTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$4, $$props, $$slots);
   Astro2.self = $$TwitterTags;
   const { card, site, title, creator, description, image, imageAlt } = Astro2.props.twitter;
   return renderTemplate`${card ? renderTemplate`<meta name="twitter:card"${addAttribute(card, "content")}>` : null}${site ? renderTemplate`<meta name="twitter:site"${addAttribute(site, "content")}>` : null}${title ? renderTemplate`<meta name="twitter:title"${addAttribute(title, "content")}>` : null}${image ? renderTemplate`<meta name="twitter:image"${addAttribute(image, "content")}>` : null}${imageAlt ? renderTemplate`<meta name="twitter:image:alt"${addAttribute(imageAlt, "content")}>` : null}${description ? renderTemplate`<meta name="twitter:description"${addAttribute(description, "content")}>` : null}${creator ? renderTemplate`<meta name="twitter:creator"${addAttribute(creator, "content")}>` : null}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/TwitterTags.astro", void 0);
 
-const $$Astro$2 = createAstro("https://shinyoctopus.studio");
+const $$Astro$3 = createAstro("https://shinyoctopus.studio");
 const $$LanguageAlternatesTags = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$3, $$props, $$slots);
   Astro2.self = $$LanguageAlternatesTags;
   const { languageAlternates } = Astro2.props;
   return renderTemplate`${languageAlternates.map((alternate) => renderTemplate`<link rel="alternate"${addAttribute(alternate.hrefLang, "hreflang")}${addAttribute(alternate.href, "href")}>`)}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/components/LanguageAlternatesTags.astro", void 0);
 
-const $$Astro$1 = createAstro("https://shinyoctopus.studio");
+const $$Astro$2 = createAstro("https://shinyoctopus.studio");
 const $$SEO = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  const Astro2 = $$result.createAstro($$Astro$2, $$props, $$slots);
   Astro2.self = $$SEO;
   Astro2.props.surpressWarnings = true;
   function validateProps(props) {
@@ -99,6 +99,25 @@ const $$SEO = createComponent(($$result, $$props, $$slots) => {
   const defaultCanonicalUrl = new URL(Astro2.url.pathname + Astro2.url.search, baseUrl);
   return renderTemplate`${updatedTitle ? renderTemplate`<title>${unescapeHTML(updatedTitle)}</title>` : null}${Astro2.props.charset ? renderTemplate`<meta${addAttribute(Astro2.props.charset, "charset")}>` : null}<link rel="canonical"${addAttribute(Astro2.props.canonical || defaultCanonicalUrl.href, "href")}>${Astro2.props.description ? renderTemplate`<meta name="description"${addAttribute(Astro2.props.description, "content")}>` : null}<meta name="robots"${addAttribute(`${Astro2.props.noindex ? "noindex" : "index"}, ${Astro2.props.nofollow ? "nofollow" : "follow"}`, "content")}>${Astro2.props.openGraph && renderTemplate`${renderComponent($$result, "OpenGraphBasicTags", $$OpenGraphBasicTags, { ...Astro2.props })}`}${Astro2.props.openGraph?.optional && renderTemplate`${renderComponent($$result, "OpenGraphOptionalTags", $$OpenGraphOptionalTags, { ...Astro2.props })}`}${Astro2.props.openGraph?.image && renderTemplate`${renderComponent($$result, "OpenGraphImageTags", $$OpenGraphImageTags, { ...Astro2.props })}`}${Astro2.props.openGraph?.article && renderTemplate`${renderComponent($$result, "OpenGraphArticleTags", $$OpenGraphArticleTags, { ...Astro2.props })}`}${Astro2.props.twitter && renderTemplate`${renderComponent($$result, "TwitterTags", $$TwitterTags, { ...Astro2.props })}`}${Astro2.props.extend && renderTemplate`${renderComponent($$result, "ExtendedTags", $$ExtendedTags, { ...Astro2.props })}`}${Astro2.props.languageAlternates && renderTemplate`${renderComponent($$result, "LanguageAlternatesTags", $$LanguageAlternatesTags, { ...Astro2.props })}`}`;
 }, "/Users/rensoconese/Documents/shinyoctopus/node_modules/astro-seo/src/SEO.astro", void 0);
+
+const $$Astro$1 = createAstro("https://shinyoctopus.studio");
+const $$TopNav = createComponent(($$result, $$props, $$slots) => {
+  const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
+  Astro2.self = $$TopNav;
+  const pathname = Astro2.url.pathname.replace(/\/+$/, "") || "/";
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/seo", label: "SEO" },
+    { href: "/accesibilidad", label: "Accessibility" },
+    { href: "/servidores", label: "Servers" },
+    { href: "/contact", label: "Contact" }
+  ];
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+  return renderTemplate`${maybeRenderHead()}<nav class="top-nav" aria-label="Primary navigation" data-astro-cid-ugcunkw7> <ul data-astro-cid-ugcunkw7> ${links.map((link) => renderTemplate`<li data-astro-cid-ugcunkw7> <a${addAttribute(["top-nav__link", isActive(link.href) && "is-active"], "class:list")}${addAttribute(link.href, "href")} data-astro-cid-ugcunkw7> ${link.label} </a> </li>`)} </ul> </nav> `;
+}, "/Users/rensoconese/Documents/shinyoctopus/src/components/TopNav.astro", void 0);
 
 const $$Astro = createAstro("https://shinyoctopus.studio");
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
@@ -148,7 +167,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
       { rel: "manifest", href: "/manifest.json" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }
     ]
-  } })}${renderHead()}</head> <body> ${renderSlot($$result, $$slots["default"])} </body></html>`;
+  } })}${renderHead()}</head> <body> ${renderComponent($$result, "TopNav", $$TopNav, {})} ${renderSlot($$result, $$slots["default"])} </body></html>`;
 }, "/Users/rensoconese/Documents/shinyoctopus/src/layouts/Layout.astro", void 0);
 
 export { $$Layout as $ };
