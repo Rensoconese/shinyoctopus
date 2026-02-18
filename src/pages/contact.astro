@@ -22,6 +22,11 @@ let showOtherField = false;
 // Generar un token único para este formulario
 const formToken = generateFormToken();
 
+// Extraer IP del request para rate limiting
+const clientIp = Astro.request.headers.get('cf-connecting-ip')
+  || Astro.request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
+  || 'unknown';
+
 // Turnstile site key
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -91,6 +96,8 @@ const ogImage = "/images/contact-og.jpg";
     >
       <!-- Token oculto para prevenir envíos múltiples -->
       <input type="hidden" name="form_token" value={formToken} />
+      <!-- IP del cliente para rate limiting -->
+      <input type="hidden" name="_ip" value={clientIp} />
 
       <!-- Honeypot: campo oculto que los bots llenan pero humanos no ven -->
       <div class="hp-field" aria-hidden="true">
