@@ -11,7 +11,14 @@ export default defineConfig({
   adapter: cloudflare(),
   
   // Integración de sitemap
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      },
+    }),
+  ],
   
   vite: {
     // Solo exponer variables con el prefijo PUBLIC_

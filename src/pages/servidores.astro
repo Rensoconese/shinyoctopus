@@ -5,9 +5,62 @@ import Button from "../components/Button.astro";
 const pageTitle = "Platform recommendations for your website | Shiny Octopus";
 const pageDescription =
   "How we choose infrastructure based on your goals: speed to launch, business model, team workflow, and long-term growth.";
+
+const platformServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Platform Strategy Consultation",
+  "provider": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio"
+  },
+  "description": "Platform and infrastructure consultation that helps businesses choose the right hosting, CMS, and technology stack based on their goals, team capabilities, and growth plans.",
+  "serviceType": "Technology Consultation",
+  "areaServed": "Worldwide"
+};
+
+const platformFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I choose the right platform for my website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The right platform depends on four factors: how fast you need to launch, who manages content day-to-day, what your performance requirements are, and how you plan to scale. WordPress with managed hosting like Kinsta suits content-heavy business sites, Webflow works well for marketing teams needing autonomy, and Framer excels at fast campaign launches."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Webflow and WordPress for business websites?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WordPress offers maximum flexibility through plugins and custom development, making it ideal for complex sites with specific functionality needs. Webflow provides a visual editor with strong design control, better suited for marketing teams that want to publish and update content independently without developer involvement. Both can achieve excellent performance when properly configured."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need managed hosting for my website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Managed hosting is recommended when your website directly supports revenue through leads or sales. It eliminates downtime risk, provides automatic backups, handles security updates, and offers expert support. For WordPress specifically, managed hosting like Kinsta delivers significantly better performance and reliability than shared hosting, with measurable impact on page speed and user experience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When should I choose a custom-built website over WordPress or Webflow?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A custom build makes sense when you need performance beyond what template-based platforms deliver, when your business logic requires features that plugins cannot cover cleanly, or when you want full ownership without recurring platform fees. We build custom sites with Astro and Cloudflare Pages, which deliver near-perfect performance scores, edge-deployed speed worldwide, and a tailored admin panel so your team can manage content independently."
+      }
+    }
+  ]
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} schema={[platformServiceSchema, platformFaqSchema]}>
   <main id="main-content" class="content-page">
     <header class="page-header">
       <p class="kicker">Platform strategy</p>
@@ -20,6 +73,9 @@ const pageDescription =
 
     <section>
       <h2>What we optimize for</h2>
+      <p>
+        The right platform choice eliminates operational friction and gives your team the speed, performance, and autonomy they need to grow. We evaluate infrastructure based on your specific business context, not industry trends.
+      </p>
       <ul>
         <li>Faster launch with fewer operational headaches.</li>
         <li>Strong performance for users and search visibility.</li>
@@ -62,6 +118,15 @@ const pageDescription =
             without depending on development for every change.
           </p>
         </article>
+
+        <article class="rec-card">
+          <h3>Custom builds with Astro and Cloudflare</h3>
+          <p>
+            When off-the-shelf platforms fall short, we build custom websites with Astro and Cloudflare Pages. You get
+            top-tier performance, a tailored admin panel for your team, and full control over every detail — without
+            the constraints or monthly fees of traditional CMS platforms.
+          </p>
+        </article>
       </div>
     </section>
 
@@ -87,34 +152,70 @@ const pageDescription =
           </thead>
           <tbody>
             <tr>
-              <td>Commercial WordPress site</td>
-              <td>Kinsta</td>
-              <td>Reliable performance and smooth day-to-day management.</td>
+              <td data-label="Business need">Commercial WordPress site</td>
+              <td data-label="Recommended setup">Kinsta</td>
+              <td data-label="Why it fits">Reliable performance and smooth day-to-day management.</td>
             </tr>
             <tr>
-              <td>General business website</td>
-              <td>Cloudflare layer</td>
-              <td>Better speed, stronger resilience, and safer delivery.</td>
+              <td data-label="Business need">General business website</td>
+              <td data-label="Recommended setup">Cloudflare layer</td>
+              <td data-label="Why it fits">Better speed, stronger resilience, and safer delivery.</td>
             </tr>
             <tr>
-              <td>Launch and campaign pages</td>
-              <td>Framer</td>
-              <td>Fast publishing and quick message iteration.</td>
+              <td data-label="Business need">Launch and campaign pages</td>
+              <td data-label="Recommended setup">Framer</td>
+              <td data-label="Why it fits">Fast publishing and quick message iteration.</td>
             </tr>
             <tr>
-              <td>Brand site with frequent content updates</td>
-              <td>Webflow</td>
-              <td>Team autonomy with high visual control.</td>
+              <td data-label="Business need">Brand site with frequent content updates</td>
+              <td data-label="Recommended setup">Webflow</td>
+              <td data-label="Why it fits">Team autonomy with high visual control.</td>
+            </tr>
+            <tr>
+              <td data-label="Business need">Custom product or unique requirements</td>
+              <td data-label="Recommended setup">Astro + Cloudflare</td>
+              <td data-label="Why it fits">Maximum performance, full control, and a custom admin built for your workflow.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <section class="faq-section">
+      <h2>Frequently asked questions about platform strategy</h2>
+      <dl class="faq-list">
+        <div class="faq-item">
+          <dt>How do I choose the right platform for my website?</dt>
+          <dd>
+            The right platform depends on four factors: how fast you need to launch, who manages content day-to-day, what your performance requirements are, and how you plan to scale. <strong>WordPress with managed hosting</strong> suits content-heavy business sites, Webflow works well for marketing teams needing autonomy, and Framer excels at fast campaign launches.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>What is the difference between Webflow and WordPress for business websites?</dt>
+          <dd>
+            WordPress offers maximum flexibility through plugins and custom development, making it ideal for complex sites with specific functionality needs. <strong>Webflow</strong> provides a visual editor with strong design control, better suited for marketing teams that want to publish and update content independently without developer involvement.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>Do I need managed hosting for my website?</dt>
+          <dd>
+            Managed hosting is recommended when your website directly supports revenue through leads or sales. It eliminates downtime risk, provides automatic backups, handles security updates, and offers expert support. For WordPress specifically, managed hosting delivers <strong>significantly better performance</strong> than shared hosting, with measurable impact on page speed and user experience.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>When should I choose a custom-built website over WordPress or Webflow?</dt>
+          <dd>
+            A custom build makes sense when you need performance beyond what template-based platforms deliver, when your business logic requires features that plugins cannot cover cleanly, or when you want <strong>full ownership without recurring platform fees</strong>. We build custom sites with Astro and Cloudflare Pages, which deliver near-perfect performance scores, edge-deployed speed worldwide, and a tailored admin panel so your team can manage content independently.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
     <section class="closing">
       <h2>Not sure which setup fits your business?</h2>
       <p>Book a call and get a clear platform recommendation based on your goals.</p>
-      <Button text="Get a free shiny recommendation" href="/contact" />
+      <p class="expectation">The consultation is free and takes about 15 minutes. You'll get a written recommendation within 48 hours.</p>
+      <Button text="Book a free 15-min call" href="/contact" />
     </section>
   </main>
 </Layout>
@@ -197,7 +298,7 @@ const pageDescription =
   /* Recommendations grid */
   .recommendations-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
     gap: 1.25rem;
   }
 
@@ -206,6 +307,7 @@ const pageDescription =
     border-radius: 0.75rem;
     padding: 1.75rem 1.5rem;
     background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.25s ease, background 0.25s ease;
   }
 
   .rec-card h3 {
@@ -216,6 +318,11 @@ const pageDescription =
     margin: 0;
   }
 
+  .rec-card:hover {
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
   /* Decision guide table */
   .table-wrap {
     overflow-x: auto;
@@ -224,7 +331,6 @@ const pageDescription =
   .pricing-table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 34rem;
   }
 
   .pricing-table th,
@@ -244,6 +350,35 @@ const pageDescription =
     border-bottom-color: rgba(255, 255, 255, 0.15);
   }
 
+  /* FAQ */
+  .faq-list {
+    display: grid;
+    gap: 0;
+  }
+
+  .faq-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-item dt {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .faq-item dd {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 48rem;
+  }
+
   /* Closing CTA */
   .closing {
     border-bottom: 0;
@@ -255,6 +390,12 @@ const pageDescription =
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .closing .expectation {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
   }
 
   .closing p {
@@ -282,8 +423,32 @@ const pageDescription =
       padding: 2.5rem 0;
     }
 
-    .recommendations-grid {
-      grid-template-columns: 1fr;
+    /* recommendations-grid is auto-responsive via auto-fit + minmax */
+
+    .pricing-table thead {
+      display: none;
+    }
+
+    .pricing-table tbody tr {
+      display: block;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .pricing-table td {
+      display: block;
+      padding: 0.25rem 0;
+      border-bottom: none;
+    }
+
+    .pricing-table td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.15rem;
     }
   }
 </style>

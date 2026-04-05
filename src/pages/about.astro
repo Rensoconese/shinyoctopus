@@ -1,0 +1,235 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+
+const pageTitle = "About Shiny Octopus | Design & Development Studio";
+const pageDescription =
+  "A small, integral design and development studio that combines design craft with technical depth. We build growth systems, not just websites. 50+ projects, 8+ years, clients worldwide.";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Shiny Octopus",
+  "description": pageDescription,
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio",
+    "email": "hi@shinyoctopus.studio",
+    "description": "A small, integral design and development studio that combines design craft with technical depth to build growth systems for businesses worldwide.",
+    "foundingDate": "2018",
+    "areaServed": "Worldwide",
+    "knowsAbout": [
+      "SEO Audits",
+      "Web Accessibility Audits",
+      "Custom Web Development",
+      "Astro Framework",
+      "Cloudflare",
+      "UI/UX Design",
+      "Digital Strategy",
+      "Crawl4AI"
+    ],
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "value": "Small team"
+    },
+    "slogan": "We build growth systems, not just websites."
+  }
+};
+---
+
+<Layout title={pageTitle} description={pageDescription} schema={aboutSchema}>
+  <main id="main-content" class="content-page">
+    <header class="page-header">
+      <p class="kicker">About</p>
+      <h1>We design, code, and understand your business</h1>
+      <p>
+        Shiny Octopus is a small, integral studio. We do not hand off between departments because there are none. Every project gets the same people from strategy to deployment.
+      </p>
+    </header>
+
+    <section>
+      <h2>Who we are</h2>
+      <p>
+        We are a design and development studio that works end to end. That means we handle the brand thinking, the interface design, the code, and the infrastructure — all as one connected process.
+      </p>
+      <p>
+        We are small on purpose. A tight team means fewer misunderstandings, faster decisions, and work that actually reflects what the business needs. No layers of project managers translating your goals into tickets.
+      </p>
+    </section>
+
+    <section>
+      <h2>Our approach</h2>
+      <p>
+        Every project starts with understanding the business goals — not wireframes, not mood boards. We figure out what growth looks like for you, then we design and build the system that gets you there.
+      </p>
+      <p>
+        That is what makes this holistic. We do not just build a website and wish you luck. We think about how people find you, what they experience when they arrive, and what makes them take the next step. SEO, accessibility, performance, and conversion are not add-ons. They are built in from day one.
+      </p>
+    </section>
+
+    <section>
+      <h2>What makes us different</h2>
+      <p>
+        We combine design craft with technical depth. Most studios are strong at one and mediocre at the other. We refuse to split the difference.
+      </p>
+      <ul>
+        <li>We build custom sites with Astro and Cloudflare — no templates, no page builders, no bloat.</li>
+        <li>We audit with real data using tools like Crawl4AI, not surface-level checklists.</li>
+        <li>We understand the business side. Strategy is not a separate phase — it shapes every design and code decision.</li>
+        <li>We ship fast. Small team, clear process, no unnecessary meetings.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <p>
+        The numbers are simple and honest:
+      </p>
+      <ul>
+        <li><strong>50+ websites</strong> built and audited across industries.</li>
+        <li><strong>8+ years</strong> working on the web — design, code, and strategy.</li>
+        <li><strong>Clients worldwide</strong> — from the US and Panama to Spain and Argentina.</li>
+      </ul>
+      <p>
+        We work with businesses of all sizes, from startups to established companies. That breadth of experience shows up in the decisions we make — what to build, what to skip, and where to focus so the investment actually pays off.
+      </p>
+    </section>
+
+    <section class="closing">
+      <h2>Let's talk about what you are building</h2>
+      <p>
+        Whether you need an audit, a new site, or a fresh strategy — we would love to hear about it.
+      </p>
+      <p class="expectation-note">Reach us at <a href="mailto:hi@shinyoctopus.studio">hi@shinyoctopus.studio</a> or use the contact form.</p>
+      <Button text="Get in touch" href="/contact" />
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .content-page {
+    width: min(100%, 70rem);
+    min-width: 0;
+    margin: 0 auto;
+    padding: 6.5rem 1rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-titles);
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    max-width: 50rem;
+  }
+
+  .page-header > p:last-child {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 40rem;
+  }
+
+  section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  section:first-of-type {
+    border-top: none;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+
+  p,
+  li {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  p + p {
+    margin-top: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  .closing {
+    border-bottom: 0;
+    text-align: center;
+    padding: 5rem 0 4rem;
+  }
+
+  .closing h2 {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closing p {
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+  }
+
+  .expectation-note {
+    opacity: 0.7;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  @media (max-width: 48rem) {
+    .content-page {
+      padding-top: 5.5rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+  }
+</style>

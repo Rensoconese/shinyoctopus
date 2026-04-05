@@ -8,14 +8,16 @@ interface Props {
   image?: string;
   type?: string;
   canonical?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { 
-  title = "Shiny Octopus", 
-  description = "Digital creative studio specialized in web development, UI/UX design, and digital strategies that make your online presence shine.",
+const {
+  title = "Shiny Octopus | SEO & Accessibility Audits | Design & Development Studio",
+  description = "We help businesses grow with SEO audits, accessibility audits, and custom web development. Clear action plans, measurable results, and websites that actually convert.",
   image = "/images/og-image.jpg", // Make sure to create this image
   type = "website",
-  canonical = Astro.url.href
+  canonical = Astro.url.href,
+  schema
 } = Astro.props;
 
 // Base URL for absolute paths
@@ -23,6 +25,58 @@ const siteUrl = "https://shinyoctopus.studio";
 
 // Build absolute image URL if not already a complete URL
 const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// Organization schema — global, always present
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Shiny Octopus",
+  "url": siteUrl,
+  "logo": `${siteUrl}/images/og-image.jpg`,
+  "description": "Digital creative studio specialized in SEO audits, accessibility audits, and web development that drives business growth.",
+  "email": "hi@shinyoctopus.studio",
+  "sameAs": [
+    "https://x.com/shinyoctopus"
+  ],
+  "knowsAbout": ["SEO", "Web Accessibility", "Web Development", "UI/UX Design", "Digital Strategy"]
+};
+
+// BreadcrumbList schema — auto-generated from URL
+const pathSegments = new URL(canonical).pathname.split('/').filter(Boolean);
+const breadcrumbNames: Record<string, string> = {
+  "seo": "SEO Audit",
+  "accesibilidad": "Accessibility Audit",
+  "servidores": "Platform Strategy",
+  "blog": "Blog",
+  "contact": "Contact",
+  "about": "About",
+  "privacy": "Privacy Policy",
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl
+    },
+    ...pathSegments.map((segment, i) => ({
+      "@type": "ListItem",
+      "position": i + 2,
+      "name": breadcrumbNames[segment] || segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+      "item": `${siteUrl}/${pathSegments.slice(0, i + 1).join('/')}`
+    }))
+  ]
+};
+
+// Combine all schemas
+const allSchemas = [
+  organizationSchema,
+  ...(pathSegments.length > 0 ? [breadcrumbSchema] : []),
+  ...(schema ? (Array.isArray(schema) ? schema : [schema]) : [])
+];
 ---
 
 <!DOCTYPE html>
@@ -82,6 +136,10 @@ const ogImage = image.startsWith('http') ? image : `${siteUrl}${image}`;
         ],
       }}
     />
+
+    {allSchemas.map(s => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body>
     <TopNav />

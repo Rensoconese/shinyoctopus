@@ -4,7 +4,6 @@ export const prerender = false; // Esta página se renderizará en el servidor
 
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
-import Logo from '../components/Logo.astro';
 import { server, type ContactFormErrors, generateFormToken } from '../actions/index';
 
 // Initialize variables for form and state
@@ -80,9 +79,6 @@ const ogImage = "/images/contact-og.jpg";
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
   <main class="contact-container">
     <div class="contact-content">
-      <a href="/" class="logo-link">
-        <Logo />
-      </a>
       <div class="contact-header">
         <h1>your new website starts here</h1>
         <p>The path to a shiny web presence begins with this simple step:</p>

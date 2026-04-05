@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<title>Auditoría UX — Totems Mostaza Argentina</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --line: rgba(255,255,255,0.2);
+  --dim: rgba(255,255,255,0.62);
+  --pad: 80px;
+  --gap: 40px;
+}
+
+body {
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'PP Neue Montreal', 'DM Sans', 'Inter', system-ui, sans-serif;
+}
+
+.slideshow {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide {
+  width: 1920px;
+  height: 1080px;
+  background: #000;
+  color: #fff;
+  position: absolute;
+  overflow: hidden;
+  transform-origin: center center;
+  display: none;
+}
+
+.slide.active { display: block; }
+
+/* ── HEADER ── */
+.hdr {
+  position: absolute;
+  top: 40px;
+  left: var(--pad);
+  right: var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.hdr-left { flex: 1; }
+.hdr-right { flex: 1; text-align: right; }
+.hdr-logo { height: 32px; width: auto; display: block; }
+
+.hdr-line {
+  position: absolute;
+  top: 114px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    #A7D6FF 10%,
+    #FFFFFF 30.5%,
+    #7CFF83 56.5%,
+    #FFFFFF 71%,
+    #FF1ECA 100%
+  );
+}
+
+/* ── TITLES ── */
+.t-left {
+  font-family: 'PP Hatton', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-weight: 200;
+  font-size: 72px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 178px;
+  left: var(--pad);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.t-center {
+  font-family: 'PP Hatton', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-weight: 200;
+  font-size: 80px;
+  text-transform: uppercase;
+  position: absolute;
+  top: 215px;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  text-align: center;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+/* ── LAYOUTS ── */
+.grid-3 {
+  position: absolute;
+  top: 314px;
+  left: var(--pad);
+  right: var(--pad);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  align-items: start;
+}
+
+.grid-2 {
+  position: absolute;
+  top: 314px;
+  left: var(--pad);
+  right: var(--pad);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+  align-items: start;
+}
+
+.grid-2-wide {
+  position: absolute;
+  top: 314px;
+  left: var(--pad);
+  right: var(--pad);
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 28px; }
+
+.s-title {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.s-body {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+}
+
+.s-body ul {
+  list-style: disc;
+  padding-left: 22px;
+  margin-top: 6px;
+}
+
+.s-body li { margin-bottom: 5px; }
+
+.s-tag {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* ── TABLE ── */
+.tbl {
+  border: 1px solid rgba(255,255,255,0.25);
+  font-size: 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tbl td, .tbl th {
+  padding: 18px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.tbl tr:last-child td { border-bottom: none; }
+.tbl th { font-weight: 600; color: var(--dim); font-size: 16px; letter-spacing: 0.05em; text-transform: uppercase; }
+.tbl .check { color: rgba(255,255,255,0.9); font-weight: 600; }
+.tbl .muted { color: rgba(255,255,255,0.55); }
+
+/* ── COVER ── */
+.cover-wrap {
+  position: absolute;
+  top: 50%;
+  left: var(--pad);
+  right: var(--pad);
+  transform: translateY(-50%);
+  text-align: center;
+}
+
+.cover-eye {
+  font-size: 16px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 48px;
+}
+
+.cover-title {
+  font-family: 'PP Hatton', 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-weight: 200;
+  font-size: 104px;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.cover-sub {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cover-date {
+  margin-top: 80px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--line);
+  margin: 16px 0 20px;
+}
+
+/* ── DELIVERABLES ── */
+.deliverable {
+  display: flex;
+  gap: 14px;
+  font-size: 20px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+  color: rgba(255,255,255,0.85);
+}
+
+.deliverable::before {
+  content: '→';
+  color: var(--dim);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── ROI ── */
+.roi-big {
+  font-family: 'PP Hatton', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 200;
+  font-size: 140px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* ── CRONOGRAMA ── */
+.crono-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+}
+
+.crono-tbl th {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 500;
+  border-bottom: 1px solid var(--line);
+}
+
+.crono-tbl td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  vertical-align: middle;
+}
+
+.crono-tbl td:first-child { width: 38%; }
+.bar { height: 14px; border-radius: 2px; }
+.bar-full { background: #fff; width: 100%; }
+.bar-dim  { background: rgba(255,255,255,0.35); width: 100%; }
+
+/* ── NAV ── */
+#nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 999;
+}
+
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.dot.active { background: #fff; transform: scale(1.3); }
+
+#counter {
+  position: fixed;
+  bottom: 28px;
+  right: 40px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.55);
+  z-index: 999;
+}
+
+#hint {
+  position: fixed;
+  bottom: 28px;
+  left: 40px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.5);
+  z-index: 999;
+}
+
+/* ── NAV ARROWS ── */
+#nav-arrows {
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 999;
+}
+
+.nav-btn {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid rgba(255,255,255,0.55);
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.nav-btn:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+.nav-btn:active {
+  background: rgba(255,255,255,0.18);
+}
+
+.stage-label {
+  position: absolute;
+  top: 190px;
+  right: var(--pad);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  font-weight: 500;
+}
+
+/* ── QUÉ OBTENÉS ── */
+.obtenes-grid {
+  position: absolute;
+  top: 314px;
+  left: var(--pad);
+  right: var(--pad);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+.ob-item { display: flex; gap: 18px; align-items: flex-start; }
+
+.ob-num {
+  font-family: 'PP Hatton', 'Cormorant Garamond', Georgia, serif;
+  font-weight: 200;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--dim);
+  flex-shrink: 0;
+  width: 48px;
+  padding-top: 4px;
+}
+
+.ob-text .ob-t { font-weight: 700; font-size: 20px; margin-bottom: 4px; }
+.ob-text .ob-d { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,0.65); }
+
+/* ── RESPONSIVE MOBILE ── */
+@media (max-width: 767px) {
+  :root { --pad: 20px; --gap: 16px; }
+
+  body { overflow: hidden; }
+
+  .slideshow { align-items: flex-start; }
+
+  .slide {
+    width: 100vw !important;
+    height: 100dvh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    transform: none !important;
+    padding-bottom: 110px;
+  }
+
+  .slide.active { display: flex !important; flex-direction: column; }
+
+  .slide::-webkit-scrollbar { display: none; }
+  .slide { scrollbar-width: none; }
+
+  /* ── Header ── */
+  .hdr {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    padding: 18px var(--pad) 14px;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  .hdr-logo { height: 18px; }
+
+  .hdr-line {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    flex-shrink: 0;
+  }
+
+  /* ── Títulos ── */
+  .t-left, .t-center {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    transform: none;
+    font-size: clamp(24px, 7vw, 34px) !important;
+    padding: 20px var(--pad) 4px;
+    white-space: normal;
+    flex-shrink: 0;
+  }
+
+  .stage-label {
+    position: relative;
+    top: auto; right: auto;
+    padding: 4px var(--pad) 0;
+    display: block;
+    flex-shrink: 0;
+    font-size: clamp(10px, 2.5vw, 12px);
+  }
+
+  /* ── Grids → flexbox columna única ── */
+  .grid-3, .grid-2, .grid-2-wide, .obtenes-grid {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 16px var(--pad) 0;
+    flex-shrink: 0;
+  }
+
+  /* slide-body: wrappers con position absolute inline */
+  .slide-body {
+    position: relative !important;
+    top: auto !important; left: auto !important; right: auto !important;
+    padding: 16px var(--pad) 0;
+    flex-shrink: 0;
+  }
+
+  /* grids internos → flexbox columna única */
+  .crono-footer, .roi-inner-grid {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* ── Cover ── */
+  .cover-wrap {
+    position: relative;
+    top: auto; left: auto; right: auto;
+    transform: none;
+    padding: 40px var(--pad);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cover-title { font-size: clamp(32px, 10vw, 52px) !important; }
+  .cover-sub   { font-size: clamp(14px, 3.5vw, 18px); }
+  .cover-eye   { font-size: clamp(11px, 2.5vw, 14px); margin-bottom: 24px; }
+  .cover-date  { font-size: clamp(10px, 2.5vw, 13px); margin-top: 32px; }
+
+  /* ── Texto de secciones ── */
+  .s-title { font-size: clamp(13px, 3.5vw, 16px) !important; }
+  .s-body  { font-size: clamp(12px, 3.5vw, 16px) !important; line-height: 1.55; }
+  .s-tag   { font-size: clamp(10px, 2.5vw, 12px); }
+
+  .deliverable { font-size: clamp(12px, 3.5vw, 15px); }
+
+  /* ── Tablas ── */
+  .tbl { font-size: clamp(12px, 3vw, 14px); }
+  .tbl td, .tbl th { padding: 10px 12px; }
+  .tbl th { font-size: clamp(10px, 2.5vw, 13px); }
+
+  /* ── ROI ── */
+  .roi-big { font-size: clamp(48px, 15vw, 72px); }
+  .ob-num  { font-size: clamp(24px, 6vw, 36px); }
+  .ob-text .ob-t { font-size: clamp(13px, 3.5vw, 16px); }
+  .ob-text .ob-d { font-size: clamp(12px, 3vw, 15px); }
+
+  /* ── Cronograma ── */
+  .crono-tbl { font-size: clamp(11px, 2.8vw, 13px); }
+  .crono-tbl th, .crono-tbl td { padding: 8px; }
+
+  /* ── Nav ── */
+  #nav-arrows { bottom: 52px; }
+  .nav-btn { width: 40px; height: 40px; font-size: 14px; }
+  #nav { bottom: 16px; }
+  #counter { bottom: 16px; right: 20px; font-size: 11px; }
+  #hint { display: none; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="slideshow">
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S1 — COVER -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide active" id="s1">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <div class="cover-wrap">
+      <p class="cover-eye">Propuesta de servicios — 2026</p>
+      <h1 class="cover-title">Auditoría UX<br>Totems de<br>Autoservicio</h1>
+      <p class="cover-sub">Mostaza Argentina</p>
+      <p class="cover-date">Marzo 2026 — Shiny Octopus</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S2 — OBJETIVO -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s2">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Objetivo</h2>
+    <div class="grid-3">
+      <div class="col-563">
+        <div class="section">
+          <p class="s-body" style="font-size:22px; line-height:1.7;">
+            Evaluar la experiencia de usuario de los totems de autoservicio de Mostaza Argentina para identificar puntos de fricción, oportunidades de mejora y optimización de conversión, respaldado por datos reales de uso.
+          </p>
+          <br>
+          <p class="s-body" style="font-size:22px; line-height:1.7;">
+            Cada porcentaje de mejora en la tasa de conversión de los totems impacta directamente en el revenue de la cadena a escala nacional.
+          </p>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Alcance</p>
+          <div class="s-body">
+            <ul>
+              <li>Todos los flujos de usuario disponibles en los totems</li>
+              <li>Interfaz táctil y sus interacciones</li>
+              <li>Accesibilidad física y digital</li>
+              <li>Performance y tiempos de respuesta</li>
+              <li>Manejo de errores, timeouts y estados edge</li>
+              <li>Trazabilidad y métricas de uso</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Metodología por etapas</p>
+          <div class="s-body">
+            <ul>
+              <li>Etapa 1 — Discovery y Diagnóstico Técnico</li>
+              <li>Etapa 2 — Especificación de Trazabilidad</li>
+              <li>Etapa 3 — Auditoría UX (cuantitativa + heurística)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <p class="s-body" style="font-size:17px; color:rgba(255,255,255,0.6);">
+          No es una auditoría de opinión. Combinamos evaluación experta con datos reales de uso.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S3 — ETAPA 1 -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s3">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left" style="font-size:58px;">Etapa 1 — Discovery y Diagnóstico Técnico</h2>
+    <span class="stage-label">1 semana</span>
+    <div class="grid-3" style="top:295px;">
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Lo que el cliente nos facilita</p>
+          <div class="s-body">
+            <ul>
+              <li>Tecnología del totem (web app, nativa, Electron, PWA) y sistema operativo</li>
+              <li>Cómo se despliega y actualiza el software</li>
+              <li>Conectividad del sistema</li>
+              <li>Mapa de flujos actuales y screenshots de todas las pantallas</li>
+              <li>Datos físicos: altura, tipo de pantalla, condiciones de instalación, ubicaciones</li>
+              <li>Si existe trazabilidad: analytics, logs, grabaciones o data histórica disponible</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Lo que nosotros hacemos con eso</p>
+          <div class="s-body">
+            <ul>
+              <li>Evaluamos la información técnica y de negocio recibida</li>
+              <li>Mapeamos el estado actual del sistema y sus capacidades</li>
+              <li>Identificamos qué tipo de análisis es posible ejecutar</li>
+              <li>Armamos el plan de auditoría más conveniente para Mostaza</li>
+              <li>Recomendamos el camino óptimo según lo que el cliente tenga disponible</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Entregable</p>
+          <div class="s-body">
+            <p>Diagnóstico completo + plan de ejecución recomendado para las etapas siguientes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <p class="s-title" style="margin-bottom:20px;">Resultado: dos caminos</p>
+        <div class="section">
+          <p class="s-tag" style="color:rgba(255,255,255,0.5);">Tiene trazabilidad</p>
+          <div class="s-body" style="font-size:18px; line-height:1.6;">
+            <p>→ Continuar con <strong>Etapa 2</strong> (especificación de tracking) y luego <strong>Etapa 3</strong> con análisis cuantitativo + heurístico.</p>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="section">
+          <p class="s-tag" style="color:rgba(255,255,255,0.5);">No tiene trazabilidad <span style="opacity:0.5;">(lo más probable)</span></p>
+          <div class="s-body" style="font-size:18px; line-height:1.6;">
+            <p>→ Recomendamos ir directo a <strong>Etapa 3</strong> con evaluación heurística basada en los flujos existentes. No se necesita data cuantitativa para hacer una auditoría UX de alto valor.</p>
+          </div>
+        </div>
+        <div class="divider" style="margin-top:8px;"></div>
+        <p class="s-body" style="font-size:15px; color:rgba(255,255,255,0.55); margin-top:14px;">
+          Contratando solo la Etapa 1 se obtiene claridad sobre el estado real del sistema y el camino más conveniente para Mostaza, sin compromiso de continuar.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S4 — ETAPA 2 -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s4">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left" style="font-size:58px;">Etapa 2 — Especificación de Trazabilidad</h2>
+    <span class="stage-label">1–2 semanas</span>
+    <div class="grid-3" style="top:295px;">
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Eventos a trackear</p>
+          <div class="s-body">
+            <ul>
+              <li>Inicio de sesión / primera interacción</li>
+              <li>Navegación entre pantallas (con timestamps)</li>
+              <li>Toques en cada elemento interactivo</li>
+              <li>Errores y reintentos</li>
+              <li>Abandono (en qué pantalla y después de cuánto tiempo)</li>
+              <li>Completación exitosa del flujo</li>
+              <li>Timeout por inactividad</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Lo que nosotros hacemos</p>
+          <div class="s-body">
+            <ul>
+              <li>Tracking Plan completo (nombre, propiedades, timing, formato)</li>
+              <li>Diseño de funnels y dashboards</li>
+              <li>Herramienta de analytics recomendada según tecnología</li>
+              <li>Recomendación de session recording y heatmaps si es viable</li>
+              <li>Soporte y validación durante la implementación</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Lo que implementa el equipo Mostaza</p>
+          <div class="s-body">
+            <ul>
+              <li>Integración del tracking en el código del totem</li>
+              <li>Configuración de la herramienta de analytics</li>
+              <li>Deploy a los totems</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Período de recolección</p>
+          <div class="s-body">
+            <p>Mínimo 2 semanas de data con volumen representativo.</p>
+            <br>
+            <p>Ideal: 4 semanas para capturar patrones semanales completos.</p>
+          </div>
+        </div>
+        <p class="s-title" style="margin-bottom:20px; margin-top:8px;">Entregables</p>
+        <div class="deliverable">Tracking Plan completo</div>
+        <div class="deliverable">Diseño de dashboards y funnels</div>
+        <div class="deliverable">Validación de implementación correcta</div>
+        <div class="deliverable">Soporte durante la implementación</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S5 — ETAPA 3 -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s5">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left" style="font-size:58px;">Etapa 3 — Auditoría UX</h2>
+    <span class="stage-label">2 semanas</span>
+    <div class="grid-3" style="top:295px;">
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Análisis cuantitativo</p>
+          <div class="s-body">
+            <ul>
+              <li>Funnel analysis: conversión end-to-end por flujo</li>
+              <li>Drop-off rate por cada paso, identificación de mayor abandono</li>
+              <li>Tiempo promedio por pantalla vs. tiempo esperado</li>
+              <li>Frecuencia y tipo de errores, correlación con abandono</li>
+              <li>Heatmaps: ¿dónde toca la gente? ¿tocan lo que no es interactivo?</li>
+              <li>Toques múltiples rápidos (señal de frustración)</li>
+              <li>Diferencias de uso por ubicación y franja horaria</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Evaluación heurística</p>
+          <div class="s-body">
+            <ul>
+              <li>10 heurísticas de Nielsen adaptadas a kiosk</li>
+              <li>Accesibilidad física: altura ADA (38–48"), ángulo, iluminación, espacio silla de ruedas</li>
+              <li>Accesibilidad digital: contraste mínimo 4.5:1 (ideal 7:1), touch targets 48×48px+, tipografía 20px+</li>
+              <li>Performance: latencia al toque (&lt;100ms), carga entre pantallas, comportamiento offline</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Edge cases</p>
+          <div class="s-body">
+            <ul>
+              <li>Usuario abandona a mitad del flujo y tiempo de reset</li>
+              <li>Doble-tap, toques accidentales, inputs inválidos</li>
+              <li>Servicio backend sin respuesta, pérdida de conexión</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <p class="s-title" style="margin-bottom:20px;">Entregables</p>
+        <div class="deliverable">Reporte de auditoría UX con hallazgos priorizados</div>
+        <div class="deliverable">User journey maps con pain points marcados</div>
+        <div class="deliverable">Métricas base documentadas (baseline para medir mejoras)</div>
+        <div class="deliverable">Wireframes de mejoras para los puntos más críticos</div>
+        <div class="deliverable">Heatmaps y visualizaciones de data de uso</div>
+        <div class="deliverable">Plan de acción priorizado por impacto vs. esfuerzo</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S7 — CRONOGRAMA -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s7">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Cronograma</h2>
+    <div class="slide-body" style="position:absolute; top:314px; left:80px; right:80px;">
+      <table class="crono-tbl">
+        <thead>
+          <tr>
+            <th>Etapa</th>
+            <th style="width:11%;">Sem 1</th>
+            <th style="width:11%;">Sem 2</th>
+            <th style="width:11%;">Sem 3</th>
+            <th style="width:11%;">Sem 4–6</th>
+            <th style="width:11%;">Sem 7</th>
+            <th style="width:11%;">Sem 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1. Discovery y diagnóstico técnico</td>
+            <td><div class="bar bar-full"></div></td>
+            <td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>2. Especificación de trazabilidad</td>
+            <td></td>
+            <td><div class="bar bar-full"></div></td>
+            <td><div class="bar bar-full"></div></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td style="color:rgba(255,255,255,0.6);">2b. Implementación (equipo Mostaza) + recolección de data</td>
+            <td></td><td></td><td></td>
+            <td><div class="bar bar-dim"></div></td>
+            <td></td><td></td>
+          </tr>
+          <tr>
+            <td>3. Auditoría UX</td>
+            <td></td><td></td><td></td><td></td>
+            <td><div class="bar bar-full"></div></td>
+            <td><div class="bar bar-full"></div></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="crono-footer" style="margin-top:56px; display:grid; grid-template-columns:1fr 2fr; gap:var(--gap); align-items:start;">
+        <div>
+          <p class="s-title">Tiempo total</p>
+          <p class="s-body" style="font-size:22px; margin-top:8px;">6–8 semanas desde el inicio hasta la entrega del reporte final.</p>
+        </div>
+        <div>
+          <p class="s-title">Nota</p>
+          <p class="s-body" style="font-size:18px; color:rgba(255,255,255,0.5); margin-top:8px; max-width:700px;">Las semanas 4–6 dependen del equipo de desarrollo de Mostaza. Nosotros damos soporte durante esa fase pero la implementación la ejecuta su equipo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S8 — INVERSIÓN -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s8">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Inversión</h2>
+    <div class="grid-2-wide">
+      <div>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Etapa</th>
+              <th>Descripción</th>
+              <th>Inversión</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:600; white-space:nowrap;">Etapa 1</td>
+              <td>Discovery y Diagnóstico Técnico</td>
+              <td style="font-weight:600; white-space:nowrap;">USD 2.500</td>
+            </tr>
+            <tr>
+              <td style="font-weight:600; white-space:nowrap;">Etapa 2</td>
+              <td>Especificación de Trazabilidad + Soporte</td>
+              <td style="font-weight:600; white-space:nowrap;">USD 4.000 – USD 6.000 <span style="color:var(--dim); font-size:17px;">*</span></td>
+            </tr>
+            <tr>
+              <td style="font-weight:600; white-space:nowrap;">Etapa 3</td>
+              <td>Auditoría UX Completa (heurística + data)</td>
+              <td style="font-weight:600; white-space:nowrap;">USD 7.000 – USD 11.000 <span style="color:var(--dim); font-size:17px;">*</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:16px; color:rgba(255,255,255,0.55); margin-top:20px; line-height:1.7;">
+          * El precio final de las Etapas 2 y 3 depende de la cantidad de flujos y la complejidad del sistema de pedidos. Se define con precisión al finalizar la Etapa 1.<br>
+          Valores expresados en USD. Cada etapa se factura al inicio de su ejecución. Vigencia: 30 días.
+        </p>
+      </div>
+      <div>
+        <div class="section">
+          <p class="s-title">Importante</p>
+          <p class="s-body" style="font-size:19px; line-height:1.7;">
+            La Etapa 2 incluye la especificación técnica completa y el soporte durante la implementación. La implementación del tracking en el código de los totems la ejecuta el equipo de desarrollo de Mostaza siguiendo nuestra especificación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S9 — ROLES Y RESPONSABILIDADES -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s9">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Roles y Responsabilidades</h2>
+    <div class="slide-body" style="position:absolute; top:314px; left:80px; right:80px;">
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:50%;">Actividad</th>
+            <th style="width:25%;">Shiny Octopus</th>
+            <th style="width:25%;">Equipo Mostaza</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Discovery técnico y mapeo de flujos</td>
+            <td class="check">✓</td>
+            <td class="muted">Facilita acceso al totem</td>
+          </tr>
+          <tr>
+            <td>Especificación del tracking (qué medir, cómo)</td>
+            <td class="check">✓</td>
+            <td class="muted">—</td>
+          </tr>
+          <tr>
+            <td>Implementación del tracking en el código</td>
+            <td class="muted">Soporte y validación</td>
+            <td class="check">✓ Ejecuta</td>
+          </tr>
+          <tr>
+            <td>Deploy a los totems</td>
+            <td class="muted">—</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Verificar que los datos llegan correctamente</td>
+            <td class="check">✓</td>
+            <td class="muted">—</td>
+          </tr>
+          <tr>
+            <td>Análisis de data recolectada</td>
+            <td class="check">✓</td>
+            <td class="muted">—</td>
+          </tr>
+          <tr>
+            <td>Evaluación heurística UX</td>
+            <td class="check">✓</td>
+            <td class="muted">—</td>
+          </tr>
+          <tr>
+            <td>Reporte y recomendaciones</td>
+            <td class="check">✓</td>
+            <td class="muted">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S10 — QUÉ OBTENÉS -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s10">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Qué obtiene Mostaza</h2>
+    <div class="obtenes-grid">
+      <div class="ob-item">
+        <span class="ob-num">01</span>
+        <div class="ob-text">
+          <p class="ob-t">Mapa completo de flujos</p>
+          <p class="ob-d">Todos los flujos de usuario con métricas reales de uso</p>
+        </div>
+      </div>
+      <div class="ob-item">
+        <span class="ob-num">02</span>
+        <div class="ob-text">
+          <p class="ob-t">Identificación precisa de abandono</p>
+          <p class="ob-d">Dónde y por qué los usuarios abandonan el flujo</p>
+        </div>
+      </div>
+      <div class="ob-item">
+        <span class="ob-num">03</span>
+        <div class="ob-text">
+          <p class="ob-t">Dashboard en tiempo real</p>
+          <p class="ob-d">Métricas de conversión, abandono y errores para seguimiento continuo</p>
+        </div>
+      </div>
+      <div class="ob-item">
+        <span class="ob-num">04</span>
+        <div class="ob-text">
+          <p class="ob-t">Reporte con hallazgos priorizados</p>
+          <p class="ob-d">Ordenados por impacto en el negocio, no por preferencia estética</p>
+        </div>
+      </div>
+      <div class="ob-item">
+        <span class="ob-num">05</span>
+        <div class="ob-text">
+          <p class="ob-t">Wireframes de mejoras concretas</p>
+          <p class="ob-d">Para los puntos más críticos identificados en el análisis</p>
+        </div>
+      </div>
+      <div class="ob-item">
+        <span class="ob-num">06</span>
+        <div class="ob-text">
+          <p class="ob-t">Plan de acción priorizado</p>
+          <p class="ob-d">Quick wins primero, ordenado por impacto vs. esfuerzo</p>
+        </div>
+      </div>
+      <div class="ob-item">
+        <span class="ob-num">07</span>
+        <div class="ob-text">
+          <p class="ob-t">Baseline medible</p>
+          <p class="ob-d">Para demostrar el ROI de cada mejora implementada</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S11 — ROI -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s11">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Por qué invertir</h2>
+    <div class="grid-2">
+      <div>
+        <div class="section">
+          <p class="s-tag">El escenario</p>
+          <p class="s-body" style="font-size:22px; line-height:1.7;">
+            Mostaza opera <strong>216 locales</strong> hoy — con plan de llegar a <strong>246 en 2026</strong> (inversión de USD 40M anunciada).<br><br>
+            Si el totem tiene una tasa de abandono del <strong>30%</strong> y la auditoría la reduce al <strong>20%</strong>, eso representa:
+          </p>
+        </div>
+        <div class="roi-inner-grid" style="margin-top:40px; display:grid; grid-template-columns:auto 1fr; gap:var(--gap); align-items:end;">
+          <div>
+            <p class="s-tag">Impacto directo</p>
+            <p class="roi-big">+10%</p>
+            <p class="s-body" style="font-size:20px; margin-top:8px;">de pedidos completados<br>en cada totem</p>
+          </div>
+          <div style="padding-bottom:16px;">
+            <p class="s-body" style="font-size:20px; line-height:1.7; color:rgba(255,255,255,0.7);">
+              Con ticket promedio de ~$ 8.000–12.000 por pedido, multiplicado por 216 totems y miles de interacciones diarias.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="section">
+          <p class="s-title">El ROI se recupera en días, no en meses</p>
+          <p class="s-body" style="font-size:19px; line-height:1.7; margin-top:8px;">
+            Un botón mejor posicionado, un flujo con un paso menos, o un segundo menos de carga pueden representar millones de pesos en revenue adicional anual. Y cada nuevo local que abran en 2026 va a tener el mismo problema si no se corrige ahora.
+          </p>
+        </div>
+        <div class="divider" style="margin-top:32px;"></div>
+        <div class="section" style="margin-top:24px;">
+          <p class="s-title">No es una auditoría de opinión</p>
+          <p class="s-body" style="font-size:19px; line-height:1.7;">
+            Combinamos evaluación experta con datos reales: tasas de abandono, heatmaps de toque, tiempos por pantalla y patrones de error. Las recomendaciones se priorizan por impacto medible en conversión.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S12 — TÉRMINOS Y CONDICIONES -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s12">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <h2 class="t-left">Términos y condiciones</h2>
+    <div class="grid-3">
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Pago</p>
+          <div class="s-body">
+            <p>Los costos están expresados en dólares estadounidenses (USD).</p>
+            <br>
+            <p>Aceptamos:</p>
+            <ul style="margin-top:8px;">
+              <li>Pesos: transferencia directa, banco o Mercado Pago. Entregamos factura C.</li>
+            </ul>
+            <br>
+            <p>No se aceptan cheques, e-cheqs o cualquier método de pago diferido.</p>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Gastos</p>
+          <div class="s-body">
+            <p>La auditoría y especificaciones están incluidas en el costo.</p>
+            <br>
+            <p>Herramientas de analytics y hosting son a cargo del cliente.</p>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Soporte</p>
+          <div class="s-body">
+            <p>Una vez finalizado el proyecto, el mantenimiento y seguimiento se cotiza por separado si es requerido.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Tiempos del proyecto</p>
+          <div class="s-body">
+            <p>Se estima una duración total de 6 a 8 semanas hacia la entrega del reporte final (según complejidad del sistema).</p>
+            <br>
+            <p>El tiempo de entrega de materiales, acceso a los totems y feedback por parte del cliente retrasará los tiempos estimados.</p>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Días laborables</p>
+          <div class="s-body">
+            <p>Lunes a viernes, días hábiles. No trabajamos sábados, domingos o feriados nacionales (Argentina).</p>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Tiempos de extensión e imprevistos</p>
+          <div class="s-body">
+            <p>En caso de fuerza mayor se notificará con la debida justificación. La duración máxima no podrá exceder los días hábiles delimitados; en caso contrario será necesario reevaluar el presupuesto.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-563">
+        <div class="section">
+          <p class="s-title">Responsabilidades del cliente</p>
+          <div class="s-body">
+            <ul>
+              <li>Facilitar acceso físico a los totems para el relevamiento</li>
+              <li>Asignar un punto de contacto principal para toma de decisiones</li>
+              <li>Ejecutar la implementación de tracking (Etapa 2)</li>
+              <li>Revisar y aprobar entregables dentro de los plazos acordados</li>
+              <li>Obtener los derechos sobre cualquier material proporcionado</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section">
+          <p class="s-title">Vigencia</p>
+          <div class="s-body">
+            <p>Valores con vigencia de 30 días desde la emisión de esta propuesta.</p>
+            <br>
+            <p>Cada etapa se factura al inicio de su ejecución.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════ -->
+  <!-- S13 — CIERRE -->
+  <!-- ══════════════════════════════════════════════════════ -->
+  <div class="slide" id="s13">
+    <div class="hdr">
+      <span class="hdr-left">Shiny Octopus – Auditoría UX</span>
+      <svg class="hdr-logo" width="36" height="32" viewBox="941 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M955.698 24.6372C954.87 24.6372 954.062 24.4758 953.295 24.156L952.823 23.9617L958.766 10.8384C959.724 8.72833 961.895 7.3625 964.298 7.3625C965.125 7.3625 965.934 7.52389 966.701 7.84368L967.17 8.03795L961.226 21.1613C960.269 23.2713 958.097 24.6372 955.691 24.6372H955.698Z" fill="white"/><path d="M966.714 1.35687C964.577 0.457271 962.32 0 960.006 0C953.374 0 947.37 3.75978 944.708 9.57579C941.015 17.6483 944.863 27.1015 953.286 30.6461C955.422 31.5427 957.679 32 959.99 32C966.625 32 972.632 28.2402 975.292 22.4212C978.985 14.3487 975.137 4.89549 966.714 1.35687ZM972.449 21.2467C970.277 25.9867 965.389 29.0531 959.99 29.0531C958.114 29.0531 956.278 28.6825 954.541 27.9533C947.672 25.0602 944.533 17.3434 947.551 10.7533C949.723 6.01326 954.611 2.94686 960.006 2.94686C961.886 2.94686 963.721 3.31746 965.459 4.04969C972.331 6.93976 975.466 14.6536 972.449 21.2467Z" fill="white"/></svg>
+      <span class="hdr-right">Mostaza Argentina</span>
+    </div>
+    <div class="hdr-line"></div>
+    <div class="cover-wrap">
+      <p class="cover-eye">Próximos pasos</p>
+      <h2 class="cover-title" style="font-size:80px; margin-bottom:48px;">¿Arrancamos con<br>el Discovery?</h2>
+      <p class="cover-sub" style="font-size:20px; line-height:1.8;">
+        La Etapa 1 se contrata sin compromiso de continuar<br>con las etapas siguientes.
+      </p>
+      <p class="cover-date" style="margin-top:48px;">
+        Propuesta preparada para Mostaza Argentina — Marzo 2026
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<!-- NAV -->
+<div id="nav-arrows">
+  <button class="nav-btn" id="btn-prev">←</button>
+  <button class="nav-btn" id="btn-next">→</button>
+</div>
+<div id="nav"></div>
+<div id="counter"></div>
+<div id="hint">← → para navegar</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('nav');
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goTo(i));
+    nav.appendChild(dot);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    nav.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    nav.children[current].classList.add('active');
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function scaleSlides() {
+    if (window.innerWidth <= 767) {
+      slides.forEach(s => { s.style.transform = ''; });
+      return;
+    }
+    const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080) * 0.98;
+    slides.forEach(s => { s.style.transform = `scale(${scale})`; });
+  }
+
+  scaleSlides();
+  window.addEventListener('resize', scaleSlides);
+  counter.textContent = '1 / ' + slides.length;
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End') goTo(slides.length - 1);
+  });
+
+  document.getElementById('btn-prev').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('btn-next').addEventListener('click', () => goTo(current + 1));
+
+  let startX = 0, startY = 0;
+  document.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+  });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    const dy = e.changedTouches[0].clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) goTo(current + 1);
+      else goTo(current - 1);
+    }
+  });
+</script>
+</body>
+</html>

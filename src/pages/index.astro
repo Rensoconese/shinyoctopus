@@ -1,10 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Logo from "../components/Logo.astro";
 import Hero from "../components/Hero.astro";
 import SectionWhat from "../components/SectionWhat.astro";
 import ProyectShowcase from "../components/ProyectShowcase.astro";
 import Path from "../components/Path.astro";
+import AuditSection from "../components/AuditSection.astro";
+import AboutSection from "../components/AboutSection.astro";
 import End from "../components/End.astro";
 
 // Importar imágenes para optimización
@@ -30,9 +31,21 @@ import victoriaVenus3 from "../images/la_victoria_de_venus_3.png";
 const fontPreload = [
   { href: "/fonts/PPHatton-Ultralight.woff2", type: "font/woff2", crossorigin: true }
 ];
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Shiny Octopus",
+  "url": "https://shinyoctopus.studio",
+  "description": "Digital creative studio specialized in SEO audits, accessibility audits, and web development that drives business growth.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiny Octopus"
+  }
+};
 ---
 
-<Layout>
+<Layout schema={websiteSchema}>
     {/* Precargar fuentes críticas */}
     {fontPreload.map(font => (
         <link 
@@ -87,7 +100,6 @@ const fontPreload = [
         }
     </style>
     
-    <Logo />
     <Hero />
     <SectionWhat />
     <ProyectShowcase 
@@ -124,5 +136,7 @@ const fontPreload = [
         }}
     />
     <Path />
+    <AuditSection />
+    <AboutSection />
     <End />
 </Layout>

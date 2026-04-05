@@ -1,0 +1,95 @@
+---
+const testimonials = [
+    {
+        text: "Working with Shiny has been an incredible experience. They perfectly understood what I wanted and managed to bring it to life in a professional, modern website that completely aligned with my expectations. Without a doubt, I would recommend them to anyone looking for quality and professionalism.",
+        name: "Sergi Monsalve",
+        position: "Founder"
+    },
+    {
+        text: "They made me part of the process from the very beginning at every stage. I was very satisfied with the result, which clearly shows great professionalism and passion put towards achieving the proposed goal.",
+        name: "Maximiliano Carrizo",
+        position: "Owner"
+    }
+];
+---
+
+<section class="testimonial-highlight">
+    <div class="testimonial-grid">
+        {testimonials.map((testimonial) => (
+            <div class="testimonial-card">
+                <span class="quote-mark">&ldquo;</span>
+                <p class="testimonial-text">{testimonial.text}</p>
+                <div class="testimonial-author">
+                    <span class="author-name">{testimonial.name}</span>
+                    <span class="author-position">{testimonial.position}</span>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .testimonial-highlight {
+        padding: 4rem 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .testimonial-grid {
+        max-width: 70rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .testimonial-card {
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1rem;
+        padding: 2rem;
+    }
+
+    .quote-mark {
+        display: block;
+        font-family: var(--font-titles);
+        font-size: 4rem;
+        line-height: 1;
+        opacity: 0.2;
+        color: #88d8ff;
+        margin-bottom: 0.5rem;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0 0 1.5rem 0;
+    }
+
+    .testimonial-author {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .author-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        opacity: 0.7;
+    }
+
+    .author-position {
+        font-size: 0.8rem;
+        opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+        .testimonial-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

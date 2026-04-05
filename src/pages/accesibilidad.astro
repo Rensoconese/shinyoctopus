@@ -5,9 +5,89 @@ import Button from "../components/Button.astro";
 const pageTitle = "Accessibility that drives trust and growth | Shiny Octopus";
 const pageDescription =
   "We treat accessibility as business value: better user experience, stronger trust, and better conversion performance for your website.";
+
+const a11yServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Accessibility Audit",
+  "provider": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio"
+  },
+  "description": "Accessibility audit that identifies WCAG issues, conversion friction, and usability barriers to improve trust, compliance, and performance for your website.",
+  "serviceType": "Accessibility Audit",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Accessibility Audit Plans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Shiny Start — Basic Accessibility Audit",
+        "price": "590",
+        "priceCurrency": "USD",
+        "description": "Core pages and key flow review with WCAG snapshot and quick-win remediation list."
+      },
+      {
+        "@type": "Offer",
+        "name": "Shiny Pro — Robust Accessibility Audit",
+        "price": "1490",
+        "priceCurrency": "USD",
+        "description": "Expanded page-set review with accessibility and conversion friction map and 90-day roadmap."
+      },
+      {
+        "@type": "Offer",
+        "name": "Shiny Premium — Super Premium Audit",
+        "price": "2990",
+        "priceCurrency": "USD",
+        "description": "Deep template audit with executive compliance plan and workshop support."
+      }
+    ]
+  }
+};
+
+const a11yFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a web accessibility audit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A web accessibility audit evaluates your website against WCAG guidelines to identify barriers that prevent people with disabilities from using it effectively. It covers navigation, forms, content structure, color contrast, and assistive technology compatibility, then provides a prioritized plan to fix issues based on business impact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does accessibility improve conversion rates?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Accessibility improvements remove friction from key user journeys like completing forms, navigating menus, and reading content. Studies show that accessible websites see conversion lifts between 0.5% and 2.5% because they work better for everyone, not just users with disabilities. Clearer labels, better contrast, and logical structure benefit all visitors."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does an accessibility audit cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Professional accessibility audits range from $590 for a focused core-page review to $2,990 for a comprehensive template-level audit with executive compliance plan. The investment depends on your website complexity, number of templates, and whether you need a quick snapshot or a full implementation roadmap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is web accessibility legally required?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In many jurisdictions, yes. The ADA in the United States, the European Accessibility Act in the EU, and similar laws in other countries increasingly require digital accessibility compliance. Beyond legal requirements, accessible websites build stronger brand trust and reach a wider audience, including the 1.3 billion people worldwide living with disabilities."
+      }
+    }
+  ]
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} schema={[a11yServiceSchema, a11yFaqSchema]}>
   <main id="main-content" class="content-page">
     <header class="page-header">
       <p class="kicker">Accessibility</p>
@@ -20,6 +100,9 @@ const pageDescription =
 
     <section>
       <h2>Why clients invest in accessibility</h2>
+      <p>
+        Web accessibility removes barriers that prevent users from completing key actions on your website. When navigation, forms, and content work for everyone, the result is measurable: higher conversion rates, stronger brand trust, and lower legal risk.
+      </p>
       <ul>
         <li>Better experience across all devices and user situations.</li>
         <li>Higher trust and stronger brand perception.</li>
@@ -261,31 +344,62 @@ const pageDescription =
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Shiny Start</th>
-              <td>USD 590</td>
-              <td>Teams that need fast clarity on core issues.</td>
-              <td>Core page review, WCAG snapshot, quick-win remediation list, risk summary.</td>
+              <th scope="row" data-label="Plan">Shiny Start</th>
+              <td data-label="Price">USD 590</td>
+              <td data-label="Best for">Teams that need fast clarity on core issues.</td>
+              <td data-label="What you get">Core page review, WCAG snapshot, quick-win remediation list, risk summary.</td>
             </tr>
             <tr>
-              <th scope="row">Shiny Pro</th>
-              <td>USD 1,490</td>
-              <td>Teams improving accessibility and conversion outcomes together.</td>
-              <td>Expanded journeys, friction map, prioritized fixes, 90-day roadmap.</td>
+              <th scope="row" data-label="Plan">Shiny Pro</th>
+              <td data-label="Price">USD 1,490</td>
+              <td data-label="Best for">Teams improving accessibility and conversion outcomes together.</td>
+              <td data-label="What you get">Expanded journeys, friction map, prioritized fixes, 90-day roadmap.</td>
             </tr>
             <tr>
-              <th scope="row">Shiny Premium</th>
-              <td>USD 2,990</td>
-              <td>Organizations needing broad coverage and executive alignment.</td>
-              <td>Deep template audit, compliance-growth plan, workshop and rollout priorities.</td>
+              <th scope="row" data-label="Plan">Shiny Premium</th>
+              <td data-label="Price">USD 2,990</td>
+              <td data-label="Best for">Organizations needing broad coverage and executive alignment.</td>
+              <td data-label="What you get">Deep template audit, compliance-growth plan, workshop and rollout priorities.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
+    <section class="faq-section">
+      <h2>Frequently asked questions about accessibility audits</h2>
+      <dl class="faq-list">
+        <div class="faq-item">
+          <dt>What is a web accessibility audit?</dt>
+          <dd>
+            A web accessibility audit evaluates your website against <strong>WCAG guidelines</strong> to identify barriers that prevent people with disabilities from using it effectively. It covers navigation, forms, content structure, color contrast, and assistive technology compatibility, then provides a prioritized plan to fix issues based on business impact.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>How does accessibility improve conversion rates?</dt>
+          <dd>
+            Accessibility improvements remove friction from key user journeys like completing forms, navigating menus, and reading content. Studies show accessible websites see conversion lifts between <strong>0.5% and 2.5%</strong> because they work better for everyone, not just users with disabilities. Clearer labels, better contrast, and logical structure benefit all visitors.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>How much does an accessibility audit cost?</dt>
+          <dd>
+            Professional accessibility audits range from <strong>$590</strong> for a focused core-page review to <strong>$2,990</strong> for a comprehensive template-level audit with executive compliance plan. The investment depends on your website complexity, number of templates, and whether you need a quick snapshot or a full implementation roadmap.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>Is web accessibility legally required?</dt>
+          <dd>
+            In many jurisdictions, yes. The ADA in the United States, the European Accessibility Act in the EU, and similar laws in other countries increasingly require digital accessibility compliance. Beyond legal requirements, accessible websites build stronger brand trust and reach a wider audience, including the <strong>1.3 billion people</strong> worldwide living with disabilities.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
     <section class="closing">
       <h2>The fastest way to improve trust and performance is to see the blind spots first</h2>
       <p>Book an accessibility audit and get a clear plan your team can execute immediately.</p>
+      <p class="expectation">You'll hear from us within 24 hours. Most audits are delivered in 3–5 business days.</p>
       <Button text="Book shiny accessibility audit" href="/contact" />
     </section>
   </main>
@@ -588,7 +702,7 @@ const pageDescription =
   /* Plan cards */
   .plans-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
     gap: 1.25rem;
   }
 
@@ -632,7 +746,6 @@ const pageDescription =
 
   .pricing-table {
     width: 100%;
-    min-width: 46rem;
     border-collapse: collapse;
   }
 
@@ -668,6 +781,35 @@ const pageDescription =
     color: #fff;
   }
 
+  /* FAQ */
+  .faq-list {
+    display: grid;
+    gap: 0;
+  }
+
+  .faq-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-item dt {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .faq-item dd {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 48rem;
+  }
+
   /* Closing CTA */
   .closing {
     border-bottom: 0;
@@ -679,6 +821,12 @@ const pageDescription =
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .closing .expectation {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    opacity: 0.5;
+    margin-bottom: 1.5rem;
   }
 
   .closing p {
@@ -717,8 +865,35 @@ const pageDescription =
       padding: 1.25rem;
     }
 
-    .plans-grid {
-      grid-template-columns: 1fr;
+    /* plans-grid is auto-responsive via auto-fit + minmax */
+
+    .pricing-table thead {
+      display: none;
+    }
+
+    .pricing-table tbody tr {
+      display: block;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .pricing-table tbody th,
+    .pricing-table td {
+      display: block;
+      padding: 0.25rem 0;
+      border-bottom: none;
+      width: auto;
+    }
+
+    .pricing-table tbody th::before,
+    .pricing-table td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.15rem;
     }
   }
 </style>

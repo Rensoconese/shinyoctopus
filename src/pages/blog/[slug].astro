@@ -1,0 +1,360 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Reading time estimate: ~200 words per minute
+const wordCount = post.body ? post.body.split(/\s+/).length : 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const updatedDate = post.data.updatedDate || post.data.pubDate;
+const formattedUpdatedDate = updatedDate.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.pubDate.toISOString(),
+  "dateModified": updatedDate.toISOString(),
+  "wordCount": wordCount,
+  "author": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://shinyoctopus.studio/images/og-image.jpg"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://shinyoctopus.studio/blog/${post.id}`
+  },
+  ...(post.data.tags && { "keywords": post.data.tags.join(", ") })
+};
+---
+
+<Layout title={`${post.data.title} | Shiny Octopus`} description={post.data.description} schema={articleSchema}>
+  <main id="main-content" class="content-page">
+    <a href="/blog" class="back-link">&larr; Back to blog</a>
+
+    <article class="post">
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+          {post.data.updatedDate && (
+            <>
+              <span class="separator">&middot;</span>
+              <span>Updated <time datetime={updatedDate.toISOString()}>{formattedUpdatedDate}</time></span>
+            </>
+          )}
+          <span class="separator">&middot;</span>
+          <span>{readingTime} min read</span>
+        </div>
+        <h1>{post.data.title}</h1>
+        <p class="post-description">{post.data.description}</p>
+        {post.data.tags && (
+          <ul class="tags">
+            {post.data.tags.map((tag: string) => (
+              <li>{tag}</li>
+            ))}
+          </ul>
+        )}
+      </header>
+
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<script is:inline>
+  document.querySelectorAll('.prose table').forEach(table => {
+    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+    if (!headers.length) return;
+    table.querySelectorAll('tbody tr').forEach(tr => {
+      tr.querySelectorAll('td').forEach((td, i) => {
+        if (headers[i]) td.setAttribute('data-label', headers[i]);
+      });
+    });
+  });
+</script>
+
+<style>
+  .content-page {
+    width: min(100%, 70rem);
+    min-width: 0;
+    margin: 0 auto;
+    padding: 6.5rem 1rem 4rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    margin-bottom: 2.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .back-link:hover {
+    color: #fff;
+  }
+
+  .post-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 1rem;
+  }
+
+  .separator {
+    opacity: 0.4;
+  }
+
+  h1 {
+    font-family: var(--font-titles);
+    font-size: clamp(2rem, 5.5vw, 3.5rem);
+    line-height: 1;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    max-width: 44rem;
+  }
+
+  .post-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 40rem;
+    line-height: 1.55;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 1.2rem;
+  }
+
+  .tags li {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
+  }
+
+  .prose {
+    max-width: 44rem;
+  }
+
+  .prose :global(h2) {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 500;
+    margin-top: 2.5rem;
+    margin-bottom: 0.8rem;
+    color: #fff;
+  }
+
+  .prose :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    color: #fff;
+  }
+
+  .prose :global(p) {
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.2rem;
+    margin-bottom: 1.25rem;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .prose :global(li) {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .prose :global(a) {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    transition: opacity 0.2s ease;
+  }
+
+  .prose :global(a:hover) {
+    opacity: 0.7;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 2px solid rgba(255, 255, 255, 0.2);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    color: rgba(255, 255, 255, 0.65);
+    font-style: italic;
+  }
+
+  .prose :global(code) {
+    font-size: 0.9em;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.15em 0.35em;
+    border-radius: 0.25rem;
+  }
+
+  .prose :global(pre) {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+
+  .prose :global(hr) {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin: 2.5rem 0;
+  }
+
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .prose :global(strong) {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .prose :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(th),
+  .prose :global(td) {
+    text-align: left;
+    vertical-align: top;
+    padding: 0.75rem 1rem 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .prose :global(thead th) {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.45);
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+  }
+
+  @media (max-width: 48rem) {
+    .content-page {
+      padding-top: 5.5rem;
+    }
+
+    .post-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .prose :global(table) {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .prose :global(thead) {
+      display: none;
+    }
+
+    .prose :global(tbody) {
+      display: block;
+    }
+
+    .prose :global(tr) {
+      display: block;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .prose :global(td) {
+      display: block;
+      padding: 0.25rem 0;
+      border-bottom: none;
+    }
+
+    .prose :global(td::before) {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.15rem;
+    }
+  }
+</style>

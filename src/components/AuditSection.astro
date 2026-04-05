@@ -1,0 +1,107 @@
+---
+import Button from "./Button.astro";
+---
+
+<section class="audit-section">
+    <div class="audit-container">
+        <h2 class="audit-title">Is your website losing customers you don't even know about?</h2>
+        <p class="audit-description">We audit websites for SEO, UX, performance, and conversion — and give you a prioritized action plan to fix what's holding you back.</p>
+        <div class="audit-services">
+            <a href="/seo" class="audit-card">
+                <span class="audit-card-label">SEO Audit</span>
+                <span class="audit-card-desc">Get found by the people already looking for you</span>
+            </a>
+            <a href="/accesibilidad" class="audit-card">
+                <span class="audit-card-label">Accessibility Audit</span>
+                <span class="audit-card-desc">Reach every customer, meet compliance standards</span>
+            </a>
+            <a href="/servidores" class="audit-card">
+                <span class="audit-card-label">Platform Strategy</span>
+                <span class="audit-card-desc">Choose the stack that helps your website grow</span>
+            </a>
+        </div>
+        <Button text="Book an audit" href="/contact" />
+    </div>
+</section>
+
+<style>
+    .audit-section {
+        display: flex;
+        justify-content: center;
+        padding: 6rem 2rem;
+    }
+
+    .audit-container {
+        max-width: 70rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        text-align: center;
+    }
+
+    .audit-title {
+        font-family: var(--font-titles);
+        font-weight: 100;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.1;
+        text-transform: uppercase;
+        max-width: 50rem;
+    }
+
+    .audit-description {
+        font-size: clamp(1rem, 1.5vw, 1.25rem);
+        opacity: 0.7;
+        max-width: 42rem;
+        line-height: 1.6;
+    }
+
+    .audit-services {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .audit-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 2rem 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1rem;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .audit-card:hover {
+        border-color: rgba(136, 216, 255, 0.4);
+        background: rgba(136, 216, 255, 0.04);
+    }
+
+    .audit-card-label {
+        font-family: var(--font-titles);
+        font-weight: 100;
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+        text-transform: uppercase;
+    }
+
+    .audit-card-desc {
+        font-size: 0.9rem;
+        opacity: 0.6;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+        .audit-services {
+            grid-template-columns: 1fr;
+        }
+
+        .audit-section {
+            padding: 4rem 1.5rem;
+        }
+    }
+</style>

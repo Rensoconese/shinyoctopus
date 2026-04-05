@@ -1,0 +1,227 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const pageTitle = "Privacy Policy | Shiny Octopus";
+const pageDescription =
+  "How Shiny Octopus handles your data. We collect minimal information, do not track you with cookies, and never sell your data.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main id="main-content" class="content-page">
+    <header class="page-header">
+      <p class="kicker">Privacy</p>
+      <h1>Privacy policy</h1>
+      <p>
+        We keep this simple and readable. No walls of legal text — just a clear explanation of what data we collect and how we handle it.
+      </p>
+    </header>
+
+    <section>
+      <h2>What data we collect</h2>
+      <p>
+        When you use our contact form, we collect your <strong>name</strong>, <strong>email address</strong>, and the <strong>message</strong> you send us. That is it.
+      </p>
+      <p>
+        We do not use cookies for tracking. We do not run Google Analytics or any other tracking script that follows you around the web. Our analytics are handled by Cloudflare Web Analytics, which is privacy-first by design — it collects aggregate performance data without storing personal information or using cookies.
+      </p>
+    </section>
+
+    <section>
+      <h2>How we use your data</h2>
+      <p>
+        We use the information you submit through our contact form only to respond to your inquiry. We do not add you to marketing lists, we do not sell your data, and we do not share it with third parties for advertising purposes.
+      </p>
+      <p>
+        If we start a working relationship, we will handle project-related communication through standard business channels and will always be transparent about what information we need and why.
+      </p>
+    </section>
+
+    <section>
+      <h2>Third-party services</h2>
+      <p>
+        We use a small number of third-party services to run this website. Each one was chosen with privacy in mind:
+      </p>
+      <ul>
+        <li><strong>Cloudflare</strong> — Hosting, CDN, and privacy-first analytics. Cloudflare does not track individual users or use cookies for analytics.</li>
+        <li><strong>Resend</strong> — Email delivery for contact form submissions. Your message data passes through Resend to reach our inbox.</li>
+        <li><strong>Cloudflare Turnstile</strong> — Spam protection on our contact form. Turnstile verifies you are a real person without using CAPTCHAs or tracking cookies.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Data retention</h2>
+      <p>
+        Contact form submissions are kept only as long as needed to respond to your inquiry and follow up if relevant. We do not store form data indefinitely. Once a conversation is resolved and there is no ongoing business relationship, we delete the data.
+      </p>
+    </section>
+
+    <section>
+      <h2>Your rights</h2>
+      <p>
+        Regardless of where you are located, you have the right to:
+      </p>
+      <ul>
+        <li><strong>Access</strong> — Request a copy of any personal data we hold about you.</li>
+        <li><strong>Correction</strong> — Ask us to correct inaccurate information.</li>
+        <li><strong>Deletion</strong> — Ask us to delete your personal data.</li>
+      </ul>
+      <p>
+        If you are in the European Union, you also have rights under the GDPR including data portability and the right to restrict processing. We respect these rights for all users, not just those in the EU.
+      </p>
+      <p>
+        To exercise any of these rights, email us at <a href="mailto:hi@shinyoctopus.studio">hi@shinyoctopus.studio</a>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Changes to this policy</h2>
+      <p>
+        If we make meaningful changes to how we handle your data, we will update this page and note the date below.
+      </p>
+    </section>
+
+    <section class="closing">
+      <h2>Questions about your privacy?</h2>
+      <p>
+        If anything here is unclear or you have concerns about how your data is handled, reach out. We are happy to explain.
+      </p>
+      <p class="expectation-note">
+        Email us at <a href="mailto:hi@shinyoctopus.studio">hi@shinyoctopus.studio</a>
+      </p>
+      <p class="last-updated">Last updated: April 2026</p>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .content-page {
+    width: min(100%, 70rem);
+    min-width: 0;
+    margin: 0 auto;
+    padding: 6.5rem 1rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-family: var(--font-titles);
+    font-size: clamp(2.4rem, 7vw, 4.5rem);
+    line-height: 0.95;
+    font-weight: 100;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    max-width: 50rem;
+  }
+
+  .page-header > p:last-child {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 40rem;
+  }
+
+  section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  section:first-of-type {
+    border-top: none;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 1.9rem);
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+  }
+
+  p,
+  li {
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  p + p {
+    margin-top: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+
+  .closing {
+    border-bottom: 0;
+    text-align: center;
+    padding: 5rem 0 4rem;
+  }
+
+  .closing h2 {
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .closing p {
+    max-width: 32rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+  }
+
+  .expectation-note {
+    opacity: 0.7;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .last-updated {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 0;
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  @media (max-width: 48rem) {
+    .content-page {
+      padding-top: 5.5rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+    }
+
+    section {
+      padding: 2.5rem 0;
+    }
+  }
+</style>

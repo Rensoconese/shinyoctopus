@@ -1,10 +1,54 @@
 # robots.txt para Shiny Octopus
 # https://shinyoctopus.studio
 
+# ============================================================
+# AI Search Bots — ALLOW (blocking = disappearing from AI search)
+# ============================================================
+
+# OpenAI Search (ChatGPT with web browsing)
+User-agent: GPTBot
+Allow: /
+
+# OpenAI user-initiated queries
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI (real-time index)
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude Search (real-time search, NOT training)
+User-agent: Claude-SearchBot
+Allow: /
+
+# Brave Search (powers Claude.ai web search)
+User-agent: BraveBot
+Allow: /
+
+# ============================================================
+# AI Training Bots — BLOCK (training data, not search)
+# ============================================================
+
+# Anthropic training crawler
+User-agent: ClaudeBot
+Disallow: /
+
+# Common Crawl (used by many models for training)
+User-agent: CCBot
+Disallow: /
+
+# ============================================================
+# Google Extended — ALLOW (needed for AI Overviews / Gemini)
+# ============================================================
+User-agent: Google-Extended
+Allow: /
+
+# ============================================================
+# Default — Standard crawlers
+# ============================================================
 User-agent: *
 Allow: /
 
-# Excluir rutas específicas
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/

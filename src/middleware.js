@@ -8,7 +8,7 @@ function generateNonce() {
 export function onRequest({ request }, next) {
   // Generar un nonce único para esta solicitud
   const nonce = generateNonce();
-  
+
   return next().then(response => {
     // Solo aplicar headers a rutas dinámicas (como la página de contacto)
     // Las rutas estáticas ya tendrán headers del archivo _headers

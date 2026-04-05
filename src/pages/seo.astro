@@ -5,9 +5,89 @@ import Button from "../components/Button.astro";
 const pageTitle = "SEO that grows your business | Shiny Octopus";
 const pageDescription =
   "We build SEO around business outcomes: a website that is easier to find, easier to trust, and easier to convert.";
+
+const seoServiceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "SEO Audit",
+  "provider": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio"
+  },
+  "description": "Business-first SEO audit that reviews website structure, messaging, and visibility blockers to help teams get more qualified traffic and stronger conversions.",
+  "serviceType": "SEO Audit",
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "SEO Audit Plans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "name": "Shiny Start — Basic SEO Audit",
+        "price": "490",
+        "priceCurrency": "USD",
+        "description": "Homepage and key service-page audit with discoverability check and priority action summary."
+      },
+      {
+        "@type": "Offer",
+        "name": "Shiny Pro — Robust SEO Audit",
+        "price": "1290",
+        "priceCurrency": "USD",
+        "description": "Full site structure and content audit with internal linking review and business-impact roadmap."
+      },
+      {
+        "@type": "Offer",
+        "name": "Shiny Premium — Super Premium Audit",
+        "price": "2590",
+        "priceCurrency": "USD",
+        "description": "Complete template-level review with conversion friction audit, executive plan, and handoff workshop."
+      }
+    ]
+  }
+};
+
+const seoFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to see results from an SEO audit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most teams see measurable improvements within 4 to 8 weeks after implementing audit recommendations. Quick wins like fixing title tags and meta descriptions can show results in days, while structural changes like internal linking and content restructuring typically take 2 to 3 months to reflect in search rankings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a professional SEO audit include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A professional SEO audit reviews your website structure, page messaging, internal linking, metadata consistency, and visibility blockers. It identifies what is preventing search engines from properly indexing and ranking your content, and provides a prioritized action plan based on business impact rather than generic checklists."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does an SEO audit cost in 2026?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Professional SEO audits range from $490 for a focused key-page review to $2,590 or more for a full-site template-level audit with executive implementation plan. The right investment depends on your website size, business goals, and whether you need a quick baseline or a comprehensive growth roadmap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need SEO if I already have clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. SEO builds a compounding acquisition channel that works independently of referrals or paid ads. Businesses with existing clients benefit from SEO because it attracts qualified leads with clear intent, reduces dependency on any single source, and strengthens long-term brand visibility in both traditional search and AI-powered search engines."
+      }
+    }
+  ]
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout title={pageTitle} description={pageDescription} schema={[seoServiceSchema, seoFaqSchema]}>
   <main id="main-content" class="content-page">
     <header class="page-header">
       <p class="kicker">SEO</p>
@@ -20,6 +100,9 @@ const pageDescription =
 
     <section>
       <h2>What you gain</h2>
+      <p>
+        An SEO audit identifies the specific changes that will bring more qualified visitors to your website and help them convert. Instead of guessing what to fix, you get a prioritized action plan based on your actual business goals.
+      </p>
       <ul>
         <li>More qualified traffic from people with clear intent.</li>
         <li>Stronger visibility for the services and products that matter most.</li>
@@ -108,26 +191,56 @@ const pageDescription =
           </thead>
           <tbody>
             <tr>
-              <th scope="row">Shiny Start</th>
-              <td>USD 490</td>
-              <td>Teams that need a fast visibility baseline and focused quick wins.</td>
-              <td>Key page audit, discoverability trust check, blocker list, and priority action summary.</td>
+              <th scope="row" data-label="Plan">Shiny Start</th>
+              <td data-label="Price">USD 490</td>
+              <td data-label="Best for">Teams that need a fast visibility baseline and focused quick wins.</td>
+              <td data-label="What you get">Key page audit, discoverability trust check, blocker list, and priority action summary.</td>
             </tr>
             <tr>
-              <th scope="row">Shiny Pro</th>
-              <td>USD 1,290</td>
-              <td>Teams improving structure, messaging, and ranking performance together.</td>
-              <td>Full content and structure audit, metadata consistency review, internal linking review, and roadmap.</td>
+              <th scope="row" data-label="Plan">Shiny Pro</th>
+              <td data-label="Price">USD 1,290</td>
+              <td data-label="Best for">Teams improving structure, messaging, and ranking performance together.</td>
+              <td data-label="What you get">Full content and structure audit, metadata consistency review, internal linking review, and roadmap.</td>
             </tr>
             <tr>
-              <th scope="row">Shiny Premium</th>
-              <td>USD 2,590</td>
-              <td>Organizations that need full template coverage and executive implementation direction.</td>
-              <td>Deep template review, conversion friction audit, executive plan, and handoff workshop.</td>
+              <th scope="row" data-label="Plan">Shiny Premium</th>
+              <td data-label="Price">USD 2,590</td>
+              <td data-label="Best for">Organizations that need full template coverage and executive implementation direction.</td>
+              <td data-label="What you get">Deep template review, conversion friction audit, executive plan, and handoff workshop.</td>
             </tr>
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>Frequently asked questions about SEO audits</h2>
+      <dl class="faq-list">
+        <div class="faq-item">
+          <dt>How long does it take to see results from an SEO audit?</dt>
+          <dd>
+            Most teams see measurable improvements within <strong>4 to 8 weeks</strong> after implementing audit recommendations. Quick wins like fixing title tags and meta descriptions can show results in days. Structural changes like internal linking and content restructuring typically take 2 to 3 months to reflect in search rankings.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>What does a professional SEO audit include?</dt>
+          <dd>
+            A professional SEO audit reviews your website structure, page messaging, internal linking, metadata consistency, and visibility blockers. It identifies what prevents search engines from properly indexing your content and provides a prioritized action plan based on business impact, not generic checklists.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>How much does an SEO audit cost in 2026?</dt>
+          <dd>
+            Professional SEO audits range from <strong>$490</strong> for a focused key-page review to <strong>$2,590</strong> or more for a full-site template-level audit with executive implementation plan. The right investment depends on your website size, business goals, and whether you need a quick baseline or a comprehensive growth roadmap.
+          </dd>
+        </div>
+        <div class="faq-item">
+          <dt>Do I need SEO if I already have clients?</dt>
+          <dd>
+            Yes. SEO builds a compounding acquisition channel that works independently of referrals or paid ads. Businesses with existing clients benefit because it attracts qualified leads with clear intent, reduces dependency on any single source, and strengthens long-term brand visibility in both traditional search and AI-powered search engines.
+          </dd>
+        </div>
+      </dl>
     </section>
 
     <section class="closing">
@@ -135,6 +248,7 @@ const pageDescription =
       <p>
         Book an audit and get a clear, business-first action map in days.
       </p>
+      <p class="expectation-note">You'll hear from us within 24 hours. Most audits are delivered in 3–5 business days.</p>
       <Button text="Book shiny SEO audit" href="/contact" />
     </section>
   </main>
@@ -232,7 +346,7 @@ const pageDescription =
 
   .plans-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
     gap: 1.25rem;
   }
 
@@ -275,7 +389,6 @@ const pageDescription =
 
   .pricing-table {
     width: 100%;
-    min-width: 46rem;
     border-collapse: collapse;
   }
 
@@ -311,6 +424,34 @@ const pageDescription =
     color: #fff;
   }
 
+  .faq-list {
+    display: grid;
+    gap: 0;
+  }
+
+  .faq-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .faq-item dt {
+    font-size: 1.08rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .faq-item dd {
+    margin: 0;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 48rem;
+  }
+
   .closing {
     border-bottom: 0;
     text-align: center;
@@ -328,6 +469,13 @@ const pageDescription =
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2.5rem;
+  }
+
+  .expectation-note {
+    opacity: 0.7;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    text-align: center;
+    margin-bottom: 1.5rem;
   }
 
   section:last-of-type {
@@ -348,8 +496,35 @@ const pageDescription =
       padding: 2.5rem 0;
     }
 
-    .plans-grid {
-      grid-template-columns: 1fr;
+    /* plans-grid is auto-responsive via auto-fit + minmax */
+
+    .pricing-table thead {
+      display: none;
+    }
+
+    .pricing-table tbody tr {
+      display: block;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .pricing-table tbody th,
+    .pricing-table td {
+      display: block;
+      padding: 0.25rem 0;
+      border-bottom: none;
+      width: auto;
+    }
+
+    .pricing-table tbody th::before,
+    .pricing-table td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 0.15rem;
     }
   }
 </style>
