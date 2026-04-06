@@ -1,0 +1,10 @@
+# Configuración básica
+name = "shinyoctopus"
+compatibility_date = "2026-03-01"
+
+# Directorio de salida para Pages
+pages_build_output_dir = "dist"
+
+# Configuración de variables de entorno (opcional)
+[vars]
+# Ejemplo: VARIABLE = "valor"

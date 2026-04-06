@@ -13,17 +13,17 @@ const testimonials = [
 ];
 ---
 
-<section class="testimonial-highlight">
+<section class="testimonial-highlight" aria-label="Client testimonials">
     <div class="testimonial-grid">
         {testimonials.map((testimonial) => (
-            <div class="testimonial-card">
-                <span class="quote-mark">&ldquo;</span>
+            <blockquote class="testimonial-card">
+                <span class="quote-mark" aria-hidden="true">&ldquo;</span>
                 <p class="testimonial-text">{testimonial.text}</p>
-                <div class="testimonial-author">
+                <footer class="testimonial-author">
                     <span class="author-name">{testimonial.name}</span>
                     <span class="author-position">{testimonial.position}</span>
-                </div>
-            </div>
+                </footer>
+            </blockquote>
         ))}
     </div>
 </section>
@@ -49,6 +49,7 @@ const testimonials = [
         border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 1rem;
         padding: 2rem;
+        margin: 0;
     }
 
     .quote-mark {
@@ -57,7 +58,7 @@ const testimonials = [
         font-size: 4rem;
         line-height: 1;
         opacity: 0.2;
-        color: #88d8ff;
+        color: var(--color-glow);
         margin-bottom: 0.5rem;
         pointer-events: none;
         user-select: none;

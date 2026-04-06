@@ -4,7 +4,7 @@ import Button from "../components/Button.astro";
 
 const pageTitle = "About Shiny Octopus | Design & Development Studio";
 const pageDescription =
-  "A small, integral design and development studio that combines design craft with technical depth. We build growth systems, not just websites. 50+ projects, 8+ years, clients worldwide.";
+  "Design and development studio combining craft with technical depth. 50+ projects, 8+ years. We build growth systems, not just websites.";
 
 const aboutSchema = {
   "@context": "https://schema.org",
@@ -31,7 +31,9 @@ const aboutSchema = {
     ],
     "numberOfEmployees": {
       "@type": "QuantitativeValue",
-      "value": "Small team"
+      "minValue": 2,
+      "maxValue": 10,
+      "unitText": "team members"
     },
     "slogan": "We build growth systems, not just websites."
   }

@@ -37,60 +37,55 @@ const {
 <script>
   // Script para cargar Spline de manera no bloqueante
   window.addEventListener('load', function() {
-    // Esperar a que todo el contenido principal esté cargado
-    setTimeout(() => {
-      const containers = document.querySelectorAll('.spline-container');
-      
-      containers.forEach(function(container) {
-        const sceneUrl = container.getAttribute('data-scene-url') || '';
-        
-        // Verificar si estamos en un dispositivo que debería mostrar el modelo
-        if (window.innerWidth < 1200) {
-          return; // No cargar en dispositivos pequeños
+    const containers = document.querySelectorAll('.spline-container');
+
+    containers.forEach(function(container) {
+      const sceneUrl = container.getAttribute('data-scene-url') || '';
+
+      // Verificar si estamos en un dispositivo que debería mostrar el modelo
+      if (window.innerWidth < 1200) {
+        return; // No cargar en dispositivos pequeños
+      }
+
+      // Función para cargar el script de Spline con defer para no bloquear
+      const loadScript = () => {
+        // Si ya existe el script, no hacer nada
+        if (document.querySelector('script[src*="spline-viewer.js"]')) {
+          createViewer();
+          return;
         }
-        
-        // Función para cargar el script de Spline con defer para no bloquear
-        const loadScript = () => {
-          // Si ya existe el script, no hacer nada
-          if (document.querySelector('script[src*="spline-viewer.js"]')) {
-            createViewer();
-            return;
-          }
-          
-          const script = document.createElement('script');
-          script.type = 'module';
-          script.src = 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js';
-          script.defer = true;
-          script.onload = createViewer;
-          document.head.appendChild(script);
-        };
-        
-        // Función para crear el visor de Spline
-        const createViewer = () => {
-          const splineViewer = document.createElement('spline-viewer');
-          splineViewer.setAttribute('url', sceneUrl);
-          splineViewer.setAttribute('loading', 'lazy');
-          
-          container.innerHTML = '';
-          container.appendChild(splineViewer);
-          
-          console.log('⚡ Spline cargado después de:', performance.now(), 'ms');
-        };
-        
-        // Usar IntersectionObserver para cargar solo cuando sea visible
-        const observer = new IntersectionObserver((entries) => {
-          const [entry] = entries;
-          if (entry.isIntersecting) {
-            loadScript();
-            observer.disconnect();
-          }
-        }, {
-          threshold: 0.1,
-          rootMargin: '100px'
-        });
-        
-        observer.observe(container);
+
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = 'https://unpkg.com/@splinetool/viewer/build/spline-viewer.js';
+        script.defer = true;
+        script.onload = createViewer;
+        document.head.appendChild(script);
+      };
+
+      // Función para crear el visor de Spline
+      const createViewer = () => {
+        const splineViewer = document.createElement('spline-viewer');
+        splineViewer.setAttribute('url', sceneUrl);
+        splineViewer.setAttribute('loading', 'lazy');
+
+        container.innerHTML = '';
+        container.appendChild(splineViewer);
+      };
+
+      // Usar IntersectionObserver para cargar solo cuando sea visible
+      const observer = new IntersectionObserver((entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          loadScript();
+          observer.disconnect();
+        }
+      }, {
+        threshold: 0.1,
+        rootMargin: '100px'
       });
-    }, 2000); // Esperar 2 segundos después de que la página esté cargada
+
+      observer.observe(container);
+    });
   });
 </script>

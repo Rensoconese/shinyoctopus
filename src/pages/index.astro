@@ -27,11 +27,6 @@ import victoriaVenus1 from "../images/la_victoria_de_venus_1.png";
 import victoriaVenus2 from "../images/la_victoria_de_venus_2.png";
 import victoriaVenus3 from "../images/la_victoria_de_venus_3.png";
 
-// Configuración para precargar fuentes críticas
-const fontPreload = [
-  { href: "/fonts/PPHatton-Ultralight.woff2", type: "font/woff2", crossorigin: true }
-];
-
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -46,17 +41,6 @@ const websiteSchema = {
 ---
 
 <Layout schema={websiteSchema}>
-    {/* Precargar fuentes críticas */}
-    {fontPreload.map(font => (
-        <link 
-            rel="preload" 
-            href={font.href} 
-            as="font" 
-            type={font.type} 
-            crossorigin={font.crossorigin ? "anonymous" : null} 
-        />
-    ))}
-    
     {/* Estilos críticos inline para optimizar LCP */}
     <style is:inline>
         /* Estilos críticos para el hero y título */
@@ -99,7 +83,8 @@ const websiteSchema = {
             will-change: opacity;
         }
     </style>
-    
+
+    <main id="main-content">
     <Hero />
     <SectionWhat />
     <ProyectShowcase 
@@ -139,4 +124,5 @@ const websiteSchema = {
     <AuditSection />
     <AboutSection />
     <End />
+    </main>
 </Layout>

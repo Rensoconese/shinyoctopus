@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import TopNav from "../components/TopNav.astro";
+import "../styles/global.css";
 
 interface Props {
   title?: string;
@@ -9,6 +10,7 @@ interface Props {
   type?: string;
   canonical?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 }
 
 const {
@@ -17,7 +19,8 @@ const {
   image = "/images/og-image.jpg", // Make sure to create this image
   type = "website",
   canonical = Astro.url.href,
-  schema
+  schema,
+  noindex = false
 } = Astro.props;
 
 // Base URL for absolute paths
@@ -88,7 +91,8 @@ const allSchemas = [
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <meta name="generator" content={Astro.generator} />
-    
+    {noindex && <meta name="robots" content="noindex" />}
+
     <!-- Precargar fuentes críticas para mejorar el rendimiento -->
     <link rel="preload" href="/fonts/PPNeueMontreal-Medium.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/PPNeueMontreal-Bold.woff2" as="font" type="font/woff2" crossorigin>
@@ -142,69 +146,54 @@ const allSchemas = [
     ))}
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <TopNav />
     <slot />
+    <footer class="site-footer">
+      <p>&copy; 2026 Shiny Octopus. All rights reserved.</p>
+      <a href="/privacy">Privacy Policy</a>
+    </footer>
   </body>
 </html>
 
 <style is:global>
-  @font-face {
-    font-family: 'PP Neue Montreal';
-    src: url('/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'PP Neue Montreal';
-    src: url('/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'PP Hatton';
-    src: url('/fonts/PPHatton-Ultralight.woff2') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  *, *:before, *:after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  :root {
-    --font-primary: 'PP Neue Montreal', sans-serif;
-    --font-titles: 'PP Hatton', sans-serif;
-  }
-  
-  html, body {
-    height: 100%;
-  }
-  
-  body {
-    display: grid;
-    background-color: #000;
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: #000;
     color: #fff;
+    padding: 0.75rem 1.5rem;
+    z-index: 9999;
+    text-decoration: none;
     font-family: var(--font-primary);
-    margin: 0 auto;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.25rem;
   }
-  
-  .grid {
-    display: grid;
+
+  .skip-link:focus {
+    top: 0;
   }
-  
-  .text-white {
-    color: #fff;
+  .site-footer {
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 2rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
-  
-  h2 {
-    font-size: clamp(2rem, 8vw, 5rem);
-    font-weight: 100;
+
+  .site-footer a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .site-footer a:hover {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .site-footer p {
+    margin-bottom: 0.5rem;
   }
 </style>

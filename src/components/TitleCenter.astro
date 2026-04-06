@@ -1,14 +1,13 @@
 ---
 interface Props {
   lines: string[];
-  enableShineEffect?: boolean;
 }
 
-const { lines, enableShineEffect = false } = Astro.props;
+const { lines } = Astro.props;
 ---
 
 <div class="title-path">
-  <h2 class={enableShineEffect ? 'shine-enabled' : ''}>
+  <h2>
     {lines.map((line) => <span>{line}</span>)}
   </h2>
 </div>

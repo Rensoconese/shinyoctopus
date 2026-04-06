@@ -50,8 +50,7 @@ coverage/
 
 # Archivos de caché
 
-# Archivos de configuración de Cloudflare
-wrangler.toml
+# Archivos de caché de Cloudflare
 .cache/
 .temp/
 .tmp/

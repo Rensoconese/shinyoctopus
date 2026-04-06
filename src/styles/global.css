@@ -49,6 +49,22 @@
 :root {
     --font-primary: "PP Neue Montreal", sans-serif;
     --font-titles: "PP Hatton", sans-serif;
+    --color-glow: #88d8ff;
+    --color-glow-rgb: 136, 216, 255;
+    --color-surface-dark: #202020;
+    --color-surface-darker: #171717;
+    --color-glow-blue: #1e90ff;
+    --color-glow-deep: #0066cc;
+    --color-glow-deeper: #003399;
+    --color-glow-deepest: #000066;
+
+    /* Z-index scale — documented, no magic numbers */
+    --z-base: 1;
+    --z-logo: 4;
+    --z-topbar: 40;
+    --z-topbar-nav: 50;
+    --z-topbar-hamb: 60;
+    --z-skip-link: 9999;
 }
 
 /* Estilos base */

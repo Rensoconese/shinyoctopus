@@ -7,13 +7,13 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<dl>
+<div class="feature-item">
   <dt>{title}</dt>
   <dd>{description}</dd>
-</dl>
+</div>
 
 <style>
-  dl {
+  .feature-item {
     display: grid;
     grid-template-rows: auto 1fr;
     gap: 1rem;
@@ -29,6 +29,6 @@ const { title, description } = Astro.props;
 
   dd {
     font-family: var(--font-primary);
-    line-height: 1lh;
+    line-height: 1.5;
   }
 </style>

@@ -10,14 +10,14 @@ export default defineConfig({
   // Configurar para Cloudflare Pages
   adapter: cloudflare(),
   
+  // Compile image service (no sharp dependency needed)
+  image: {
+    service: { entrypoint: 'astro/assets/services/compile' },
+  },
+
   // Integración de sitemap
   integrations: [
-    sitemap({
-      serialize(item) {
-        item.lastmod = new Date().toISOString();
-        return item;
-      },
-    }),
+    sitemap(),
   ],
   
   vite: {

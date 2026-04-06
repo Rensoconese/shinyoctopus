@@ -1,6 +1,6 @@
 ---
-title: "Web accessibility and conversion rates: the business case you can not ignore"
-description: "94.8% of top websites fail accessibility standards, costing billions in lost revenue. Here is how accessibility improvements drive measurable conversion lifts, reduce legal risk, and expand your market."
+title: "Web Accessibility and Conversion Rates: The Data"
+description: "94.8% of top websites fail accessibility standards. See how accessibility improvements drive conversion lifts, reduce legal risk, and expand your market."
 pubDate: 2026-03-31
 draft: false
 tags: ["accessibility", "conversion", "wcag", "compliance", "seo"]
@@ -55,7 +55,7 @@ Another counterintuitive finding: **pages that use ARIA (Accessible Rich Interne
 
 ## Is web accessibility legally required?
 
-Yes. In most major markets, web accessibility is either explicitly required by law or enforced through disability discrimination statutes. The legal landscape has shifted dramatically in the past three years, and enforcement is accelerating. **Over 4,000 ADA lawsuits targeted digital properties in 2024**, and projections for 2025 exceed **5,100 cases — a 20% year-over-year increase**.
+Yes. In most major markets, web accessibility is either explicitly required by law or enforced through disability discrimination statutes. The legal landscape has shifted dramatically in the past three years, and enforcement is accelerating — see our breakdown of the latest [accessibility compliance deadlines](/blog/web-accessibility-compliance-2026-deadlines) for the full timeline. **Over 4,000 ADA lawsuits targeted digital properties in 2024**, and projections for 2025 exceed **5,100 cases — a 20% year-over-year increase**.
 
 This is not a theoretical risk. **25% of companies that were sued had already been sued before**, which means the first lawsuit does not make the problem go away — it just establishes a record. Settlements typically range from $10,000 to $150,000, and that does not include the cost of remediation, legal fees, or the reputational damage of a public complaint.
 
@@ -111,7 +111,7 @@ Search engines and screen readers parse your website in remarkably similar ways.
 
 **Heading structure** matters for the same reason. A logical H1-H2-H3 hierarchy helps screen reader users jump between sections. It also helps Google understand the topical structure of your page and generate featured snippets. Pages with clean heading hierarchies consistently outperform pages with heading soup.
 
-Other overlaps include: descriptive link text (better for users and for anchor text signals), fast page load times (required for both usability and Core Web Vitals), mobile-friendly tap targets (usability and mobile-first indexing), and clean semantic HTML (parseable by both assistive technology and crawlers). **Every hour spent on accessibility generates compound returns across both channels.**
+Other overlaps include: descriptive link text (better for users and for anchor text signals), fast page load times (required for both usability and Core Web Vitals), mobile-friendly tap targets (usability and mobile-first indexing), and clean semantic HTML (parseable by both assistive technology and crawlers). If you are evaluating your site's search health, understanding [what an SEO audit covers](/blog/how-much-does-seo-audit-cost) can help you see how much accessibility and SEO work overlaps in practice. **Every hour spent on accessibility generates compound returns across both channels.** This overlap also extends to [how AI search engines are changing traffic patterns](/blog/how-ai-search-engines-affect-website-traffic) — well-structured, accessible content is exactly what AI tools prefer to cite.
 
 ## Frequently asked questions
 

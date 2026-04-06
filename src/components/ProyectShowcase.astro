@@ -20,13 +20,14 @@ interface Props {
 const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 ---
 
-<section class="project-showcase">
+<section class="project-showcase" aria-label="Project showcase">
     <div class="background-container">
         {typeof backgroundImage === 'string' ? (
-            <img 
-                src={backgroundImage} 
-                alt={`${title} background`} 
-                class="background-image" 
+            <img
+                src={backgroundImage}
+                alt={`${title} background`}
+                class="background-image"
+                loading="lazy"
             />
         ) : (
             <Image 
@@ -52,11 +53,12 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
                         images.map((img, index) => (
                             <div class="image-container">
                                 {typeof img === 'string' ? (
-                                    <img 
-                                        src={img} 
-                                        alt={`${title} project screenshot ${index + 1}`} 
-                                        width="296" 
-                                        height="156" 
+                                    <img
+                                        src={img}
+                                        alt={`${title} project screenshot ${index + 1}`}
+                                        width="296"
+                                        height="156"
+                                        loading="lazy"
                                     />
                                 ) : (
                                     <Image
@@ -98,8 +100,8 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         position: relative;
         color: #fff;
         height: 100%;
-        border-bottom: 1px solid #202020;
-        border-top: 1px solid #202020;
+        border-bottom: 1px solid var(--color-surface-dark);
+        border-top: 1px solid var(--color-surface-dark);
     }
     .background-container {
         position: absolute;
@@ -139,7 +141,7 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
     }
 
     .title {
-        font-family: "PP Hatton", serif;
+        font-family: var(--font-titles);
         font-weight: 100;
         font-size: clamp(3rem, 6vw, 5rem);
         text-transform: uppercase;
@@ -164,7 +166,7 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         border-radius: 0;
         width: 18.5rem; /* 296px en rems (296/16 = 18.5) */
         height: 9.75rem; /* 156px en rems (156/16 = 9.75) */
-        background-color: #202020;
+        background-color: var(--color-surface-dark);
         padding: 0.5rem;
     }
 
@@ -194,9 +196,9 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
     }
 
     .testimonial p {
-        font-family: "PP Neue Montreal", sans-serif;
+        font-family: var(--font-primary);
         font-weight: 400;
-        line-height: 1.2lh;
+        line-height: 1.4;
         max-width: 30rem;
         margin-bottom: 1.5rem;
     }
@@ -222,9 +224,22 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         transition: color 0.2s ease;
     }
     
-    .website-link a:hover {
+    .website-link a:hover,
+    .website-link a:focus-visible {
         color: #fff;
         text-decoration: underline;
+    }
+
+    .website-link a:focus-visible {
+        outline: 2px solid #88d8ff;
+        outline-offset: 2px;
+        border-radius: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .website-link a {
+            transition: none;
+        }
     }
 
     @media (max-width: 75rem) {

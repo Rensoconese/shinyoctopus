@@ -1,13 +1,19 @@
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://unpkg.com 'sha256-cBVrusr2PR1XcMX+BKTkc9l1M8TByJzbifBxQQlplQY=' 'sha256-CDe7I5zev8hYxsFkEMrjck6U7gfCS0LW/uufeTgtC0g='; style-src 'self' 'unsafe-inline' blob:; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests; report-uri https://shinyoctopus.report-uri.com/r/d/csp/enforce;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://static.cloudflareinsights.com https://unpkg.com 'sha256-CDe7I5zev8hYxsFkEMrjck6U7gfCS0LW/uufeTgtC0g=' 'sha256-EH5B1Ch420oV80lf/0b7Nwe1zKLgoFC4uHRAK7IKtzw=' 'sha256-FmRRZdip9h9GszLL4yghSk0nrR6aKDeyGoRucG0n8QY=' 'sha256-Wm59hNfz5oCDdZHDZ23KvwTVP9zp9LIGVkPnjMcQ+F0=' 'sha256-kL0s1glwV+Ec3OaMzzj2m4n9+KdAah2vc1dUnHjvx7k='; style-src 'self' 'unsafe-inline' blob:; img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com; frame-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests; report-uri https://shinyoctopus.report-uri.com/r/d/csp/enforce; report-to csp-endpoint;
+  Report-To: {"group":"csp-endpoint","max_age":10886400,"endpoints":[{"url":"https://shinyoctopus.report-uri.com/r/d/csp/enforce"}]}
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 0
   Referrer-Policy: strict-origin-when-cross-origin
+  Cross-Origin-Embedder-Policy: credentialless
+  Cross-Origin-Resource-Policy: same-origin
   Permissions-Policy: accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()
 
 # Solo cachear assets con hash (seguros de cambiar)
 /_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
   Cache-Control: public, max-age=31536000, immutable

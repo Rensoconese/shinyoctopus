@@ -12,7 +12,7 @@ const { text, href } = Astro.props;
         {text}
     </a>
 ) : (
-    <button class="custom-button">
+    <button type="button" class="custom-button">
         {text}
     </button>
 )}
@@ -39,19 +39,29 @@ const { text, href } = Astro.props;
     .custom-button:hover {
         background-color: black;
         color: white;
-        border-color: rgba (255, 255, 255, 0.5);
+        border-color: rgba(255, 255, 255, 0.5);
         transform: translateY(-5px);
-        box-shadow:   0 0 10px #fff,
-    0 0 20px #88d8ff,
-    0 0 30px #88d8ff,
-    0 0 40px #1e90ff,
-    0 0 70px #1e90ff,
-    0 0 80px #0066cc,
-    0 0 100px #003399,
-    0 0 150px #000066;
+        box-shadow:
+            0 0 10px #fff,
+            0 0 20px var(--color-glow),
+            0 0 30px var(--color-glow),
+            0 0 40px var(--color-glow-blue),
+            0 0 70px var(--color-glow-blue),
+            0 0 80px var(--color-glow-deep),
+            0 0 100px var(--color-glow-deeper),
+            0 0 150px var(--color-glow-deepest);
     }
 
     .custom-button:active {
         background-color: #555;
+    }
+
+    .custom-button:focus-visible {
+        outline: 2px solid #fff;
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .custom-button:hover { transform: none; }
     }
 </style>

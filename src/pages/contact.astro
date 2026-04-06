@@ -65,7 +65,7 @@ if (Astro.request.method === 'POST') {
 
 // Page metadata
 const pageTitle = 'Contact Us - Shiny Octopus';
-const pageDescription = "Have a project in mind? Let's talk! We're ready to bring your ideas to life. Contact our team today.";
+const pageDescription = "Have a project in mind? Let's talk about SEO, accessibility, or web development. We're ready to bring your ideas to life. Contact our team today.";
 const ogImage = "/images/contact-og.jpg";
 ---
 
@@ -77,7 +77,7 @@ const ogImage = "/images/contact-og.jpg";
 >
   <!-- Cloudflare Turnstile Script -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
-  <main class="contact-container">
+  <main id="main-content" class="contact-container">
     <div class="contact-content">
       <div class="contact-header">
         <h1>your new website starts here</h1>
@@ -233,7 +233,7 @@ const ogImage = "/images/contact-og.jpg";
       </div>
       
       <!-- Cloudflare Turnstile -->
-      <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark"></div>
+      <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark" aria-label="Spam verification"></div>
 
       <!-- Submit button -->
       <div class="form-submit">

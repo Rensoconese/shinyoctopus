@@ -3,11 +3,11 @@ import H2Title from "./H2Title.astro";
 import FeatureItem from "./FeatureItem.astro";
 ---
 
-<section>
+<section aria-label="What we do">
     <div class="what-container">
         <H2Title text="What makes it shine?" />
 
-        <div class="features-grid">
+        <dl class="features-grid">
             <FeatureItem
                 title="storytelling in mind"
                 description="Captivate hearts, convert minds, build loyalty"
@@ -24,7 +24,7 @@ import FeatureItem from "./FeatureItem.astro";
                 title="accessible"
                 description="Reach every customer, grow your market"
             />
-        </div>
+        </dl>
     </div>
 </section>
 
@@ -32,7 +32,7 @@ import FeatureItem from "./FeatureItem.astro";
     .what-container {
         display: grid;
         gap: 4rem;
-        height: 50vh;
+        min-height: 50vh;
     }
     .features-grid {
         display: grid;

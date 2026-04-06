@@ -1,62 +1,101 @@
-// Función para generar un nonce aleatorio base64
+// CSP base directives — single source of truth
+// _headers uses these same values for static pages
+const CSP_BASE = {
+  "default-src": "'self'",
+  "style-src": "'self' 'unsafe-inline' blob:",
+  "img-src": "'self' data: blob:",
+  "font-src": "'self'",
+  "connect-src": "'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com",
+  "frame-src": "'none'",
+  "object-src": "'none'",
+  "base-uri": "'none'",
+  "frame-ancestors": "'none'",
+  "form-action": "'self'",
+};
+
+const CSP_SCRIPT_SOURCES = [
+  "'self'",
+  "'unsafe-inline'",
+  "'unsafe-eval'",
+  "'wasm-unsafe-eval'",
+  "https://static.cloudflareinsights.com",
+  "https://unpkg.com",
+];
+
+const CSP_REPORT_URI = "https://shinyoctopus.report-uri.com/r/d/csp/enforce";
+
+// Read script hashes from _headers at build time isn't possible,
+// so we extract them from the response's existing CSP header set by _headers
+function extractHashesFromCSP(cspHeader) {
+  if (!cspHeader) return [];
+  const scriptMatch = cspHeader.match(/script-src\s+([^;]+)/);
+  if (!scriptMatch) return [];
+  const hashes = scriptMatch[1].match(/'sha256-[A-Za-z0-9+/=]+'/g);
+  return hashes || [];
+}
+
+function buildCSP(nonce, scriptHashes) {
+  const scriptSrc = [
+    `'nonce-${nonce}'`,
+    ...CSP_SCRIPT_SOURCES,
+    ...scriptHashes,
+  ].join(" ");
+
+  const directives = Object.entries(CSP_BASE)
+    .map(([key, val]) => `${key} ${val}`)
+    .join("; ");
+
+  return `${directives}; script-src ${scriptSrc}; upgrade-insecure-requests; report-uri ${CSP_REPORT_URI}; report-to csp-endpoint;`;
+}
+
 function generateNonce() {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
   return btoa(String.fromCharCode.apply(null, array));
 }
 
+const SECURITY_HEADERS = {
+  "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+  "Cross-Origin-Opener-Policy": "same-origin",
+  "X-Frame-Options": "DENY",
+  "X-Content-Type-Options": "nosniff",
+  "X-XSS-Protection": "0",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "Cross-Origin-Embedder-Policy": "credentialless",
+  "Cross-Origin-Resource-Policy": "same-origin",
+  "Report-To": '{"group":"csp-endpoint","max_age":10886400,"endpoints":[{"url":"https://shinyoctopus.report-uri.com/r/d/csp/enforce"}]}',
+  "Permissions-Policy": "accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()",
+};
+
 export function onRequest({ request }, next) {
-  // Generar un nonce único para esta solicitud
   const nonce = generateNonce();
 
   return next().then(response => {
-    // Solo aplicar headers a rutas dinámicas (como la página de contacto)
-    // Las rutas estáticas ya tendrán headers del archivo _headers
-    
-    // Verificar si es una ruta dinámica (podemos asumir que la página de contacto lo es)
     const url = new URL(request.url);
     if (url.pathname === '/contact' || url.pathname.startsWith('/contact/')) {
-      // Obtener el cuerpo de la respuesta como texto
       return response.text().then(text => {
-        // Reemplazar todos los scripts inline con el atributo nonce
         let modifiedText = text.replace(/<script([^>]*)>/g, `<script nonce="${nonce}"$1>`);
-        
-        // Clonar la respuesta para poder modificarla
+
         const newResponse = new Response(modifiedText, {
           status: response.status,
           statusText: response.statusText,
           headers: response.headers
         });
-        
-        // Añadir headers de seguridad con el nonce generado
-        newResponse.headers.set('Content-Security-Policy', 
-          `default-src 'self'; ` +
-          `script-src 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' https://static.cloudflareinsights.com https://unpkg.com 'sha256-cBVrusr2PR1XcMX+BKTkc9l1M8TByJzbifBxQQlplQY=' 'sha256-CDe7I5zev8hYxsFkEMrjck6U7gfCS0LW/uufeTgtC0g='; ` +
-          `style-src 'self' 'unsafe-inline' blob:; ` +
-          `img-src 'self' data: blob:; ` +
-          `font-src 'self'; ` +
-          `connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com; ` +
-          `frame-src 'none'; ` +
-          `object-src 'none'; ` +
-          `base-uri 'none'; ` +
-          `frame-ancestors 'none'; ` +
-          `form-action 'self'; ` +
-          `upgrade-insecure-requests; ` +
-          `report-uri https://shinyoctopus.report-uri.com/r/d/csp/enforce;`);
-        
-        newResponse.headers.set('Strict-Transport-Security', "max-age=31536000; includeSubDomains; preload");
-        newResponse.headers.set('Cross-Origin-Opener-Policy', "same-origin");
-        newResponse.headers.set('X-Frame-Options', "DENY");
-        newResponse.headers.set('X-Content-Type-Options', "nosniff");
-        newResponse.headers.set('X-XSS-Protection', "0");
-        newResponse.headers.set('Referrer-Policy', "strict-origin-when-cross-origin");
-        newResponse.headers.set('Permissions-Policy', "accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()");
-        
+
+        // Extract hashes from the static _headers CSP so we don't duplicate them
+        const existingCSP = response.headers.get('Content-Security-Policy');
+        const scriptHashes = extractHashesFromCSP(existingCSP);
+
+        newResponse.headers.set('Content-Security-Policy', buildCSP(nonce, scriptHashes));
+
+        for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
+          newResponse.headers.set(key, value);
+        }
+
         return newResponse;
       });
     }
-    
-    // Para otras rutas, devolver la respuesta sin modificar
+
     return response;
   }).catch(error => {
     console.error('Error en middleware:', error);

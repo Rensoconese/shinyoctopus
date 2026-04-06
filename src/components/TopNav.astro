@@ -25,7 +25,7 @@ const isActive = (href: string) => {
     <span class="topbar-name">Shiny Octopus<span class="topbar-tagline">Design & Development Studio</span></span>
   </a>
   <input class="topbar-check" type="checkbox" id="topbar-check" />
-  <label class="topbar-hamb" for="topbar-check"><span class="topbar-hamb-line"></span></label>
+  <label class="topbar-hamb" for="topbar-check" aria-label="Toggle navigation menu"><span class="topbar-hamb-line"></span></label>
   <nav class="topbar-nav" aria-label="Primary navigation">
     <ul class="topbar-menu">
       {links.map((link) => (
@@ -41,7 +41,7 @@ const isActive = (href: string) => {
   .topbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 40;
+    z-index: var(--z-topbar, 40);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -74,7 +74,7 @@ const isActive = (href: string) => {
 
   .topbar-tagline {
     font-weight: 500;
-    font-size: 0.52rem;
+    font-size: 0.625rem;
     opacity: 0.6;
     letter-spacing: 0.06em;
   }
@@ -91,7 +91,7 @@ const isActive = (href: string) => {
     display: none;
     -webkit-tap-highlight-color: transparent;
     position: relative;
-    z-index: 60;
+    z-index: var(--z-topbar-hamb, 60);
   }
 
   .topbar-hamb-line {
@@ -138,7 +138,7 @@ const isActive = (href: string) => {
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease-out;
-    z-index: 50;
+    z-index: var(--z-topbar-nav, 50);
     pointer-events: none;
   }
 
@@ -208,7 +208,8 @@ const isActive = (href: string) => {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.42rem 0.62rem;
+      padding: 0.55rem 0.75rem;
+      min-height: 2.75rem;
       font-size: 0.72rem;
       border-radius: 999px;
       border: 1px solid transparent;
@@ -242,3 +243,32 @@ const isActive = (href: string) => {
     }
   }
 </style>
+
+<script>
+  const checkbox = document.getElementById('topbar-check') as HTMLInputElement | null;
+  const nav = document.querySelector('.topbar-nav');
+  const hamburger = document.querySelector('.topbar-hamb');
+
+  function isMobile() {
+    return hamburger ? window.getComputedStyle(hamburger).display !== 'none' : false;
+  }
+
+  function updateNavVisibility() {
+    if (!nav) return;
+    if (isMobile()) {
+      nav.setAttribute('aria-hidden', String(!(checkbox as HTMLInputElement).checked));
+    } else {
+      nav.removeAttribute('aria-hidden');
+    }
+  }
+
+  if (checkbox && nav) {
+    // Set initial state
+    updateNavVisibility();
+
+    checkbox.addEventListener('change', updateNavVisibility);
+
+    // Update on resize in case viewport crosses the breakpoint
+    window.addEventListener('resize', updateNavVisibility);
+  }
+</script>
