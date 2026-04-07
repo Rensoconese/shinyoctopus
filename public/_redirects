@@ -1,0 +1,8 @@
+# Redirect non-trailing-slash to trailing-slash for static pages only
+# Contact is SSR — handled by the Worker, not static redirects
+/blog /blog/ 301
+/seo /seo/ 301
+/accesibilidad /accesibilidad/ 301
+/servidores /servidores/ 301
+/about /about/ 301
+/privacy /privacy/ 301

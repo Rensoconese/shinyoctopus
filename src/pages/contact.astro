@@ -238,39 +238,6 @@ const ogImage = "/images/contact-og.jpg";
       <!-- Submit button -->
       <div class="form-submit">
         <Button text="Send message" />
-        <button type="submit" id="submitButton" style="display: none;"></button>
-        <script>
-          const submitFormButton = document.querySelector('.form-submit Button');
-          const submitButtonElement = document.getElementById('submitButton');
-          let isSubmitting = false;
-          
-          if (submitFormButton && submitButtonElement) {
-            // Prevenir múltiples clics en el botón de envío
-            submitFormButton.addEventListener('click', function(e) {
-              if (isSubmitting) {
-                e.preventDefault();
-                return false;
-              }
-              
-              // Desactivar el botón inmediatamente para prevenir múltiples envíos
-              isSubmitting = true;
-              submitFormButton.setAttribute('disabled', 'disabled');
-              (submitFormButton as HTMLElement).style.opacity = '0.7';
-              
-              // Enviar el formulario
-              submitButtonElement.click();
-            });
-          }
-          
-          // Reset form submission state when the page loads (in case of refresh)
-          document.addEventListener('DOMContentLoaded', () => {
-            isSubmitting = false;
-            if (submitFormButton) {
-              submitFormButton.removeAttribute('disabled');
-              (submitFormButton as HTMLElement).style.opacity = '1';
-            }
-          });
-        </script>
       </div>
     </form>
     

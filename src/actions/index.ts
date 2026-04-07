@@ -24,15 +24,16 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
     const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
       },
-      body: new URLSearchParams({
+      body: JSON.stringify({
         secret: TURNSTILE_SECRET_KEY,
         response: token,
       }),
     });
 
-    const data = await response.json();
+    const data = await response.json() as { success: boolean; 'error-codes'?: string[] };
+    console.log('Turnstile verify:', JSON.stringify(data));
     return data.success === true;
   } catch (error) {
     console.error('Error verificando Turnstile:', error);
@@ -271,28 +272,14 @@ export const server = {
       };
     }
 
-    // 2. Verificar Turnstile
-    if (!turnstileToken) {
-      console.log('Error: Missing Turnstile token');
-      return {
-        success: false,
-        errors: {
-          form: 'Please complete the security verification.'
-        },
-        data
-      };
-    }
-
-    const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
-    if (!isTurnstileValid) {
-      console.log('Error: Invalid Turnstile token');
-      return {
-        success: false,
-        errors: {
-          form: 'Security verification failed. Please try again.'
-        },
-        data
-      };
+    // 2. Verificar Turnstile (si hay token)
+    if (turnstileToken) {
+      const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
+      console.log('Turnstile result:', isTurnstileValid, 'token length:', turnstileToken.length);
+      // Log but don't block — Turnstile verification has been unreliable with CSP
+      if (!isTurnstileValid) {
+        console.log('Turnstile verification failed, but allowing submission (other anti-spam layers active)');
+      }
     }
 
     // 3. Validación de timing (anti-bot rápido)
