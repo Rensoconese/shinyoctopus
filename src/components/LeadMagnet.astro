@@ -5,20 +5,16 @@
     <h3 class="lead-magnet-title">Enter your URL and we'll send you 3 things to fix — free.</h3>
     <form class="lead-magnet-form" action="/contact" method="POST">
         <div class="lead-magnet-fields">
-            <label for="lead-magnet-url" class="sr-only">Website URL</label>
             <input
                 type="url"
                 name="url"
-                id="lead-magnet-url"
                 placeholder="https://yourwebsite.com"
                 required
                 class="lead-magnet-input"
             />
-            <label for="lead-magnet-email" class="sr-only">Email address</label>
             <input
                 type="email"
                 name="email"
-                id="lead-magnet-email"
                 placeholder="your@email.com"
                 required
                 class="lead-magnet-input"
@@ -72,6 +68,7 @@
         color: white;
         font-size: 0.95rem;
         font-family: inherit;
+        outline: none;
         transition: border-color 0.3s ease;
         width: 100%;
         box-sizing: border-box;
@@ -81,10 +78,8 @@
         color: rgba(255, 255, 255, 0.35);
     }
 
-    .lead-magnet-input:focus-visible {
-        border-color: rgba(var(--color-glow-rgb), 0.6);
-        outline: 2px solid rgba(var(--color-glow-rgb), 0.8);
-        outline-offset: 2px;
+    .lead-magnet-input:focus {
+        border-color: rgba(136, 216, 255, 0.4);
     }
 
     .lead-magnet-button {
@@ -110,40 +105,19 @@
         transform: translateY(-3px);
         box-shadow:
             0 0 10px #fff,
-            0 0 20px var(--color-glow),
-            0 0 30px var(--color-glow),
-            0 0 40px var(--color-glow-blue),
-            0 0 70px var(--color-glow-blue);
+            0 0 20px #88d8ff,
+            0 0 30px #88d8ff,
+            0 0 40px #1e90ff,
+            0 0 70px #1e90ff;
     }
 
     .lead-magnet-button:active {
         background-color: #555;
     }
 
-    .lead-magnet-button:focus-visible {
-        outline: 2px solid #fff;
-        outline-offset: 3px;
-    }
-
-    .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0,0,0,0);
-        white-space: nowrap;
-        border: 0;
-    }
-
     @media (max-width: 768px) {
         .lead-magnet-fields {
             grid-template-columns: 1fr;
         }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .lead-magnet-button:hover { transform: none; }
     }
 </style>

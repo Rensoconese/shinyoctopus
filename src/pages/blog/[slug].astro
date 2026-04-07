@@ -16,38 +16,6 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// Fetch all published posts for related posts section
-const allPosts = await getCollection("blog", ({ data }) => {
-  return data.draft !== true;
-});
-
-const currentTags = post.data.tags || [];
-const otherPosts = allPosts
-  .filter((p) => p.id !== post.id)
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-
-// Find posts sharing at least one tag
-let relatedPosts = currentTags.length > 0
-  ? otherPosts.filter((p) => {
-      const pTags = p.data.tags || [];
-      return pTags.some((t: string) => currentTags.includes(t));
-    })
-  : [];
-
-// Fall back to most recent posts if no tag matches
-if (relatedPosts.length === 0) {
-  relatedPosts = otherPosts;
-}
-
-relatedPosts = relatedPosts.slice(0, 3);
-
-// Determine CTA link based on tags
-const hasAccessibilityTag = currentTags.some(
-  (t: string) => t.toLowerCase() === "accessibility" || t.toLowerCase() === "accesibilidad"
-);
-const ctaServiceLink = hasAccessibilityTag ? "/accesibilidad" : "/seo";
-const ctaServiceLabel = hasAccessibilityTag ? "Accessibility services" : "SEO services";
-
 // Reading time estimate: ~200 words per minute
 const wordCount = post.body ? post.body.split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
@@ -64,89 +32,6 @@ const formattedUpdatedDate = updatedDate.toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
 });
-
-// Extract FAQ pairs from raw markdown body
-function extractFaqPairs(body: string): Array<{ question: string; answer: string }> {
-  if (!body) return [];
-
-  const lines = body.split('\n');
-  const pairs: Array<{ question: string; answer: string }> = [];
-  let inFaqSection = false;
-  let currentQuestion = '';
-  let currentAnswer: string[] = [];
-
-  for (const line of lines) {
-    // Detect FAQ section start (## heading containing "frequently asked questions")
-    if (/^##\s+/i.test(line) && /frequently\s+asked\s+questions/i.test(line)) {
-      inFaqSection = true;
-      continue;
-    }
-
-    // A new H2 ends the FAQ section
-    if (inFaqSection && /^##\s+/.test(line) && !/^###/.test(line)) {
-      // Save any pending Q&A
-      if (currentQuestion && currentAnswer.length) {
-        pairs.push({ question: currentQuestion, answer: cleanMarkdown(currentAnswer.join(' ').trim()) });
-      }
-      break;
-    }
-
-    if (!inFaqSection) continue;
-
-    // H3 = new question
-    if (/^###\s+/.test(line)) {
-      // Save previous Q&A pair
-      if (currentQuestion && currentAnswer.length) {
-        pairs.push({ question: currentQuestion, answer: cleanMarkdown(currentAnswer.join(' ').trim()) });
-      }
-      currentQuestion = line.replace(/^###\s+/, '').trim();
-      currentAnswer = [];
-      continue;
-    }
-
-    // Accumulate answer text (skip empty lines and non-paragraph content)
-    if (currentQuestion) {
-      const trimmed = line.trim();
-      if (trimmed) {
-        currentAnswer.push(trimmed);
-      }
-    }
-  }
-
-  // Save last Q&A pair
-  if (currentQuestion && currentAnswer.length) {
-    pairs.push({ question: currentQuestion, answer: cleanMarkdown(currentAnswer.join(' ').trim()) });
-  }
-
-  return pairs;
-}
-
-// Strip markdown formatting from text
-function cleanMarkdown(text: string): string {
-  return text
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')   // [link text](url) → link text
-    .replace(/\*\*([^*]+)\*\*/g, '$1')           // **bold** → bold
-    .replace(/\*([^*]+)\*/g, '$1')               // *italic* → italic
-    .replace(/`([^`]+)`/g, '$1')                 // `code` → code
-    .replace(/^[-*]\s+/gm, '')                   // list markers
-    .replace(/\s+/g, ' ')                        // normalize whitespace
-    .trim();
-}
-
-const faqPairs = extractFaqPairs(post.body || '');
-
-const faqSchema = faqPairs.length > 0 ? {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqPairs.map(({ question, answer }) => ({
-    "@type": "Question",
-    "name": question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": answer
-    }
-  }))
-} : null;
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -177,7 +62,7 @@ const articleSchema = {
 };
 ---
 
-<Layout title={`${post.data.title} | Shiny Octopus`} description={post.data.description} type="article" schema={[articleSchema, ...(faqSchema ? [faqSchema] : [])]}>
+<Layout title={`${post.data.title} | Shiny Octopus`} description={post.data.description} schema={articleSchema}>
   <main id="main-content" class="content-page">
     <a href="/blog" class="back-link">&larr; Back to blog</a>
 
@@ -209,42 +94,6 @@ const articleSchema = {
         <Content />
       </div>
     </article>
-
-    {relatedPosts.length > 0 && (
-      <section aria-label="Related posts" class="related-posts">
-        <h2>Related posts</h2>
-        <div class="related-grid">
-          {relatedPosts.map((rp) => {
-            const rpDate = rp.data.pubDate.toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            });
-            const desc = rp.data.description.length > 120
-              ? rp.data.description.slice(0, 120).trimEnd() + "..."
-              : rp.data.description;
-            return (
-              <article class="related-card">
-                <a href={`/blog/${rp.id}`} class="related-card-link">
-                  <time datetime={rp.data.pubDate.toISOString()}>{rpDate}</time>
-                  <h3>{rp.data.title}</h3>
-                  <p>{desc}</p>
-                </a>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-    )}
-
-    <section class="cta-section" aria-label="Call to action">
-      <h2>Ready to improve your website?</h2>
-      <p>We help businesses build faster, more accessible, and search-optimized websites. Let's talk about what we can do for yours.</p>
-      <div class="cta-links">
-        <a href={ctaServiceLink} class="cta-btn cta-btn--primary">{ctaServiceLabel}</a>
-        <a href="/contact" class="cta-btn cta-btn--secondary">Get in touch</a>
-      </div>
-    </section>
   </main>
 </Layout>
 
@@ -460,150 +309,6 @@ const articleSchema = {
     letter-spacing: 0.06em;
     color: rgba(255, 255, 255, 0.45);
     border-bottom-color: rgba(255, 255, 255, 0.15);
-  }
-
-  /* Related posts */
-  .related-posts {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .related-posts h2 {
-    font-family: var(--font-titles);
-    font-size: clamp(1.3rem, 3vw, 1.9rem);
-    font-weight: 100;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
-
-  .related-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .related-card {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 0.5rem;
-    transition: border-color 0.2s ease, background 0.2s ease;
-  }
-
-  .related-card:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .related-card-link {
-    display: block;
-    padding: 1.25rem;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .related-card-link:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.6);
-    outline-offset: 2px;
-    border-radius: 0.5rem;
-  }
-
-  .related-card-link time {
-    display: block;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: rgba(255, 255, 255, 0.4);
-    margin-bottom: 0.5rem;
-  }
-
-  .related-card-link h3 {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 0.4rem;
-    line-height: 1.35;
-  }
-
-  .related-card-link p {
-    font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* CTA section */
-  .cta-section {
-    margin-top: 3.5rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    text-align: center;
-    padding-bottom: 2rem;
-  }
-
-  .cta-section h2 {
-    font-family: var(--font-titles);
-    font-size: clamp(1.3rem, 3vw, 1.9rem);
-    font-weight: 100;
-    text-transform: uppercase;
-    margin-bottom: 0.8rem;
-  }
-
-  .cta-section p {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
-    max-width: 32rem;
-    margin: 0 auto 1.5rem;
-  }
-
-  .cta-links {
-    display: flex;
-    justify-content: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .cta-btn {
-    display: inline-block;
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    padding: 0.6rem 1.4rem;
-    border-radius: 999px;
-    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  }
-
-  .cta-btn:focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.6);
-    outline-offset: 2px;
-  }
-
-  .cta-btn--primary {
-    background: #fff;
-    color: #000;
-    border: 1px solid #fff;
-  }
-
-  .cta-btn--primary:hover {
-    background: rgba(255, 255, 255, 0.85);
-  }
-
-  .cta-btn--secondary {
-    background: transparent;
-    color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-  }
-
-  .cta-btn--secondary:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #fff;
-  }
-
-  @media (min-width: 48rem) {
-    .related-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
   }
 
   @media (max-width: 48rem) {

@@ -13,11 +13,11 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<section class="path-list" aria-label="Our process">
+<section class="path-list">
     <div class="path-list__wrapper">
         {
             items.map((item) => (
-                <article class="path-list__row" tabindex="0">
+                <article class="path-list__row">
                     <div class="path-list__first-col">
                         <p class="path-list__number">{item.number}</p>
                         <h3 class="path-list__title">{item.title}</h3>
@@ -48,7 +48,7 @@ const { items } = Astro.props;
 
         width: 100%;
         height: 100%;
-        border-bottom: 1px solid var(--color-surface-dark);
+        border-bottom: 1px solid #202020;;
 
         padding: 2rem;
         opacity: 0.8;
@@ -59,19 +59,13 @@ const { items } = Astro.props;
 
  .path-list__row:first-child {
         
-        border-top: 1px solid var(--color-surface-dark);
+        border-top: 1px solid rgb(62 62 62);
 
     }
 
-    .path-list__row:hover,
-    .path-list__row:focus-visible {
-        background-color: var(--color-surface-darker);
+    .path-list__row:hover {
+        background-color: #171717;
         opacity: 1;
-    }
-
-    .path-list__row:focus-visible {
-        outline: 2px solid #88d8ff;
-        outline-offset: -2px;
     }
 
     .path-list__first-col {
@@ -83,12 +77,12 @@ const { items } = Astro.props;
     }
 
     .path-list__number {
-        font-family: var(--font-titles);
+        font-family: "PP Hatton", serif;
         font-weight: 500;
     }
 
     .path-list__title {
-        font-family: var(--font-titles);
+        font-family: "PP Hatton", sans-serif;
         font-weight: 100;
         font-size: 3rem;
         line-height: 0.9;
@@ -96,16 +90,16 @@ const { items } = Astro.props;
     }
 
     .path-list__short {
-        font-family: var(--font-primary);
+        font-family: "PP Neue Montreal", sans-serif;
         font-weight: 300;
-        line-height: 1.4;
+        line-height: 1.2lh;
         max-width: 15rem;
     }
 
     .path-list__long {
-        font-family: var(--font-primary);
+        font-family: "PP Neue Montreal", sans-serif;
         font-weight: 400;
-        line-height: 1.4;
+        line-height: 1.2lh;
         max-width: 30rem;
     }
 

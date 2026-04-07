@@ -48,7 +48,7 @@ const isStringImage = typeof backgroundImage === 'string';
     position: relative;
     width: 100%;
     height: auto;
-    font-family: var(--font-titles);
+    font-family: "PP Hatton", serif;
     text-transform: uppercase;
     aspect-ratio: 3/4;
     border-radius: 2rem;
@@ -56,17 +56,12 @@ const isStringImage = typeof backgroundImage === 'string';
     text-decoration: none;
     color: white;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border:1px solid var(--color-surface-dark);
+    border:1px solid #202020;
   }
 
   .card-web:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  .card-web:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
   }
 
   .card-image {
@@ -111,9 +106,6 @@ const isStringImage = typeof backgroundImage === 'string';
     margin: 0;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .card-web:hover { transform: none; }
-  }
 </style>
 
 

@@ -33,6 +33,8 @@ const heroStyles = {
   `
 };
 
+// Media query para dispositivos de escritorio
+const mediaQuery = "(min-width: 64rem)";
 ---
 
 <div class="hero" style={heroStyles.container}>
@@ -71,10 +73,40 @@ const heroStyles = {
 </script>
 
 <style>
+    /* Estilos de respaldo (fallback) en caso de que los estilos inline no funcionen */
     .hero {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        height: 100svh;
+        width: 100%;
+        gap: 3rem;
+        transform: translateY(-12dvh);
+        contain: layout;
         content-visibility: auto;
     }
+    
+    .bg-spline {
+        display: none; /* Ocultar por defecto */
+        position: absolute;
+        margin: 0;
+        padding: 0;
+        z-index: -1;
+        top: 0;
+        height: inherit;
+        width: 100%;
+    }
 
+    @media (min-width: 64rem) {
+        .bg-spline {
+            display: block; /* Mostrar en pantallas mayores a 64rem */
+        }
+    }
+    
+    /* Optimizaciones adicionales para mejorar el rendimiento */
     @media (prefers-reduced-motion: no-preference) {
         .hero {
             transition: opacity 0.3s ease-in;
