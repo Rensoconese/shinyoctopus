@@ -24,21 +24,21 @@ const seoServiceSchema = {
     "itemListElement": [
       {
         "@type": "Offer",
-        "name": "Shiny Start — Basic SEO Audit",
+        "name": "Shiny Start: Basic SEO Audit",
         "price": "490",
         "priceCurrency": "USD",
         "description": "Homepage and key service-page audit with discoverability check and priority action summary."
       },
       {
         "@type": "Offer",
-        "name": "Shiny Pro — Robust SEO Audit",
+        "name": "Shiny Pro: Robust SEO Audit",
         "price": "1290",
         "priceCurrency": "USD",
         "description": "Full site structure and content audit with internal linking review and business-impact roadmap."
       },
       {
         "@type": "Offer",
-        "name": "Shiny Premium — Super Premium Audit",
+        "name": "Shiny Premium: Super Premium Audit",
         "price": "2590",
         "priceCurrency": "USD",
         "description": "Complete template-level review with conversion friction audit, executive plan, and handoff workshop."
@@ -90,7 +90,6 @@ const seoFaqSchema = {
 <Layout title={pageTitle} description={pageDescription} schema={[seoServiceSchema, seoFaqSchema]}>
   <main id="main-content" class="content-page">
     <header class="page-header">
-      <p class="kicker">SEO</p>
       <h1>Be found by the people already looking for what you offer</h1>
       <p>
         Good SEO is not about chasing numbers. It is about building a website people can find, understand, and trust
@@ -101,7 +100,10 @@ const seoFaqSchema = {
     <section>
       <h2>What you gain</h2>
       <p>
-        An SEO audit identifies the specific changes that will bring more qualified visitors to your website and help them convert. Instead of guessing what to fix, you get a prioritized action plan based on your actual business goals.
+        An SEO audit identifies the specific changes that will bring more qualified visitors to your website and help them convert.
+      </p>
+      <p>
+        Instead of guessing what to fix, you get a prioritized action plan based on your actual business goals.
       </p>
       <ul>
         <li>More qualified traffic from people with clear intent.</li>
@@ -184,27 +186,23 @@ const seoFaqSchema = {
           <thead>
             <tr>
               <th scope="col">Plan</th>
-              <th scope="col">Price</th>
               <th scope="col">Best for</th>
               <th scope="col">What you get</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row" data-label="Plan">Shiny Start</th>
-              <td data-label="Price">USD 490</td>
+              <th scope="row" data-label="Plan">Shiny Start<span class="plan-row-price">USD 490</span></th>
               <td data-label="Best for">Teams that need a fast visibility baseline and focused quick wins.</td>
               <td data-label="What you get">Key page audit, discoverability trust check, blocker list, and priority action summary.</td>
             </tr>
             <tr>
-              <th scope="row" data-label="Plan">Shiny Pro</th>
-              <td data-label="Price">USD 1,290</td>
+              <th scope="row" data-label="Plan">Shiny Pro<span class="plan-row-price">USD 1,290</span></th>
               <td data-label="Best for">Teams improving structure, messaging, and ranking performance together.</td>
               <td data-label="What you get">Full content and structure audit, metadata consistency review, internal linking review, and roadmap.</td>
             </tr>
             <tr>
-              <th scope="row" data-label="Plan">Shiny Premium</th>
-              <td data-label="Price">USD 2,590</td>
+              <th scope="row" data-label="Plan">Shiny Premium<span class="plan-row-price">USD 2,590</span></th>
               <td data-label="Best for">Organizations that need full template coverage and executive implementation direction.</td>
               <td data-label="What you get">Deep template review, conversion friction audit, executive plan, and handoff workshop.</td>
             </tr>
@@ -248,7 +246,6 @@ const seoFaqSchema = {
       <p>
         Book an audit and get a clear, business-first action map in days.
       </p>
-      <p class="expectation-note">You'll hear from us within 24 hours. Most audits are delivered in 3–5 business days.</p>
       <Button text="Book shiny SEO audit" href="/contact" />
     </section>
   </main>
@@ -256,19 +253,21 @@ const seoFaqSchema = {
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
-    min-width: 0;
-    margin: 0 auto;
-    padding: 6.5rem 1rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+    padding: 6.5rem 2rem 4rem;
   }
 
   .page-header {
+    grid-column: 4 / 10;
     margin-bottom: 4rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .kicker {
+    display: block;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
@@ -287,14 +286,22 @@ const seoFaqSchema = {
   }
 
   .page-header > p:last-child {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.75);
     max-width: 40rem;
+    line-height: 1.6;
   }
 
   section {
+    grid-column: 4 / 10;
     padding: 3.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .faq-section,
+  .closing {
+    grid-column: 5 / 9;
+    border-bottom: none;
   }
 
   section:first-of-type {
@@ -390,6 +397,7 @@ const seoFaqSchema = {
   .pricing-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
   }
 
   .pricing-table caption {
@@ -418,10 +426,27 @@ const seoFaqSchema = {
     border-bottom-color: rgba(255, 255, 255, 0.15);
   }
 
+  .pricing-table tbody tr:last-child th,
+  .pricing-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
   .pricing-table tbody th {
-    width: 10rem;
     font-weight: 500;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .plan-row-price {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
     color: #fff;
+    margin-top: 0.3rem;
   }
 
   .faq-list {
@@ -439,7 +464,7 @@ const seoFaqSchema = {
   }
 
   .faq-item dt {
-    font-size: 1.08rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: #fff;
     margin-bottom: 0.6rem;
@@ -459,12 +484,21 @@ const seoFaqSchema = {
   }
 
   .closing h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    line-height: 1;
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
   }
 
   .closing p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.75;
     max-width: 32rem;
     margin-left: auto;
     margin-right: auto;
@@ -472,8 +506,9 @@ const seoFaqSchema = {
   }
 
   .expectation-note {
-    opacity: 0.7;
-    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    opacity: 0.5;
     text-align: center;
     margin-bottom: 1.5rem;
   }
@@ -486,6 +521,15 @@ const seoFaqSchema = {
     .content-page {
       padding-top: 5.5rem;
     }
+
+    .page-header,
+    section,
+    .wide-section,
+    .faq-section,
+    .closing {
+      grid-column: 1 / -1;
+    }
+
 
     .page-header {
       margin-bottom: 2.5rem;

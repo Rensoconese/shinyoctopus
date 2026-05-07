@@ -90,7 +90,6 @@ const a11yFaqSchema = {
 <Layout title={pageTitle} description={pageDescription} schema={[a11yServiceSchema, a11yFaqSchema]}>
   <main id="main-content" class="content-page">
     <header class="page-header">
-      <p class="kicker">Accessibility</p>
       <h1>A website that works for everyone performs better for everyone</h1>
       <p>
         Accessibility is a quality standard that improves usability, protects your brand, and helps more people
@@ -98,10 +97,13 @@ const a11yFaqSchema = {
       </p>
     </header>
 
-    <section>
+    <section class="wide-section">
       <h2>Why clients invest in accessibility</h2>
       <p>
-        Web accessibility removes barriers that prevent users from completing key actions on your website. When navigation, forms, and content work for everyone, the result is measurable: higher conversion rates, stronger brand trust, and lower legal risk.
+        Web accessibility removes barriers that prevent users from completing key actions on your website.
+      </p>
+      <p>
+        When navigation, forms, and content work for everyone, the result is measurable: higher conversion rates, stronger brand trust, and lower legal risk.
       </p>
       <ul>
         <li>Better experience across all devices and user situations.</li>
@@ -111,7 +113,7 @@ const a11yFaqSchema = {
       </ul>
     </section>
 
-    <section>
+    <section class="wide-section">
       <h2>Accessibility opportunity calculator</h2>
       <p>
         Use this quick estimate to understand what better accessibility can unlock in revenue and yearly savings.
@@ -286,7 +288,7 @@ const a11yFaqSchema = {
       </div>
     </section>
 
-    <section>
+    <section class="wide-section">
       <h2>Accessibility audit plans</h2>
       <p class="section-lead">Start with clarity, then choose the depth that fits your next growth stage.</p>
       <div class="plans-grid">
@@ -328,7 +330,7 @@ const a11yFaqSchema = {
       </div>
     </section>
 
-    <section>
+    <section class="wide-section">
       <h2>Accessibility pricing comparison</h2>
       <p class="section-lead">Compare Shiny accessibility audit plans side by side to choose the right scope for your team.</p>
       <div class="table-wrap">
@@ -337,27 +339,23 @@ const a11yFaqSchema = {
           <thead>
             <tr>
               <th scope="col">Plan</th>
-              <th scope="col">Price</th>
               <th scope="col">Best for</th>
               <th scope="col">What you get</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row" data-label="Plan">Shiny Start</th>
-              <td data-label="Price">USD 590</td>
+              <th scope="row" data-label="Plan">Shiny Start<span class="plan-row-price">USD 590</span></th>
               <td data-label="Best for">Teams that need fast clarity on core issues.</td>
               <td data-label="What you get">Core page review, WCAG snapshot, quick-win remediation list, risk summary.</td>
             </tr>
             <tr>
-              <th scope="row" data-label="Plan">Shiny Pro</th>
-              <td data-label="Price">USD 1,490</td>
+              <th scope="row" data-label="Plan">Shiny Pro<span class="plan-row-price">USD 1,490</span></th>
               <td data-label="Best for">Teams improving accessibility and conversion outcomes together.</td>
               <td data-label="What you get">Expanded journeys, friction map, prioritized fixes, 90-day roadmap.</td>
             </tr>
             <tr>
-              <th scope="row" data-label="Plan">Shiny Premium</th>
-              <td data-label="Price">USD 2,990</td>
+              <th scope="row" data-label="Plan">Shiny Premium<span class="plan-row-price">USD 2,990</span></th>
               <td data-label="Best for">Organizations needing broad coverage and executive alignment.</td>
               <td data-label="What you get">Deep template audit, compliance-growth plan, workshop and rollout priorities.</td>
             </tr>
@@ -399,8 +397,7 @@ const a11yFaqSchema = {
     <section class="closing">
       <h2>The fastest way to improve trust and performance is to see the blind spots first</h2>
       <p>Book an accessibility audit and get a clear plan your team can execute immediately.</p>
-      <p class="expectation">You'll hear from us within 24 hours. Most audits are delivered in 3–5 business days.</p>
-      <Button text="Book shiny accessibility audit" href="/contact" />
+<Button text="Book shiny accessibility audit" href="/contact" />
     </section>
   </main>
 </Layout>
@@ -487,19 +484,21 @@ const a11yFaqSchema = {
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
-    min-width: 0;
-    margin: 0 auto;
-    padding: 6.5rem 1rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+    padding: 6.5rem 2rem 4rem;
   }
 
   .page-header {
+    grid-column: 4 / 10;
     margin-bottom: 4rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .kicker {
+    display: block;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
@@ -524,12 +523,23 @@ const a11yFaqSchema = {
   }
 
   section {
+    grid-column: 5 / 9;
     padding: 3.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   section:first-of-type {
     border-top: none;
+  }
+
+  .wide-section {
+    grid-column: 4 / 10;
+  }
+
+  .faq-section,
+  .closing {
+    grid-column: 5 / 9;
+    border-bottom: none;
   }
 
   h2 {
@@ -602,7 +612,7 @@ const a11yFaqSchema = {
 
   label {
     display: block;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: #d0d0d0;
     margin-bottom: 0.18rem;
   }
@@ -628,7 +638,7 @@ const a11yFaqSchema = {
 
   .field-help {
     margin: 0 0 0.35rem;
-    font-size: 0.78rem;
+    font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.45);
     line-height: 1.35;
   }
@@ -747,13 +757,14 @@ const a11yFaqSchema = {
   .pricing-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
   }
 
   .pricing-table caption {
     text-align: left;
     color: rgba(255, 255, 255, 0.82);
     margin-bottom: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1.45;
   }
 
@@ -775,10 +786,27 @@ const a11yFaqSchema = {
     border-bottom-color: rgba(255, 255, 255, 0.15);
   }
 
+  .pricing-table tbody tr:last-child th,
+  .pricing-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
   .pricing-table tbody th {
-    width: 10rem;
     font-weight: 500;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .plan-row-price {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
     color: #fff;
+    margin-top: 0.3rem;
   }
 
   /* FAQ */
@@ -807,7 +835,6 @@ const a11yFaqSchema = {
     margin: 0;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.8);
-    max-width: 48rem;
   }
 
   /* Closing CTA */
@@ -818,19 +845,24 @@ const a11yFaqSchema = {
   }
 
   .closing h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    line-height: 1;
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
   }
 
   .closing .expectation {
-    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
     opacity: 0.5;
     margin-bottom: 1.5rem;
   }
 
   .closing p {
-    max-width: 32rem;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2.5rem;
@@ -843,6 +875,14 @@ const a11yFaqSchema = {
   @media (max-width: 48rem) {
     .content-page {
       padding-top: 5.5rem;
+    }
+
+    .page-header,
+    section,
+    .wide-section,
+    .faq-section,
+    .closing {
+      grid-column: 1 / -1;
     }
 
     .page-header {

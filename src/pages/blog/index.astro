@@ -13,12 +13,17 @@ const posts = allPosts.sort(
 const pageTitle = "Blog | Shiny Octopus";
 const pageDescription =
   "Insights on web performance, SEO, accessibility, and building websites that actually work for your business.";
+const dateFormatOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+  timeZone: "UTC",
+};
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
   <main id="main-content" class="content-page">
     <header class="page-header">
-      <p class="kicker">Blog</p>
       <h1>Head full of ideas, lots of ink, tentacles on everything</h1>
       <p>
         Practical thinking on web performance, SEO, accessibility, and building
@@ -37,11 +42,7 @@ const pageDescription =
             <a href={`/blog/${post.id}`} class="post-card">
               <article>
                 <time datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {post.data.pubDate.toLocaleDateString("en-US", dateFormatOptions)}
                 </time>
                 <h2>{post.data.title}</h2>
                 <p>{post.data.description}</p>
@@ -64,19 +65,26 @@ const pageDescription =
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
-    min-width: 0;
-    margin: 0 auto;
-    padding: 6.5rem 1rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+    padding: 6.5rem 2rem 4rem;
   }
 
   .page-header {
+    grid-column: 4 / 10;
     margin-bottom: 4rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
+  .posts-list,
+  .empty-state {
+    grid-column: 4 / 10;
+  }
+
   .kicker {
+    display: block;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
@@ -95,9 +103,10 @@ const pageDescription =
   }
 
   .page-header > p:last-child {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.75);
     max-width: 40rem;
+    line-height: 1.6;
   }
 
   .empty-state {
@@ -149,7 +158,7 @@ const pageDescription =
   .post-card p {
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.55;
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 
   .tags {
@@ -187,6 +196,12 @@ const pageDescription =
   @media (max-width: 48rem) {
     .content-page {
       padding-top: 5.5rem;
+    }
+
+    .page-header,
+    .posts-list,
+    .empty-state {
+      grid-column: 1 / -1;
     }
 
     .page-header {

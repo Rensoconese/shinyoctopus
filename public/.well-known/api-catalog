@@ -1,0 +1,16 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://shinyoctopus.studio/",
+      "describedby": [
+        { "href": "https://shinyoctopus.studio/llms.txt", "type": "text/plain" }
+      ],
+      "sitemap": [
+        { "href": "https://shinyoctopus.studio/sitemap-index.xml", "type": "application/xml" }
+      ],
+      "https://agentskills.io/rel/index": [
+        { "href": "https://shinyoctopus.studio/.well-known/agent-skills/index.json", "type": "application/json" }
+      ]
+    }
+  ]
+}

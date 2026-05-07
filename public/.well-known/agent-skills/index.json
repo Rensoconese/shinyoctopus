@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agentskills.io/schemas/index-v0.2.0.json",
+  "version": "0.2.0",
+  "skills": [
+    {
+      "name": "shinyoctopus-overview",
+      "type": "text/plain",
+      "description": "Overview of Shiny Octopus services (SEO audits, accessibility audits, web development) and main URLs.",
+      "url": "https://shinyoctopus.studio/llms.txt",
+      "sha256": "6b0f849912cb0e3bee086ae2859deea84ff9712513c530b34b7e88398f005e7b"
+    }
+  ]
+}

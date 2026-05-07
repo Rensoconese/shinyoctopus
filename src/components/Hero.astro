@@ -2,6 +2,7 @@
 import HeroTitle from "./HeroTitle.astro";
 import Button from "./Button.astro";
 import SplineViewer from "./SplineViewer.astro";
+import SectionWhat from "./SectionWhat.astro";
 
 // Configuración para el visor de Spline
 const splineUrl = "https://prod.spline.design/a08ExwTmdmduVWNa/scene.splinecode";
@@ -33,19 +34,20 @@ const heroStyles = {
   `
 };
 
-// Media query para dispositivos de escritorio
-const mediaQuery = "(min-width: 64rem)";
 ---
 
 <div class="hero" style={heroStyles.container}>
     <HeroTitle />
     <Button text="Book a free 15-min call" href="/contact" />
     <div class="bg-spline" style={heroStyles.bgSpline}>
-        <SplineViewer 
-            sceneUrl={splineUrl} 
-            height="100%" 
-            width="100%" 
+        <SplineViewer
+            sceneUrl={splineUrl}
+            height="100%"
+            width="100%"
         />
+    </div>
+    <div class="hero-bottom">
+        <SectionWhat />
     </div>
 </div>
 
@@ -89,6 +91,14 @@ const mediaQuery = "(min-width: 64rem)";
         content-visibility: auto;
     }
     
+    .hero-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+
     .bg-spline {
         display: none; /* Ocultar por defecto */
         position: absolute;

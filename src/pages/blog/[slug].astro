@@ -20,18 +20,17 @@ const { Content } = await render(post);
 const wordCount = post.body ? post.body.split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
-const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
+const dateFormatOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
   day: "numeric",
-});
+  timeZone: "UTC",
+};
+
+const formattedDate = post.data.pubDate.toLocaleDateString("en-US", dateFormatOptions);
 
 const updatedDate = post.data.updatedDate || post.data.pubDate;
-const formattedUpdatedDate = updatedDate.toLocaleDateString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+const formattedUpdatedDate = updatedDate.toLocaleDateString("en-US", dateFormatOptions);
 
 const articleSchema = {
   "@context": "https://schema.org",
@@ -68,6 +67,7 @@ const articleSchema = {
 
     <article class="post">
       <header class="post-header">
+        <h1>{post.data.title}</h1>
         <div class="post-meta">
           <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
           {post.data.updatedDate && (
@@ -79,7 +79,6 @@ const articleSchema = {
           <span class="separator">&middot;</span>
           <span>{readingTime} min read</span>
         </div>
-        <h1>{post.data.title}</h1>
         <p class="post-description">{post.data.description}</p>
         {post.data.tags && (
           <ul class="tags">
@@ -111,10 +110,9 @@ const articleSchema = {
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
-    min-width: 0;
+    width: min(100%, 48rem);
     margin: 0 auto;
-    padding: 6.5rem 1rem 4rem;
+    padding: 6.5rem 1.5rem 4rem;
   }
 
   .back-link {
@@ -164,10 +162,10 @@ const articleSchema = {
   }
 
   .post-description {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.75);
     max-width: 40rem;
-    line-height: 1.55;
+    line-height: 1.6;
   }
 
   .tags {

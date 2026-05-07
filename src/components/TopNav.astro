@@ -5,7 +5,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/seo", label: "SEO Audit" },
   { href: "/accesibilidad", label: "Accessibility" },
-  { href: "/servidores", label: "Servers" },
+  { href: "/servers", label: "Servers" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
@@ -24,18 +24,52 @@ const isActive = (href: string) => {
     </svg>
     <span class="topbar-name">Shiny Octopus<span class="topbar-tagline">Design & Development Studio</span></span>
   </a>
-  <input class="topbar-check" type="checkbox" id="topbar-check" />
-  <label class="topbar-hamb" for="topbar-check"><span class="topbar-hamb-line"></span></label>
-  <nav class="topbar-nav" aria-label="Primary navigation">
+  <button
+    class="topbar-toggle"
+    type="button"
+    aria-label="Open primary navigation"
+    aria-controls="primary-navigation"
+    aria-expanded="false"
+    data-topbar-toggle
+  >
+    <span class="topbar-toggle-line"></span>
+  </button>
+  <nav id="primary-navigation" class="topbar-nav" aria-label="Primary navigation" data-open="false">
     <ul class="topbar-menu">
       {links.map((link) => (
         <li>
-          <a class:list={[isActive(link.href) && "active"]} href={link.href}>{link.label}</a>
+          <a class:list={[isActive(link.href) && "active"]} href={link.href} aria-label={link.label}>{link.label}</a>
         </li>
       ))}
     </ul>
   </nav>
 </header>
+
+<script is:inline>
+  (() => {
+    const toggle = document.querySelector("[data-topbar-toggle]");
+    const nav = document.getElementById("primary-navigation");
+    if (!toggle || !nav) return;
+
+    const setOpen = (isOpen) => {
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.setAttribute("aria-label", isOpen ? "Close primary navigation" : "Open primary navigation");
+      nav.dataset.open = String(isOpen);
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    nav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+  })();
+</script>
 
 <style is:inline>
   .topbar {
@@ -79,22 +113,29 @@ const isActive = (href: string) => {
     letter-spacing: 0.06em;
   }
 
-  /* Checkbox — always hidden */
-  .topbar-check {
-    display: none;
-  }
-
-  /* Hamburger — hidden on desktop */
-  .topbar-hamb {
+  /* Toggle: hidden on desktop */
+  .topbar-toggle {
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    background: transparent;
+    border: 0;
+    color: #fff;
     cursor: pointer;
-    padding: 0.5rem;
     display: none;
     -webkit-tap-highlight-color: transparent;
     position: relative;
     z-index: 60;
   }
 
-  .topbar-hamb-line {
+  .topbar-toggle:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+  }
+
+  .topbar-toggle-line {
     background: #fff;
     display: block;
     height: 2px;
@@ -102,8 +143,8 @@ const isActive = (href: string) => {
     width: 18px;
   }
 
-  .topbar-hamb-line::before,
-  .topbar-hamb-line::after {
+  .topbar-toggle-line::before,
+  .topbar-toggle-line::after {
     background: #fff;
     content: '';
     display: block;
@@ -113,23 +154,23 @@ const isActive = (href: string) => {
     width: 100%;
   }
 
-  .topbar-hamb-line::before { top: 5px; }
-  .topbar-hamb-line::after { top: -5px; }
+  .topbar-toggle-line::before { top: 5px; }
+  .topbar-toggle-line::after { top: -5px; }
 
   /* X animation */
-  .topbar-check:checked ~ .topbar-hamb .topbar-hamb-line {
+  .topbar-toggle[aria-expanded="true"] .topbar-toggle-line {
     background: transparent;
   }
-  .topbar-check:checked ~ .topbar-hamb .topbar-hamb-line::before {
+  .topbar-toggle[aria-expanded="true"] .topbar-toggle-line::before {
     transform: rotate(-45deg);
     top: 0;
   }
-  .topbar-check:checked ~ .topbar-hamb .topbar-hamb-line::after {
+  .topbar-toggle[aria-expanded="true"] .topbar-toggle-line::after {
     transform: rotate(45deg);
     top: 0;
   }
 
-  /* Nav — mobile: collapsed by default */
+  /* Nav, mobile: collapsed by default */
   .topbar-nav {
     width: 100%;
     position: fixed;
@@ -137,14 +178,16 @@ const isActive = (href: string) => {
     background: rgba(0, 0, 0, 0.97);
     overflow: hidden;
     max-height: 0;
+    visibility: hidden;
     transition: max-height 0.3s ease-out;
     z-index: 50;
     pointer-events: none;
   }
 
   /* Open state */
-  .topbar-check:checked ~ .topbar-nav {
+  .topbar-nav[data-open="true"] {
     max-height: 100vh;
+    visibility: visible;
     pointer-events: auto;
   }
 
@@ -168,9 +211,11 @@ const isActive = (href: string) => {
     transition: background 0.2s ease;
   }
 
-  .topbar-menu a:hover {
+  .topbar-menu a:hover,
+  .topbar-menu a:focus-visible {
     background: rgba(255, 255, 255, 0.06);
     color: #fff;
+    outline: none;
   }
 
   .topbar-menu a.active {
@@ -179,9 +224,9 @@ const isActive = (href: string) => {
     font-weight: 700;
   }
 
-  /* Desktop — min-width approach: show nav inline, hide hamburger */
+  /* Desktop: min-width approach, show nav inline, hide hamburger */
   @media (min-width: 48.0625rem) {
-    .topbar-hamb {
+    .topbar-toggle {
       display: none;
     }
 
@@ -193,6 +238,7 @@ const isActive = (href: string) => {
       background: transparent;
       overflow: visible;
       pointer-events: auto;
+      visibility: visible;
     }
 
     .topbar-menu {
@@ -231,14 +277,14 @@ const isActive = (href: string) => {
     }
   }
 
-  /* Mobile — show hamburger */
+  /* Mobile: show hamburger */
   @media (max-width: 48rem) {
     .topbar {
       padding: 0.6rem 0.75rem;
     }
 
-    .topbar-hamb {
-      display: block;
+    .topbar-toggle {
+      display: inline-flex;
     }
   }
 </style>

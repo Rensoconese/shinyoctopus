@@ -5,8 +5,6 @@ import FeatureItem from "./FeatureItem.astro";
 
 <section>
     <div class="what-container">
-        <H2Title text="What makes it shine?" />
-
         <div class="features-grid">
             <FeatureItem
                 title="storytelling in mind"
@@ -30,15 +28,13 @@ import FeatureItem from "./FeatureItem.astro";
 
 <style>
     .what-container {
-        display: grid;
-        gap: 4rem;
-        height: 50vh;
+        width: 100%;
     }
     .features-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 4rem;
-        padding: 2rem;
+        gap: 1.5rem;
+        padding: 0 2.5rem;
     }
 
     @media (max-width: 1200px) {
@@ -46,7 +42,7 @@ import FeatureItem from "./FeatureItem.astro";
             grid-template-columns: repeat(2, 1fr);
         }
     }
-    
+
     @media (max-width: 768px) {
         .what-container {
             height: auto;
@@ -54,7 +50,7 @@ import FeatureItem from "./FeatureItem.astro";
             padding-bottom: 2rem;
             gap:1rem;
         }
-        
+
         .features-grid {
             grid-template-columns: 1fr;
             gap: 2rem;

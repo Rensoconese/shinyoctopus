@@ -1,8 +1,11 @@
 # robots.txt para Shiny Octopus
 # https://shinyoctopus.studio
 
+# Content Signals (contentsignals.org): preferencias de uso por IA
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
 # ============================================================
-# AI Search Bots — ALLOW (blocking = disappearing from AI search)
+# AI Search Bots: ALLOW (blocking = disappearing from AI search)
 # ============================================================
 
 # OpenAI Search (ChatGPT with web browsing)
@@ -26,7 +29,7 @@ User-agent: BraveBot
 Allow: /
 
 # ============================================================
-# AI Training Bots — BLOCK (training data, not search)
+# AI Training Bots: BLOCK (training data, not search)
 # ============================================================
 
 # Anthropic training crawler
@@ -38,13 +41,13 @@ User-agent: CCBot
 Disallow: /
 
 # ============================================================
-# Google Extended — ALLOW (needed for AI Overviews / Gemini)
+# Google Extended: ALLOW (needed for AI Overviews / Gemini)
 # ============================================================
 User-agent: Google-Extended
 Allow: /
 
 # ============================================================
-# Default — Standard crawlers
+# Default: Standard crawlers
 # ============================================================
 User-agent: *
 Allow: /

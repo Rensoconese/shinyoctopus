@@ -77,7 +77,7 @@ const ogImage = "/images/contact-og.jpg";
 >
   <!-- Cloudflare Turnstile Script -->
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer is:inline></script>
-  <main class="contact-container">
+  <main id="main-content" class="contact-container">
     <div class="contact-content">
       <div class="contact-header">
         <h1>your new website starts here</h1>
@@ -96,9 +96,9 @@ const ogImage = "/images/contact-og.jpg";
       <input type="hidden" name="_ip" value={clientIp} />
 
       <!-- Honeypot: campo oculto que los bots llenan pero humanos no ven -->
-      <div class="hp-field" aria-hidden="true">
+      <div class="hp-field" aria-hidden="true" inert>
         <label for="website">Website</label>
-        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
       </div>
       <!-- Success message -->
       {successMessage && (
@@ -304,6 +304,8 @@ const ogImage = "/images/contact-og.jpg";
     align-items: center;
     min-height: 100vh;
     min-height: 100svh;
+    width: 100%;
+    min-width: 0;
     padding: 2rem;
     max-width: 800px;
     margin: 0 auto;
@@ -338,6 +340,7 @@ const ogImage = "/images/contact-og.jpg";
     display: grid;
     gap: 1rem;
     width: 100%;
+    min-width: 0;
   }
   
   .contact-header {
@@ -361,13 +364,13 @@ const ogImage = "/images/contact-og.jpg";
   }
 
   h1 {
-    font-family: var(--font-titles, "PP Hatton"), serif;
+    font-family: var(--font-titles);
     font-size: clamp(2.5rem, 8vw, 4rem);
     text-transform: uppercase;
     text-align: center;
     line-height: 0.9;
     margin-bottom: 2rem;
-    font-weight: 100;
+    font-weight: 300;
     letter-spacing: -0.02em;
   }
 

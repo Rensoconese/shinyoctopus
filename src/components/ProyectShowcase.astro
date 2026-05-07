@@ -8,7 +8,9 @@ interface Props {
     title: string;
     images: (ImageMetadata | string)[];
     websiteUrl?: string;
+    caseStudyHref?: string;
     backgroundImage: ImageMetadata | string;
+    backgroundSmall?: boolean;
     testimonial: {
         text: string;
         name: string;
@@ -17,25 +19,25 @@ interface Props {
 }
 
 // Extraer propiedades del objeto Astro.props
-const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
+const { title, images, backgroundImage, backgroundSmall, testimonial, websiteUrl, caseStudyHref } = Astro.props;
 ---
 
 <section class="project-showcase">
-    <div class="background-container">
+    <div class={`background-container${backgroundSmall ? ' background-container-small' : ''}`}>
         {typeof backgroundImage === 'string' ? (
-            <img 
-                src={backgroundImage} 
-                alt={`${title} background`} 
-                class="background-image" 
+            <img
+                src={backgroundImage}
+                alt={`${title} background`}
+                class={`background-image${backgroundSmall ? ' background-small' : ''}`}
             />
         ) : (
-            <Image 
-                src={backgroundImage} 
+            <Image
+                src={backgroundImage}
                 alt={`${title} background`}
                 width={1920}
                 height={1080}
                 quality={80}
-                class="background-image"
+                class={`background-image${backgroundSmall ? ' background-small' : ''}`}
             />
         )}
     </div>
@@ -46,34 +48,14 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
                 <h3 class="title">{title}</h3>
             </div>
             <div class="project-container-link">
-                
-                <div class="project-images">
-                    {
-                        images.map((img, index) => (
-                            <div class="image-container">
-                                {typeof img === 'string' ? (
-                                    <img 
-                                        src={img} 
-                                        alt={`${title} project screenshot ${index + 1}`} 
-                                        width="296" 
-                                        height="156" 
-                                    />
-                                ) : (
-                                    <Image
-                                        src={img}
-                                        alt={`${title} project screenshot ${index + 1}`}
-                                        width={296}
-                                        height={156}
-                                        quality={80}
-                                    />
-                                )}
-                            </div>
-                        ))
-                    }
-                </div>
-                {websiteUrl && (
+                {(websiteUrl || caseStudyHref) && (
                     <div class="website-link">
-                        <a href={websiteUrl} target="_blank" rel="noopener noreferrer">Visit website</a>
+                        {caseStudyHref && (
+                            <a class="case-study-link" href={caseStudyHref}>Read case study</a>
+                        )}
+                        {websiteUrl && (
+                            <a href={websiteUrl} target="_blank" rel="noopener noreferrer">Visit website</a>
+                        )}
                     </div>
                 )}
             </div>  
@@ -119,7 +101,7 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 
     .showcase-container {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-template-rows: 38rem;
         position: relative;
        
@@ -134,12 +116,12 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        grid-column: 1 / 5;
+        grid-column: 1 / 4;
         padding: 2.5rem;
     }
 
     .title {
-        font-family: "PP Hatton", serif;
+        font-family: var(--font-titles);
         font-weight: 100;
         font-size: clamp(3rem, 6vw, 5rem);
         text-transform: uppercase;
@@ -149,32 +131,6 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         max-width: 32rem;
     }
 
-    .project-images {
-        display: flex;
-        justify-content: flex-start;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        width: 100%;
-        height: auto;
-    }
-
-    .image-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 0;
-        width: 18.5rem; /* 296px en rems (296/16 = 18.5) */
-        height: 9.75rem; /* 156px en rems (156/16 = 9.75) */
-        background-color: #202020;
-        padding: 0.5rem;
-    }
-
-    .image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-    
     .project-container-link {
         display: grid;
         gap: 1rem;
@@ -182,15 +138,25 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
 
     /* Segunda columna */
     .column-middle {
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        grid-column: 5 / 7;
-        padding: 2.5rem;
+        grid-column: 4 / 5;
+        padding: 2.5rem 2.5rem 2.5rem 0;
     }
 
     .testimonial {
         height: 100%;
+    }
+
+    .background-container-small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .background-small {
+        object-fit: contain;
+        width: 55%;
+        height: 80%;
+        opacity: 0.8;
     }
 
     .testimonial p {
@@ -215,16 +181,36 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
         color: rgba(255, 255, 255, 0.8);
     }
     
+    .website-link {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 1.5rem;
+    }
+
     .website-link a {
         font-size: 0.8rem;
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         transition: color 0.2s ease;
     }
-    
+
     .website-link a:hover {
         color: #fff;
         text-decoration: underline;
+    }
+
+    .website-link .case-study-link {
+        color: #fff;
+        font-weight: 500;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+        padding-bottom: 0.1rem;
+    }
+
+    .website-link .case-study-link:hover {
+        text-decoration: none;
+        border-color: #88d8ff;
+        color: #88d8ff;
     }
 
     @media (max-width: 75rem) {
@@ -251,12 +237,8 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
             max-width: 30rem;
         }
 
-        .image-container {
-            width: 100%;
-            height: auto;
-        }
     }
-    
+
     @media (max-width: 30rem) {
         .project-showcase {
             margin-top: 2rem;
@@ -271,14 +253,5 @@ const { title, images, backgroundImage, testimonial, websiteUrl } = Astro.props;
             padding: 2rem 2rem 1rem;
         }
         
-        .project-images {
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .image-container {
-            width: 100%;
-            height: auto;
-        }
     }
 </style>

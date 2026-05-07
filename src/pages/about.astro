@@ -51,7 +51,7 @@ const aboutSchema = {
     <section>
       <h2>Who we are</h2>
       <p>
-        We are a design and development studio that works end to end. That means we handle the brand thinking, the interface design, the code, and the infrastructure — all as one connected process.
+        We are a design and development studio that works end to end. That means we handle the brand thinking, the interface design, the code, and the infrastructure, all as one connected process.
       </p>
       <p>
         We are small on purpose. A tight team means fewer misunderstandings, faster decisions, and work that actually reflects what the business needs. No layers of project managers translating your goals into tickets.
@@ -61,7 +61,7 @@ const aboutSchema = {
     <section>
       <h2>Our approach</h2>
       <p>
-        Every project starts with understanding the business goals — not wireframes, not mood boards. We figure out what growth looks like for you, then we design and build the system that gets you there.
+        Every project starts with understanding the business goals, not wireframes, not mood boards. We figure out what growth looks like for you, then we design and build the system that gets you there.
       </p>
       <p>
         That is what makes this holistic. We do not just build a website and wish you luck. We think about how people find you, what they experience when they arrive, and what makes them take the next step. SEO, accessibility, performance, and conversion are not add-ons. They are built in from day one.
@@ -74,9 +74,9 @@ const aboutSchema = {
         We combine design craft with technical depth. Most studios are strong at one and mediocre at the other. We refuse to split the difference.
       </p>
       <ul>
-        <li>We build custom sites with Astro and Cloudflare — no templates, no page builders, no bloat.</li>
+        <li>We build custom sites with Astro and Cloudflare. No templates, no page builders, no bloat.</li>
         <li>We audit with real data using tools like Crawl4AI, not surface-level checklists.</li>
-        <li>We understand the business side. Strategy is not a separate phase — it shapes every design and code decision.</li>
+        <li>We understand the business side. Strategy is not a separate phase, it shapes every design and code decision.</li>
         <li>We ship fast. Small team, clear process, no unnecessary meetings.</li>
       </ul>
     </section>
@@ -88,20 +88,19 @@ const aboutSchema = {
       </p>
       <ul>
         <li><strong>50+ websites</strong> built and audited across industries.</li>
-        <li><strong>8+ years</strong> working on the web — design, code, and strategy.</li>
-        <li><strong>Clients worldwide</strong> — from the US and Panama to Spain and Argentina.</li>
+        <li><strong>8+ years</strong> working on the web: design, code, and strategy.</li>
+        <li><strong>Clients worldwide</strong>, from the US and Panama to Spain and Argentina.</li>
       </ul>
       <p>
-        We work with businesses of all sizes, from startups to established companies. That breadth of experience shows up in the decisions we make — what to build, what to skip, and where to focus so the investment actually pays off.
+        We work with businesses of all sizes, from startups to established companies. That breadth of experience shows up in the decisions we make: what to build, what to skip, and where to focus so the investment actually pays off.
       </p>
     </section>
 
     <section class="closing">
       <h2>Let's talk about what you are building</h2>
       <p>
-        Whether you need an audit, a new site, or a fresh strategy — we would love to hear about it.
+        Whether you need an audit, a new site, or a fresh strategy, we would love to hear about it.
       </p>
-      <p class="expectation-note">Reach us at <a href="mailto:hi@shinyoctopus.studio">hi@shinyoctopus.studio</a> or use the contact form.</p>
       <Button text="Get in touch" href="/contact" />
     </section>
   </main>
@@ -109,7 +108,7 @@ const aboutSchema = {
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
+    width: min(100%, 40rem);
     min-width: 0;
     margin: 0 auto;
     padding: 6.5rem 1rem 4rem;
@@ -133,16 +132,17 @@ const aboutSchema = {
     font-family: var(--font-titles);
     font-size: clamp(2.4rem, 7vw, 4.5rem);
     line-height: 0.95;
-    font-weight: 100;
+    font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     max-width: 50rem;
   }
 
   .page-header > p:last-child {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.75);
     max-width: 40rem;
+    line-height: 1.6;
   }
 
   section {
@@ -195,12 +195,21 @@ const aboutSchema = {
   }
 
   .closing h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    line-height: 1;
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
   }
 
   .closing p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.75;
     max-width: 32rem;
     margin-left: auto;
     margin-right: auto;
@@ -208,8 +217,9 @@ const aboutSchema = {
   }
 
   .expectation-note {
-    opacity: 0.7;
-    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    opacity: 0.5;
     text-align: center;
     margin-bottom: 1.5rem;
   }

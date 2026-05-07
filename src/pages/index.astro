@@ -1,14 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import SectionWhat from "../components/SectionWhat.astro";
 import ProyectShowcase from "../components/ProyectShowcase.astro";
 import Path from "../components/Path.astro";
 import AuditSection from "../components/AuditSection.astro";
 import AboutSection from "../components/AboutSection.astro";
 import End from "../components/End.astro";
 
+const beemyhostPlaceholders = {
+    bg: "/images/beemyhost-showcase-bg.png",
+    s1: "/images/beemyhost-showcase-1.png",
+    s2: "/images/beemyhost-showcase-2.png",
+    s3: "/images/beemyhost-showcase-3.png",
+};
+
 // Importar imágenes para optimización
+// Beemyhost
+import beelogo from "../images/beelogo.png";
+
 // Primos Games
 import primosBg from "../images/primos_bg.png";
 import primos1 from "../images/primos_1.png";
@@ -28,9 +37,7 @@ import victoriaVenus2 from "../images/la_victoria_de_venus_2.png";
 import victoriaVenus3 from "../images/la_victoria_de_venus_3.png";
 
 // Configuración para precargar fuentes críticas
-const fontPreload = [
-  { href: "/fonts/PPHatton-Ultralight.woff2", type: "font/woff2", crossorigin: true }
-];
+const fontPreload: Array<{ href: string; type: string; crossorigin: boolean }> = [];
 
 const websiteSchema = {
   "@context": "https://schema.org",
@@ -76,7 +83,7 @@ const websiteSchema = {
         
         .hero-title h1 {
             text-align: center;
-            font-weight: 400;
+            font-weight: 300;
             line-height: 0.9;
             text-transform: uppercase;
             margin: 0 auto;
@@ -100,9 +107,21 @@ const websiteSchema = {
         }
     </style>
     
+    <main id="main-content" style="display:contents">
     <Hero />
-    <SectionWhat />
-    <ProyectShowcase 
+    <ProyectShowcase
+        title="BeeMyHost"
+        backgroundImage={beelogo}
+        backgroundSmall
+        images={[]}
+        websiteUrl="https://beemyhost.com.ar"
+        testimonial={{
+            text: "The new website was a before and after for BeeMyHost. We used to speak with four or five owners in a month, and now we can have ten owner conversations in a single week. The site explains how we work, builds trust, and shows up well in AI searches even ahead of much larger competitors. The gap between our website and the rest of the market is a different league, and that is what positions us today.",
+            name: "Nicolás Torchia",
+            position: "CEO"
+        }}
+    />
+    <ProyectShowcase
         title="Primos games"
         backgroundImage={primosBg}
         images={[primos1, primos2, primos3]}
@@ -113,10 +132,11 @@ const websiteSchema = {
             position: "Founder"
         }}
     />
-    <ProyectShowcase 
+    <ProyectShowcase
         title="Evos"
         backgroundImage={evosBg}
-        images={[evos1, evos2, evos3]}
+        backgroundSmall
+        images={[]}
         websiteUrl="https://evos.com.ar"
         testimonial={{
             text: "We worked alongside the Shiny team (I include myself because they made me part of the process from the very beginning at every stage) on a website for my brand, where the concepts of innovation and accessibility would be reflected from a playful perspective. I was very satisfied with the result, which clearly shows great professionalism and passion put towards achieving the proposed goal.",
@@ -124,7 +144,7 @@ const websiteSchema = {
             position: "Owner"
         }}
     />
-    <ProyectShowcase 
+    <ProyectShowcase
         title="La Victoria de Venus"
         backgroundImage={victoriaVenusBg}
         images={[victoriaVenus1, victoriaVenus2, victoriaVenus3]}
@@ -139,4 +159,5 @@ const websiteSchema = {
     <AuditSection />
     <AboutSection />
     <End />
+    </main>
 </Layout>

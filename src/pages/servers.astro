@@ -63,7 +63,6 @@ const platformFaqSchema = {
 <Layout title={pageTitle} description={pageDescription} schema={[platformServiceSchema, platformFaqSchema]}>
   <main id="main-content" class="content-page">
     <header class="page-header">
-      <p class="kicker">Platform strategy</p>
       <h1>Choose the stack that helps your website grow</h1>
       <p>
         We recommend platforms based on your context: how fast you need to launch, who manages content, and how your
@@ -74,7 +73,10 @@ const platformFaqSchema = {
     <section>
       <h2>What we optimize for</h2>
       <p>
-        The right platform choice eliminates operational friction and gives your team the speed, performance, and autonomy they need to grow. We evaluate infrastructure based on your specific business context, not industry trends.
+        The right platform choice eliminates operational friction and gives your team the speed, performance, and autonomy they need to grow.
+      </p>
+      <p>
+        We evaluate infrastructure based on your specific business context, not industry trends.
       </p>
       <ul>
         <li>Faster launch with fewer operational headaches.</li>
@@ -123,7 +125,7 @@ const platformFaqSchema = {
           <h3>Custom builds with Astro and Cloudflare</h3>
           <p>
             When off-the-shelf platforms fall short, we build custom websites with Astro and Cloudflare Pages. You get
-            top-tier performance, a tailored admin panel for your team, and full control over every detail — without
+            top-tier performance, a tailored admin panel for your team, and full control over every detail, without
             the constraints or monthly fees of traditional CMS platforms.
           </p>
         </article>
@@ -152,27 +154,27 @@ const platformFaqSchema = {
           </thead>
           <tbody>
             <tr>
-              <td data-label="Business need">Commercial WordPress site</td>
+              <td data-label="Business need">Commercial WordPress&nbsp;site</td>
               <td data-label="Recommended setup">Kinsta</td>
               <td data-label="Why it fits">Reliable performance and smooth day-to-day management.</td>
             </tr>
             <tr>
-              <td data-label="Business need">General business website</td>
+              <td data-label="Business need">General business&nbsp;website</td>
               <td data-label="Recommended setup">Cloudflare layer</td>
               <td data-label="Why it fits">Better speed, stronger resilience, and safer delivery.</td>
             </tr>
             <tr>
-              <td data-label="Business need">Launch and campaign pages</td>
+              <td data-label="Business need">Launch and campaign&nbsp;pages</td>
               <td data-label="Recommended setup">Framer</td>
               <td data-label="Why it fits">Fast publishing and quick message iteration.</td>
             </tr>
             <tr>
-              <td data-label="Business need">Brand site with frequent content updates</td>
+              <td data-label="Business need">Brand site with frequent content&nbsp;updates</td>
               <td data-label="Recommended setup">Webflow</td>
               <td data-label="Why it fits">Team autonomy with high visual control.</td>
             </tr>
             <tr>
-              <td data-label="Business need">Custom product or unique requirements</td>
+              <td data-label="Business need">Custom product or unique&nbsp;requirements</td>
               <td data-label="Recommended setup">Astro + Cloudflare</td>
               <td data-label="Why it fits">Maximum performance, full control, and a custom admin built for your workflow.</td>
             </tr>
@@ -214,7 +216,6 @@ const platformFaqSchema = {
     <section class="closing">
       <h2>Not sure which setup fits your business?</h2>
       <p>Book a call and get a clear platform recommendation based on your goals.</p>
-      <p class="expectation">The consultation is free and takes about 15 minutes. You'll get a written recommendation within 48 hours.</p>
       <Button text="Book a free 15-min call" href="/contact" />
     </section>
   </main>
@@ -222,19 +223,21 @@ const platformFaqSchema = {
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
-    min-width: 0;
-    margin: 0 auto;
-    padding: 6.5rem 1rem 4rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+    padding: 6.5rem 2rem 4rem;
   }
 
   .page-header {
+    grid-column: 4 / 10;
     margin-bottom: 4rem;
     padding-bottom: 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .kicker {
+    display: block;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
@@ -253,14 +256,22 @@ const platformFaqSchema = {
   }
 
   .page-header > p:last-child {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.75);
     max-width: 40rem;
+    line-height: 1.6;
   }
 
   section {
+    grid-column: 4 / 10;
     padding: 3.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .faq-section,
+  .closing {
+    grid-column: 5 / 9;
+    border-bottom: none;
   }
 
   section:first-of-type {
@@ -274,7 +285,7 @@ const platformFaqSchema = {
   }
 
   h3 {
-    font-size: 1.12rem;
+    font-size: 1.05rem;
     font-weight: 500;
     margin-bottom: 0.45rem;
   }
@@ -331,6 +342,7 @@ const platformFaqSchema = {
   .pricing-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
   }
 
   .pricing-table th,
@@ -350,6 +362,10 @@ const platformFaqSchema = {
     border-bottom-color: rgba(255, 255, 255, 0.15);
   }
 
+  .pricing-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
   /* FAQ */
   .faq-list {
     display: grid;
@@ -366,7 +382,7 @@ const platformFaqSchema = {
   }
 
   .faq-item dt {
-    font-size: 1.08rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: #fff;
     margin-bottom: 0.6rem;
@@ -387,18 +403,28 @@ const platformFaqSchema = {
   }
 
   .closing h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    line-height: 1;
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
   }
 
   .closing .expectation {
-    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
     opacity: 0.5;
     margin-bottom: 1.5rem;
   }
 
   .closing p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.75;
     max-width: 32rem;
     margin-left: auto;
     margin-right: auto;
@@ -412,6 +438,14 @@ const platformFaqSchema = {
   @media (max-width: 48rem) {
     .content-page {
       padding-top: 5.5rem;
+    }
+
+    .page-header,
+    section,
+    .wide-section,
+    .faq-section,
+    .closing {
+      grid-column: 1 / -1;
     }
 
     .page-header {

@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
 
 const pageTitle = "Privacy Policy | Shiny Octopus";
 const pageDescription =
@@ -12,7 +13,7 @@ const pageDescription =
       <p class="kicker">Privacy</p>
       <h1>Privacy policy</h1>
       <p>
-        We keep this simple and readable. No walls of legal text — just a clear explanation of what data we collect and how we handle it.
+        We keep this simple and readable. No walls of legal text, just a clear explanation of what data we collect and how we handle it.
       </p>
     </header>
 
@@ -22,7 +23,7 @@ const pageDescription =
         When you use our contact form, we collect your <strong>name</strong>, <strong>email address</strong>, and the <strong>message</strong> you send us. That is it.
       </p>
       <p>
-        We do not use cookies for tracking. We do not run Google Analytics or any other tracking script that follows you around the web. Our analytics are handled by Cloudflare Web Analytics, which is privacy-first by design — it collects aggregate performance data without storing personal information or using cookies.
+        We do not use cookies for tracking. We do not run Google Analytics or any other tracking script that follows you around the web. Our analytics are handled by Cloudflare Web Analytics, which is privacy-first by design: it collects aggregate performance data without storing personal information or using cookies.
       </p>
     </section>
 
@@ -42,9 +43,9 @@ const pageDescription =
         We use a small number of third-party services to run this website. Each one was chosen with privacy in mind:
       </p>
       <ul>
-        <li><strong>Cloudflare</strong> — Hosting, CDN, and privacy-first analytics. Cloudflare does not track individual users or use cookies for analytics.</li>
-        <li><strong>Resend</strong> — Email delivery for contact form submissions. Your message data passes through Resend to reach our inbox.</li>
-        <li><strong>Cloudflare Turnstile</strong> — Spam protection on our contact form. Turnstile verifies you are a real person without using CAPTCHAs or tracking cookies.</li>
+        <li><strong>Cloudflare:</strong> hosting, CDN, and privacy-first analytics. Cloudflare does not track individual users or use cookies for analytics.</li>
+        <li><strong>Resend:</strong> email delivery for contact form submissions. Your message data passes through Resend to reach our inbox.</li>
+        <li><strong>Cloudflare Turnstile:</strong> spam protection on our contact form. Turnstile verifies you are a real person without using CAPTCHAs or tracking cookies.</li>
       </ul>
     </section>
 
@@ -61,15 +62,15 @@ const pageDescription =
         Regardless of where you are located, you have the right to:
       </p>
       <ul>
-        <li><strong>Access</strong> — Request a copy of any personal data we hold about you.</li>
-        <li><strong>Correction</strong> — Ask us to correct inaccurate information.</li>
-        <li><strong>Deletion</strong> — Ask us to delete your personal data.</li>
+        <li><strong>Access:</strong> request a copy of any personal data we hold about you.</li>
+        <li><strong>Correction:</strong> ask us to correct inaccurate information.</li>
+        <li><strong>Deletion:</strong> ask us to delete your personal data.</li>
       </ul>
       <p>
         If you are in the European Union, you also have rights under the GDPR including data portability and the right to restrict processing. We respect these rights for all users, not just those in the EU.
       </p>
       <p>
-        To exercise any of these rights, email us at <a href="mailto:hi@shinyoctopus.studio">hi@shinyoctopus.studio</a>.
+        To exercise any of these rights, <a href="/contact">contact us</a>.
       </p>
     </section>
 
@@ -85,9 +86,7 @@ const pageDescription =
       <p>
         If anything here is unclear or you have concerns about how your data is handled, reach out. We are happy to explain.
       </p>
-      <p class="expectation-note">
-        Email us at <a href="mailto:hi@shinyoctopus.studio">hi@shinyoctopus.studio</a>
-      </p>
+      <Button text="Get in touch" href="/contact" />
       <p class="last-updated">Last updated: April 2026</p>
     </section>
   </main>
@@ -95,7 +94,7 @@ const pageDescription =
 
 <style>
   .content-page {
-    width: min(100%, 70rem);
+    width: min(100%, 40rem);
     min-width: 0;
     margin: 0 auto;
     padding: 6.5rem 1rem 4rem;
@@ -119,16 +118,17 @@ const pageDescription =
     font-family: var(--font-titles);
     font-size: clamp(2.4rem, 7vw, 4.5rem);
     line-height: 0.95;
-    font-weight: 100;
+    font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 1.5rem;
     max-width: 50rem;
   }
 
   .page-header > p:last-child {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: rgba(255, 255, 255, 0.75);
     max-width: 40rem;
+    line-height: 1.6;
   }
 
   section {
@@ -181,12 +181,21 @@ const pageDescription =
   }
 
   .closing h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.75rem);
+    line-height: 1;
     max-width: 36rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 1rem;
   }
 
   .closing p {
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.75;
     max-width: 32rem;
     margin-left: auto;
     margin-right: auto;
@@ -194,8 +203,9 @@ const pageDescription =
   }
 
   .expectation-note {
-    opacity: 0.7;
-    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    opacity: 0.5;
     text-align: center;
     margin-bottom: 1.5rem;
   }

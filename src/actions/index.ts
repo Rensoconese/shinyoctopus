@@ -133,8 +133,6 @@ function isDisposableEmail(email: string): boolean {
 }
 
 function validateFormTiming(token: string): boolean {
-  // El token empieza con el timestamp en base36
-  const timestampPart = token.split(/[a-z]/i.length > 1 ? '' : '')[0];
   try {
     // Extraer la parte del timestamp (antes del random string)
     // El formato es: Date.now().toString(36) + random
@@ -190,9 +188,6 @@ const contactFormSchema = z.object({
   source: z.string(),
   otherSource: z.string().optional(),
 });
-
-// Tipo para los datos del formulario
-type ContactFormData = z.infer<typeof contactFormSchema>;
 
 // Tipo para los errores de validación
 export type ContactFormErrors = {
@@ -276,7 +271,7 @@ export const server = {
     if (turnstileToken) {
       const isTurnstileValid = await verifyTurnstileToken(turnstileToken);
       console.log('Turnstile result:', isTurnstileValid, 'token length:', turnstileToken.length);
-      // Log but don't block — Turnstile verification has been unreliable with CSP
+      // Log but don't block: Turnstile verification has been unreliable with CSP
       if (!isTurnstileValid) {
         console.log('Turnstile verification failed, but allowing submission (other anti-spam layers active)');
       }
@@ -379,7 +374,7 @@ export const server = {
       }
 
       // Enviar email con Resend
-      const { data: emailData, error } = await resend.emails.send({
+      const { error } = await resend.emails.send({
         from: 'Shiny Octopus <hi@shinyoctopus.studio>', // Usando el dominio verificado en Resend
         to: ['hola@shinyoctopus.com.ar'], // Reemplaza con tu correo
         replyTo: result.data.email, // Para que puedas responder directamente al remitente

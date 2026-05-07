@@ -1,5 +1,5 @@
 ---
-title: "5 Signs Your Website Is Quietly Losing Traffic"
+title: "5 signs your website is quietly losing traffic"
 description: "Slow pages, broken links, missing metadata, stale content, and accessibility gaps silently erode your rankings. Here is how to find and fix them."
 pubDate: 2026-03-29
 updatedDate: 2026-04-06
