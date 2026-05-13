@@ -11,6 +11,11 @@ const blog = defineCollection({
     heroImage: z.string().optional(),
     tags: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
+    howToSteps: z.array(z.object({
+      name: z.string(),
+      text: z.string(),
+      url: z.string().optional(),
+    })).optional(),
   }),
 });
 

@@ -1,6 +1,6 @@
 ---
-title: "What is structured data and why your business needs it in 2026"
-description: "Structured data increases click-through rates by 20-40%. Learn what schema markup is, which types matter, and how to implement it."
+title: "Structured Data in 2026: 5 Schema Types That Boost CTR 20-40%"
+description: "Pages with structured data see 20-40% higher CTR and 36% more AI Overview citations. The 5 schema types that capture 90% of the value, with code."
 pubDate: 2026-04-09
 draft: false
 tags: ["seo", "structured-data", "schema-markup", "strategy"]

@@ -1,6 +1,6 @@
 ---
-title: "How AI search engines affect your website traffic"
-description: "Learn how AI search engines are reshaping website traffic and what your business can do to stay visible in ChatGPT, Perplexity, and Google AI Overviews."
+title: "How AI Search Is Killing Organic Traffic in 2026"
+description: "AI Overviews now appear in 25.8% of US searches and ChatGPT delivers 87.4% of AI referrals. See which sectors are losing clicks in 2026 and 5 fixes."
 pubDate: 2026-04-06
 draft: false
 tags: ["seo", "ai-search", "traffic", "strategy"]

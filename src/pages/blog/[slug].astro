@@ -20,6 +20,38 @@ const { Content } = await render(post);
 const wordCount = post.body ? post.body.split(/\s+/).length : 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
 
+// FAQPage schema: parse H2/H3 that are questions, use first paragraph as answer
+const bodyForFaq = (post.body || "") + "\n## __END__\n";
+const faqQuestionRegex = /^(?:##|###) ((?:What|How|Why|Should|When|Can|Is|Does|Do|Are|Will|Where)[^\n]*\?)\s*\n+([\s\S]*?)(?=\n(?:##|###) )/gm;
+const faqMatches = [...bodyForFaq.matchAll(faqQuestionRegex)];
+const faqItems = faqMatches.slice(0, 10).map(([, question, answer]) => {
+  const raw = answer
+    .trim()
+    .split(/\n\n/)[0]
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/\[(.+?)\]\([^)]+\)/g, "$1")
+    .replace(/[*_`#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  const cleanAnswer = raw.length > 500
+    ? raw.slice(0, 500).replace(/\s+\S*$/, "") + "..."
+    : raw;
+  return {
+    "@type": "Question",
+    "name": question.trim(),
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": cleanAnswer,
+    },
+  };
+}).filter(item => item.acceptedAnswer.text.length > 20);
+
+const faqSchema = faqItems.length >= 3 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems,
+} : null;
+
 const dateFormatOptions: Intl.DateTimeFormatOptions = {
   year: "numeric",
   month: "long",
@@ -32,18 +64,33 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", dateFormatOp
 const updatedDate = post.data.updatedDate || post.data.pubDate;
 const formattedUpdatedDate = updatedDate.toLocaleDateString("en-US", dateFormatOptions);
 
+const articleImage = post.data.heroImage
+  ? (post.data.heroImage.startsWith("http") ? post.data.heroImage : `https://shinyoctopus.studio${post.data.heroImage}`)
+  : "https://shinyoctopus.studio/images/og-image.jpg";
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": post.data.title,
   "description": post.data.description,
+  "image": articleImage,
   "datePublished": post.data.pubDate.toISOString(),
   "dateModified": updatedDate.toISOString(),
   "wordCount": wordCount,
   "author": {
-    "@type": "Organization",
-    "name": "Shiny Octopus",
-    "url": "https://shinyoctopus.studio"
+    "@type": "Person",
+    "name": "Renso Colimodio",
+    "url": "https://shinyoctopus.studio/about/",
+    "jobTitle": "Founder & SEO Consultant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Shiny Octopus",
+      "url": "https://shinyoctopus.studio"
+    },
+    "sameAs": [
+      "https://x.com/Rensoconese",
+      "https://www.linkedin.com/in/rensoconese/"
+    ]
   },
   "publisher": {
     "@type": "Organization",
@@ -55,15 +102,34 @@ const articleSchema = {
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://shinyoctopus.studio/blog/${post.id}`
+    "@id": `https://shinyoctopus.studio/blog/${post.id}/`
   },
   ...(post.data.tags && { "keywords": post.data.tags.join(", ") })
 };
+
+const howToSchema = post.data.howToSteps && post.data.howToSteps.length >= 3 ? {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": post.data.title,
+  "description": post.data.description,
+  "step": post.data.howToSteps.map((s, i) => ({
+    "@type": "HowToStep",
+    "position": i + 1,
+    "name": s.name,
+    "text": s.text,
+    ...(s.url && { "url": s.url }),
+  })),
+} : null;
+
+const allSchemas = [articleSchema];
+if (faqSchema) allSchemas.push(faqSchema);
+if (howToSchema) allSchemas.push(howToSchema);
+const postSchema = allSchemas.length === 1 ? allSchemas[0] : allSchemas;
 ---
 
-<Layout title={`${post.data.title} | Shiny Octopus`} description={post.data.description} schema={articleSchema}>
+<Layout title={`${post.data.title} | Shiny Octopus`} description={post.data.description} schema={postSchema}>
   <main id="main-content" class="content-page">
-    <a href="/blog" class="back-link">&larr; Back to blog</a>
+    <a href="/blog/" class="back-link">&larr; Back to blog</a>
 
     <article class="post">
       <header class="post-header">

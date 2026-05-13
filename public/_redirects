@@ -11,3 +11,7 @@
 /case-studies/beemyhost /case-studies/beemyhost/ 301
 /case-studies/be-my-host /case-studies/beemyhost/ 301
 /case-studies/be-my-host/ /case-studies/beemyhost/ 301
+
+# Trailing slash enforcement for dynamic pages (blog posts, case studies)
+/blog/* /blog/:splat/ 301
+/case-studies/* /case-studies/:splat/ 301
