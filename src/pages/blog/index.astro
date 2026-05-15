@@ -39,7 +39,7 @@ const dateFormatOptions: Intl.DateTimeFormatOptions = {
       ) : (
         <section class="posts-list">
           {posts.map((post) => (
-            <a href={`/blog/${post.id}`} class="post-card">
+            <a href={`/blog/${post.id}/`} class="post-card">
               <article>
                 <time datetime={post.data.pubDate.toISOString()}>
                   {post.data.pubDate.toLocaleDateString("en-US", dateFormatOptions)}

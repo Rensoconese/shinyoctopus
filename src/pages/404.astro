@@ -3,12 +3,74 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Page Not Found | Shiny Octopus">
-  <main id="main-content" class="flex flex-col items-center justify-center min-h-screen px-4 py-16 text-center">
-    <h1 class="text-6xl font-bold mb-4">404</h1>
-    <h2 class="text-2xl font-semibold mb-6">Page Not Found</h2>
-    <p class="text-lg mb-8">Sorry, the page you are looking for doesn't exist or has been moved.</p>
-    <a href="/" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-      Back to Home
-    </a>
+  <main id="main-content" class="notfound">
+    <span class="notfound-eyebrow">Error 404</span>
+    <h1 class="notfound-title">Page not found</h1>
+    <p class="notfound-text">The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="notfound-link">Back to home</a>
   </main>
 </Layout>
+
+<style>
+  .notfound {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    gap: 1.25rem;
+  }
+
+  .notfound-eyebrow {
+    font-family: var(--font-primary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .notfound-title {
+    font-family: var(--font-titles);
+    font-weight: 400;
+    font-size: clamp(2.75rem, 8vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin: 0;
+  }
+
+  .notfound-text {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 28rem;
+  }
+
+  .notfound-link {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .notfound-link:hover,
+  .notfound-link:focus-visible {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+    outline: none;
+  }
+</style>

@@ -28,11 +28,11 @@ export function onRequest({ request }, next) {
         // Añadir headers de seguridad con el nonce generado
         newResponse.headers.set('Content-Security-Policy',
           `default-src 'self'; ` +
-          `script-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://static.cloudflareinsights.com https://unpkg.com https://challenges.cloudflare.com; ` +
+          `script-src 'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://static.cloudflareinsights.com https://unpkg.com https://challenges.cloudflare.com https://www.googletagmanager.com; ` +
           `style-src 'self' 'unsafe-inline' blob: https://use.typekit.net; ` +
-          `img-src 'self' data: blob: https://p.typekit.net; ` +
+          `img-src 'self' data: blob: https://p.typekit.net https://www.googletagmanager.com https://www.google-analytics.com; ` +
           `font-src 'self' https://use.typekit.net https://p.typekit.net; ` +
-          `connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com https://use.typekit.net https://p.typekit.net; ` +
+          `connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com https://use.typekit.net https://p.typekit.net https://www.google-analytics.com https://*.analytics.google.com https://*.google-analytics.com https://www.googletagmanager.com; ` +
           `frame-src https://challenges.cloudflare.com; ` +
           `object-src 'none'; ` +
           `base-uri 'none'; ` +

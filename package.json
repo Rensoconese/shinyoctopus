@@ -7,7 +7,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && set -a && . ./.env && set +a && npx wrangler pages deploy dist --commit-dirty=true"
+    "deploy": "npm run build && set -a && . ./.env && set +a && npx wrangler pages deploy dist --commit-dirty=true && node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.5.3",
