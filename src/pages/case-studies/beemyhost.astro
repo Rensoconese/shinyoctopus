@@ -1,0 +1,851 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import pageviewsImage from "../../images/beemyhost-10000-pageviews.png";
+import octopusGarden from "../../images/octopus_garden.png";
+import beemyhostScreenshot from "../../images/beemyhost-blog-screenshot.png";
+
+const pageTitle = "BeeMyHost Case Study | Shiny Octopus";
+const pageDescription =
+  "How Shiny Octopus helped BeeMyHost create a conversion-focused website that reached 10,000+ pageviews and improved owner acquisition conversations.";
+
+const websiteUrl = "https://beemyhost.com.ar";
+
+const reviewBody =
+  "The new website was a before and after for BeeMyHost. We used to speak with four or five owners in a month, and now we can have ten owner conversations in a single week. The site explains how we work, builds trust, and shows up well in AI searches even ahead of much larger competitors. The gap between our website and the rest of the market is a different league, and that is what positions us today.";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BeeMyHost: a conversion-focused website for short-term rental management",
+  "description": pageDescription,
+  "url": "https://shinyoctopus.studio/case-studies/beemyhost/",
+  "author": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio",
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio",
+  },
+  "about": {
+    "@type": "Organization",
+    "name": "BeeMyHost",
+    "url": websiteUrl,
+  },
+};
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Organization",
+    "name": "Shiny Octopus",
+    "url": "https://shinyoctopus.studio",
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Nicolás Torchia",
+    "jobTitle": "CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "BeeMyHost",
+      "url": websiteUrl,
+    },
+  },
+  "reviewBody": reviewBody,
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+  },
+};
+
+const caseSchema = [articleSchema, reviewSchema];
+---
+
+<Layout title={pageTitle} description={pageDescription} schema={caseSchema}>
+  <main id="main-content" class="case-page">
+    <header class="case-hero">
+      <div class="hero-bg" aria-hidden="true">
+        <Image
+          src={octopusGarden}
+          alt=""
+          widths={[1200, 1800, 2400]}
+          sizes="100vw"
+          quality={75}
+          loading="eager"
+        />
+        <div class="hero-bg-overlay"></div>
+      </div>
+
+      <div class="hero-screenshot">
+        <div class="hero-screenshot-glow" aria-hidden="true"></div>
+        <Image
+          src={beemyhostScreenshot}
+          alt="Screenshot of the BeeMyHost blog page"
+          widths={[800, 1200, 1600]}
+          sizes="(max-width: 48rem) 90vw, 56rem"
+          quality={85}
+          loading="eager"
+        />
+      </div>
+
+      <div class="hero-bottom">
+        <h1>BeeMyHost</h1>
+        <div class="hero-info">
+          <p class="lede">
+            A conversion-focused website that repositioned BeeMyHost as a trusted
+            property management partner during a long, considered owner decision.
+          </p>
+          <a
+            class="hero-link"
+            href={websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Visit beemyhost.com.ar
+            <span aria-hidden="true">&nbsp;&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section class="case-section editorial-section">
+      <div class="section-inner">
+        <p class="col-kicker section-kicker">Context</p>
+        <h2 class="col-title">From an unclear presence to a confident pitch</h2>
+        <div class="col-body">
+          <p>
+            BeeMyHost is a short-term rental property management company. They
+            needed a clearer, more credible digital presence to reach apartment
+            owners evaluating who should manage their property, and to compete
+            for attention against much larger players in the market.
+          </p>
+          <p>
+            The previous site did not reflect the level of service they offered.
+            It was not pulling in qualified conversations, and it was not helping
+            the team explain how they actually work. We rebuilt the site with one
+            goal in mind: turn the website into a real commercial tool.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section editorial-section">
+      <div class="section-inner">
+        <p class="col-kicker section-kicker">Challenge</p>
+        <h2 class="col-title">A long sales cycle that has to be earned</h2>
+        <div class="col-body">
+          <p>
+            The sale is rarely immediate in this market. Many incoming contacts
+            have not even bought the apartment yet. They are still evaluating
+            buildings, finishing the unit, or deciding whether to manage it
+            themselves or hand it over. A typical conversation today can take
+            three or four months to mature into a signed property under
+            management.
+          </p>
+          <p>
+            That meant the site could not behave like a brochure. It had to
+            educate, build trust, and stay useful across that extended decision
+            process, while still doing the job of generating qualified leads
+            from day one.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section editorial-section">
+      <div class="section-inner">
+        <p class="col-kicker section-kicker">What we did</p>
+        <h2 class="col-title">A website built around how owners actually decide</h2>
+        <ul class="col-body work-list">
+          <li>
+            <span class="work-title">Conversion-focused experience</span>
+            <span class="work-desc">Restructured the site around owner decisions, not internal departments.</span>
+          </li>
+          <li>
+            <span class="work-title">Clearer messaging for property owners</span>
+            <span class="work-desc">Replaced generic copy with language that speaks directly to the people considering management.</span>
+          </li>
+          <li>
+            <span class="work-title">Explanation of the work system</span>
+            <span class="work-desc">Made the BeeMyHost method visible: what they do, how they do it, and what owners can expect at each step.</span>
+          </li>
+          <li>
+            <span class="work-title">Better content architecture</span>
+            <span class="work-desc">Organized the site so common questions get resolved before the first contact, making incoming conversations shorter and more qualified.</span>
+          </li>
+          <li>
+            <span class="work-title">Positioning for traditional and AI-assisted search</span>
+            <span class="work-desc">Built the site to be discoverable in classic search results and in AI-driven experiences where many owners now compare property management options.</span>
+          </li>
+          <li>
+            <span class="work-title">Trust-building against larger competitors</span>
+            <span class="work-desc">Used structure, content, and tone to make BeeMyHost feel like a serious option, even next to bigger brands.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="case-section results-section">
+      <div class="section-inner">
+        <p class="results-kicker section-kicker">Results</p>
+        <h2 class="results-title">More conversations, better conversations</h2>
+        <div class="results-body">
+          <p>
+            BeeMyHost surpassed <strong>10,000 pageviews</strong> for the first
+            time after the new site launched. According to Cloudflare, this was
+            a milestone the previous website never reached.
+          </p>
+          <p>
+            The volume of owner conversations grew clearly. The team used to
+            speak with four or five owners in a month, and can now speak with
+            up to ten owners in a single week. They expect that stronger flow
+            to translate into seven or eight new properties under management
+            per month once current conversations mature, in roughly three to
+            four months.
+          </p>
+          <p>
+            Many of those incoming contacts are owners who have not even bought
+            the apartment yet. They are still evaluating buildings, finishing
+            the unit, or deciding who will manage it. The site explains the
+            BeeMyHost service, sets expectations, and stays useful across that
+            extended decision period.
+          </p>
+          <p>
+            The website also makes the commercial process more efficient.
+            Owners arrive at the first call already informed about how
+            BeeMyHost works, which makes those conversations shorter, more
+            focused, and easier to close.
+          </p>
+          <p>
+            On top of that, BeeMyHost shows up well in searches made through AI
+            tools, often ahead of much larger competitors that do not
+            consistently appear in those answers. The team describes the gap
+            against competitor websites as a different league: BeeMyHost is
+            sales-oriented, well explained, and built around the questions
+            owners actually ask.
+          </p>
+        </div>
+        <figure class="results-figure">
+          <Image
+            src={pageviewsImage}
+            alt="Cloudflare notification confirming BeeMyHost surpassed 10,000 pageviews for the first time"
+            widths={[400, 800]}
+            sizes="(max-width: 48rem) 100vw, 28rem"
+            quality={85}
+          />
+          <figcaption>
+            Cloudflare confirmation: BeeMyHost surpassed 10,000 pageviews for
+            the first time.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="case-section editorial-section quote-section">
+      <div class="section-inner">
+        <p class="col-kicker section-kicker">Testimonial</p>
+        <div class="col-body testimonial-card">
+          <p class="testimonial-text">
+            The new website was a before and after for BeeMyHost. Where we
+            used to speak with four or five owners in a month, we can now have
+            ten owner conversations in a single week. The site explains how we work,
+            builds trust, and shows up well in AI searches even ahead of much
+            larger competitors. The gap between our website and the rest of the
+            market is a different league, and that is what positions us today.
+          </p>
+          <div class="testimonial-author">
+            <span class="author-name">Nicolás Torchia</span>
+            <span class="author-position">CEO</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section closing">
+      <div class="section-inner">
+        <h2>Have a project like this?</h2>
+        <p>
+          If you want to turn your website into a real commercial tool that
+          explains your work, builds trust, and brings in better conversations,
+          we would love to hear about it.
+        </p>
+        <a class="closing-cta" href="/contact">Let's talk</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .case-page {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 1.5rem;
+    padding: 6.5rem 2rem 4rem;
+    overflow-x: clip;
+  }
+
+  /* ── Hero: logo centered, title + info al bottom ── */
+  .case-hero {
+    position: relative;
+    isolation: isolate;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-template-rows: 1fr auto;
+    min-height: 80vh;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Background image: edge-to-edge debajo del nav */
+  .hero-bg {
+    position: absolute;
+    top: -6.5rem; /* cancela el padding-top del case-page */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: calc(100% + 6.5rem);
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-bg :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    display: block;
+  }
+
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(
+        ellipse at 50% 35%,
+        transparent 0%,
+        rgba(0, 0, 0, 0.4) 55%,
+        rgba(0, 0, 0, 0.85) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.3) 25%,
+        rgba(0, 0, 0, 0.55) 55%,
+        rgba(0, 0, 0, 0.92) 85%,
+        rgba(0, 0, 0, 1) 100%
+      );
+  }
+
+  .hero-screenshot {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+  }
+
+  /* Glow blanco radial detrás del screenshot */
+  .hero-screenshot-glow {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: clamp(34rem, 58vw, 56rem);
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(255, 255, 255, 0.6) 0%,
+      rgba(255, 255, 255, 0.28) 16%,
+      rgba(255, 255, 255, 0.1) 36%,
+      rgba(255, 255, 255, 0.02) 58%,
+      transparent 78%
+    );
+    filter: blur(30px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-screenshot :global(img) {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 44rem;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+    box-shadow:
+      0 30px 80px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-bottom {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+  }
+
+  .case-hero h1 {
+    grid-column: 1 / 9;
+  }
+
+  .hero-info {
+    grid-column: 9 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .hero-facts {
+    margin: 0;
+    padding: 1.25rem 0 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+  }
+
+  .hero-facts div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .hero-facts dt {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .hero-facts dd {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .hero-link {
+    align-self: flex-start;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.92rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 0.15rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .hero-link:hover,
+  .hero-link:focus-visible {
+    border-color: #fff;
+    outline: none;
+  }
+
+  .case-hero h1 {
+    font-family: var(--font-titles);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.88;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+  }
+
+  .lede {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 36rem;
+    line-height: 1.6;
+  }
+
+  .hero-fact-label {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.2rem;
+  }
+
+  .hero-fact-value {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .metric-value {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, #fff 0%, #88d8ff 130%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .metric-label {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .metric-note {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+  }
+
+  .primary-cta {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    padding: 1rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 500;
+    border: 1px solid #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .primary-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(136, 216, 255, 0.4);
+  }
+
+
+  /* ── Visual: full bleed ── */
+  .case-visual {
+    grid-column: 1 / -1;
+    margin: 0 0 0;
+    overflow: hidden;
+  }
+
+  .case-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* ── Sections ── */
+  .case-section {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    padding: 4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* editorial-section: subgrid para el patrón kicker/título/cuerpo */
+  .editorial-section .section-inner,
+  .results-section .section-inner {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+    align-items: start;
+  }
+
+  /* fallback para secciones sin patrón editorial */
+  .section-inner {
+    grid-column: 2 / 11;
+  }
+
+  /* patrón editorial genérico */
+  .col-kicker {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .col-title {
+    grid-column: 2 / 5;
+    grid-row: 1;
+  }
+
+  .col-body {
+    grid-column: 9 / 13;
+    grid-row: 1;
+  }
+
+  .case-section .section-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px !important;
+    color: #fff !important;
+    margin-bottom: 1rem;
+  }
+
+  .case-section h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-section p {
+    color: rgba(255, 255, 255, 0.83);
+    line-height: 1.68;
+    max-width: 38rem;
+    font-size: 1.02rem;
+  }
+
+  .case-section p + p {
+    margin-top: 1rem;
+  }
+
+  .case-section strong {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .col-body.work-list,
+  .col-body.testimonial-card {
+    grid-column: 9 / 12;
+  }
+
+  .work-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .work-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .work-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .work-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+  }
+
+  /* ── Results: reutiliza patrón editorial + figura ── */
+  .results-kicker {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .results-title {
+    grid-column: 2 / 5;
+    grid-row: 1;
+  }
+
+  .results-body {
+    grid-column: 9 / 13;
+    grid-row: 1 / 3;
+  }
+
+  .results-figure {
+    grid-column: 9 / 12;
+    grid-row: 3;
+    margin: 2rem 0 0;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .results-figure :global(img) {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+  }
+
+  .results-figure figcaption {
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.45;
+    text-align: center;
+  }
+
+  /* ── Quote ── */
+  .testimonial-card {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+  .quote-mark {
+    display: block;
+    font-family: var(--font-titles);
+    font-size: 4rem;
+    line-height: 1;
+    opacity: 0.2;
+    color: #88d8ff;
+    margin-bottom: 0.5rem;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author-name {
+    font-size: 1rem;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  .author-position {
+    font-size: 1rem;
+    opacity: 0.5;
+  }
+
+  /* ── Closing ── */
+  .closing {
+    border-bottom: 0;
+    padding: 5rem 0 1rem;
+    display: flex !important;
+    justify-content: center;
+  }
+
+  .case-section.closing .section-inner {
+    grid-column: unset !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 32rem;
+    width: 100%;
+  }
+
+  .closing h2 {
+    font-family: var(--font-titles);
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .closing p {
+    margin-bottom: 2rem;
+  }
+
+  .closing-cta {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    padding: 1rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 500;
+    border: 1px solid #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .closing-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 22px rgba(136, 216, 255, 0.4);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 60rem) {
+    .case-hero h1,
+    .hero-info {
+      grid-column: 1 / -1;
+    }
+    .hero-bottom {
+      gap: 2rem;
+    }
+    .section-inner {
+      grid-column: 1 / -1;
+    }
+    .col-kicker,
+    .col-title,
+    .col-body,
+    .results-kicker,
+    .results-title,
+    .results-body,
+    .results-figure {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
+    .results-body {
+      grid-row: auto;
+    }
+    .quote-section .section-inner,
+    .case-section.closing .section-inner {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 48rem) {
+    .case-page {
+      padding-top: 5.5rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      column-gap: 1rem;
+    }
+
+    .case-hero {
+      padding-bottom: 2.5rem;
+    }
+
+    .case-section {
+      padding: 2.75rem 0;
+    }
+
+    .quote {
+      padding: 1.75rem 1.4rem;
+    }
+
+    .closing {
+      padding: 3rem 0 1rem;
+    }
+
+    .primary-cta {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

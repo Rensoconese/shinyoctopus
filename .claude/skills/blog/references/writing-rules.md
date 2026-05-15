@@ -37,7 +37,7 @@
 
 - **Internal links**: Link to at least 2 other pages on shinyoctopus.studio (service pages, other blog posts).
 - **External links**: Link to authoritative sources for statistics. Use descriptive anchor text, not "click here".
-- **CTA**: Every post ends with a CTA linking to a service page (/seo, /accesibilidad, /servidores) and /contact.
+- **CTA**: Every post ends with a CTA linking to a service page (/seo, /accessibility, /servers) and /contact.
 
 ## Tone & Voice
 

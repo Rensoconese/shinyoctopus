@@ -26,7 +26,7 @@ Here is how the market breaks down:
 | DIY tools (Screaming Frog, Ahrefs, SEMrush) | $0–$100/month | Raw data exports, automated issue detection, no interpretation or prioritization |
 | Freelance SEO specialist | $500–$2,000 | Manual review, written recommendations, limited scope |
 | SEO agency | $2,000–$10,000+ | Comprehensive audit, strategy document, implementation roadmap, ongoing support |
-| Shiny Octopus | $490–$2,590 | [Full audit tiers](/seo) with technical, on-page, content, and accessibility analysis |
+| Shiny Octopus | $490–$2,590 | [Full audit tiers](/seo/) with technical, on-page, content, and accessibility analysis |
 
 **According to First Page Sage benchmarks, organic search consistently delivers higher conversion rates than most other digital marketing channels**, which is why an audit that improves your organic performance tends to pay for itself faster than equivalent spending on paid ads.
 
@@ -36,7 +36,7 @@ At Shiny Octopus, we offer three tiers designed to match different business stag
 - **Shiny Pro** (USD 1,290). A robust audit covering technical health, content gaps, competitive positioning, and accessibility compliance.
 - **Shiny Premium** (USD 2,590). A comprehensive audit with everything in Pro plus in-depth content strategy, advanced competitive analysis, and a prioritized implementation roadmap.
 
-You can see full details on our [SEO services page](/seo).
+You can see full details on our [SEO services page](/seo/).
 
 ## What factors affect the cost of an SEO audit?
 
@@ -62,7 +62,7 @@ The price of an SEO audit is driven by four main variables: site size, technical
 
 A professional SEO audit should cover four core areas: technical health, on-page optimization, content quality, and competitive positioning. If an auditor only looks at one of these, you are getting a partial picture that could lead you to invest in the wrong fixes.
 
-**Technical audit.** This covers crawlability, indexation, site speed, Core Web Vitals, mobile usability, structured data, canonical tags, redirects, and server configuration. The most common technical findings we encounter in audits are uncompressed images (often responsible for 60-80% of total page weight), render-blocking JavaScript, broken internal links, and poor heading structure. These are the issues that [silently erode your traffic over time](/blog/5-signs-your-website-is-losing-traffic).
+**Technical audit.** This covers crawlability, indexation, site speed, Core Web Vitals, mobile usability, structured data, canonical tags, redirects, and server configuration. The most common technical findings we encounter in audits are uncompressed images (often responsible for 60-80% of total page weight), render-blocking JavaScript, broken internal links, and poor heading structure. These are the issues that [silently erode your traffic over time](/blog/5-signs-your-website-is-losing-traffic/).
 
 **On-page optimization.** This examines title tags, meta descriptions, heading hierarchy, keyword targeting, internal linking, and URL structure. Missing or duplicate meta descriptions are one of the most frequent issues we find, and one of the easiest to fix.
 
@@ -70,7 +70,7 @@ A professional SEO audit should cover four core areas: technical health, on-page
 
 **Competitive analysis.** Understanding what your competitors rank for, how their content is structured, and where the gaps exist gives you a strategic advantage that no purely technical audit can provide. **With AI Overviews now appearing in 25.8% of US search results, understanding the competitive landscape has become even more critical**, because the pages that earn featured positions in AI-generated answers are pulling traffic away from everyone else.
 
-A thorough audit should also assess [web accessibility](/accesibilidad). **The WebAIM 2025 study found that 94.8% of the top one million homepages had detectable WCAG failures, with an average of 51 accessibility errors per page.** Accessibility issues are not just legal risks, they directly affect usability, and usability affects rankings. We wrote more about the connection between [accessibility and conversion rates](/blog/web-accessibility-and-conversion-rates).
+A thorough audit should also assess [web accessibility](/accessibility/). **The WebAIM 2025 study found that 94.8% of the top one million homepages had detectable WCAG failures, with an average of 51 accessibility errors per page.** Accessibility issues are not just legal risks, they directly affect usability, and usability affects rankings. We wrote more about the connection between [accessibility and conversion rates](/blog/web-accessibility-and-conversion-rates/).
 
 ## What is the ROI of investing in an SEO audit?
 
@@ -102,7 +102,7 @@ An SEO audit in 2026 needs to account for this shift. It is no longer enough to 
 
 **With zero-click searches increasing year over year, the sites that maintain strong CTR are the ones with technically sound foundations and content that clearly signals expertise.** A professional audit identifies exactly where your site falls short on both counts.
 
-This is also where accessibility becomes a competitive advantage. Sites that are well-structured, semantically correct, and easy to navigate, the same qualities that make a site accessible, tend to perform better in both traditional and AI-driven search results. The overlap between good [accessibility practices](/accesibilidad) and good SEO is not a coincidence. Your [hosting platform directly impacts the issues an audit reveals](/blog/how-to-choose-right-hosting-platform), a slow server creates performance problems that no amount of on-page optimization can fully overcome.
+This is also where accessibility becomes a competitive advantage. Sites that are well-structured, semantically correct, and easy to navigate, the same qualities that make a site accessible, tend to perform better in both traditional and AI-driven search results. The overlap between good [accessibility practices](/accessibility/) and good SEO is not a coincidence. Your [hosting platform directly impacts the issues an audit reveals](/blog/how-to-choose-right-hosting-platform/), a slow server creates performance problems that no amount of on-page optimization can fully overcome.
 
 ## What should I look for when choosing an SEO audit provider?
 
@@ -124,7 +124,7 @@ Look for providers who explain their process, show sample deliverables, and focu
 - Accessibility review included as part of the standard process.
 - Follow-up support or consultation to answer questions about implementation.
 
-At Shiny Octopus, we include all of these in our [SEO audit packages](/seo). Every audit comes with a prioritized implementation roadmap so you know exactly what to fix first and why it matters.
+At Shiny Octopus, we include all of these in our [SEO audit packages](/seo/). Every audit comes with a prioritized implementation roadmap so you know exactly what to fix first and why it matters.
 
 ## SEO audit cost FAQ
 
@@ -152,6 +152,6 @@ Timelines vary by site size and audit depth. A focused audit of a small site (un
 
 If you have read this far, you already know your site has room to improve. The question is whether you want a generic report that collects dust or a prioritized roadmap that tells you exactly what to fix, in what order, and why it matters for your revenue.
 
-We built our [SEO audit packages](/seo) to deliver the second kind. Every audit includes technical analysis, on-page review, content evaluation, competitive insights, and accessibility checks, because none of those exist in isolation.
+We built our [SEO audit packages](/seo/) to deliver the second kind. Every audit includes technical analysis, on-page review, content evaluation, competitive insights, and accessibility checks, because none of those exist in isolation.
 
 [Get in touch](/contact) to discuss which audit tier fits your business. You will hear from us within 24 hours.

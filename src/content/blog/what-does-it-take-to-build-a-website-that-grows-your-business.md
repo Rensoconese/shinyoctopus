@@ -36,7 +36,7 @@ Development determines what your website can do, how fast it does it, and how ea
 
 This matters for business outcomes because your technology stack directly affects your ability to rank in search engines, maintain security, scale with traffic, and deliver fast experiences to visitors worldwide. A website built on the wrong stack will need increasingly expensive workarounds as your business grows, eventually requiring a full rebuild that could have been avoided with the right decisions upfront.
 
-The choice is not simply between "custom" and "template." It is about matching the platform to your business context: how fast you need to launch, who manages content day-to-day, what your performance requirements are, and how you plan to scale. We covered the details of this decision in our guide on [how to choose the right hosting platform](/blog/how-to-choose-right-hosting-platform). The right platform eliminates operational headaches. The wrong one creates them.
+The choice is not simply between "custom" and "template." It is about matching the platform to your business context: how fast you need to launch, who manages content day-to-day, what your performance requirements are, and how you plan to scale. We covered the details of this decision in our guide on [how to choose the right hosting platform](/blog/how-to-choose-right-hosting-platform/). The right platform eliminates operational headaches. The wrong one creates them.
 
 | Factor | Template/Page Builder | Custom Build (Astro + Cloudflare) |
 |--------|----------------------|-----------------------------------|
@@ -76,7 +76,7 @@ Website security starts with architecture decisions. Sites with fewer moving par
 
 Security also means keeping software current. Every outdated plugin, theme, or dependency is a potential vulnerability. Sites with **50+ plugins** (common on WordPress) have proportionally more exposure than sites with minimal dependencies. The security advantage of custom builds is not that they are inherently invulnerable, it is that they have far fewer components that need to be kept secure.
 
-For businesses handling customer data, payment information, or operating in regulated industries, security is also a compliance requirement. Failing to protect user data creates legal exposure under GDPR, CCPA, and other privacy regulations. The [web accessibility compliance deadlines for 2026](/blog/web-accessibility-compliance-2026-deadlines) overlap with these concerns, accessibility and security are both aspects of responsible digital business that carry legal consequences when neglected.
+For businesses handling customer data, payment information, or operating in regulated industries, security is also a compliance requirement. Failing to protect user data creates legal exposure under GDPR, CCPA, and other privacy regulations. The [web accessibility compliance deadlines for 2026](/blog/web-accessibility-compliance-2026-deadlines/) overlap with these concerns, accessibility and security are both aspects of responsible digital business that carry legal consequences when neglected.
 
 ## How does accessibility affect your market size and conversion rates?
 
@@ -84,9 +84,9 @@ Web accessibility means building a website that works for everyone, including th
 
 **94.8% of the top one million homepages have detectable WCAG failures**, with an average of **51 accessibility errors per page** (WebAIM 2025). That means almost every website is actively blocking potential customers from completing purchases, filling out forms, or navigating content. If your website has accessibility barriers, you are losing revenue from customers who want to buy from you but cannot.
 
-The business case extends beyond the disability community. Accessibility improvements, clearer navigation, better contrast, logical content structure, properly labeled forms, benefit every user. **Accessible websites see conversion rate lifts between 0.5% and 2.5%** because they remove friction from key user journeys for all visitors. We explored this connection in depth in our article on [web accessibility and conversion rates](/blog/web-accessibility-and-conversion-rates).
+The business case extends beyond the disability community. Accessibility improvements, clearer navigation, better contrast, logical content structure, properly labeled forms, benefit every user. **Accessible websites see conversion rate lifts between 0.5% and 2.5%** because they remove friction from key user journeys for all visitors. We explored this connection in depth in our article on [web accessibility and conversion rates](/blog/web-accessibility-and-conversion-rates/).
 
-There is also a growing legal dimension. **Over 4,600 web accessibility lawsuits were filed in the US in 2025 alone**, and the European Accessibility Act takes full effect in June 2025. Businesses that ignore accessibility face both lost revenue and legal risk. Our guide on [web accessibility compliance deadlines for 2026](/blog/web-accessibility-compliance-2026-deadlines) covers the specific regulatory requirements and timelines.
+There is also a growing legal dimension. **Over 4,600 web accessibility lawsuits were filed in the US in 2025 alone**, and the European Accessibility Act takes full effect in June 2025. Businesses that ignore accessibility face both lost revenue and legal risk. Our guide on [web accessibility compliance deadlines for 2026](/blog/web-accessibility-compliance-2026-deadlines/) covers the specific regulatory requirements and timelines.
 
 Accessibility is not a feature you add after launch. It is a quality that needs to be designed and developed into the site from the beginning, in the color choices, the heading structure, the form design, the keyboard navigation, the image descriptions, and the content hierarchy. Building it in costs a fraction of retrofitting it later, and it produces measurably better business outcomes.
 
@@ -108,9 +108,9 @@ Effective SEO in 2026 requires several integrated elements. Clean site architect
 | Multi-modal content | **+317% AI Overview selection** (BrightEdge 2025) | Text-only pages with no structured visual content |
 | Content freshness | 3.2x more AI citations when updated monthly | "Set and forget" content strategy |
 
-If your site is already struggling with traffic, the underlying causes may not be obvious. We covered the most common warning signs in [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic). For a deeper look at how AI search engines are reshaping visibility, read our guide on [how AI search engines affect your website traffic](/blog/how-ai-search-engines-affect-website-traffic).
+If your site is already struggling with traffic, the underlying causes may not be obvious. We covered the most common warning signs in [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic/). For a deeper look at how AI search engines are reshaping visibility, read our guide on [how AI search engines affect your website traffic](/blog/how-ai-search-engines-affect-website-traffic/).
 
-The cost of an SEO problem is not the cost of fixing it, it is the revenue you lose every month it goes unfixed. Our article on [how much an SEO audit costs](/blog/how-much-does-seo-audit-cost) breaks down the investment by scope and what to expect at each level.
+The cost of an SEO problem is not the cost of fixing it, it is the revenue you lose every month it goes unfixed. Our article on [how much an SEO audit costs](/blog/how-much-does-seo-audit-cost/) breaks down the investment by scope and what to expect at each level.
 
 ## Why does treating these pillars separately cost more than integrating them?
 
@@ -124,7 +124,7 @@ This is the core principle behind how we work at Shiny Octopus. Every project ge
 
 The result is a website where every pillar reinforces the others. Accessible content structure improves SEO. Fast performance improves conversion rates. Clean code improves security. Strategic design improves everything.
 
-If you are considering a redesign, our guide on [website redesign without losing SEO](/blog/website-redesign-without-losing-seo) covers how to rebuild your site without losing the search equity you have earned. And our article on [how to prepare your website for Google's AI Overviews](/blog/how-to-prepare-website-for-google-ai-overviews) explains the specific content and technical changes needed to stay visible in the AI search era.
+If you are considering a redesign, our guide on [website redesign without losing SEO](/blog/website-redesign-without-losing-seo/) covers how to rebuild your site without losing the search equity you have earned. And our article on [how to prepare your website for Google's AI Overviews](/blog/how-to-prepare-website-for-google-ai-overviews/) explains the specific content and technical changes needed to stay visible in the AI search era.
 
 ## Frequently asked questions
 
@@ -134,7 +134,7 @@ Cost depends on scope, but a professionally built website with integrated design
 
 ### Can I add SEO and accessibility to my existing website, or do I need a redesign?
 
-You can improve both without a full redesign. Adding [structured data](/blog/what-is-structured-data-and-why-your-business-needs-it), fixing accessibility issues, and optimizing content structure can be done on an existing site. However, if your current platform limits what you can change, which is common with page builders, a strategic rebuild may be more cost-effective than working around limitations indefinitely.
+You can improve both without a full redesign. Adding [structured data](/blog/what-is-structured-data-and-why-your-business-needs-it/), fixing accessibility issues, and optimizing content structure can be done on an existing site. However, if your current platform limits what you can change, which is common with page builders, a strategic rebuild may be more cost-effective than working around limitations indefinitely.
 
 ### How long does it take to build a website properly?
 
@@ -146,7 +146,7 @@ Accessibility and performance are the two most neglected pillars. **94.8% of the
 
 ### How do I know if my current website has problems with these pillars?
 
-Start with a professional audit. An [SEO audit](/seo) reveals how search engines see your site and what is blocking visibility. An [accessibility audit](/accesibilidad) identifies WCAG compliance gaps and conversion barriers. A [platform strategy consultation](/servers) evaluates whether your current technology stack supports or limits your growth. At Shiny Octopus, our audit packages start at $490 for SEO and $590 for accessibility.
+Start with a professional audit. An [SEO audit](/seo/) reveals how search engines see your site and what is blocking visibility. An [accessibility audit](/accessibility/) identifies WCAG compliance gaps and conversion barriers. A [platform strategy consultation](/servers/) evaluates whether your current technology stack supports or limits your growth. At Shiny Octopus, our audit packages start at $490 for SEO and $590 for accessibility.
 
 ## Build a website that works as hard as your business does
 

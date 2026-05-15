@@ -85,7 +85,7 @@ A post FAILS if any of these are true:
 - [ ] Fewer than 3 bolded statistics with sources in the body
 - [ ] No HTML/markdown table anywhere in the post
 - [ ] No FAQ section at the end
-- [ ] No CTA linking to a service page (/seo, /accesibilidad, /servidores) or /contact
+- [ ] No CTA linking to a service page (/seo, /accessibility, /servers) or /contact
 - [ ] Word count under 1,500 or over 3,500
 - [ ] Meta description over 155 characters or missing primary keyword
 - [ ] Missing tags in frontmatter

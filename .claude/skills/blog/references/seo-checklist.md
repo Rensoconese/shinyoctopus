@@ -30,7 +30,7 @@ Run these checks on every post before publishing:
 
 ### 5. Internal Links
 - [ ] At least 2 internal links to other pages
-- [ ] Links to relevant service page (/seo, /accesibilidad, /servidores)
+- [ ] Links to relevant service page (/seo, /accessibility, /servers)
 - [ ] Descriptive anchor text (not "click here")
 - [ ] No broken internal links
 

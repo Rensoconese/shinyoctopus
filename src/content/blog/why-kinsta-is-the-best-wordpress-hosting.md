@@ -62,7 +62,7 @@ Kinsta outperforms WP Engine and SiteGround on raw speed benchmarks, uptime reli
 
 **In independent 2026 benchmarks, Kinsta consistently loads sites between 0.8 and 1.6 seconds, making it the fastest of the three major managed WordPress hosts** (source: White Peak Digital hosting comparison, 2026). WP Engine holds its own in many scenarios but tends to edge ahead only on transaction-heavy e-commerce workloads. SiteGround's performance is adequate at the price point but noticeably slower under sustained load.
 
-The honest tradeoff is price. [Kinsta's](https://kinsta.com/pricing/?kaid=QGYHECRDGAKQ) entry plan is $35/month versus SiteGround's $3–15 introductory pricing. If you are paying $3/month for a brochure site that gets 100 visitors a week, the upgrade will not pay for itself. But if your site converts leads into revenue, the math flips quickly. **According to Deloitte research, a one-second improvement in page load time can increase conversions by up to 7%** (source: Deloitte, "Milliseconds Make Millions," 2020). Pair this with our [guide on choosing the right hosting platform](/blog/how-to-choose-right-hosting-platform) for a broader view on when premium hosting is worth the investment.
+The honest tradeoff is price. [Kinsta's](https://kinsta.com/pricing/?kaid=QGYHECRDGAKQ) entry plan is $35/month versus SiteGround's $3–15 introductory pricing. If you are paying $3/month for a brochure site that gets 100 visitors a week, the upgrade will not pay for itself. But if your site converts leads into revenue, the math flips quickly. **According to Deloitte research, a one-second improvement in page load time can increase conversions by up to 7%** (source: Deloitte, "Milliseconds Make Millions," 2020). Pair this with our [guide on choosing the right hosting platform](/blog/how-to-choose-right-hosting-platform/) for a broader view on when premium hosting is worth the investment.
 
 ## What are WordPress users complaining about on shared hosting in 2026?
 
@@ -121,12 +121,12 @@ Kinsta is not the right choice for non-WordPress workloads, ultra-low-budget per
 
 Specifically, consider other options if:
 
-- **You are not running WordPress.** For static sites, marketing pages, and documentation, Cloudflare Pages, Vercel, or Netlify on the free tier will often outperform any managed WordPress host. We cover this in detail in our [hosting platform comparison](/blog/how-to-choose-right-hosting-platform).
+- **You are not running WordPress.** For static sites, marketing pages, and documentation, Cloudflare Pages, Vercel, or Netlify on the free tier will often outperform any managed WordPress host. We cover this in detail in our [hosting platform comparison](/blog/how-to-choose-right-hosting-platform/).
 - **Your site gets minimal traffic and generates no revenue.** A $35/month plan for a personal hobby blog is overspending. Shared hosting or a static site generator is fine for that use case.
 - **You need raw infrastructure control.** Kinsta is fully managed, so you do not get root SSH, custom nginx configs, or unusual PHP extensions. For highly customized stacks, a self-managed VPS gives you more flexibility at the cost of more operational work.
 - **You are running a complex e-commerce store with custom transactional logic.** WP Engine has deeper tooling for large WooCommerce workloads, with native transaction monitoring and specialized checkout optimization.
 
-For most small and mid-size businesses running WordPress, though, the alternatives have more tradeoffs than upsides. If you are on shared hosting today and wondering why your traffic is slipping, your host is almost certainly part of the problem. More diagnostics in our post on [signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic).
+For most small and mid-size businesses running WordPress, though, the alternatives have more tradeoffs than upsides. If you are on shared hosting today and wondering why your traffic is slipping, your host is almost certainly part of the problem. More diagnostics in our post on [signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic/).
 
 ## How do you migrate a WordPress site to Kinsta?
 
@@ -138,7 +138,7 @@ The migration process has three phases:
 
 **During migration:** Kinsta's engineers validate the staged site, verify forms and plugins work, and schedule the DNS cutover. Because the site is already live on Kinsta's infrastructure before DNS changes, the switchover is effectively instant, with no downtime window for your visitors.
 
-**After migration:** You review the live site, confirm SSL is active on every page, and compare Core Web Vitals against pre-migration benchmarks. If anything breaks, Kinsta's support is available 24/7 to debug. For a broader migration checklist that applies to any platform, see our [post on switching hosts without losing SEO](/blog/website-redesign-without-losing-seo).
+**After migration:** You review the live site, confirm SSL is active on every page, and compare Core Web Vitals against pre-migration benchmarks. If anything breaks, Kinsta's support is available 24/7 to debug. For a broader migration checklist that applies to any platform, see our [post on switching hosts without losing SEO](/blog/website-redesign-without-losing-seo/).
 
 Most WordPress migrations complete in under 48 hours. The only common blocker is DNS propagation, which depends on your current TTL settings. Lowering TTL to 300 seconds 24 hours before the move eliminates most of that risk.
 
@@ -172,4 +172,4 @@ Yes. Kinsta offers a 30-day money-back guarantee on all shared plans. If you are
 
 If your WordPress site is slow, losing rankings, or failing Core Web Vitals, the infrastructure underneath it is almost always part of the problem. Switching to [Kinsta](https://kinsta.com/pricing/?kaid=QGYHECRDGAKQ) is one of the highest-leverage changes you can make for speed, security, and search performance. It is reversible within 30 days if it is not the right fit.
 
-We help businesses evaluate their current hosting, plan the migration, and ensure nothing breaks on the way over. Learn more about our [server and infrastructure services](/servers) or [get in touch directly](/contact). You'll hear from us within 24 hours.
+We help businesses evaluate their current hosting, plan the migration, and ensure nothing breaks on the way over. Learn more about our [server and infrastructure services](/servers/) or [get in touch directly](/contact). You'll hear from us within 24 hours.

@@ -61,9 +61,9 @@ The financial cost of inaccessibility is not hypothetical. The World Health Orga
 
 The Click-Away Pound survey found that **69% of people with access needs abandon websites that present barriers**, taking their money elsewhere. In the United Kingdom alone, the estimated annual "click-away spend", money that would have been spent if websites were accessible, reached **£17.1 billion**. While this is a UK-specific study based on self-reported behavior, the pattern is consistent across markets: when users hit barriers, they leave and they do not come back.
 
-The conversion math makes the business case clear. We analyzed [how accessibility affects conversion rates](/blog/web-accessibility-and-conversion-rates) in detail, and the data consistently shows **conversion lifts between 0.5% and 2.5%** because the same fixes that help users with disabilities (clear labels, logical structure, readable text, proper contrast) help every visitor complete actions more efficiently. If your site converts at 2% and accessibility improvements push that to 2.5%, you have increased revenue by 25% without spending more on traffic.
+The conversion math makes the business case clear. We analyzed [how accessibility affects conversion rates](/blog/web-accessibility-and-conversion-rates/) in detail, and the data consistently shows **conversion lifts between 0.5% and 2.5%** because the same fixes that help users with disabilities (clear labels, logical structure, readable text, proper contrast) help every visitor complete actions more efficiently. If your site converts at 2% and accessibility improvements push that to 2.5%, you have increased revenue by 25% without spending more on traffic.
 
-Our [accessibility opportunity calculator](/accesibilidad) lets you estimate the revenue impact and payback period for your specific business metrics.
+Our [accessibility opportunity calculator](/accessibility/) lets you estimate the revenue impact and payback period for your specific business metrics.
 
 ## Do accessibility overlay widgets actually achieve compliance?
 
@@ -99,7 +99,7 @@ Search engines and assistive technologies parse websites in remarkably similar w
 
 **Heading structure** works the same way. A logical H1-H2-H3 hierarchy helps screen reader users navigate between sections. It also helps Google understand topical structure and generate featured snippets. Other overlaps include descriptive link text (better for users and for anchor text signals), fast page load times (required for both usability and Core Web Vitals), and clean semantic HTML (parseable by both assistive technology and crawlers).
 
-The connection between accessibility and SEO is not coincidental, both disciplines reward websites that are well-structured, clearly labeled, and easy to navigate. This matters even more now that [AI search engines are changing traffic patterns](/blog/how-ai-search-engines-affect-website-traffic), because accessible, well-structured content is exactly what AI tools prefer to cite and summarize. **Every hour spent on accessibility generates compound returns across both channels.** If you are investing in SEO but ignoring accessibility, you are leaving performance on the table. Our [SEO audit](/seo) evaluates both together because they share the same foundation.
+The connection between accessibility and SEO is not coincidental, both disciplines reward websites that are well-structured, clearly labeled, and easy to navigate. This matters even more now that [AI search engines are changing traffic patterns](/blog/how-ai-search-engines-affect-website-traffic/), because accessible, well-structured content is exactly what AI tools prefer to cite and summarize. **Every hour spent on accessibility generates compound returns across both channels.** If you are investing in SEO but ignoring accessibility, you are leaving performance on the table. Our [SEO audit](/seo/) evaluates both together because they share the same foundation.
 
 ## Frequently asked questions
 
@@ -113,7 +113,7 @@ Yes. The EAA applies to products and services sold within the EU, regardless of 
 
 ### How much does a professional accessibility audit cost?
 
-Professional accessibility audits range from a few hundred dollars for focused automated reviews to several thousand for comprehensive manual testing. At Shiny Octopus, our [accessibility audits](/accesibilidad) start at **$590** for core-page reviews and go up to **$2,990** for full template-level assessments with executive compliance plans and workshop support.
+Professional accessibility audits range from a few hundred dollars for focused automated reviews to several thousand for comprehensive manual testing. At Shiny Octopus, our [accessibility audits](/accessibility/) start at **$590** for core-page reviews and go up to **$2,990** for full template-level assessments with executive compliance plans and workshop support.
 
 ### Can I achieve WCAG compliance with automated tools alone?
 
@@ -127,6 +127,6 @@ Timeline depends on the number and severity of existing issues. A small business
 
 The regulations are live. The lawsuits are accelerating. And **94.8% of websites still fail** the basic tests. The gap between where most sites are and where the law requires them to be is a compliance risk, a conversion problem, and a market opportunity, all at once.
 
-You do not need to fix everything overnight. You need to know exactly what is broken, how it affects your business, and where to start. Our [accessibility audit](/accesibilidad) gives you a prioritized remediation plan based on legal risk and business impact, starting at $590.
+You do not need to fix everything overnight. You need to know exactly what is broken, how it affects your business, and where to start. Our [accessibility audit](/accessibility/) gives you a prioritized remediation plan based on legal risk and business impact, starting at $590.
 
 [Get in touch](/contact). You will hear from us within 24 hours. Most audits are delivered in 3 to 5 business days.

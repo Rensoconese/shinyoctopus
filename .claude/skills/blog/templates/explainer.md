@@ -76,7 +76,7 @@ tags: ["tag1", "tag2", "tag3"]
 
 [1-2 sentences connecting the problem to Shiny Octopus's service.]
 
-[Link to relevant service page](/seo or /accesibilidad or /servidores) with pricing context.
+[Link to relevant service page](/seo or /accessibility or /servers) with pricing context.
 
 [CTA to /contact with response time expectation.]
 ```

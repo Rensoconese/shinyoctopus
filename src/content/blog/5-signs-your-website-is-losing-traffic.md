@@ -9,9 +9,9 @@ tags: ["seo", "audits", "conversion", "accessibility"]
 
 Your website traffic did not drop because of one bad day. It dropped because of five quiet problems that have been compounding for months, and none of them feel urgent on their own.
 
-We see this pattern constantly. A business notices their leads are down, their rankings have slipped, or their bounce rate is climbing. They assume it is an algorithm update or a seasonal dip. But when we run an [SEO audit](/blog/how-much-does-seo-audit-cost), the cause is almost always the same: a handful of foundational issues that have been silently eroding performance for weeks or months.
+We see this pattern constantly. A business notices their leads are down, their rankings have slipped, or their bounce rate is climbing. They assume it is an algorithm update or a seasonal dip. But when we run an [SEO audit](/blog/how-much-does-seo-audit-cost/), the cause is almost always the same: a handful of foundational issues that have been silently eroding performance for weeks or months.
 
-With [AI Overviews now appearing in 25.8% of US searches](https://www.brightedge.com/), every click-through-rate point you lose matters more than it used to. The margin for error is shrinking, and the sites that fix these fundamentals first will be the ones that hold their rankings. For a deeper look at how AI-driven search is reshaping traffic patterns, see our post on [how AI search engines affect your website traffic](/blog/how-ai-search-engines-affect-website-traffic).
+With [AI Overviews now appearing in 25.8% of US searches](https://www.brightedge.com/), every click-through-rate point you lose matters more than it used to. The margin for error is shrinking, and the sites that fix these fundamentals first will be the ones that hold their rankings. For a deeper look at how AI-driven search is reshaping traffic patterns, see our post on [how AI search engines affect your website traffic](/blog/how-ai-search-engines-affect-website-traffic/).
 
 Here are the five signals that show up in nearly every audit we run, and what to do about each one.
 
@@ -21,7 +21,7 @@ Slow pages cost you visitors before they even see your content. Google now uses 
 
 But the damage goes beyond rankings. **According to Google, 53% of mobile visits are abandoned if a page takes longer than 3 seconds to load (Google/DUDA, 2023).** That means a slow homepage is filtering out more than half your potential visitors before they read a single word. And slow pages compound with every other issue on this list -- a slow site with accessibility problems, for example, is exponentially harder to use than a fast site with the same gaps.
 
-The most common culprits we find in audits are uncompressed images (often accounting for 60-80% of page weight), render-blocking JavaScript that delays everything visible, and slow server response times from shared hosting that was never designed for the site's current traffic. Choosing the right hosting platform can eliminate an entire category of speed problems -- we break down the options in our [hosting platform guide](/blog/how-to-choose-right-hosting-platform).
+The most common culprits we find in audits are uncompressed images (often accounting for 60-80% of page weight), render-blocking JavaScript that delays everything visible, and slow server response times from shared hosting that was never designed for the site's current traffic. Choosing the right hosting platform can eliminate an entire category of speed problems -- we break down the options in our [hosting platform guide](/blog/how-to-choose-right-hosting-platform/).
 
 **A one-second delay in page load time can reduce conversions by 7% (Akamai).** For a site generating $10,000/month in revenue, that translates to $700/month in lost sales from speed alone. The fix is usually straightforward: compress images, defer render-blocking scripts, and evaluate whether your hosting can handle your actual traffic.
 
@@ -49,7 +49,7 @@ When someone searches for a term and sees your site in the results, the meta des
 
 Pages without tailored meta descriptions consistently underperform in click-through rate, even when they rank well. **Research by Backlinko found that pages with a meta description get 5.8% more clicks than pages without one.** That gap may sound small in isolation, but compounded across hundreds of pages and thousands of monthly impressions, it adds up to significant lost traffic.
 
-This extends beyond descriptions. We often find pages missing structured data, proper heading hierarchy, or even a language declaration -- all signals that help search engines understand and present your content correctly. A proper [SEO strategy](/seo) treats metadata as infrastructure, not as an afterthought.
+This extends beyond descriptions. We often find pages missing structured data, proper heading hierarchy, or even a language declaration -- all signals that help search engines understand and present your content correctly. A proper [SEO strategy](/seo/) treats metadata as infrastructure, not as an afterthought.
 
 | Element | Impact when missing | Time to fix |
 |---------|-------------------|-------------|
@@ -69,7 +69,7 @@ Outdated content does not just hurt the page it sits on. It can drag down the pe
 
 The fix is a content audit. Sort your existing pages into three buckets: update, consolidate, or remove. Pages with good traffic but stale information should be refreshed with current data and republished. Pages that overlap in topic should be merged into a single, stronger piece. Pages with no traffic and no relevance should be removed or redirected.
 
-While you are reviewing content, check that your images have descriptive alt text. Google uses alt text to understand image content, and it is one of the easiest wins for both [SEO](/seo) and [accessibility](/accesibilidad). Missing alt text is also one of the most common WCAG failures -- which brings us to the issue most businesses overlook entirely.
+While you are reviewing content, check that your images have descriptive alt text. Google uses alt text to understand image content, and it is one of the easiest wins for both [SEO](/seo/) and [accessibility](/accessibility/). Missing alt text is also one of the most common WCAG failures -- which brings us to the issue most businesses overlook entirely.
 
 ## What is the real cost of an inaccessible website?
 
@@ -79,11 +79,11 @@ Accessibility is not a compliance checkbox. It is a direct line to traffic, conv
 
 The [WebAIM Million report](https://webaim.org/projects/million/) -- an annual analysis of the top 1,000,000 homepages -- found that **94.8% of homepages have detectable WCAG failures, with an average of 51 errors per page (WebAIM, 2025).** The most common failures are low contrast text (79.1%), missing alt text on images (55.5%), and form inputs without labels (48.2%). If your site was built more than a year ago and has not been audited since, chances are high that these issues are present.
 
-Meanwhile, the legal landscape is tightening. **There were over 4,000 ADA-related lawsuits targeting digital properties in 2024 alone (UsableNet, 2024).** The European Accessibility Act takes effect in June 2025, and in the US, new ADA Title II rules set WCAG 2.1 AA as the standard for government sites, with compliance deadlines in 2026 and 2027. We cover the full timeline and what it means for your business in our post on [web accessibility compliance deadlines](/blog/web-accessibility-compliance-2026-deadlines).
+Meanwhile, the legal landscape is tightening. **There were over 4,000 ADA-related lawsuits targeting digital properties in 2024 alone (UsableNet, 2024).** The European Accessibility Act takes effect in June 2025, and in the US, new ADA Title II rules set WCAG 2.1 AA as the standard for government sites, with compliance deadlines in 2026 and 2027. We cover the full timeline and what it means for your business in our post on [web accessibility compliance deadlines](/blog/web-accessibility-compliance-2026-deadlines/).
 
-Here is what many businesses miss: most accessibility improvements are also SEO improvements. Proper heading structure, descriptive alt text, labeled form fields, sufficient color contrast, semantic HTML -- these all make your site more understandable to both assistive technologies and search engines. A well-structured, accessible page is, by definition, a better-optimized page. For the data on how [accessibility improvements drive measurable conversion gains](/blog/web-accessibility-and-conversion-rates), the numbers are compelling.
+Here is what many businesses miss: most accessibility improvements are also SEO improvements. Proper heading structure, descriptive alt text, labeled form fields, sufficient color contrast, semantic HTML -- these all make your site more understandable to both assistive technologies and search engines. A well-structured, accessible page is, by definition, a better-optimized page. For the data on how [accessibility improvements drive measurable conversion gains](/blog/web-accessibility-and-conversion-rates/), the numbers are compelling.
 
-Run your homepage through a tool like [WAVE](https://wave.webaim.org/) to get an initial picture. Focus on the high-impact, low-effort fixes first: add alt text to images, label your form inputs, fix color contrast issues, and ensure your heading hierarchy is logical. If the results show dozens of errors, it is worth investing in a [proper accessibility audit](/accesibilidad) before the problems compound further.
+Run your homepage through a tool like [WAVE](https://wave.webaim.org/) to get an initial picture. Focus on the high-impact, low-effort fixes first: add alt text to images, label your form inputs, fix color contrast issues, and ensure your heading hierarchy is logical. If the results show dozens of errors, it is worth investing in a [proper accessibility audit](/accessibility/) before the problems compound further.
 
 ## The compound effect
 
@@ -91,7 +91,7 @@ Any one of these issues might cost you a few percentage points of traffic. But t
 
 A visitor lands on a slow page, encounters a broken link, finds outdated information, cannot read the text because of low contrast, and leaves. That is not five problems. That is one experience, and it is the experience that determines whether they become a customer or a bounce.
 
-The good news is that fixing them works the same way. Each improvement reinforces the next. A faster site keeps more visitors. Better metadata brings more clicks. Fresh content earns more links. Working links distribute that authority. [Accessible design](/accesibilidad) ensures everyone can actually use what you have built.
+The good news is that fixing them works the same way. Each improvement reinforces the next. A faster site keeps more visitors. Better metadata brings more clicks. Fresh content earns more links. Working links distribute that authority. [Accessible design](/accessibility/) ensures everyone can actually use what you have built.
 
 ## Where to start
 
@@ -99,7 +99,7 @@ You do not need to fix everything at once. Pick the issue that is easiest to ver
 
 But if you have never had a proper audit, or if it has been more than a year since the last one, it is worth getting a complete picture. Individual fixes help, but the real value is in understanding how these issues interact in your specific case and which ones are doing the most damage right now.
 
-We offer [SEO audits](/seo) that cover every issue on this list -- speed, links, metadata, content freshness, and accessibility -- in a single, prioritized report. No generic checklist. Just a clear assessment of where your site stands and what to fix first.
+We offer [SEO audits](/seo/) that cover every issue on this list -- speed, links, metadata, content freshness, and accessibility -- in a single, prioritized report. No generic checklist. Just a clear assessment of where your site stands and what to fix first.
 
 **[Request your audit](/contact)** -- you will hear from us within 24 hours with next steps tailored to your situation.
 
@@ -109,7 +109,7 @@ We offer [SEO audits](/seo) that cover every issue on this list -- speed, links,
 
 ### How do I know if my website is losing traffic?
 
-Check Google Search Console for declining impressions and clicks over 90 days. Look for pages that used to rank on page one but have slipped to page two or beyond. A sudden drop usually points to a technical issue or algorithm update, while a gradual decline typically signals the compounding problems described above. If you are unsure what the data means, an [SEO audit](/seo) will give you a clear diagnosis.
+Check Google Search Console for declining impressions and clicks over 90 days. Look for pages that used to rank on page one but have slipped to page two or beyond. A sudden drop usually points to a technical issue or algorithm update, while a gradual decline typically signals the compounding problems described above. If you are unsure what the data means, an [SEO audit](/seo/) will give you a clear diagnosis.
 
 ### How long does it take to recover lost rankings?
 
@@ -125,4 +125,4 @@ Content decay. Pages that ranked well two years ago lose ground when competitors
 
 ### Should I fix everything at once or prioritize?
 
-Prioritize. Start with the issues affecting your highest-traffic pages, because improvements there produce the largest immediate return. Page speed and broken links are usually the fastest to fix and verify. Metadata and content updates come next. Accessibility should be treated as an ongoing practice rather than a one-time project. A structured [SEO audit](/seo) will tell you exactly which fixes will move the needle most for your specific site.
+Prioritize. Start with the issues affecting your highest-traffic pages, because improvements there produce the largest immediate return. Page speed and broken links are usually the fastest to fix and verify. Metadata and content updates come next. Accessibility should be treated as an ongoing practice rather than a one-time project. A structured [SEO audit](/seo/) will tell you exactly which fixes will move the needle most for your specific site.

@@ -82,7 +82,7 @@ Export all title tags, meta descriptions, canonical tags, Open Graph tags, and s
 
 **Title tags and meta descriptions directly affect click-through rates.** Research from Backlinko shows that pages with optimized title tags see **36.4% higher CTR** than pages with generic titles (Backlinko, 2025). Losing these during a migration means losing CTR even if your rankings stay the same, you rank, but fewer people click.
 
-Structured data deserves special attention. If your current site has JSON-LD schema (Article, Product, LocalBusiness, FAQ), verify that every schema block is present on the new site with correct values. Schema markup that was working on your old site needs to work identically on the new one. Our guide on [what structured data is and why your business needs it](/blog/what-is-structured-data-and-why-your-business-needs-it) covers the implementation details.
+Structured data deserves special attention. If your current site has JSON-LD schema (Article, Product, LocalBusiness, FAQ), verify that every schema block is present on the new site with correct values. Schema markup that was working on your old site needs to work identically on the new one. Our guide on [what structured data is and why your business needs it](/blog/what-is-structured-data-and-why-your-business-needs-it/) covers the implementation details.
 
 Canonical tags are frequently broken during redesigns. If your old site uses canonical tags to indicate the preferred version of each page, the new site must maintain them, with updated URLs pointing to the new canonical locations. Broken canonicals can cause duplicate content issues that suppress your pages from search results entirely.
 
@@ -100,7 +100,7 @@ Content migration priorities:
 
 4. **Maintain internal linking.** Your current internal linking structure passes authority between pages. The new site should maintain these relationships. If page A currently links to page B and both pages are being redesigned, make sure the new version of page A still links to the new version of page B.
 
-If you are planning to add structured data during the redesign, our guide on [what structured data is](/blog/what-is-structured-data-and-why-your-business-needs-it) explains which types to prioritize. A redesign is the ideal time to implement schema since you are already touching every page.
+If you are planning to add structured data during the redesign, our guide on [what structured data is](/blog/what-is-structured-data-and-why-your-business-needs-it/) explains which types to prioritize. A redesign is the ideal time to implement schema since you are already touching every page.
 
 ## What should you test before launching the redesigned site?
 
@@ -142,7 +142,7 @@ Watch for these warning signs in the first two weeks:
 - **Drop in indexed pages** may indicate robots.txt issues or accidental noindex tags
 - **Rich result loss** in Search Console Enhancements reports signals missing or broken schema markup
 
-If your existing site is already losing traffic before the redesign, identifying the root cause first is important. Our guide on [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic) covers the most common underlying issues.
+If your existing site is already losing traffic before the redesign, identifying the root cause first is important. Our guide on [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic/) covers the most common underlying issues.
 
 Most well-executed migrations see a temporary traffic dip of **5-15%** in the first week, with full recovery within 2-4 weeks. If the dip exceeds 30% or lasts beyond four weeks, something in the migration was missed. Check redirects, metadata, and schema as the first line of investigation.
 
@@ -176,11 +176,11 @@ Avoid changing your domain unless absolutely necessary. A domain change adds sig
 
 ### Do I need to hire an SEO specialist for my redesign?
 
-For small sites (under 50 pages), a technically competent developer who follows an SEO migration checklist can handle the process. For larger sites or sites with significant organic traffic, an SEO specialist should be involved from the planning phase, not brought in after launch to fix problems. At Shiny Octopus, our [SEO audit packages](/seo) start at $490 and we include migration planning as part of every website development project.
+For small sites (under 50 pages), a technically competent developer who follows an SEO migration checklist can handle the process. For larger sites or sites with significant organic traffic, an SEO specialist should be involved from the planning phase, not brought in after launch to fix problems. At Shiny Octopus, our [SEO audit packages](/seo/) start at $490 and we include migration planning as part of every website development project.
 
 ### What if my traffic drops after launching the redesigned site?
 
-Check redirects first, broken or missing 301s are the most common cause. Then verify metadata (title tags, meta descriptions), schema markup, and robots.txt. Use Google Search Console to identify crawl errors and indexing issues. If the drop exceeds 30% or persists beyond four weeks, a professional SEO audit can identify the specific issues. The [web accessibility requirements for 2026](/blog/web-accessibility-compliance-2026-deadlines) also provide a useful checklist for ensuring your redesigned site meets current standards.
+Check redirects first, broken or missing 301s are the most common cause. Then verify metadata (title tags, meta descriptions), schema markup, and robots.txt. Use Google Search Console to identify crawl errors and indexing issues. If the drop exceeds 30% or persists beyond four weeks, a professional SEO audit can identify the specific issues. The [web accessibility requirements for 2026](/blog/web-accessibility-compliance-2026-deadlines/) also provide a useful checklist for ensuring your redesigned site meets current standards.
 
 ## Redesign with confidence, not risk
 

@@ -71,7 +71,7 @@ Build depth in 3 pillars aligned with services:
 ## Internal Linking Strategy
 
 Every new post should link to:
-1. At least 1 service page (/seo, /accesibilidad, or /servidores)
+1. At least 1 service page (/seo, /accessibility, or /servers)
 2. At least 1 other blog post (build the cluster)
 3. /contact as the final CTA
 

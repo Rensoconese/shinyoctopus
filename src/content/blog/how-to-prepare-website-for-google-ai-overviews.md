@@ -27,7 +27,7 @@ This is not a minor feature. AI Overviews have grown from **34.5% query coverage
 
 The impact on organic traffic is measurable. **Organic position 1 CTR has dropped up to 61%** on queries where AI Overviews appear (Search Engine Journal, 2026). But here is the critical detail: the visitors who do click through from AI Overviews convert at significantly higher rates than standard search visitors. Fewer clicks, but better ones.
 
-The businesses that prepare now will capture this high-quality traffic. The ones that wait will watch their competitors get cited instead. We covered how AI search engines are reshaping traffic patterns in our guide on [how AI search engines affect your website traffic](/blog/how-ai-search-engines-affect-website-traffic), this article focuses on the specific actions you need to take.
+The businesses that prepare now will capture this high-quality traffic. The ones that wait will watch their competitors get cited instead. We covered how AI search engines are reshaping traffic patterns in our guide on [how AI search engines affect your website traffic](/blog/how-ai-search-engines-affect-website-traffic/), this article focuses on the specific actions you need to take.
 
 ## What do you need before starting?
 
@@ -111,7 +111,7 @@ The three biggest mistakes are ignoring schema markup, writing for keywords inst
 
 Another common error is focusing exclusively on Google while ignoring other AI platforms. **ChatGPT accounts for 87.4% of all AI referral traffic** (SparkToro, 2025), and its citation logic is entirely different from Google's. Perplexity, Claude, and other AI tools each have their own source selection criteria. A strategy that only targets AI Overviews leaves significant traffic on the table.
 
-If your website is already experiencing traffic declines, these AI-related shifts may be compounding existing problems. Our article on [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic) covers the most common underlying causes.
+If your website is already experiencing traffic declines, these AI-related shifts may be compounding existing problems. Our article on [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic/) covers the most common underlying causes.
 
 ## How do you know if your AI Overview optimization is working?
 
@@ -139,16 +139,16 @@ No. The most impactful changes are content structure (question-based headings, a
 
 ### How much does AI Overview optimization cost?
 
-The cost depends on your starting point. Adding schema markup and restructuring 10-20 key pages typically takes 2-4 weeks of professional work. Ongoing monthly content updates add a recurring investment. At Shiny Octopus, our [SEO audit packages](/seo) start at $490 and include AI search readiness assessment, schema recommendations, and content structure analysis.
+The cost depends on your starting point. Adding schema markup and restructuring 10-20 key pages typically takes 2-4 weeks of professional work. Ongoing monthly content updates add a recurring investment. At Shiny Octopus, our [SEO audit packages](/seo/) start at $490 and include AI search readiness assessment, schema recommendations, and content structure analysis.
 
 ### Will AI Overviews replace organic search results?
 
-Not entirely. AI Overviews currently appear in **48% of queries** (Ahrefs, March 2026), leaving more than half of searches unaffected. Even on queries with AI Overviews, organic results still appear below the summary. The shift is toward AI Overviews being the first thing users see, not the only thing. Strong organic rankings remain foundational, and the [web accessibility standards taking effect in 2026](/blog/web-accessibility-compliance-2026-deadlines) overlap significantly with AI search readiness.
+Not entirely. AI Overviews currently appear in **48% of queries** (Ahrefs, March 2026), leaving more than half of searches unaffected. Even on queries with AI Overviews, organic results still appear below the summary. The shift is toward AI Overviews being the first thing users see, not the only thing. Strong organic rankings remain foundational, and the [web accessibility standards taking effect in 2026](/blog/web-accessibility-compliance-2026-deadlines/) overlap significantly with AI search readiness.
 
 ## Start preparing your website for AI search today
 
 AI Overviews are not a future trend. They are affecting your traffic right now, and every month without optimization is a month your competitors use to establish their content as Google's preferred source.
 
-At Shiny Octopus, we help businesses prepare for AI search with structured content strategy, schema implementation, and ongoing freshness programs. Our [SEO services](/seo) are designed to keep your business visible wherever your customers are searching. Google, ChatGPT, Perplexity, and beyond.
+At Shiny Octopus, we help businesses prepare for AI search with structured content strategy, schema implementation, and ongoing freshness programs. Our [SEO services](/seo/) are designed to keep your business visible wherever your customers are searching. Google, ChatGPT, Perplexity, and beyond.
 
 [Get in touch](/contact) to discuss your AI search strategy. You'll hear from us within 24 hours.

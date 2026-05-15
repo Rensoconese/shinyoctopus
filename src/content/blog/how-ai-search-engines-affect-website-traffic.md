@@ -51,7 +51,7 @@ What does matter? Brand recognition and multi-platform presence. **Brand search 
 
 This extends to platform diversity. **Businesses present on 4 or more platforms are 2.8x more likely to be cited by ChatGPT** than those with a single web presence. If your business appears on your website, YouTube, LinkedIn, industry directories, and review platforms, ChatGPT is far more likely to recommend you.
 
-The practical takeaway: traditional [SEO](/seo) gets you into Google. Getting cited by ChatGPT requires building a recognizable brand across multiple channels, and producing content that is authoritative, specific, and structured in ways that AI models can easily parse and reference.
+The practical takeaway: traditional [SEO](/seo/) gets you into Google. Getting cited by ChatGPT requires building a recognizable brand across multiple channels, and producing content that is authoritative, specific, and structured in ways that AI models can easily parse and reference.
 
 ## How does Perplexity choose its sources?
 
@@ -97,13 +97,13 @@ That last row deserves emphasis. **Multi-modal content (pages combining text, im
 
 This does not mean traditional SEO is dead. **52% of AI Overview sources come from pages already in Google's top 10**. Strong Google rankings remain the foundation. But the businesses that will thrive are the ones layering AI-specific optimization on top of their existing SEO work, not treating it as an either/or choice.
 
-If your current traffic is already declining, these AI-driven shifts may be compounding existing problems. We covered the most common underlying causes in [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic).
+If your current traffic is already declining, these AI-driven shifts may be compounding existing problems. We covered the most common underlying causes in [5 signs your website is losing traffic](/blog/5-signs-your-website-is-losing-traffic/).
 
 ## How can businesses optimize for both Google and AI search engines?
 
 The good news is that optimizing for AI search engines does not require abandoning your current SEO strategy. It requires extending it with specific, measurable actions that make your content more visible to AI tools. Here are the steps that produce results.
 
-**Structure your content for extraction.** AI tools cite content they can easily parse. Use clear H2 and H3 headers, short paragraphs, bullet points, and comparison tables. Every key claim should be a self-contained statement that an AI could extract and cite without needing surrounding context. This also improves [accessibility](/accesibilidad), which benefits your rankings and your users simultaneously.
+**Structure your content for extraction.** AI tools cite content they can easily parse. Use clear H2 and H3 headers, short paragraphs, bullet points, and comparison tables. Every key claim should be a self-contained statement that an AI could extract and cite without needing surrounding context. This also improves [accessibility](/accessibility/), which benefits your rankings and your users simultaneously.
 
 **Add schema markup to every important page.** JSON-LD structured data (Organization, Article, FAQ, HowTo, Product) helps AI models understand your content's type, authority, and relevance. Pages with schema are **36% more likely to appear in AI summaries**. If your site has no schema at all, this is the single highest-leverage change you can make.
 
@@ -115,7 +115,7 @@ The good news is that optimizing for AI search engines does not require abandoni
 
 **Monitor your AI visibility, not just your Google rankings.** Track whether your pages appear in AI Overviews, whether ChatGPT mentions your brand, and whether Perplexity cites your content. These are new metrics that most businesses are not tracking yet, which means the ones that start now have a significant first-mover advantage.
 
-Compliance deadlines are also shifting the landscape. The upcoming [web accessibility requirements for 2026](/blog/web-accessibility-compliance-2026-deadlines) overlap significantly with AI search optimization. Accessible, well-structured content performs better in both contexts.
+Compliance deadlines are also shifting the landscape. The upcoming [web accessibility requirements for 2026](/blog/web-accessibility-compliance-2026-deadlines/) overlap significantly with AI search optimization. Accessible, well-structured content performs better in both contexts.
 
 ## Frequently asked questions
 
@@ -143,6 +143,6 @@ Yes. While brand recognition helps with ChatGPT citations (brand search volume c
 
 The shift toward AI search engines is a current reality affecting your traffic right now. Every month you wait is a month your competitors use to establish their content as the source AI tools cite and recommend.
 
-At Shiny Octopus, we help businesses optimize for both traditional search and AI search engines. Our [SEO services](/seo) include structured content strategy, schema implementation, multi-platform visibility planning, and ongoing content freshness programs designed to keep you visible wherever your customers are searching.
+At Shiny Octopus, we help businesses optimize for both traditional search and AI search engines. Our [SEO services](/seo/) include structured content strategy, schema implementation, multi-platform visibility planning, and ongoing content freshness programs designed to keep you visible wherever your customers are searching.
 
 [Get in touch](/contact) to discuss your AI search strategy. You'll hear from us within 24 hours.

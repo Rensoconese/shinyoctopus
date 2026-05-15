@@ -2,7 +2,9 @@
 # Contact is SSR, handled by the Worker, not static redirects
 /blog /blog/ 301
 /seo /seo/ 301
-/accesibilidad /accesibilidad/ 301
+/accessibility /accessibility/ 301
+/accesibilidad /accessibility/ 301
+/accesibilidad/ /accessibility/ 301
 /servers /servers/ 301
 /servidores /servers/ 301
 /about /about/ 301

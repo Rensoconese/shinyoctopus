@@ -87,7 +87,7 @@ Structured data is becoming one of the most direct levers for AI search visibili
 
 **Pages with schema markup have a 36% higher probability of appearing in AI summaries** (Ahrefs, 2025). This is because schema helps AI models quickly identify the topic, authority, and structure of your content without relying on inference. When Google AI Overviews needs to cite a source about your product category, the page with clean Product schema and Organization schema wins over the page that simply mentions product details in prose.
 
-We covered the broader strategies for AI search optimization in our guide on [how to prepare your website for Google's AI Overviews](/blog/how-to-prepare-website-for-google-ai-overviews). Structured data is one piece of that puzzle, but it is arguably the highest-leverage technical change because it directly tells AI systems what your content represents. If you are working on [SEO](/seo) improvements, schema markup should be near the top of your implementation list.
+We covered the broader strategies for AI search optimization in our guide on [how to prepare your website for Google's AI Overviews](/blog/how-to-prepare-website-for-google-ai-overviews/). Structured data is one piece of that puzzle, but it is arguably the highest-leverage technical change because it directly tells AI systems what your content represents. If you are working on [SEO](/seo/) improvements, schema markup should be near the top of your implementation list.
 
 ## Frequently asked questions
 
@@ -109,12 +109,12 @@ Rich results typically appear within 2-4 weeks of implementation, once Google re
 
 ### How much does a structured data implementation cost?
 
-Cost depends on site size and complexity. Adding schema to a 10-20 page business website typically requires a few hours of development work. Larger sites with product catalogs or multiple locations need more investment. At Shiny Octopus, our [SEO audit packages](/seo) include structured data assessment and implementation recommendations, starting at $490.
+Cost depends on site size and complexity. Adding schema to a 10-20 page business website typically requires a few hours of development work. Larger sites with product catalogs or multiple locations need more investment. At Shiny Octopus, our [SEO audit packages](/seo/) include structured data assessment and implementation recommendations, starting at $490.
 
 ## Make your website speak Google's language
 
 Structured data is the difference between Google guessing what your content means and knowing exactly what it means. In 2026, with AI search engines relying on structured signals more than ever, schema markup is not optional, it is foundational.
 
-At Shiny Octopus, we implement structured data as part of every [SEO audit](/seo) and website project. We identify the schema types that will drive the most value for your specific business, implement them correctly, and monitor their performance over time.
+At Shiny Octopus, we implement structured data as part of every [SEO audit](/seo/) and website project. We identify the schema types that will drive the most value for your specific business, implement them correctly, and monitor their performance over time.
 
 [Get in touch](/contact) to discuss your structured data strategy. You'll hear from us within 24 hours.

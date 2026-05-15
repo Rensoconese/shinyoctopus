@@ -7,7 +7,7 @@ Shiny Octopus helps businesses improve their online presence through data-driven
 ## Services
 
 - [SEO Audit](https://shinyoctopus.studio/seo): Business-first SEO audits that review website structure, messaging, and visibility blockers. Plans from USD 490 to USD 2,590.
-- [Accessibility Audit](https://shinyoctopus.studio/accesibilidad): WCAG-based accessibility audits that identify usability barriers and conversion friction. Plans from USD 590 to USD 2,990.
+- [Accessibility Audit](https://shinyoctopus.studio/accessibility): WCAG-based accessibility audits that identify usability barriers and conversion friction. Plans from USD 590 to USD 2,990.
 - [Platform Strategy](https://shinyoctopus.studio/servers): Infrastructure and platform recommendations based on business goals, team workflow, and growth plans.
 
 ## Blog

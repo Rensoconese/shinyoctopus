@@ -11,7 +11,7 @@
             properties: {
               service: {
                 type: 'string',
-                enum: ['seo', 'accesibilidad', 'servidores', 'blog', 'about', 'contact'],
+                enum: ['seo', 'accessibility', 'servidores', 'blog', 'about', 'contact'],
                 description: 'Target service page slug.'
               }
             },
@@ -19,7 +19,7 @@
           },
           execute: function (input) {
             var slug = (input && input.service) || '';
-            var allowed = ['seo', 'accesibilidad', 'servidores', 'blog', 'about', 'contact'];
+            var allowed = ['seo', 'accessibility', 'servidores', 'blog', 'about', 'contact'];
             if (allowed.indexOf(slug) === -1) {
               return { ok: false, error: 'Unknown service slug' };
             }

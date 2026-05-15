@@ -3,16 +3,18 @@ const pathname = Astro.url.pathname.replace(/\/+$/, "") || "/";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/seo", label: "SEO Audit" },
-  { href: "/accesibilidad", label: "Accessibility" },
-  { href: "/servers", label: "Servers" },
-  { href: "/blog", label: "Blog" },
+  { href: "/seo/", label: "SEO Audit" },
+  { href: "/accessibility/", label: "Accessibility" },
+  { href: "/servers/", label: "Servers" },
+  { href: "/case-studies/", label: "Case Studies" },
+  { href: "/blog/", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
 const isActive = (href: string) => {
-  if (href === "/") return pathname === "/";
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const cleanHref = href.replace(/\/+$/, "") || "/";
+  if (cleanHref === "/") return pathname === "/";
+  return pathname === cleanHref || pathname.startsWith(`${cleanHref}/`);
 };
 ---
 
