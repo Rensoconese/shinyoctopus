@@ -18,7 +18,7 @@ const isActive = (href: string) => {
 };
 ---
 
-<header class="topbar">
+<header class="topbar" data-topbar>
   <a href="/" class="topbar-brand" aria-label="Shiny Octopus - Home">
     <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10.2555 21.429C9.5817 21.429 8.92342 21.2925 8.2987 21.0222L7.91406 20.8579L12.7543 9.76286C13.534 7.97895 15.3023 6.82422 17.259 6.82422C17.9328 6.82422 18.5911 6.96066 19.2158 7.23103L19.5979 7.39527L14.7576 18.4903C13.978 20.2742 12.2097 21.429 10.2503 21.429H10.2555Z" fill="white"></path>
@@ -49,6 +49,7 @@ const isActive = (href: string) => {
 
 <script is:inline>
   (() => {
+    const topbar = document.querySelector("[data-topbar]");
     const toggle = document.querySelector("[data-topbar-toggle]");
     const nav = document.getElementById("primary-navigation");
     if (!toggle || !nav) return;
@@ -57,6 +58,8 @@ const isActive = (href: string) => {
       toggle.setAttribute("aria-expanded", String(isOpen));
       toggle.setAttribute("aria-label", isOpen ? "Close primary navigation" : "Open primary navigation");
       nav.dataset.open = String(isOpen);
+      if (topbar) topbar.dataset.open = String(isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     };
 
     toggle.addEventListener("click", () => {
@@ -70,6 +73,10 @@ const isActive = (href: string) => {
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") setOpen(false);
     });
+
+    window.matchMedia("(min-width: 48.0625rem)").addEventListener("change", (event) => {
+      if (event.matches) setOpen(false);
+    });
   })();
 </script>
 
@@ -77,7 +84,7 @@ const isActive = (href: string) => {
   .topbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 40;
+    z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -175,13 +182,17 @@ const isActive = (href: string) => {
   /* Nav, mobile: collapsed by default */
   .topbar-nav {
     width: 100%;
+    height: 100vh;
+    min-height: 100dvh;
     position: fixed;
     top: 0; left: 0;
-    background: rgba(0, 0, 0, 0.97);
-    overflow: hidden;
+    background: #000;
+    overflow-y: auto;
+    overscroll-behavior: contain;
     max-height: 0;
     visibility: hidden;
-    transition: max-height 0.3s ease-out;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, opacity 0.2s ease-out, visibility 0.2s ease-out;
     z-index: 50;
     pointer-events: none;
   }
@@ -189,7 +200,9 @@ const isActive = (href: string) => {
   /* Open state */
   .topbar-nav[data-open="true"] {
     max-height: 100vh;
+    max-height: max(100vh, 100dvh);
     visibility: visible;
+    opacity: 1;
     pointer-events: auto;
   }
 
@@ -241,6 +254,7 @@ const isActive = (href: string) => {
       overflow: visible;
       pointer-events: auto;
       visibility: visible;
+      opacity: 1;
     }
 
     .topbar-menu {

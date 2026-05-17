@@ -71,14 +71,24 @@ const websiteSchema = {
             position: relative;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
-            height: 100vh;
-            height: 100svh;
+            min-height: 100vh;
+            min-height: 100svh;
             width: 100%;
-            gap: 3rem;
-            transform: translateY(-12dvh);
+            gap: clamp(1.5rem, 5vw, 3rem);
+            padding: clamp(7rem, 18svh, 9rem) 0 3rem;
             contain: layout;
+        }
+
+        @media (min-width: 64rem) {
+            .hero {
+                justify-content: center;
+                height: 100vh;
+                height: 100svh;
+                padding: 0;
+                transform: translateY(-12dvh);
+            }
         }
         
         .hero-title h1 {

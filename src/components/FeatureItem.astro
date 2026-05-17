@@ -36,4 +36,15 @@ const { title, description } = Astro.props;
     opacity: 0.6;
     line-height: 1.5;
   }
+
+  @media (max-width: 48rem) {
+    dl {
+      gap: 0.35rem;
+      padding-top: 0.75rem;
+    }
+
+    dt {
+      padding-top: 0.75rem;
+    }
+  }
 </style>
