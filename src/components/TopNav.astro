@@ -217,10 +217,12 @@ const isActive = (href: string) => {
     .topbar-nav {
       position: static;
       max-height: none;
+      min-height: 0;
       width: auto;
       height: auto;
       background: transparent;
       overflow: visible;
+      overscroll-behavior: auto;
       pointer-events: auto;
       visibility: visible;
       opacity: 1;
