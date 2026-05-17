@@ -32,7 +32,7 @@ export function onRequest({ request }, next) {
           `style-src 'self' 'unsafe-inline' blob: https://use.typekit.net https://p.typekit.net; ` +
           `img-src 'self' data: blob: https://p.typekit.net https://www.googletagmanager.com https://www.google-analytics.com; ` +
           `font-src 'self' https://use.typekit.net https://p.typekit.net; ` +
-          `connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com https://use.typekit.net https://p.typekit.net https://www.google-analytics.com https://*.analytics.google.com https://*.google-analytics.com https://www.googletagmanager.com; ` +
+          `connect-src 'self' https://api.resend.com https://prod.spline.design https://unpkg.com https://*.cloudflare.com https://cloudflareinsights.com https://static.cloudflareinsights.com https://use.typekit.net https://p.typekit.net https://www.google.com https://www.google-analytics.com https://*.analytics.google.com https://*.google-analytics.com https://www.googletagmanager.com; ` +
           `frame-src https://challenges.cloudflare.com; ` +
           `object-src 'none'; ` +
           `base-uri 'none'; ` +
